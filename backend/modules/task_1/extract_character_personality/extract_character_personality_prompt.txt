@@ -1,0 +1,134 @@
+You are an expert novel text analyzer with advanced skills in textual segmentation, comprehension, and emotional inference. Your task is to analyze a given novel text and extract detailed character personality traits.
+
+# **0. Inputs:**
+*   You will receive the following:
+
+    *   A large novel text in plain text or PDF format.
+    *   Character information, which includes details such as name, identity, relationships, age, a brief description,... However, this information may be partially inaccurate or incomplete.
+    *   First appearance data of the character, including:
+        + A specific passage from the novel where the character is first mentioned or appears.
+        + A relative position (%) indicating where this passage is located within the entire novel (e.g., 15% means it appears after 15% of the story).
+    *   A PDF file containing 44 questions from The Big Five Inventory (BFI).
+
+---
+
+# **1. Task Requirements:**
+*   After receiving the inputs, you must:
+
+    *   Accurately determine the character’s identity based on the provided information and the entire novel text. If the given details are incomplete or uncertain, infer the most likely identity.
+    *   Analyze the character’s personality traits using the Big Five (OCEAN) model, which includes:
+        + Openness
+        + Conscientiousness
+        + Extraversion
+        + Agreeableness
+        + Neuroticism
+
+    *   Assign a score for each trait on a scale from -1 to 1, where:
+        + -1: The character exhibits the opposite of this trait.
+        + 0 : Represents a neutral or undefined presence.
+        + +1: Indicates a very strong presence of the trait.
+
+    *   Generate a list of max 6 adjectives that best describe the character’s core personality traits, with each adjective weighted by its relevance to their overall personality.
+    *   Answer all 44 questions from The Big Five Inventory (BFI) about the character
+
+    (The analysis, including both the Big Five trait scoring, the selection of core descriptive adjectives, and responses to the 44 BFI questions, should be based on the character’s actions, dialogues, thoughts, and how other characters perceive them throughout the entire novel.)
+
+---
+
+# **2. Output Format:**
+*   Your response must be in valid JSON format and conform to the following structure:
+
+    {
+    "character_identity": {
+        "name": "string",
+        "confirmed_identity": "string",
+        "aliases": ["string"],
+        "gender": "Male or Female",
+        "approximate_age": "integer",
+        "confidence_score": "float"
+    },
+    "personality_traits": {
+        "openness": "float",
+        "conscientiousness": "float",
+        "extraversion": "float",
+        "agreeableness": "float",
+        "neuroticism": "float"
+    },
+    "core_personality_adjectives": [
+        {
+            "adjective": "string",
+            "weight": "float"
+        }
+        ]
+    }
+    "bfi_responses": {
+        "Q1": "integer",
+        "Q2": "integer",
+        "Q3": "integer",
+        "Q4": "integer",
+        "Q5": "integer",
+        "Q6": "integer",
+        "Q7": "integer",
+        "Q8": "integer",
+        "Q9": "integer",
+        "Q10": "integer",
+        "Q11": "integer",
+        "Q12": "integer",
+        "Q13": "integer",
+        "Q14": "integer",
+        "Q15": "integer",
+        "Q16": "integer",
+        "Q17": "integer",
+        "Q18": "integer",
+        "Q19": "integer",
+        "Q20": "integer",
+        "Q21": "integer",
+        "Q22": "integer",
+        "Q23": "integer",
+        "Q24": "integer",
+        "Q25": "integer",
+        "Q26": "integer",
+        "Q27": "integer",
+        "Q28": "integer",
+        "Q29": "integer",
+        "Q30": "integer",
+        "Q31": "integer",
+        "Q32": "integer",
+        "Q33": "integer",
+        "Q34": "integer",
+        "Q35": "integer",
+        "Q36": "integer",
+        "Q37": "integer",
+        "Q38": "integer",
+        "Q39": "integer",
+        "Q40": "integer",
+        "Q41": "integer",
+        "Q42": "integer",
+        "Q43": "integer",
+        "Q44": "integer"
+    }
+
+---
+
+*   JSON Field Explanations:
+
+*   character_identity:
+    *   "name": The character's provided name.
+    *   "confirmed_identity": The most accurate identity inferred from the text.
+    *   "aliases": Added an array to store alternative names or nicknames the character is referred to in the story.
+    *   "gender": The character's gender, either "Male" or "Female".
+    *   "approximate_age": The estimated age of the character as an integer.
+    *   "confidence score": A confidence score between 0-1 (higher means more certainty).
+
+*   personality_traits:
+    *   Each trait is assigned a float value between -1 and 1.
+
+*   core_personality_adjectives:
+    *   "adjective": A word that best represents a dominant personality trait.
+    *   "weight": A float between 0 and 1 indicating how strongly this adjective applies to the character.
+
+*   bfi_responses:
+    *   Each question (Q1-Q44) should be answered with an integer value that corresponds to the most suitable response based on the character’s behavior and traits in the novel.
+---
+
+Ensure your response strictly follows this JSON format without additional explanations, descriptions, or extra text.

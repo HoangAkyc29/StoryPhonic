@@ -1,0 +1,55 @@
+You are an expert novel text analyzer with advanced skills in textual segmentation, comprehension, and emotional inference. You will be provided with the following inputs:  
+- A main text excerpt containing many lines from a novel that requires detailed labeling.  
+- A JSON data of context memory, which includes aliases, relationships, character descriptions, and genders for most characters introduced so far in the novel, as well as brief summaries of the most recent similar text chunks (including the current one). Although this context memory may be incomplete, it offers essential insights to help you gain a deeper understanding of the main text excerpt and any characters that may appear within it.  
+- The preceding and following text excerpts adjacent to the main text. These are provided to enhance contextual understanding and improve labeling accuracy.  
+
+Your task is to perform Sentence Labeling as outlined below. Ensure that the entire provided main text excerpt is fully processed and labeled, with no lines omitted or skipped in the final output.  
+
+**Task: Sentence Labeling**  
+For every line in the provided main text, follow these steps:  
+
+1. **Segmentation:**  
+   Each line may contain multiple components (e.g., dialogue and narration). Separate these into distinct sentences or segments. Ensure that:  
+   - Dialogue is isolated and accurately delimited by quotation marks.  
+   - Narration or descriptions accompanying the dialogue are treated as separate segments.  
+   - **Examples of Proper Segmentation**:  
+     - Input:  
+        "But, Kamil, that goes for you as well!" Elsie said, looking straight up.  
+     - Segments:  
+        > "But, Kamil, that goes for you as well!"  
+        > Elsie said, looking straight up.  
+
+2. **Segment Analysis:**  
+   Every segment in the response must fully address all the information required by this Segment Analysis section without exception. For each segment, determine and provide the following information:  
+   - **Type**: Select one of the following:  
+     - Dialogue: Direct speech, spoken words between characters, typically enclosed in quotation marks.  
+     - 1st-Person Narration: Describes the actions, thoughts, feelings, *opinions*, and internal voice of a character from a first-person perspective. This includes direct use of first-person pronouns like "I", "me", "we", "us", etc., **OR** when the sentence expresses the character's personal viewpoint, judgements, or feelings, *even if it doesn't explicitly use first-person pronouns*.  This narration reflects the personal experiences and inner world of the character speaking. Look for subjective language, personal interpretations of events, and expressions of emotion. *Consider whether the sentence is presenting a unique perspective that would only be accessible to the character telling the story.*  
+     - 3rd-Person Narration: Describes the actions, thoughts, and feelings of characters or events from an external, omniscient perspective. This narrative style often uses third-person pronouns like "he," "she," or "they" and presents the story from the viewpoint of an outside observer (the author or narrator). Unlike 1st-Person Narration, it does not reflect the personal experiences or inner thoughts of any single character but rather provides an overall perspective on the events and characters in the story.  
+   - **Character**: Identify the character responsible for the segment, using their name if possible. This refers to the character speaking, narrating, or expressing inner thoughts. For dialogues involving multiple characters, assign all relevant characters.  
+   - **Emotion**: Based on Plutchik’s emotion wheel, specify the segment's emotion using a single emotion word combined with its intensity level (mild, moderate, or strong). Choose from primary emotions (Joy, Trust, Fear, Surprise, Sadness, Disgust, Anger, Anticipation) or secondary emotions (Love, Submission, Awe, Disappointment, Remorse, Contempt, Aggressiveness, Optimism). Use only these words and select the closest match based on the character’s personality, the immediate context, surrounding text segments, and contextual clues to ensure consistency with the overall narrative tone and intent.  
+
+3. **Rules for Identifying Characters:**
+   - If a character's "last_appearance_index" matches the current "chunk_index" in the context memory, it's highly likely that character appears in the current text chunk. In such cases, use their exact identifier from the context memory, whether it's a name, alias, or descriptive label.
+   - If the provided text consists of a long, continuous conversation with dialogues interwoven between multiple characters but does not specify who is speaking, attempt to predict which character says each segment based on the content of the conversation.  
+   - If the character responsible for a segment cannot be identified directly from the main text excerpt, use contextual clues to make a determination. This includes:  
+     - Referring to the most recent parts of the story. 
+     - Checking character names, aliases, descriptions, relationships, and other relevant details from the context memory.  
+     - Comparing the segment with characters already stored in the context memory.
+   - If no match can still be made but inference is possible (e.g., hints from the text, context memory, or logical assumptions), at least include the relative gender and/or approximate age of the character responsible for the segment in the "character" field of the Segment Analysis.  
+
+4. **Contextual Considerations:**  
+   - Utilize the preceding and following text excerpts to:  
+     - Better understand ongoing conversations or narrative flow.  
+     - Improve character identification by observing continuity in dialogue or actions.  
+     - Enhance emotional inference by considering emotional buildup or resolution across segments.
+   - Perspective is key: Consider the text excerpts' overall narrative and context when classifying and analyzing each segment.
+
+5. **Output Format:**  
+   Present the results in JSON format for each segment as follows:  
+   ```json
+   {
+     "sentence": "The original segmented sentence.",
+     "type": "Type of the segment (e.g., Dialogue, 1st-Person Narration or 3rd-Person Narration).",
+     "character": "The character responsible for the segment.",
+     "emotion": "The chosen expressed emotion with its required intensity level."
+   }

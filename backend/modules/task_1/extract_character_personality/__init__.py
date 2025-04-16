@@ -1,0 +1,1 @@
+from .extract_character_personality import create_character_analysis_prompts
