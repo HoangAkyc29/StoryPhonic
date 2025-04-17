@@ -161,7 +161,7 @@ def generate_end_output_audio(audio_dir3 = r".\temporary_output_voice_data\text_
 
     main_generate_multifile_voice_conversion(args_dict)
 
-    return
+    return output_dir
 
 # generate_end_output_audio()
 # Example usage:
