@@ -150,9 +150,8 @@ def generate_end_output_audio(audio_dir3 = r".\temporary_output_voice_data\text_
 
     current_dir = os.path.dirname(os.path.abspath(__file__))
 
-    # Đi vào 2 cấp (để đến thư mục F5-TTS)
-    vc_dir = os.path.join(current_dir,'voice_conversion')
-    seed_vc_dir = os.path.join(vc_dir, 'seed-vc')
+    # Đi vào 1 cấp (để đến thư mục F5-TTS)
+    seed_vc_dir = os.path.join(current_dir, 'seed-vc')
 
     # Thêm đường dẫn vào sys.path
     sys.path.insert(0, seed_vc_dir)
@@ -164,7 +163,7 @@ def generate_end_output_audio(audio_dir3 = r".\temporary_output_voice_data\text_
 
     return
 
-generate_end_output_audio()
+# generate_end_output_audio()
 # Example usage:
 # if __name__ == "__main__":
 #     audio_dir1 = "path/to/audio/dir1"  # Thay bằng đường dẫn thực tế

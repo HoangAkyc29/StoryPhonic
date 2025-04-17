@@ -105,6 +105,7 @@ def generate_all_TTS_with_emotion(narrative_annotation_dir = r"D:\FINAL_CODE\bac
     transcript_emotion_dir = os.path.abspath(transcript_emotion_dir)
     output_dir = os.path.abspath(output_dir)
     last_folder_name = os.path.basename(narrative_annotation_dir)
+
     output_dir = os.path.join(output_dir, last_folder_name)
 
     ref_data = create_ref_data(emotion_audio_dir,transcript_emotion_dir)
@@ -113,8 +114,7 @@ def generate_all_TTS_with_emotion(narrative_annotation_dir = r"D:\FINAL_CODE\bac
     current_dir = os.path.dirname(os.path.abspath(__file__))
 
     # Đi vào 2 cấp (để đến thư mục F5-TTS)
-    tts_dir = os.path.join(current_dir,'text_to_speech')
-    f5_tts_dir = os.path.join(tts_dir, 'F5-TTS')
+    f5_tts_dir = os.path.join(current_dir, 'F5-TTS')
 
     # Gán đường dẫn đến thư mục F5-TTS\src
     f5_tts_src_dir = os.path.join(f5_tts_dir, 'src')
@@ -126,5 +126,7 @@ def generate_all_TTS_with_emotion(narrative_annotation_dir = r"D:\FINAL_CODE\bac
     from f5_tts import multi_input_multi_ref_run_inference
 
     multi_input_multi_ref_run_inference(ref_data,text_data,output_dir,last_folder_name)
+    
+    return output_dir
 
-generate_all_TTS_with_emotion()
+# generate_all_TTS_with_emotion()

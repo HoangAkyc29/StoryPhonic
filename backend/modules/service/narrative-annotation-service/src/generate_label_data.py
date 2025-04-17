@@ -1,3 +1,7 @@
+# import sys
+# current_dir = os.path.dirname(os.path.abspath(__file__))
+# sys.path.insert(0, current_dir)
+
 from .model_loader import llama_8B_finetune_model_loader, sentence_transformer_model_loader
 import os
 import random
@@ -275,7 +279,7 @@ def process_files_in_folder(files_path, output_dir = "", memory_dir = "", key = 
     
     return break_outer, last_memory_file_dir
 
-def generate_label_data_main(input_data, output_dir = r".\task_1\temporary_context_data\character_label_data", 
+def generate_label_data_main(input_data, input_id, output_dir = r".\task_1\temporary_context_data\character_label_data", 
                              memory_dir = r".\task_1\temporary_context_data\context_memory_data", 
                              character_personality_output_dir = r".\task_1\temporary_context_data\character_personality_data", 
                              validate_identity_character_personality_output_dir = r".\task_1\temporary_context_data\validated_character_personality_data",
@@ -289,7 +293,7 @@ def generate_label_data_main(input_data, output_dir = r".\task_1\temporary_conte
     break_outer = True
     retry_counter = 0
 
-    input_files_paths, input_id, grand_text_input = save_text_chunk(input_data)
+    input_files_paths, _, grand_text_input = save_text_chunk(input_data)
     if input_files_paths == None:
         return
     
@@ -342,11 +346,11 @@ def generate_label_data_main(input_data, output_dir = r".\task_1\temporary_conte
         personality_mapper_main(validate_identity_character_personality_output_dir,voice_personality_dir,voice_personality_by_lore_dir, sentence_transformer_model,character_voice_mapper_dir)
         create_unique_mapping(character_voice_mapper_dir,final_identity_character_dir)
         add_voice_actors(output_dir,final_identity_character_dir)
-        return output_dir, character_personality_output_dir
+        return (output_dir, character_personality_output_dir, final_identity_character_dir)
 
 
 
 # generate_label_data_main(r"D:\extract_novel_character_data_llama_8B\cote_4.pdf")
-generate_label_data_main(r"D:\Learning\ReZero.pdf")
+# generate_label_data_main(r"D:\Learning\ReZero.pdf")
 
 # print(get_unique_characters(r"D:\FINAL_CODE\backend\modules\task_1\temporary_context_data\character_label_data\constant_id"))

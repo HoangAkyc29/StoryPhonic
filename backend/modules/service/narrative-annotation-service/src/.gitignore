@@ -1,0 +1,9 @@
+ai_models
+unsloth_compiled_cache
+.unsloth_compiled_cache
+backend\modules\task_1\unsloth_compiled_cache
+venv
+temporary_context_data
+.temporary_context_data
+keys.env
+.keys.env
