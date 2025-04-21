@@ -35,7 +35,7 @@ def llama_8B_finetune_model_loader():
     global _llama_model, _llama_tokenizer
     if _llama_model is None or _llama_tokenizer is None:
         _llama_model, _llama_tokenizer = FastLanguageModel.from_pretrained(
-        model_name = "unsloth/Meta-Llama-3.1-8B-Instruct-bnb-4bit",
+        model_name = "unsloth/Meta-Llama-3.1-8B-Instruct-bnb-4bit", # Llama8BFinetune_MODEL_NAME
         max_seq_length = 32000,
         device_map="auto"
     # token = "hf_...", # use one if using gated models like meta-llama/Llama-2-7b-hf

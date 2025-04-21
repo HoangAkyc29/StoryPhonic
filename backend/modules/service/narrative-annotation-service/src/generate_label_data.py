@@ -217,9 +217,9 @@ def process_files_in_folder(files_path, output_dir = "", memory_dir = "", key = 
                     #     response_2 = generate_answer(input_query_update_context_memory,llama_8B_model,llama_8B_tokenizer)
                     # else:
 
-                    response_2 = extract_json_response(generate_answer(input_query_update_context_memory, llama_8B_model,llama_8B_tokenizer, temperature=0.4))
-                    print(response_2)
-                    # response_2 = generate_answer(input_query_update_context_memory, temperature=0.4, gemini_key=key)
+                    # response_2 = extract_json_response(generate_answer(input_query_update_context_memory, llama_8B_model,llama_8B_tokenizer, temperature=0.4))
+                    # print(response_2)
+                    response_2 = generate_answer(input_query_update_context_memory, temperature=0.4, gemini_key=key)
 
                     response_temp = clean_json(response_2)
 
@@ -252,9 +252,9 @@ def process_files_in_folder(files_path, output_dir = "", memory_dir = "", key = 
                     #     response_1 = extract_json_response(response_1)
                     # else:
 
-                    response_1 = extract_json_response(generate_answer(input_query_dialogue_analyzer, llama_8B_model,llama_8B_tokenizer, task_code="dialogue analyzer"))
-                    print(response_1)
-                    # response_1 = generate_answer(input_query_dialogue_analyzer, gemini_key=key, task_code="dialogue analyzer")
+                    # response_1 = extract_json_response(generate_answer(input_query_dialogue_analyzer, llama_8B_model,llama_8B_tokenizer, task_code="dialogue analyzer"))
+                    # print(response_1)
+                    response_1 = generate_answer(input_query_dialogue_analyzer, gemini_key=key, task_code="dialogue analyzer")
                     
                     response_temp = clean_json(response_1)
 
