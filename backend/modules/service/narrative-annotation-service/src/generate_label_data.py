@@ -1,9 +1,9 @@
+import os
 # import sys
 # current_dir = os.path.dirname(os.path.abspath(__file__))
 # sys.path.insert(0, current_dir)
 
 from .model_loader import llama_8B_finetune_model_loader, sentence_transformer_model_loader
-import os
 import random
 from collections import defaultdict
 import threading
@@ -216,7 +216,11 @@ def process_files_in_folder(files_path, output_dir = "", memory_dir = "", key = 
                     # if retry_counter <= 2:
                     #     response_2 = generate_answer(input_query_update_context_memory,llama_8B_model,llama_8B_tokenizer)
                     # else:
-                    response_2 = generate_answer(input_query_update_context_memory, temperature=0.4, gemini_key=key)
+
+                    response_2 = extract_json_response(generate_answer(input_query_update_context_memory, llama_8B_model,llama_8B_tokenizer, temperature=0.4))
+                    print(response_2)
+                    # response_2 = generate_answer(input_query_update_context_memory, temperature=0.4, gemini_key=key)
+
                     response_temp = clean_json(response_2)
 
                     if not response_2:
@@ -247,7 +251,10 @@ def process_files_in_folder(files_path, output_dir = "", memory_dir = "", key = 
                     #     response_1 = generate_answer(input_query_dialogue_analyzer,llama_8B_model,llama_8B_tokenizer, task_code="dialogue analyzer")
                     #     response_1 = extract_json_response(response_1)
                     # else:
-                    response_1 = generate_answer(input_query_dialogue_analyzer, gemini_key=key, task_code="dialogue analyzer")
+
+                    response_1 = extract_json_response(generate_answer(input_query_dialogue_analyzer, llama_8B_model,llama_8B_tokenizer, task_code="dialogue analyzer"))
+                    print(response_1)
+                    # response_1 = generate_answer(input_query_dialogue_analyzer, gemini_key=key, task_code="dialogue analyzer")
                     
                     response_temp = clean_json(response_1)
 
@@ -279,14 +286,14 @@ def process_files_in_folder(files_path, output_dir = "", memory_dir = "", key = 
     
     return break_outer, last_memory_file_dir
 
-def generate_label_data_main(input_data, input_id, output_dir = r".\task_1\temporary_context_data\character_label_data", 
-                             memory_dir = r".\task_1\temporary_context_data\context_memory_data", 
-                             character_personality_output_dir = r".\task_1\temporary_context_data\character_personality_data", 
-                             validate_identity_character_personality_output_dir = r".\task_1\temporary_context_data\validated_character_personality_data",
-                             final_identity_character_dir = r".\task_1\temporary_context_data\personality_mapper_data\mapped_character-VA",
+def generate_label_data_main(input_data, input_id, output_dir = r"D:\FINAL_CODE\backend\modules\data\context_data\character_label_data", 
+                             memory_dir = r"D:\FINAL_CODE\backend\modules\data\context_data\context_memory_data", 
+                             character_personality_output_dir = r"D:\FINAL_CODE\backend\modules\data\context_data\character_personality_data", 
+                             validate_identity_character_personality_output_dir = r"D:\FINAL_CODE\backend\modules\data\context_data\validated_character_personality_data",
+                             final_identity_character_dir = r"D:\FINAL_CODE\backend\modules\data\context_data\personality_mapper_data\mapped_character-VA",
                              voice_personality_dir = r"D:\FINAL_CODE\backend\modules\task_3\reference_voice_data\character_personality_mapping",
                              voice_personality_by_lore_dir = r"D:\FINAL_CODE\backend\modules\task_3\reference_voice_data\character_personality_mapping_by_lore",
-                             character_voice_mapper_dir = r".\task_1\temporary_context_data\personality_mapper_data"):
+                             character_voice_mapper_dir = r"D:\FINAL_CODE\backend\modules\data\context_data\personality_mapper_data"):
     gemini_keys_from_env = load_gemini_keys()
     gemini_key = gemini_keys_from_env[0]
     gemini_key_len = len(gemini_keys_from_env)
@@ -351,6 +358,6 @@ def generate_label_data_main(input_data, input_id, output_dir = r".\task_1\tempo
 
 
 # generate_label_data_main(r"D:\extract_novel_character_data_llama_8B\cote_4.pdf")
-# generate_label_data_main(r"D:\Learning\ReZero.pdf")
+generate_label_data_main(r"D:\Learning\ReZero.pdf","constant_id_7")
 
 # print(get_unique_characters(r"D:\FINAL_CODE\backend\modules\task_1\temporary_context_data\character_label_data\constant_id"))
