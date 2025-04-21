@@ -108,7 +108,7 @@ def generate_answer_with_llama_finetune(
     with torch.no_grad():
         outputs = model.generate(
                 **inputs,
-                streamer = text_streamer,
+                # streamer = text_streamer,
                 max_new_tokens=max_new_tokens,
                 use_cache=True,
                 top_p=top_p,
