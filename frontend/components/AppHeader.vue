@@ -8,9 +8,10 @@
         </NuxtLink>
       </div>
       <ul class="menu">
-        <li><NuxtLink to="#features">Features</NuxtLink></li>
-        <li><NuxtLink to="/pricing">Pricing</NuxtLink></li>
-        <li v-if="isLoggedIn"><NuxtLink to="/statistics">Statistics</NuxtLink></li>
+        <li><NuxtLink to="#features" :aria-current="$route.hash === '#features' ? 'page' : null">Features</NuxtLink></li>
+        <li><NuxtLink to="/pricing" :aria-current="$route.path === '/pricing' ? 'page' : null">Pricing</NuxtLink></li>
+        <li v-if="isLoggedIn"><NuxtLink to="/dashboard" :aria-current="$route.path.startsWith('/dashboard') && $route.path === '/dashboard' ? 'page' : null">My Projects</NuxtLink></li>
+        <li v-if="isLoggedIn"><NuxtLink to="/statistics" :aria-current="$route.path === '/statistics' ? 'page' : null">Statistics</NuxtLink></li>
       </ul>
       <div class="auth">
         <button v-if="isLoggedIn" class="logout-btn" @click="logout">Log out</button>
@@ -94,6 +95,14 @@ function logout() {
 
 .menu li a:hover {
   color: #0ea5e9;
+}
+
+.menu .router-link-active,
+.menu .router-link-exact-active {
+  color: #0ea5e9 !important;
+  font-weight: 700;
+  pointer-events: none;
+  cursor: default;
 }
 
 .auth {
