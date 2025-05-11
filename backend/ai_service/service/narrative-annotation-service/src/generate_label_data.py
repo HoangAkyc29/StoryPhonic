@@ -149,11 +149,31 @@ def generate_answer(
             return answer_dialogue_analyzer_with_gemini(input_text, current_key = gemini_key)
 
 
+# Add global cancel flags dictionary with thread lock
+CANCEL_FLAGS = {}
+CANCEL_FLAGS_LOCK = threading.Lock()
+
+def set_cancel_flag(input_id: str, value: bool = True):
+    """Set cancel flag for a specific input_id"""
+    with CANCEL_FLAGS_LOCK:
+        CANCEL_FLAGS[input_id] = value
+
+def get_cancel_flag(input_id: str) -> bool:
+    """Get cancel flag for a specific input_id"""
+    with CANCEL_FLAGS_LOCK:
+        return CANCEL_FLAGS.get(input_id, False)
+
+def clear_cancel_flag(input_id: str):
+    """Clear cancel flag for a specific input_id"""
+    with CANCEL_FLAGS_LOCK:
+        if input_id in CANCEL_FLAGS:
+            del CANCEL_FLAGS[input_id]
+
 # folder_path = đường dẫn folder chứa các chunk text của novel
 # output_dir  = output cho dữ liệu của nhiệm vụ dialogue_analyzer
 # memory_dir  = output cho dữ liệu của nhiệm vụ character_info_summarization
 # def process_files_in_folder(folder_path = "", output_dir = "", memory_dir = "", key = None, file_name_list = []):
-def process_files_in_folder(files_path, output_dir = "", memory_dir = "", key = None):
+def process_files_in_folder(files_path, output_dir = "", memory_dir = "", key = None, input_id = None):
     """Xử lý tất cả các file .txt trong thư mục và lưu kết quả vào thư mục 'llm_label_answer'."""
 
     CONTEXT_MEMORY = "None"
@@ -167,6 +187,10 @@ def process_files_in_folder(files_path, output_dir = "", memory_dir = "", key = 
     break_outer = False
 
     for file_path in files_path:
+            if input_id and get_cancel_flag(input_id):  # Check cancel flag at the start of each file
+                print(f"Task cancelled by user for input_id: {input_id}")
+                return None
+                
             file_name = os.path.basename(file_path)
             if break_outer == True:
                 break
@@ -185,6 +209,10 @@ def process_files_in_folder(files_path, output_dir = "", memory_dir = "", key = 
             retry_counter = 0  # Initialize retry_counter *inside* the outer loop, for each file
 
             while retry_counter <= 4:  # Use a while loop for retries
+                if input_id and get_cancel_flag(input_id):  # Check cancel flag in retry loop
+                    print(f"Task cancelled by user for input_id: {input_id}")
+                    return None
+                    
                 try:
                     CONTEXT_MEMORY = "None"
                     UPDATED_CONTEXT_MEMORY = "None"
@@ -286,14 +314,20 @@ def process_files_in_folder(files_path, output_dir = "", memory_dir = "", key = 
     
     return break_outer, last_memory_file_dir
 
-def generate_label_data_main(input_data, input_id, output_dir = r"D:\FINAL_CODE\backend\modules\data\context_data\character_label_data", 
-                             memory_dir = r"D:\FINAL_CODE\backend\modules\data\context_data\context_memory_data", 
-                             character_personality_output_dir = r"D:\FINAL_CODE\backend\modules\data\context_data\character_personality_data", 
-                             validate_identity_character_personality_output_dir = r"D:\FINAL_CODE\backend\modules\data\context_data\validated_character_personality_data",
-                             final_identity_character_dir = r"D:\FINAL_CODE\backend\modules\data\context_data\personality_mapper_data\mapped_character-VA",
-                             voice_personality_dir = r"D:\FINAL_CODE\backend\modules\task_3\reference_voice_data\character_personality_mapping",
-                             voice_personality_by_lore_dir = r"D:\FINAL_CODE\backend\modules\task_3\reference_voice_data\character_personality_mapping_by_lore",
-                             character_voice_mapper_dir = r"D:\FINAL_CODE\backend\modules\data\context_data\personality_mapper_data"):
+def generate_label_data_main(input_data, input_id, output_dir = r"D:\FINAL_CODE\backend\ai_service\data\context_data\character_label_data", 
+                             memory_dir = r"D:\FINAL_CODE\backend\ai_service\data\context_data\context_memory_data", 
+                             character_personality_output_dir = r"D:\FINAL_CODE\backend\ai_service\data\context_data\character_personality_data", 
+                             validate_identity_character_personality_output_dir = r"D:\FINAL_CODE\backend\ai_service\data\context_data\validated_character_personality_data",
+                             final_identity_character_dir = r"D:\FINAL_CODE\backend\ai_service\data\context_data\personality_mapper_data\mapped_character-VA",
+                             voice_personality_dir = r"D:\FINAL_CODE\backend\ai_service\task_3\reference_voice_data\character_personality_mapping",
+                             voice_personality_by_lore_dir = r"D:\FINAL_CODE\backend\ai_service\task_3\reference_voice_data\character_personality_mapping_by_lore",
+                             character_voice_mapper_dir = r"D:\FINAL_CODE\backend\ai_service\data\context_data\personality_mapper_data"):
+    """Main function to generate label data with cancel support"""
+    
+    if get_cancel_flag(input_id):  # Check cancel flag at start
+        print(f"Task cancelled by user for input_id: {input_id}")
+        return None
+
     gemini_keys_from_env = load_gemini_keys()
     gemini_key = gemini_keys_from_env[0]
     gemini_key_len = len(gemini_keys_from_env)
@@ -302,7 +336,7 @@ def generate_label_data_main(input_data, input_id, output_dir = r"D:\FINAL_CODE\
 
     input_files_paths, _, grand_text_input = save_text_chunk(input_data)
     if input_files_paths == None:
-        return
+        return None
     
     # Convert relative paths to absolute paths
     output_dir = os.path.abspath(output_dir)
@@ -320,16 +354,22 @@ def generate_label_data_main(input_data, input_id, output_dir = r"D:\FINAL_CODE\
     final_identity_character_dir = os.path.join(final_identity_character_dir, f"{input_id}.json")
     character_voice_mapper_dir = os.path.join(character_voice_mapper_dir, f"{input_id}.json")
     
-    # Tạo thư mục (bao gồm cả thư mục cha nếu chưa có)
+    # Create output directories if they don't exist
     os.makedirs(output_dir, exist_ok=True)
     os.makedirs(memory_dir, exist_ok=True)
     os.makedirs(character_personality_output_dir, exist_ok=True)
     os.makedirs(validate_identity_character_personality_output_dir, exist_ok=True)
-    # os.makedirs(final_identity_character_dir, exist_ok=True)
-    # os.makedirs(character_voice_mapper_dir, exist_ok=True)
+    os.makedirs(final_identity_character_dir, exist_ok=True)
+    os.makedirs(voice_personality_dir, exist_ok=True)
+    os.makedirs(voice_personality_by_lore_dir, exist_ok=True)
+    os.makedirs(character_voice_mapper_dir, exist_ok=True)
 
     while break_outer == True and retry_counter < 3:
-        break_outer,last_memory_file_dir = process_files_in_folder(input_files_paths, output_dir, memory_dir, gemini_key)
+        if get_cancel_flag(input_id):
+            print(f"Task cancelled by user for input_id: {input_id}")
+            return None
+            
+        break_outer, last_memory_file_dir = process_files_in_folder(input_files_paths, output_dir, memory_dir, gemini_key, input_id)
         if break_outer == True:
             retry_counter += 1
 
@@ -337,27 +377,76 @@ def generate_label_data_main(input_data, input_id, output_dir = r"D:\FINAL_CODE\
         gemini_index = 0
         un_finished_flag = True
         while gemini_index < gemini_key_len and un_finished_flag == True:
+            if get_cancel_flag(input_id):
+                print(f"Task cancelled by user for input_id: {input_id}")
+                return None
+                
             gemini_key = gemini_keys_from_env[gemini_index]
             process_all_label_text_files(sentence_transformer_model, output_dir, memory_dir) # bước chuẩn hoá output tên nhân vật
+            if get_cancel_flag(input_id):
+                print(f"Task cancelled by user for input_id: {input_id}")
+                return None
             convert_txt_directory_to_json(output_dir) # tạo ra các output data định dạng json tương ứng với các file txt output
+            if get_cancel_flag(input_id):
+                print(f"Task cancelled by user for input_id: {input_id}")
+                return None
             merge_sentences(output_dir) #merge các sentences object có cùng speaker với cùng type và emotion
+            if get_cancel_flag(input_id):
+                print(f"Task cancelled by user for input_id: {input_id}")
+                return None
             process_directory_fixing_emotion(output_dir,sentence_transformer_model) #fix label nhãn emotion được tạo ra bởi LLM.
+            if get_cancel_flag(input_id):
+                print(f"Task cancelled by user for input_id: {input_id}")
+                return None
             character_names_in_last_context_memory_list = extract_character_names(find_largest_suffix_file(memory_dir))
+            if get_cancel_flag(input_id):
+                print(f"Task cancelled by user for input_id: {input_id}")
+                return None
             unique_characters_dict = get_unique_characters(output_dir, character_names_in_last_context_memory_list) #trích ra tổng hợp các nhân vật đã xuất hiện trong bộ truyện từ output cùng lần xuất hiện đầu tiên
+            if get_cancel_flag(input_id):
+                print(f"Task cancelled by user for input_id: {input_id}")
+                return None
             character_prompts_answer, un_finished_flag = create_character_analysis_prompts(grand_text_input,output_dir,unique_characters_dict,last_memory_file_dir,len(input_files_paths),character_personality_output_dir,gemini_key) #sinh bộ nhân cách và các thông tin khác của nhân vật từ dict trên tại character_personality_output_dir
             gemini_index += 1
     
+        if get_cancel_flag(input_id):
+            print(f"Task cancelled by user for input_id: {input_id}")
+            return None
+            
         process_json_files_merging_same_character(character_personality_output_dir,validate_identity_character_personality_output_dir,sentence_transformer_model,0.85) #ghép các cặp nhân vật nhận diện là các cá thể khác nhau nhưng thực ra lại là cùng 1 nhân vật
+        if get_cancel_flag(input_id):
+            print(f"Task cancelled by user for input_id: {input_id}")
+            return None
         process_narrative_data(output_dir,validate_identity_character_personality_output_dir,unique_characters_dict)
 
+        if get_cancel_flag(input_id):
+            print(f"Task cancelled by user for input_id: {input_id}")
+            return None
+            
         personality_mapper_main(validate_identity_character_personality_output_dir,voice_personality_dir,voice_personality_by_lore_dir, sentence_transformer_model,character_voice_mapper_dir)
+        if get_cancel_flag(input_id):
+            print(f"Task cancelled by user for input_id: {input_id}")
+            return None
         create_unique_mapping(character_voice_mapper_dir,final_identity_character_dir)
+        if get_cancel_flag(input_id):
+            print(f"Task cancelled by user for input_id: {input_id}")
+            return None
         add_voice_actors(output_dir,final_identity_character_dir)
+        if get_cancel_flag(input_id):
+            print(f"Task cancelled by user for input_id: {input_id}")
+            return None
+            
+        # Clear cancel flag after successful completion
+        clear_cancel_flag(input_id)
         return (output_dir, character_personality_output_dir, final_identity_character_dir)
+    
+    # Clear cancel flag if task failed
+    clear_cancel_flag(input_id)
+    return None
 
 
 
 # generate_label_data_main(r"D:\extract_novel_character_data_llama_8B\cote_4.pdf")
-generate_label_data_main(r"D:\Learning\ReZero.pdf","constant_id_7")
+# generate_label_data_main(r"D:\Learning\ReZero.pdf","constant_id_7")
 
-# print(get_unique_characters(r"D:\FINAL_CODE\backend\modules\task_1\temporary_context_data\character_label_data\constant_id"))
+# print(get_unique_characters(r"D:\FINAL_CODE\backend\ai_service\task_1\temporary_context_data\character_label_data\constant_id"))
