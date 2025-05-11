@@ -16,7 +16,7 @@ import random
 
 from modules.commons import *
 import time
-
+import torch
 import torchaudio
 import librosa
 from modules.commons import str2bool
@@ -404,6 +404,13 @@ def crossfade(chunk1, chunk2, overlap):
 
 @torch.no_grad()
 def main_generate_multifile_voice_conversion(args_dict):
+    # print(f"[DEBUG] Using device: {device}")
+    # import torch
+    # print("CUDA available:", torch.cuda.is_available())
+    # print("CUDA version:", torch.version.cuda)
+    # print("Torch version:", torch.__version__)
+    # print("GPU count:", torch.cuda.device_count())
+    # print("GPU name:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "None")
     class Args:
         def __init__(self, args_dict):
             self.__dict__.update(args_dict)
@@ -441,12 +448,14 @@ def main_generate_multifile_voice_conversion(args_dict):
         # Get source filename without extension
         source_filename = os.path.basename(source_path)
         source_name = os.path.splitext(source_filename)[0]
+        # print("Processing 1 ...")
         
         # Process each pair
         source_audio = librosa.load(source_path, sr=sr)[0]
         source_audio = torch.tensor(source_audio).unsqueeze(0).float().to(device)
         ref_audio = librosa.load(target_path, sr=sr)[0]
         ref_audio = torch.tensor(ref_audio[:sr * 25]).unsqueeze(0).float().to(device)
+        # print("Processing 2 ...")
 
         time_vc_start = time.time()
         # Resample
@@ -474,6 +483,7 @@ def main_generate_multifile_voice_conversion(args_dict):
                 buffer = chunk[:, -16000 * overlapping_time:]
                 traversed_time += 30 * 16000 if traversed_time == 0 else chunk.size(-1) - 16000 * overlapping_time
             S_alt = torch.cat(S_alt_list, dim=1)
+        # print("Processing 3 ...")
 
         ori_waves_16k = torchaudio.functional.resample(ref_audio, sr, 16000)
         S_ori = semantic_fn(ori_waves_16k)
@@ -483,6 +493,8 @@ def main_generate_multifile_voice_conversion(args_dict):
 
         target_lengths = torch.LongTensor([int(mel.size(2) * length_adjust)]).to(mel.device)
         target2_lengths = torch.LongTensor([mel2.size(2)]).to(mel2.device)
+
+        # print("Processing 4 ...")
 
         feat2 = torchaudio.compliance.kaldi.fbank(ori_waves_16k,
                                                 num_mel_bins=80,
@@ -518,6 +530,8 @@ def main_generate_multifile_voice_conversion(args_dict):
             F0_ori = None
             F0_alt = None
             shifted_f0_alt = None
+
+        # print("Processing 5 ...")
 
         # Length regulation
         cond, _, codes, commitment_loss, codebook_loss = model.length_regulator(S_alt, ylens=target_lengths,
@@ -567,9 +581,13 @@ def main_generate_multifile_voice_conversion(args_dict):
                 previous_chunk = vc_wave[0, -overlap_wave_len:]
                 processed_frames += vc_target.size(2) - overlap_frame_len
         
+        # print("Processing 6 ...")
+        
         vc_wave = torch.tensor(np.concatenate(generated_wave_chunks))[None, :].float()
         time_vc_end = time.time()
         print(f"RTF: {(time_vc_end - time_vc_start) / vc_wave.size(-1) * sr}")
+
+        # print("Processing 7 ...")
 
         output_path = os.path.join(args.output, f"{source_name}.wav")
         torchaudio.save(output_path, vc_wave.cpu(), sr)
