@@ -1,18 +1,25 @@
 import os
 import uuid
 import logging
-from fastapi import FastAPI, HTTPException, Form
-from fastapi.responses import JSONResponse
-from pydantic import BaseModel
 import uvicorn
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
 from typing import Optional, Dict
 from pathlib import Path
 from datetime import datetime
 import threading
-import sys
 
 # Cấu hình
 BASE_DIR = Path(__file__).parent.parent
+DEFAULT_PATHS = {
+    "audio_dir3": r"D:\FINAL_CODE\backend\ai_service\data\voice_data\temporary_output_voice_data\text_to_speech",
+    "json_dir": r"D:\FINAL_CODE\backend\ai_service\data\voice_data\reference_voice_data\character_personality_mapping_by_lore",
+    "audio_dir1": r"D:\FINAL_CODE\backend\ai_service\data\voice_data\reference_voice_data\character_voices",
+    "output_dir": r"D:\FINAL_CODE\backend\ai_service\data\voice_data\temporary_output_voice_data\voice_conversion",
+    "config_path": r"D:\FINAL_CODE\backend\ai_service\service\voice-conversion-service\voice_conversion\seed-vc\configs\presets\config_dit_mel_seed_uvit_whisper_base_f0_44k.yml",
+    "checkpoint_path": r"D:\FINAL_CODE\backend\ai_service\service\voice-conversion-service\voice_conversion\ai_model\DiT_seed_v2_uvit_whisper_base_f0_44k_bigvgan_pruned_ft_ema.pth"
+}
+
 app = FastAPI(title="Voice Conversion Service with Task Control")
 
 # Database tạm (production nên dùng Redis/Database)
@@ -21,12 +28,12 @@ CONSTANT_ID_TASK_MAP: Dict[str, str] = {}  # Ánh xạ constant_id -> task_id đ
 TASK_LOCK = threading.Lock()  # Lock để đồng bộ hoá truy cập
 
 class VoiceConversionRequest(BaseModel):
-    audio_dir3: str = r".\temporary_output_voice_data\text_to_speech"
-    json_dir: str = r".\reference_voice_data\character_personality_mapping_by_lore"
-    audio_dir1: str = r".\reference_voice_data\character_voices"
+    audio_dir3: Optional[str] = None
+    json_dir: Optional[str] = None
+    audio_dir1: Optional[str] = None
     output_dir: Optional[str] = None
-    config_path: str = r".\voice_conversion\seed-vc\configs\presets\config_dit_mel_seed_uvit_whisper_base_f0_44k.yml"
-    checkpoint_path: str = r".\voice_conversion\ai_model\DiT_seed_v2_uvit_whisper_base_f0_44k_bigvgan_pruned_ft_ema.pth"
+    config_path: Optional[str] = None
+    checkpoint_path: Optional[str] = None
     narrator_gender: int = 0  # 0 là male, 1 là female
     constant_id: str  # Bắt buộc cung cấp constant_id
 
@@ -48,7 +55,7 @@ def run_voice_conversion_task(task_id: str, constant_id: str, request_data: dict
             TASK_DB[task_id].start_time = datetime.now().isoformat()
         
         # Gọi hàm xử lý chính
-        from process_generate_voice_conversion_audio import generate_end_output_audio
+        from src.process_generate_voice_conversion_audio import generate_end_output_audio
         
         output_dir = generate_end_output_audio(
             audio_dir3=request_data["audio_dir3"],
@@ -105,18 +112,23 @@ async def create_voice_conversion_task(request: VoiceConversionRequest):
         CONSTANT_ID_TASK_MAP[constant_id] = task_id
     
     # Xử lý các đường dẫn đầu ra
-    output_dir = request.output_dir or str(BASE_DIR / "temporary_output_voice_data" / "voice_conversion")
+    audio_dir3 = request.audio_dir3 or DEFAULT_PATHS["audio_dir3"]
+    json_dir = request.json_dir or DEFAULT_PATHS["json_dir"]
+    audio_dir1 = request.audio_dir1 or DEFAULT_PATHS["audio_dir1"]
+    output_dir = request.output_dir or DEFAULT_PATHS["output_dir"]
+    config_path = request.config_path or DEFAULT_PATHS["config_path"]
+    checkpoint_path = request.checkpoint_path or DEFAULT_PATHS["checkpoint_path"]
     
     # Chạy task trong background thread
     thread = threading.Thread(
         target=run_voice_conversion_task,
         args=(task_id, constant_id, {
-            "audio_dir3": request.audio_dir3,
-            "json_dir": request.json_dir,
-            "audio_dir1": request.audio_dir1,
+            "audio_dir3": audio_dir3,
+            "json_dir": json_dir,
+            "audio_dir1": audio_dir1,
             "output_dir": output_dir,
-            "config_path": request.config_path,
-            "checkpoint_path": request.checkpoint_path,
+            "config_path": config_path,
+            "checkpoint_path": checkpoint_path,
             "narrator_gender": request.narrator_gender
         })
     )
