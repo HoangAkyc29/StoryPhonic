@@ -13,7 +13,7 @@ import threading
 # --- THAY ĐỔI 1: Cập nhật BASE_DIR và các đường dẫn phụ thuộc ---
 # BASE_DIR là thư mục chứa file app.py này (thư mục gốc của dự án)
 BASE_DIR = Path(__file__).resolve().parent
-DEFAULT_OUTPUT_DIR = BASE_DIR / "context_data"
+DEFAULT_OUTPUT_DIR = "D:\FINAL_CODE\backend\ai_service\data\context_data"
 
 # Cấu hình Logging
 LOG_DIR = BASE_DIR / "logs"
