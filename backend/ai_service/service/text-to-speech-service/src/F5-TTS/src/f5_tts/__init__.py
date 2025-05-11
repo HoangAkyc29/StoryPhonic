@@ -1,1 +1,1 @@
-# from f5_tts.infer.infer_cli import run_inference, multi_input_1_ref_run_inference, multi_input_multi_ref_run_inference
+from f5_tts.infer.infer_cli import run_inference, multi_input_1_ref_run_inference, multi_input_multi_ref_run_inference

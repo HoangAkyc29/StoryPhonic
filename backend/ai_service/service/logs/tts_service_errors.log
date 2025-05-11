@@ -1,0 +1,17 @@
+2025-05-11 17:04:47,676 - tts_task - ERROR - TaskID: cc8a247f-d960-47a2-a85e-59bfc0aafe95 - Folder: constant_id_4 - Message: Error in TTS task: cannot schedule new futures after interpreter shutdown
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\app.py", line 82, in run_tts_task
+    output_dir = generate_all_TTS_with_emotion(
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\process_generate_emotion_audio.py", line 128, in generate_all_TTS_with_emotion
+    multi_input_multi_ref_run_inference(ref_data,text_data,output_dir,last_folder_name)
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\F5-TTS\src\f5_tts\infer\infer_cli.py", line 898, in multi_input_multi_ref_run_inference
+    audio_segment, final_sample_rate, _ = infer_process(
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\F5-TTS\src\f5_tts\infer\utils_infer.py", line 393, in infer_process
+    return next(
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\F5-TTS\src\f5_tts\infer\utils_infer.py", line 508, in infer_batch_process
+    futures = [executor.submit(process_batch, gen_text) for gen_text in gen_text_batches]
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\F5-TTS\src\f5_tts\infer\utils_infer.py", line 508, in <listcomp>
+    futures = [executor.submit(process_batch, gen_text) for gen_text in gen_text_batches]
+  File "D:\python310\lib\concurrent\futures\thread.py", line 163, in submit
+    raise RuntimeError('cannot schedule new futures after '
+RuntimeError: cannot schedule new futures after interpreter shutdown
