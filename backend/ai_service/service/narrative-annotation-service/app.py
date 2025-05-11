@@ -56,6 +56,7 @@ class TaskRequest(BaseModel):
     voice_personality_dir: Optional[str] = None
     voice_personality_by_lore_dir: Optional[str] = None
     character_voice_mapper_dir: Optional[str] = None
+    text_input_data_dir: Optional[str] = None
 
 class TaskStatus(BaseModel):
     task_id: str
@@ -84,7 +85,8 @@ def run_label_data_task(task_id: str, input_id: str, request_data: dict):
             final_identity_character_dir=request_data["final_identity_character_dir"],
             voice_personality_dir=request_data["voice_personality_dir"],
             voice_personality_by_lore_dir=request_data["voice_personality_by_lore_dir"],
-            character_voice_mapper_dir=request_data["character_voice_mapper_dir"]
+            character_voice_mapper_dir=request_data["character_voice_mapper_dir"],
+            text_input_data_dir=request_data["text_input_data_dir"]
         )
 
         with TASK_LOCK:
@@ -148,6 +150,7 @@ async def create_label_data_task(request: TaskRequest):
     validate_identity_character_personality_output_dir_str = request.validate_identity_character_personality_output_dir or str(DEFAULT_OUTPUT_DIR / "validated_character_personality_data")
     final_identity_character_dir_str = request.final_identity_character_dir or str(DEFAULT_OUTPUT_DIR / "personality_mapper_data/mapped_character-VA")
     character_voice_mapper_dir_str = request.character_voice_mapper_dir or str(DEFAULT_OUTPUT_DIR / "personality_mapper_data")
+    text_input_data_dir_str = request.text_input_data_dir or str(DEFAULT_OUTPUT_DIR / "text_input_data")
 
     thread = threading.Thread(
         target=run_label_data_task,
@@ -160,7 +163,8 @@ async def create_label_data_task(request: TaskRequest):
             "final_identity_character_dir": final_identity_character_dir_str,
             "voice_personality_dir": request.voice_personality_dir,
             "voice_personality_by_lore_dir": request.voice_personality_by_lore_dir,
-            "character_voice_mapper_dir": character_voice_mapper_dir_str
+            "character_voice_mapper_dir": character_voice_mapper_dir_str,
+            "text_input_data_dir": text_input_data_dir_str
         })
     )
     thread.start()

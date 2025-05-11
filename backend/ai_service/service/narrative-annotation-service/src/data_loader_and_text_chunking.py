@@ -21,7 +21,7 @@ def chunk_text(input_data):
     Returns:
         A list of strings, where each string is a chunk of the input text.
     """
-    input_id = "constant_id_4" #ID này sau sẽ được thay thế để tương ứng với ID của input data này trong SQL
+    # input_id = "constant_id_4" #ID này sau sẽ được thay thế để tương ứng với ID của input data này trong SQL
 
     text = ""
 
@@ -41,7 +41,7 @@ def chunk_text(input_data):
             text = input_data  # It's directly the text string
     else:
         print("Invalid input data type.  Must be string or file path.")
-        return [], 0, input_id, None
+        return [], 0, None
 
     # 2. Text Cleaning (optional, but often helpful)
     text = text.strip()  # Remove leading/trailing whitespace
@@ -76,9 +76,9 @@ def chunk_text(input_data):
         chunks.append(current_chunk.strip())
 
     # print(len(chunks))
-    return chunks, len(chunks), input_id, text
+    return chunks, len(chunks), text
 
-def save_text_chunk(input_data, save_folder=r".\task_1\temporary_context_data\text_input_data"):
+def save_text_chunk(input_data, input_id, save_folder= None):
     """
     Lưu các đoạn text của chunks vào các file .txt theo thứ tự,
     trong một thư mục con được đặt tên theo input_id.
@@ -92,7 +92,7 @@ def save_text_chunk(input_data, save_folder=r".\task_1\temporary_context_data\te
               hoặc None nếu có lỗi xảy ra.
     """
     try:
-        chunks, len_chunk, input_id, grand_text = chunk_text(input_data)
+        chunks, len_chunk, grand_text = chunk_text(input_data)
 
         # Tạo đường dẫn thư mục con
         pdf_folder_path = os.path.join(save_folder, input_id)
@@ -126,7 +126,7 @@ def save_text_chunk(input_data, save_folder=r".\task_1\temporary_context_data\te
                 print(f"Lỗi khi lưu chunk {i} vào {file_path}: {e}")
                 return None  # Trả về None nếu có lỗi khi lưu
 
-        return files_paths, input_id, grand_text  # Trả về danh sách đường dẫn file nếu thành công
+        return (files_paths, grand_text)  # Trả về danh sách đường dẫn file nếu thành công
 
     except Exception as e:
         print(f"Lỗi tổng quan trong save_text_chunk: {e}")

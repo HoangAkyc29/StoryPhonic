@@ -315,7 +315,8 @@ def process_files_in_folder(files_path, output_dir = "", memory_dir = "", key = 
     return break_outer, last_memory_file_dir
 
 def generate_label_data_main(input_data, input_id, output_dir = r"D:\FINAL_CODE\backend\ai_service\data\context_data\character_label_data", 
-                             memory_dir = r"D:\FINAL_CODE\backend\ai_service\data\context_data\context_memory_data", 
+                             memory_dir = r"D:\FINAL_CODE\backend\ai_service\data\context_data\context_memory_data",
+                             text_input_data_dir = r"D:\FINAL_CODE\backend\ai_service\data\context_data\text_input_data",
                              character_personality_output_dir = r"D:\FINAL_CODE\backend\ai_service\data\context_data\character_personality_data", 
                              validate_identity_character_personality_output_dir = r"D:\FINAL_CODE\backend\ai_service\data\context_data\validated_character_personality_data",
                              final_identity_character_dir = r"D:\FINAL_CODE\backend\ai_service\data\context_data\personality_mapper_data\mapped_character-VA",
@@ -327,6 +328,8 @@ def generate_label_data_main(input_data, input_id, output_dir = r"D:\FINAL_CODE\
     if get_cancel_flag(input_id):  # Check cancel flag at start
         print(f"Task cancelled by user for input_id: {input_id}")
         return None
+    
+    print("Bắt đầu!")
 
     gemini_keys_from_env = load_gemini_keys()
     gemini_key = gemini_keys_from_env[0]
@@ -334,7 +337,8 @@ def generate_label_data_main(input_data, input_id, output_dir = r"D:\FINAL_CODE\
     break_outer = True
     retry_counter = 0
 
-    input_files_paths, _, grand_text_input = save_text_chunk(input_data)
+    input_files_paths, grand_text_input = save_text_chunk(input_data, input_id, text_input_data_dir)
+    print("Chia chunk thành công")
     if input_files_paths == None:
         return None
     
@@ -346,6 +350,8 @@ def generate_label_data_main(input_data, input_id, output_dir = r"D:\FINAL_CODE\
     final_identity_character_dir = os.path.abspath(final_identity_character_dir)
     character_voice_mapper_dir = os.path.abspath(character_voice_mapper_dir)
 
+    print("join dir with input id...")
+
     output_dir = os.path.join(output_dir, input_id)
     memory_dir = os.path.join(memory_dir, input_id)
     character_personality_output_dir = os.path.join(character_personality_output_dir, input_id)
@@ -354,15 +360,19 @@ def generate_label_data_main(input_data, input_id, output_dir = r"D:\FINAL_CODE\
     final_identity_character_dir = os.path.join(final_identity_character_dir, f"{input_id}.json")
     character_voice_mapper_dir = os.path.join(character_voice_mapper_dir, f"{input_id}.json")
     
+    print("Makedirs...")
+
     # Create output directories if they don't exist
     os.makedirs(output_dir, exist_ok=True)
     os.makedirs(memory_dir, exist_ok=True)
     os.makedirs(character_personality_output_dir, exist_ok=True)
     os.makedirs(validate_identity_character_personality_output_dir, exist_ok=True)
-    os.makedirs(final_identity_character_dir, exist_ok=True)
-    os.makedirs(voice_personality_dir, exist_ok=True)
-    os.makedirs(voice_personality_by_lore_dir, exist_ok=True)
-    os.makedirs(character_voice_mapper_dir, exist_ok=True)
+    # os.makedirs(final_identity_character_dir, exist_ok=True)
+    # os.makedirs(voice_personality_dir, exist_ok=True)
+    # os.makedirs(voice_personality_by_lore_dir, exist_ok=True)
+    # os.makedirs(character_voice_mapper_dir, exist_ok=True)
+
+    print("Bắt đầu xử lý các chunk")
 
     while break_outer == True and retry_counter < 3:
         if get_cancel_flag(input_id):
@@ -372,6 +382,8 @@ def generate_label_data_main(input_data, input_id, output_dir = r"D:\FINAL_CODE\
         break_outer, last_memory_file_dir = process_files_in_folder(input_files_paths, output_dir, memory_dir, gemini_key, input_id)
         if break_outer == True:
             retry_counter += 1
+
+    print("Bắt đầu xử lý tác vụ phân tích nhãn sinh ra")
 
     if retry_counter < 4:
         gemini_index = 0

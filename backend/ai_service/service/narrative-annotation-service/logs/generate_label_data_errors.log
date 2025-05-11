@@ -1,0 +1,72 @@
+2025-05-11 12:58:50,079 - generate_label_data_task - ERROR - TaskID: 47bbe528-8e93-4710-a478-c6442fc43492 - InputID: constant_id_17 - Message: Error in generate_label_data_main: expected str, bytes or os.PathLike object, not NoneType
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\app.py", line 77, in run_label_data_task
+    result_dirs = generate_label_data_main(
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\generate_label_data.py", line 363, in generate_label_data_main
+    os.makedirs(voice_personality_dir, exist_ok=True)
+  File "D:\python310\lib\os.py", line 210, in makedirs
+    head, tail = path.split(name)
+  File "D:\python310\lib\ntpath.py", line 185, in split
+    p = os.fspath(p)
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+2025-05-11 13:00:42,062 - generate_label_data_task - ERROR - TaskID: 30ab5913-604e-4b58-bb1d-b0a798db03b2 - InputID: constant_id_17 - Message: Error in generate_label_data_main: expected str, bytes or os.PathLike object, not NoneType
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\app.py", line 77, in run_label_data_task
+    result_dirs = generate_label_data_main(
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\generate_label_data.py", line 363, in generate_label_data_main
+    os.makedirs(voice_personality_dir, exist_ok=True)
+  File "D:\python310\lib\os.py", line 210, in makedirs
+    head, tail = path.split(name)
+  File "D:\python310\lib\ntpath.py", line 185, in split
+    p = os.fspath(p)
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+2025-05-11 13:22:51,480 - generate_label_data_task - ERROR - TaskID: 7f748c19-5f7d-4b87-a0b2-d47eb6a49078 - InputID: constant_id_17 - Message: Error in generate_label_data_main: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\app.py", line 77, in run_label_data_task
+    result_dirs = generate_label_data_main(
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\generate_label_data.py", line 338, in generate_label_data_main
+    input_files_paths, grand_text_input = save_text_chunk(input_data, input_id, text_input_data_dir)
+ValueError: too many values to unpack (expected 2)
+2025-05-11 13:27:32,131 - generate_label_data_task - ERROR - TaskID: 3a0115c7-a857-41dd-ae52-c7643991ec0d - InputID: constant_id_17 - Message: Error in generate_label_data_main: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\app.py", line 77, in run_label_data_task
+    result_dirs = generate_label_data_main(
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\generate_label_data.py", line 338, in generate_label_data_main
+    input_files_paths, grand_text_input = save_text_chunk(input_data, input_id, text_input_data_dir)
+ValueError: too many values to unpack (expected 2)
+2025-05-11 13:29:27,598 - generate_label_data_task - ERROR - TaskID: e08caae9-eb75-4a8c-b814-2e1c3e55269f - InputID: constant_id_17 - Message: Error in generate_label_data_main: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\app.py", line 77, in run_label_data_task
+    result_dirs = generate_label_data_main(
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\generate_label_data.py", line 340, in generate_label_data_main
+    input_files_paths, grand_text_input = save_text_chunk(input_data, input_id, text_input_data_dir)
+ValueError: too many values to unpack (expected 2)
+2025-05-11 13:34:49,689 - generate_label_data_task - ERROR - TaskID: 14751e30-3b9f-4182-9a32-2a27396239d8 - InputID: constant_id_17 - Message: Error in generate_label_data_main: expected str, bytes or os.PathLike object, not NoneType
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\app.py", line 77, in run_label_data_task
+    result_dirs = generate_label_data_main(
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\generate_label_data.py", line 367, in generate_label_data_main
+    os.makedirs(voice_personality_dir, exist_ok=True)
+  File "D:\python310\lib\os.py", line 210, in makedirs
+    head, tail = path.split(name)
+  File "D:\python310\lib\ntpath.py", line 185, in split
+    p = os.fspath(p)
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+2025-05-11 13:38:28,123 - generate_label_data_task - ERROR - TaskID: 2f9b8198-6a14-4764-9c9a-6e1f980f6ef5 - InputID: constant_id_17 - Message: Error in generate_label_data_main: expected str, bytes or os.PathLike object, not NoneType
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\app.py", line 77, in run_label_data_task
+    result_dirs = generate_label_data_main(
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\generate_label_data.py", line 371, in generate_label_data_main
+    os.makedirs(voice_personality_dir, exist_ok=True)
+  File "D:\python310\lib\os.py", line 210, in makedirs
+    head, tail = path.split(name)
+  File "D:\python310\lib\ntpath.py", line 185, in split
+    p = os.fspath(p)
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+2025-05-11 13:46:34,201 - generate_label_data_task - ERROR - TaskID: 691192ab-f431-4bd4-9112-74e733c60c92 - InputID: constant_id_17 - Message: Error in generate_label_data_main: cannot unpack non-iterable NoneType object
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\app.py", line 77, in run_label_data_task
+    result_dirs = generate_label_data_main(
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\generate_label_data.py", line 382, in generate_label_data_main
+    break_outer, last_memory_file_dir = process_files_in_folder(input_files_paths, output_dir, memory_dir, gemini_key, input_id)
+TypeError: cannot unpack non-iterable NoneType object
