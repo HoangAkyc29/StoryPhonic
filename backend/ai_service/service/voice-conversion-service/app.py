@@ -16,8 +16,8 @@ DEFAULT_PATHS = {
     "json_dir": r"D:\FINAL_CODE\backend\ai_service\data\voice_data\reference_voice_data\character_personality_mapping_by_lore",
     "audio_dir1": r"D:\FINAL_CODE\backend\ai_service\data\voice_data\reference_voice_data\character_voices",
     "output_dir": r"D:\FINAL_CODE\backend\ai_service\data\voice_data\temporary_output_voice_data\voice_conversion",
-    "config_path": r"D:\FINAL_CODE\backend\ai_service\service\voice-conversion-service\voice_conversion\seed-vc\configs\presets\config_dit_mel_seed_uvit_whisper_base_f0_44k.yml",
-    "checkpoint_path": r"D:\FINAL_CODE\backend\ai_service\service\voice-conversion-service\voice_conversion\ai_model\DiT_seed_v2_uvit_whisper_base_f0_44k_bigvgan_pruned_ft_ema.pth"
+    "config_path":  r".\src\seed-vc\configs\presets\config_dit_mel_seed_uvit_whisper_base_f0_44k.yml",
+    "checkpoint_path": r".\src\ai_model\DiT_seed_v2_uvit_whisper_base_f0_44k_bigvgan_pruned_ft_ema.pth"
 }
 
 app = FastAPI(title="Voice Conversion Service with Task Control")

@@ -109,12 +109,12 @@ def find_audio_mapping(audio_dir3: str, json_dir: str, audio_dir1: str, narrator
     
     return mapping
 
-def generate_end_output_audio(audio_dir3 = r".\temporary_output_voice_data\text_to_speech", 
-                              json_dir = r".\reference_voice_data\character_personality_mapping_by_lore", 
-                              audio_dir1 = r".\reference_voice_data\character_voices",
-                              output_dir = r".\temporary_output_voice_data\voice_conversion",
-                              config_path = r".\voice_conversion\seed-vc\configs\presets\config_dit_mel_seed_uvit_whisper_base_f0_44k.yml",
-                              checkpoint_path = r".\voice_conversion\ai_model\DiT_seed_v2_uvit_whisper_base_f0_44k_bigvgan_pruned_ft_ema.pth",
+def generate_end_output_audio(audio_dir3 = r"D:\FINAL_CODE\backend\ai_service\data\voice_data\temporary_output_voice_data\text_to_speech", 
+                              json_dir = r"D:\FINAL_CODE\backend\ai_service\data\voice_data\reference_voice_data\character_personality_mapping_by_lore", 
+                              audio_dir1 = r"D:\FINAL_CODE\backend\ai_service\data\voice_data\reference_voice_data\character_voices",
+                              output_dir = r"D:\FINAL_CODE\backend\ai_service\data\voice_data\temporary_output_voice_data\voice_conversion",
+                              config_path = r".\seed-vc\configs\presets\config_dit_mel_seed_uvit_whisper_base_f0_44k.yml",
+                              checkpoint_path = r".\ai_model\DiT_seed_v2_uvit_whisper_base_f0_44k_bigvgan_pruned_ft_ema.pth",
                               narrator_gender = 0, #0 là mặc định male, 1 là female
                               constant_id = "constant_id_4"):
     # Args:
@@ -163,7 +163,7 @@ def generate_end_output_audio(audio_dir3 = r".\temporary_output_voice_data\text_
 
     return output_dir
 
-# generate_end_output_audio()
+generate_end_output_audio()
 # Example usage:
 # if __name__ == "__main__":
 #     audio_dir1 = "path/to/audio/dir1"  # Thay bằng đường dẫn thực tế
