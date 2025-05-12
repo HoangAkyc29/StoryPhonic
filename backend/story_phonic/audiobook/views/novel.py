@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from ..models.novel import Novel
 from ..serializers.novel import NovelSerializer
 from ..permissions import IsOwnerOrAdmin
+from ..utils import save_novel_file, read_file_content
 
 class NovelViewSet(viewsets.ModelViewSet):
     queryset = Novel.objects.all()
@@ -17,7 +18,25 @@ class NovelViewSet(viewsets.ModelViewSet):
         return qs.filter(user=user)
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+        # Save the novel first to get its ID
+        novel = serializer.save(user=self.request.user)
+        
+        # Handle file upload if present
+        content_file = self.request.FILES.get('content_file')
+        if content_file:
+            try:
+                # Save the file
+                file_path = save_novel_file(novel.id, content_file)
+                
+                # Read content from file if it's a text file
+                if content_file.name.lower().endswith('.txt'):
+                    content = read_file_content(file_path)
+                    novel.content = content
+                    novel.save()
+            except Exception as e:
+                # If there's an error, delete the novel and raise the error
+                novel.delete()
+                raise e
 
     def perform_destroy(self, instance):
         # Soft delete novel và toàn bộ object con
