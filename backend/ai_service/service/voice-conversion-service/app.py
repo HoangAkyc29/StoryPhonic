@@ -8,16 +8,27 @@ from typing import Optional, Dict
 from pathlib import Path
 from datetime import datetime
 import threading
+from dotenv import load_dotenv
+
+# Load biến môi trường từ file .env ngoài cùng project
+load_dotenv(dotenv_path=Path(__file__).resolve().parents[4] / '.env')
+
+# Lấy đường dẫn tuyệt đối từ biến môi trường
+data_dir_absolute = os.getenv('DATA_DIR_ABSOLUTE')
+if not data_dir_absolute:
+    raise ValueError("DATA_DIR_ABSOLUTE must be set in .env file")
 
 # Cấu hình
 BASE_DIR = Path(__file__).parent.parent
+
+# Suy ra các đường dẫn mặc định từ DATA_DIR_ABSOLUTE
 DEFAULT_PATHS = {
-    "audio_dir3": r"D:\FINAL_CODE\backend\ai_service\data\voice_data\temporary_output_voice_data\text_to_speech",
-    "json_dir": r"D:\FINAL_CODE\backend\ai_service\data\voice_data\reference_voice_data\character_personality_mapping_by_lore",
-    "audio_dir1": r"D:\FINAL_CODE\backend\ai_service\data\voice_data\reference_voice_data\character_voices",
-    "output_dir": r"D:\FINAL_CODE\backend\ai_service\data\voice_data\temporary_output_voice_data\voice_conversion",
-    "config_path":  r".\src\seed-vc\configs\presets\config_dit_mel_seed_uvit_whisper_base_f0_44k.yml",
-    "checkpoint_path": r".\src\ai_model\DiT_seed_v2_uvit_whisper_base_f0_44k_bigvgan_pruned_ft_ema.pth"
+    "audio_dir3": str(Path(data_dir_absolute) / "voice_data/temporary_output_voice_data/text_to_speech"),
+    "json_dir": str(Path(data_dir_absolute) / "voice_data/reference_voice_data/character_personality_mapping_by_lore"),
+    "audio_dir1": str(Path(data_dir_absolute) / "voice_data/reference_voice_data/character_voices"),
+    "output_dir": str(Path(data_dir_absolute) / "voice_data/temporary_output_voice_data/voice_conversion"),
+    "config_path": str(Path(__file__).parent / "src/seed-vc/configs/presets/config_dit_mel_seed_uvit_whisper_base_f0_44k.yml"),
+    "checkpoint_path": str(Path(__file__).parent / "src/ai_model/DiT_seed_v2_uvit_whisper_base_f0_44k_bigvgan_pruned_ft_ema.pth")
 }
 
 app = FastAPI(title="Voice Conversion Service with Task Control")

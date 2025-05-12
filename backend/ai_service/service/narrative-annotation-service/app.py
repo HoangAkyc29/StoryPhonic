@@ -8,12 +8,22 @@ from typing import Optional, Dict
 from pathlib import Path
 from datetime import datetime
 import threading
+from dotenv import load_dotenv
 # from collections import defaultdict # defaultdict không được dùng, có thể bỏ
 
-# --- THAY ĐỔI 1: Cập nhật BASE_DIR và các đường dẫn phụ thuộc ---
+# Load biến môi trường từ file .env ngoài cùng project
+load_dotenv(dotenv_path=Path(__file__).resolve().parents[4] / '.env')
+
+# Lấy đường dẫn tuyệt đối từ biến môi trường
+data_dir_absolute = os.getenv('DATA_DIR_ABSOLUTE')
+if not data_dir_absolute:
+    raise ValueError("DATA_DIR_ABSOLUTE must be set in .env file")
+
 # BASE_DIR là thư mục chứa file app.py này (thư mục gốc của dự án)
 BASE_DIR = Path(__file__).resolve().parent
-DEFAULT_OUTPUT_DIR = "D:\FINAL_CODE\backend\ai_service\data\context_data"
+
+# Suy ra DEFAULT_OUTPUT_DIR từ DATA_DIR_ABSOLUTE
+DEFAULT_OUTPUT_DIR = Path(data_dir_absolute) / "context_data"
 
 # Cấu hình Logging
 LOG_DIR = BASE_DIR / "logs"

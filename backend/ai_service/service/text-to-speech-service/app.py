@@ -8,14 +8,25 @@ from typing import Optional, Dict
 from pathlib import Path
 from datetime import datetime
 import threading
+from dotenv import load_dotenv
+
+# Load biến môi trường từ file .env ngoài cùng project
+load_dotenv(dotenv_path=Path(__file__).resolve().parents[4] / '.env')
+
+# Lấy đường dẫn tuyệt đối từ biến môi trường
+data_dir_absolute = os.getenv('DATA_DIR_ABSOLUTE')
+if not data_dir_absolute:
+    raise ValueError("DATA_DIR_ABSOLUTE must be set in .env file")
 
 # --- Cấu hình đường dẫn và logging ---
 BASE_DIR = Path(__file__).parent.parent
+
+# Suy ra các đường dẫn mặc định từ DATA_DIR_ABSOLUTE
 DEFAULT_PATHS = {
-    "narrative_annotation_dir": r"D:\FINAL_CODE\backend\ai_service\data\context_data\character_label_data\constant_id_4",
-    "emotion_audio_dir": r"D:\FINAL_CODE\backend\ai_service\data\voice_data\reference_voice_data\emotion_voices",
-    "transcript_emotion_dir": r"D:\FINAL_CODE\backend\ai_service\data\voice_data\reference_voice_data\emotion_voices_transcript",
-    "output_dir": r"D:\FINAL_CODE\backend\ai_service\data\voice_data\temporary_output_voice_data\text_to_speech"
+    "narrative_annotation_dir": str(Path(data_dir_absolute) / "context_data/character_label_data"),
+    "emotion_audio_dir": str(Path(data_dir_absolute) / "voice_data/reference_voice_data/emotion_voices"),
+    "transcript_emotion_dir": str(Path(data_dir_absolute) / "voice_data/reference_voice_data/emotion_voices_transcript"),
+    "output_dir": str(Path(data_dir_absolute) / "voice_data/temporary_output_voice_data/text_to_speech")
 }
 
 # Cấu hình Logging
@@ -47,7 +58,8 @@ FOLDER_TASK_MAP: Dict[str, str] = {}  # Ánh xạ folder_name -> task_id đang c
 TASK_LOCK = threading.Lock()  # Lock để đồng bộ hoá truy cập vào FOLDER_TASK_MAP
 
 class TaskRequest(BaseModel):
-    narrative_annotation_dir: str
+    annotation_id: str
+    narrative_annotation_dir: Optional[str] = None
     emotion_audio_dir: Optional[str] = None
     transcript_emotion_dir: Optional[str] = None
     output_dir: Optional[str] = None
@@ -62,9 +74,9 @@ class TaskStatus(BaseModel):
     progress: Optional[float] = 0.0
     message: Optional[str] = None
 
-def get_folder_name(narrative_annotation_dir: str) -> str:
+def get_folder_name(annotation_id: str) -> str:
     """Trích xuất last folder name từ đường dẫn"""
-    return os.path.basename(os.path.normpath(narrative_annotation_dir))
+    return annotation_id
 
 def run_tts_task(task_id: str, folder_name: str, request_data: dict):
     """Hàm xử lý dài hạn chạy trong background"""
@@ -111,7 +123,7 @@ def run_tts_task(task_id: str, folder_name: str, request_data: dict):
 @app.post("/generate-emotion-audio", response_model=TaskStatus)
 async def create_tts_task(request: TaskRequest):
     """Khởi tạo task xử lý dài hạn"""
-    folder_name = get_folder_name(request.narrative_annotation_dir)
+    folder_name = get_folder_name(request.annotation_id)
 
     with TASK_LOCK:
         if folder_name in FOLDER_TASK_MAP:
@@ -135,6 +147,7 @@ async def create_tts_task(request: TaskRequest):
         FOLDER_TASK_MAP[folder_name] = task_id
 
     # Xử lý các đường dẫn đầu ra
+    narrative_annotation_dir = str(Path(request.narrative_annotation_dir or DEFAULT_PATHS["narrative_annotation_dir"]) / request.annotation_id)
     emotion_audio_dir = request.emotion_audio_dir or DEFAULT_PATHS["emotion_audio_dir"]
     transcript_emotion_dir = request.transcript_emotion_dir or DEFAULT_PATHS["transcript_emotion_dir"]
     output_dir = request.output_dir or DEFAULT_PATHS["output_dir"]
@@ -142,7 +155,7 @@ async def create_tts_task(request: TaskRequest):
     thread = threading.Thread(
         target=run_tts_task,
         args=(task_id, folder_name, {
-            "narrative_annotation_dir": request.narrative_annotation_dir,
+            "narrative_annotation_dir": narrative_annotation_dir,
             "emotion_audio_dir": emotion_audio_dir,
             "transcript_emotion_dir": transcript_emotion_dir,
             "output_dir": output_dir
