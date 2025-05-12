@@ -4,4 +4,5 @@ from ..models.novel import Novel
 class NovelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Novel
-        fields = '__all__' 
+        fields = ['id', 'user', 'name', 'content', 'status', 'created_at']
+        read_only_fields = ['id', 'user', 'created_at'] 
