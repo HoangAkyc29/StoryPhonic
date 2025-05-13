@@ -320,8 +320,8 @@ def generate_label_data_main(input_data, input_id, output_dir = r"D:\FINAL_CODE\
                              character_personality_output_dir = r"D:\FINAL_CODE\backend\ai_service\data\context_data\character_personality_data", 
                              validate_identity_character_personality_output_dir = r"D:\FINAL_CODE\backend\ai_service\data\context_data\validated_character_personality_data",
                              final_identity_character_dir = r"D:\FINAL_CODE\backend\ai_service\data\context_data\personality_mapper_data\mapped_character-VA",
-                             voice_personality_dir = r"D:\FINAL_CODE\backend\ai_service\task_3\reference_voice_data\character_personality_mapping",
-                             voice_personality_by_lore_dir = r"D:\FINAL_CODE\backend\ai_service\task_3\reference_voice_data\character_personality_mapping_by_lore",
+                             voice_personality_dir = r"D:\FINAL_CODE\backend\ai_service\data\voice_data\reference_voice_data\character_personality_mapping",
+                             voice_personality_by_lore_dir = r"D:\FINAL_CODE\backend\ai_service\data\voice_data\reference_voice_data\character_personality_mapping_by_lore",
                              character_voice_mapper_dir = r"D:\FINAL_CODE\backend\ai_service\data\context_data\personality_mapper_data"):
     """Main function to generate label data with cancel support"""
     

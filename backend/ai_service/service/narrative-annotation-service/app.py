@@ -24,6 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent
 
 # Suy ra DEFAULT_OUTPUT_DIR từ DATA_DIR_ABSOLUTE
 DEFAULT_OUTPUT_DIR = Path(data_dir_absolute) / "context_data"
+DEFAULT_OUTPUT_VOICE_DIR = Path(data_dir_absolute) / "voice_data" / "reference_voice_data"
 
 # Cấu hình Logging
 LOG_DIR = BASE_DIR / "logs"
@@ -161,6 +162,8 @@ async def create_label_data_task(request: TaskRequest):
     final_identity_character_dir_str = request.final_identity_character_dir or str(DEFAULT_OUTPUT_DIR / "personality_mapper_data/mapped_character-VA")
     character_voice_mapper_dir_str = request.character_voice_mapper_dir or str(DEFAULT_OUTPUT_DIR / "personality_mapper_data")
     text_input_data_dir_str = request.text_input_data_dir or str(DEFAULT_OUTPUT_DIR / "text_input_data")
+    voice_personality_dir_str = request.voice_personality_dir or str(DEFAULT_OUTPUT_VOICE_DIR / "character_personality_mapping")
+    voice_personality_by_lore_dir_str = request.voice_personality_by_lore_dir or str(DEFAULT_OUTPUT_VOICE_DIR / "character_personality_mapping_by_lore")
 
     thread = threading.Thread(
         target=run_label_data_task,
@@ -171,8 +174,8 @@ async def create_label_data_task(request: TaskRequest):
             "character_personality_output_dir": character_personality_output_dir_str,
             "validate_identity_character_personality_output_dir": validate_identity_character_personality_output_dir_str,
             "final_identity_character_dir": final_identity_character_dir_str,
-            "voice_personality_dir": request.voice_personality_dir,
-            "voice_personality_by_lore_dir": request.voice_personality_by_lore_dir,
+            "voice_personality_dir": voice_personality_dir_str,
+            "voice_personality_by_lore_dir": voice_personality_by_lore_dir_str,
             "character_voice_mapper_dir": character_voice_mapper_dir_str,
             "text_input_data_dir": text_input_data_dir_str
         })
