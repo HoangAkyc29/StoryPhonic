@@ -8,22 +8,23 @@ def get_data_dir():
     """Get the absolute path to the data directory from .env.root"""
     # Get current file's directory (audiobook)
     current_dir = Path(__file__).parent
-    # Go up 2 levels to reach project root
-    project_root = current_dir.parent.parent
-    # Get .env.root path
-    env_path = project_root / '.env.root'
     
-    if not env_path.exists():
-        raise FileNotFoundError(".env.root file not found")
+    # Search for .env.root by traversing up parent directories
+    while current_dir != current_dir.parent:  # Stop at root directory
+        env_path = current_dir / '.env.root'
+        if env_path.exists():
+            # Load environment variables from .env.root
+            load_dotenv(env_path)
+            data_dir = os.getenv('DATA_DIR_ABSOLUTE')
+            
+            if not data_dir:
+                raise ValueError("DATA_DIR_ABSOLUTE not found in .env.root")
+            
+            return data_dir
+            
+        current_dir = current_dir.parent
     
-    # Load environment variables from .env.root
-    load_dotenv(env_path)
-    data_dir = os.getenv('DATA_DIR_ABSOLUTE')
-    
-    if not data_dir:
-        raise ValueError("DATA_DIR_ABSOLUTE not found in .env.root")
-    
-    return data_dir
+    raise FileNotFoundError(".env.root file not found in any parent directory")
 
 def save_novel_file(novel_id, file):
     """Save uploaded file to the novel's directory"""
@@ -31,7 +32,7 @@ def save_novel_file(novel_id, file):
     data_dir = get_data_dir()
     
     # Create novel directory path
-    novel_dir = Path(data_dir) / "text_input_data" / str(novel_id)
+    novel_dir = Path(data_dir) / "context_data" / "input_data_directory" /str(novel_id)
     novel_dir.mkdir(parents=True, exist_ok=True)
     
     # Save file using chunks for memory efficiency

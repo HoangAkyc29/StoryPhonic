@@ -1,7 +1,7 @@
 import threading
 import time
 import requests
-from ..models.novel import Novel
+from audiobook.models.novel import Novel
 
 def check_narrative_annotation_status(input_id: str, novel: Novel) -> bool:
     """Check status of narrative annotation task"""

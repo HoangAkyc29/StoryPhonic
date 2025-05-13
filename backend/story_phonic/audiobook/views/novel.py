@@ -1,11 +1,11 @@
 from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from ..models.novel import Novel
-from ..serializers.novel import NovelSerializer
-from ..permissions import IsOwnerOrAdmin
-from ..utils import save_novel_file, read_file_content
-from ..tasks import thread_create_audiobook
+from audiobook.models.novel import Novel
+from audiobook.serializers.novel import NovelSerializer
+from audiobook.permissions import IsOwnerOrAdmin
+from audiobook.utils import save_novel_file, read_file_content
+from audiobook.tasks import thread_create_audiobook
 import threading
 
 class NovelViewSet(viewsets.ModelViewSet):

@@ -3,6 +3,7 @@ from ..models.novel import Novel
 from django.core.validators import FileExtensionValidator
 
 class NovelSerializer(serializers.ModelSerializer):
+    content = serializers.CharField(required=False, allow_blank=True)
     content_file = serializers.FileField(
         required=False,
         validators=[FileExtensionValidator(allowed_extensions=['pdf', 'txt', 'docx'])],
@@ -18,3 +19,7 @@ class NovelSerializer(serializers.ModelSerializer):
         if not data.get('content') and not data.get('content_file'):
             raise serializers.ValidationError("Either content or content_file must be provided")
         return data 
+
+    def create(self, validated_data):
+        validated_data.pop('content_file', None)
+        return super().create(validated_data) 

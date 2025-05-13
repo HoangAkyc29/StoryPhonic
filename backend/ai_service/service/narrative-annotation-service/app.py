@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 # from collections import defaultdict # defaultdict không được dùng, có thể bỏ
 
 # Load biến môi trường từ file .env ngoài cùng project
-load_dotenv(dotenv_path=Path(__file__).resolve().parents[4] / '.env')
+load_dotenv(dotenv_path=Path(__file__).resolve().parents[4] / '.env.root')
 
 # Lấy đường dẫn tuyệt đối từ biến môi trường
 data_dir_absolute = os.getenv('DATA_DIR_ABSOLUTE')
