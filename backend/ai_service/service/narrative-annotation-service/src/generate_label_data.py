@@ -429,21 +429,21 @@ def generate_label_data_main(input_data, input_id, output_dir = r"D:\FINAL_CODE\
         if get_cancel_flag(input_id):
             print(f"Task cancelled by user for input_id: {input_id}")
             return None
-        process_narrative_data(output_dir,validate_identity_character_personality_output_dir,unique_characters_dict)
+        process_narrative_data(output_dir,validate_identity_character_personality_output_dir,unique_characters_dict) # xác định true identity và gender của từng sentence và cập nhật lại json data trong character_label_data
 
         if get_cancel_flag(input_id):
             print(f"Task cancelled by user for input_id: {input_id}")
             return None
             
-        personality_mapper_main(validate_identity_character_personality_output_dir,voice_personality_dir,voice_personality_by_lore_dir, sentence_transformer_model,character_voice_mapper_dir)
+        personality_mapper_main(validate_identity_character_personality_output_dir,voice_personality_dir,voice_personality_by_lore_dir, sentence_transformer_model,character_voice_mapper_dir) #tạo ra bộ điểm tương đồng giữa nhân vật trong story và các voice actor (top 10) (output nằm trong personality_mapper_data)
         if get_cancel_flag(input_id):
             print(f"Task cancelled by user for input_id: {input_id}")
             return None
-        create_unique_mapping(character_voice_mapper_dir,final_identity_character_dir)
+        create_unique_mapping(character_voice_mapper_dir,final_identity_character_dir) #tạo ra một file json mapping giữa true identity và voice actor phù hợp nhất (nằm trong mapped_character-VA) (tính toán thôi)
         if get_cancel_flag(input_id):
             print(f"Task cancelled by user for input_id: {input_id}")
             return None
-        add_voice_actors(output_dir,final_identity_character_dir)
+        add_voice_actors(output_dir,final_identity_character_dir) # xác định voice actor của từng sentence (dựa vào data hàm ngay trước) và cập nhật lại json data trong character_label_data
         if get_cancel_flag(input_id):
             print(f"Task cancelled by user for input_id: {input_id}")
             return None
