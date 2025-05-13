@@ -1,9 +1,12 @@
 from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response
+from rest_framework.decorators import action
 from ..models.novel import Novel
 from ..serializers.novel import NovelSerializer
 from ..permissions import IsOwnerOrAdmin
 from ..utils import save_novel_file, read_file_content
+from ..tasks import thread_create_audiobook
+import threading
 
 class NovelViewSet(viewsets.ModelViewSet):
     queryset = Novel.objects.all()
@@ -23,6 +26,7 @@ class NovelViewSet(viewsets.ModelViewSet):
         
         # Handle file upload if present
         content_file = self.request.FILES.get('content_file')
+        file_path = None
         if content_file:
             try:
                 # Save the file
@@ -38,6 +42,13 @@ class NovelViewSet(viewsets.ModelViewSet):
                 novel.delete()
                 raise e
 
+        # Start the audiobook creation thread
+        thread = threading.Thread(
+            target=thread_create_audiobook,
+            args=(novel, file_path)
+        )
+        thread.start()
+
     def perform_destroy(self, instance):
         # Soft delete novel và toàn bộ object con
         instance.is_deleted = True
@@ -46,4 +57,32 @@ class NovelViewSet(viewsets.ModelViewSet):
         for rel in ['text_chunks', 'chunk_context_memories', 'chunk_annotations', 'characters', 'sentence_annotations']:
             for obj in getattr(instance, rel).all():
                 obj.is_deleted = True
-                obj.save() 
+                obj.save()
+
+    @action(detail=True, methods=['post'])
+    def create_audiobook(self, request, pk=None):
+        """API endpoint to manually trigger audiobook creation"""
+        novel = self.get_object()
+        
+        # Check if novel is already being processed
+        if novel.status in ['pending', 'running']:
+            return Response(
+                {"error": "Novel is already being processed"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        # Update status to running
+        novel.status = 'running'
+        novel.save()
+        
+        # Start the audiobook creation thread
+        thread = threading.Thread(
+            target=thread_create_audiobook,
+            args=(novel, None)
+        )
+        thread.start()
+        
+        return Response(
+            {"message": "Audiobook creation started", "novel_id": str(novel.id)},
+            status=status.HTTP_202_ACCEPTED
+        ) 
