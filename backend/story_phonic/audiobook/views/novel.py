@@ -4,7 +4,7 @@ from rest_framework.decorators import action
 from audiobook.models.novel import Novel
 from audiobook.serializers.novel import NovelSerializer
 from audiobook.permissions import IsOwnerOrAdmin
-from audiobook.utils import save_novel_file, read_file_content
+from audiobook.services.file_service import save_novel_file, read_file_content
 from audiobook.tasks import thread_create_audiobook
 import threading
 
