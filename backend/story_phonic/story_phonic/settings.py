@@ -169,14 +169,36 @@ SIMPLE_JWT = {
 }
 
 # AWS S3 Configuration
-AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
-AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME')
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
-AWS_S3_VERIFY = True
+
 
 # Configure Django Storage
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+
+
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME')
+AWS_S3_SIGNATURE_NAME = 's3v4'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+AWS_S3_VERIFY = True
+
+# print("AWS_ACCESS_KEY_ID:", AWS_ACCESS_KEY_ID)
+# print("AWS_SECRET_ACCESS_KEY:", AWS_SECRET_ACCESS_KEY)
+# print("AWS_STORAGE_BUCKET_NAME:", AWS_STORAGE_BUCKET_NAME)
+# print("AWS_S3_REGION_NAME:", AWS_S3_REGION_NAME)
+# print("AWS_S3_SIGNATURE_NAME:", AWS_S3_SIGNATURE_NAME)
+# print("AWS_S3_FILE_OVERWRITE:", AWS_S3_FILE_OVERWRITE)
+# print("AWS_DEFAULT_ACL:", AWS_DEFAULT_ACL)
+# print("AWS_S3_VERIFY:", AWS_S3_VERIFY)
+
+# try:
+#     from storages.backends.s3boto3 import S3Boto3Storage
+#     print("S3Boto3Storage import successful")
+# except ImportError as e:
+#     print("Failed to import S3Boto3Storage:", e)
+
+# from django.core.files.storage import default_storage
+# print("default_storage class in settings:", default_storage.__class__)

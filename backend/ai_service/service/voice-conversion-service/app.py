@@ -9,6 +9,8 @@ from pathlib import Path
 from datetime import datetime
 import threading
 from dotenv import load_dotenv
+from src.concat_audio import merge_audio_and_generate_metadata
+import json
 
 # Load biến môi trường từ file .env ngoài cùng project
 load_dotenv(dotenv_path=Path(__file__).resolve().parents[4] / '.env.root')
@@ -56,6 +58,17 @@ class TaskStatus(BaseModel):
     end_time: Optional[str] = None
     output_dir: Optional[str] = None
     message: Optional[str] = None
+
+class MergeAudioRequest(BaseModel):
+    constant_id: str
+
+class MergeAudioResponse(BaseModel):
+    task_id: str
+    constant_id: str
+    status: str
+    output_dir: str
+    metadata_path: str
+    audio_path: str
 
 def run_voice_conversion_task(task_id: str, constant_id: str, request_data: dict):
     """Hàm xử lý dài hạn chạy trong background"""
@@ -162,6 +175,42 @@ async def get_constant_status(constant_id: str):
         if task_id and task_id in TASK_DB:
             return TASK_DB[task_id]
         return {"status": "available", "constant_id": constant_id}
+
+@app.post("/merge-audio", response_model=MergeAudioResponse)
+async def merge_audio(request: MergeAudioRequest):
+    """Merge audio files and generate metadata for a given constant_id"""
+    constant_id = request.constant_id
+    
+    # Construct input and output paths
+    input_dir = str(Path(data_dir_absolute) / "voice_data/temporary_output_voice_data/voice_conversion" / constant_id)
+    output_dir = str(Path(data_dir_absolute) / "voice_data/temporary_output_voice_data/final_audio_output" / constant_id)
+    metadata_path = str(Path(output_dir) / "merged_output_metadata.json")
+    
+    try:
+        # Create output directory if it doesn't exist
+        Path(output_dir).mkdir(parents=True, exist_ok=True)
+        
+        # Merge audio and generate metadata
+        metadata, audio_path = merge_audio_and_generate_metadata(input_dir, output_dir)
+        
+        # Save metadata to JSON file
+        with open(metadata_path, 'w', encoding='utf-8') as f:
+            json.dump(metadata, f, indent=2, ensure_ascii=False)
+        
+        return MergeAudioResponse(
+            task_id=str(uuid.uuid4()),
+            constant_id=constant_id,
+            status="completed",
+            output_dir=output_dir,
+            metadata_path=metadata_path,
+            audio_path=audio_path
+        )
+        
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Error merging audio files: {str(e)}"
+        )
 
 @app.get("/health")
 async def health_check():
