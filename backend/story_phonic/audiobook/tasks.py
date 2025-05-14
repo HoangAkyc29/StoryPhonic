@@ -3,6 +3,7 @@ import time
 import requests
 from audiobook.models.novel import Novel
 from audiobook.services.audio_service import upload_audio_to_s3
+from audiobook.services.context_data_service import process_context_data
 
 def check_narrative_annotation_status(input_id: str, novel: Novel) -> bool:
     """Check status of narrative annotation task"""
@@ -234,6 +235,7 @@ def thread_create_audiobook(novel: Novel, file_path: str = None):
         # If all steps completed successfully
         novel.status = "completed"
         novel.save()
+        process_context_data(str(novel.id))
 
     except Exception as e:
         novel.status = "error_unknown"  # Unknown error
