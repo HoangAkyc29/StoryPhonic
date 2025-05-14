@@ -14,7 +14,7 @@ def upload_audio_to_s3(novel_id: str, audio_dir: str = None) -> dict:
         audio_path = Path(audio_dir)
     else:
         base_dir = Path(get_data_dir())
-        audio_path = base_dir / "voice_data" / "temporary_output_voice_data" / "voice_conversion" / novel_id
+        audio_path = base_dir / "voice_data" / "temporary_output_voice_data" / "final_audio_output" / novel_id
 
     if not audio_path.exists():
         raise FileNotFoundError(f"Audio directory not found: {audio_path}")
