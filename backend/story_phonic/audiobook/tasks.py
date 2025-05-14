@@ -64,6 +64,26 @@ def check_voice_conversion_status(constant_id: str, novel: Novel) -> bool:
         return True
     return False
 
+def check_merge_audio_status(constant_id: str, novel: Novel) -> bool:
+    """Check status of merge audio task"""
+    try:
+        response = requests.get(f"http://localhost:5002/merge-audio-status/{constant_id}")
+        if response.status_code == 200:
+            data = response.json()
+            if data["status"] == "completed":
+                return True
+            elif data["status"] in ["pending", "running"]:
+                return False
+            else:
+                novel.status = "error"
+                novel.save()
+                return True
+    except Exception as e:
+        novel.status = "error"
+        novel.save()
+        return True
+    return False
+
 def process_narrative_annotation(novel: Novel, file_path: str) -> bool:
     """Process narrative annotation task"""
     try:
@@ -140,6 +160,31 @@ def process_voice_conversion(novel: Novel) -> bool:
         novel.save()
         return False
 
+def process_merge_audio(novel: Novel) -> bool:
+    """Process merge audio task"""
+    try:
+        # Call merge audio service
+        response = requests.post(
+            "http://localhost:5002/merge-audio",
+            json={
+                "constant_id": str(novel.id)
+            }
+        )
+        if response.status_code != 200:
+            novel.status = "error"
+            novel.save()
+            return False
+
+        # Wait for completion
+        while not check_merge_audio_status(str(novel.id), novel):
+            time.sleep(60)  # Check every minute
+
+        return novel.status != "error"
+    except Exception as e:
+        novel.status = "error"
+        novel.save()
+        return False
+
 def thread_create_audiobook(novel: Novel, file_path: str = None):
     """Main thread function to create audiobook"""
     try:
@@ -153,6 +198,10 @@ def thread_create_audiobook(novel: Novel, file_path: str = None):
 
         # Step 3: Process voice conversion
         if not process_voice_conversion(novel):
+            return
+
+        # Step 4: Process merge audio
+        if not process_merge_audio(novel):
             return
 
         # If all steps completed successfully
