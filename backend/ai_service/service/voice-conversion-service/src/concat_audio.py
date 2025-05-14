@@ -5,11 +5,17 @@ from pathlib import Path
 from typing import List, Dict, Tuple
 from pydub import AudioSegment
 
-def parse_filename(filename: str) -> Tuple[int, int, str]:
-    match = re.match(r"chunk_(\d+)_(\d+)_voice-actor_(.+?)\.wav", filename)
+def parse_filename(filename: str) -> Tuple[int, int, str, str, str]:
+    match = re.match(r"chunk_(\d+)_(\d+)_voice-actor_(.+?)_char-name_(.+?)_true-identity_(.+?)\.wav", filename)
     if not match:
         raise ValueError(f"Filename {filename} does not match expected pattern.")
-    return int(match.group(1)), int(match.group(2)), match.group(3)
+    return (
+        int(match.group(1)),  # x
+        int(match.group(2)),  # y
+        match.group(3),       # voice actor
+        match.group(4),       # character name
+        match.group(5)        # true identity
+    )
 
 def merge_audio_and_generate_metadata(input_dir: str, output_dir: str) -> Tuple[List[Dict], str]:
     input_path = Path(input_dir)
@@ -22,19 +28,19 @@ def merge_audio_and_generate_metadata(input_dir: str, output_dir: str) -> Tuple[
     parsed_files = []
     for file in files:
         try:
-            a, b, va_name = parse_filename(file)
-            parsed_files.append((a, b, va_name, file))
+            x, y, va_name, char_name, true_identity = parse_filename(file)
+            parsed_files.append((x, y, va_name, char_name, true_identity, file))
         except ValueError:
             continue  # skip files that don't match
 
-    parsed_files.sort(key=lambda x: (x[0], x[1]))  # sort by a then b
+    parsed_files.sort(key=lambda x: (x[0], x[1]))  # sort by x then y
 
     final_audio = AudioSegment.silent(duration=0)
     metadata = []
     current_time_ms = 0
     prev_va_name = None
 
-    for a, b, va_name, file in parsed_files:
+    for x, y, va_name, char_name, true_identity, file in parsed_files:
         file_path = input_path / file
         chunk_audio = AudioSegment.from_wav(file_path)
 
@@ -44,9 +50,11 @@ def merge_audio_and_generate_metadata(input_dir: str, output_dir: str) -> Tuple[
         current_time_ms += len(chunk_audio)
 
         metadata.append({
-            "index_a": a,
-            "index_b": b,
-            "va_name": va_name,
+            "index_x": x,
+            "index_y": y,
+            "voice_actor": va_name,
+            "character_name": char_name,
+            "true_identity": true_identity,
             "time_start": round(time_start, 3),
             "time_end": round(current_time_ms / 1000, 3)
         })

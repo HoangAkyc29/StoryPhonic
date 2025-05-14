@@ -855,6 +855,8 @@ def multi_input_multi_ref_run_inference(
             gen_text = sentence_data['sentence']
             choosen_ref = sentence_data['emotion']
             choosen_voice_actor = sentence_data['voice_actor']
+            character_in_story = sentence_data['character']
+            character_true_identity = sentence_data['identity']
             gender = sentence_data['gender'].lower()
             if not gender:
                 gender = "male"
@@ -873,7 +875,7 @@ def multi_input_multi_ref_run_inference(
                 os.makedirs(ref_output_dir)
                 
             # Updated output filename format with x and y indices
-            output_file = f"chunk_{x}_{y}_voice-actor_{choosen_voice_actor}.wav"
+            output_file = f"chunk_{x}_{y}_voice-actor_{choosen_voice_actor}_char-name_{character_in_story}_true-identity_{character_true_identity}.wav"
             wave_path = os.path.join(ref_output_dir, output_file)
 
             generated_audio_segments = []
