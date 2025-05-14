@@ -176,17 +176,19 @@ async def get_constant_status(constant_id: str):
             return TASK_DB[task_id]
         return {"status": "available", "constant_id": constant_id}
 
-@app.post("/merge-audio", response_model=MergeAudioResponse)
-async def merge_audio(request: MergeAudioRequest):
-    """Merge audio files and generate metadata for a given constant_id"""
-    constant_id = request.constant_id
-    
-    # Construct input and output paths
-    input_dir = str(Path(data_dir_absolute) / "voice_data/temporary_output_voice_data/voice_conversion" / constant_id)
-    output_dir = str(Path(data_dir_absolute) / "voice_data/temporary_output_voice_data/final_audio_output" / constant_id)
-    metadata_path = str(Path(output_dir) / "merged_output_metadata.json")
-    
+def run_merge_audio_task(task_id: str, constant_id: str):
+    """Hàm xử lý dài hạn chạy trong background cho merge audio"""
     try:
+        # Cập nhật trạng thái
+        with TASK_LOCK:
+            TASK_DB[task_id].status = "running"
+            TASK_DB[task_id].start_time = datetime.now().isoformat()
+        
+        # Construct input and output paths
+        input_dir = str(Path(data_dir_absolute) / "voice_data/temporary_output_voice_data/voice_conversion" / constant_id)
+        output_dir = str(Path(data_dir_absolute) / "voice_data/temporary_output_voice_data/final_audio_output" / constant_id)
+        metadata_path = str(Path(output_dir) / "merged_output_metadata.json")
+        
         # Create output directory if it doesn't exist
         Path(output_dir).mkdir(parents=True, exist_ok=True)
         
@@ -197,20 +199,57 @@ async def merge_audio(request: MergeAudioRequest):
         with open(metadata_path, 'w', encoding='utf-8') as f:
             json.dump(metadata, f, indent=2, ensure_ascii=False)
         
-        return MergeAudioResponse(
-            task_id=str(uuid.uuid4()),
-            constant_id=constant_id,
-            status="completed",
-            output_dir=output_dir,
-            metadata_path=metadata_path,
-            audio_path=audio_path
-        )
+        # Cập nhật khi hoàn thành
+        with TASK_LOCK:
+            TASK_DB[task_id].status = "completed"
+            TASK_DB[task_id].output_dir = output_dir
+            TASK_DB[task_id].end_time = datetime.now().isoformat()
+            # Giải phóng constant_id khi hoàn thành
+            if CONSTANT_ID_TASK_MAP.get(constant_id) == task_id:
+                del CONSTANT_ID_TASK_MAP[constant_id]
         
     except Exception as e:
-        raise HTTPException(
-            status_code=500,
-            detail=f"Error merging audio files: {str(e)}"
+        with TASK_LOCK:
+            TASK_DB[task_id].status = "failed"
+            TASK_DB[task_id].message = str(e)
+            TASK_DB[task_id].end_time = datetime.now().isoformat()
+            # Giải phóng constant_id khi lỗi
+            if CONSTANT_ID_TASK_MAP.get(constant_id) == task_id:
+                del CONSTANT_ID_TASK_MAP[constant_id]
+
+@app.post("/merge-audio", response_model=TaskStatus)
+async def merge_audio(request: MergeAudioRequest):
+    """Khởi tạo task merge audio"""
+    constant_id = request.constant_id
+    
+    with TASK_LOCK:
+        # Kiểm tra nếu constant_id đang được xử lý
+        if constant_id in CONSTANT_ID_TASK_MAP:
+            existing_task_id = CONSTANT_ID_TASK_MAP[constant_id]
+            if existing_task_id in TASK_DB and TASK_DB[existing_task_id].status in ["pending", "running"]:
+                raise HTTPException(
+                    status_code=400,
+                    detail=f"Constant ID '{constant_id}' is already being processed by task {existing_task_id}"
+                )
+        
+        # Tạo task mới
+        task_id = str(uuid.uuid4())
+        TASK_DB[task_id] = TaskStatus(
+            task_id=task_id,
+            constant_id=constant_id,
+            status="pending",
+            start_time=datetime.now().isoformat()
         )
+        CONSTANT_ID_TASK_MAP[constant_id] = task_id
+    
+    # Chạy task trong background thread
+    thread = threading.Thread(
+        target=run_merge_audio_task,
+        args=(task_id, constant_id)
+    )
+    thread.start()
+    
+    return TASK_DB[task_id]
 
 @app.get("/health")
 async def health_check():
