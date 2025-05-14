@@ -14,7 +14,7 @@ class ChunkAnnotation(models.Model):
     raw_text = models.TextField(verbose_name='Raw Text', help_text='Original text before cleaning')
     clean_text = models.TextField(verbose_name='Clean Text', help_text='Cleaned text')
     index = models.PositiveIntegerField(db_index=True, help_text='Annotation order in novel')
-    status = models.CharField(max_length=50, choices=STATUS_CHOICES, default='pending', db_index=True)
+    status = models.CharField(max_length=50, choices=STATUS_CHOICES, default='completed', db_index=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_deleted = models.BooleanField(default=False, db_index=True)
