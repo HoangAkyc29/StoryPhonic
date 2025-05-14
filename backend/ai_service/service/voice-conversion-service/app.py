@@ -58,6 +58,7 @@ class TaskStatus(BaseModel):
     end_time: Optional[str] = None
     output_dir: Optional[str] = None
     message: Optional[str] = None
+    task_type: str  # voice_conversion|merge_audio
 
 class MergeAudioRequest(BaseModel):
     constant_id: str
@@ -77,6 +78,7 @@ def run_voice_conversion_task(task_id: str, constant_id: str, request_data: dict
         with TASK_LOCK:
             TASK_DB[task_id].status = "running"
             TASK_DB[task_id].start_time = datetime.now().isoformat()
+            TASK_DB[task_id].task_type = "voice_conversion"
         
         # Gọi hàm xử lý chính
         from src.process_generate_voice_conversion_audio import generate_end_output_audio
@@ -131,7 +133,8 @@ async def create_voice_conversion_task(request: VoiceConversionRequest):
             task_id=task_id,
             constant_id=constant_id,
             status="pending",
-            start_time=datetime.now().isoformat()
+            start_time=datetime.now().isoformat(),
+            task_type="voice_conversion"
         )
         CONSTANT_ID_TASK_MAP[constant_id] = task_id
     
@@ -183,6 +186,7 @@ def run_merge_audio_task(task_id: str, constant_id: str):
         with TASK_LOCK:
             TASK_DB[task_id].status = "running"
             TASK_DB[task_id].start_time = datetime.now().isoformat()
+            TASK_DB[task_id].task_type = "merge_audio"
         
         # Construct input and output paths
         input_dir = str(Path(data_dir_absolute) / "voice_data/temporary_output_voice_data/voice_conversion" / constant_id)
@@ -238,7 +242,8 @@ async def merge_audio(request: MergeAudioRequest):
             task_id=task_id,
             constant_id=constant_id,
             status="pending",
-            start_time=datetime.now().isoformat()
+            start_time=datetime.now().isoformat(),
+            task_type="merge_audio"
         )
         CONSTANT_ID_TASK_MAP[constant_id] = task_id
     
@@ -250,6 +255,28 @@ async def merge_audio(request: MergeAudioRequest):
     thread.start()
     
     return TASK_DB[task_id]
+
+@app.get("/merge-audio-status/{constant_id}")
+async def get_merge_audio_status(constant_id: str):
+    """Kiểm tra trạng thái task merge audio theo constant_id"""
+    with TASK_LOCK:
+        task_id = CONSTANT_ID_TASK_MAP.get(constant_id)
+        if task_id and task_id in TASK_DB:
+            task = TASK_DB[task_id]
+            if task.task_type == "merge_audio":
+                return task
+        return {"status": "available", "constant_id": constant_id, "task_type": "merge_audio"}
+
+@app.get("/voice-conversion-status/{constant_id}")
+async def get_voice_conversion_status(constant_id: str):
+    """Kiểm tra trạng thái task voice conversion theo constant_id"""
+    with TASK_LOCK:
+        task_id = CONSTANT_ID_TASK_MAP.get(constant_id)
+        if task_id and task_id in TASK_DB:
+            task = TASK_DB[task_id]
+            if task.task_type == "voice_conversion":
+                return task
+        return {"status": "available", "constant_id": constant_id, "task_type": "voice_conversion"}
 
 @app.get("/health")
 async def health_check():
