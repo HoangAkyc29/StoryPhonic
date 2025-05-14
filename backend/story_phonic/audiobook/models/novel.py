@@ -16,6 +16,8 @@ class Novel(models.Model):
     status = models.CharField(max_length=50, choices=STATUS_CHOICES, default='pending', db_index=True)
     is_deleted = models.BooleanField(default=False, db_index=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    s3_audio_metadata_url = models.URLField(max_length=500, null=True, blank=True, verbose_name='S3 Audio Metadata URL')
+    s3_audio_file_url = models.URLField(max_length=500, null=True, blank=True, verbose_name='S3 Audio File URL')
 
     class Meta:
         verbose_name = 'Novel'

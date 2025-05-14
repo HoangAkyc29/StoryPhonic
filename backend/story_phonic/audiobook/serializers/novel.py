@@ -12,8 +12,11 @@ class NovelSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Novel
-        fields = ['id', 'user', 'name', 'content', 'content_file', 'status', 'created_at']
-        read_only_fields = ['id', 'user', 'created_at']
+        fields = [
+            'id', 'user', 'name', 'content', 'content_file', 
+            'status', 'created_at', 's3_audio_metadata_url', 's3_audio_file_url'
+        ]
+        read_only_fields = ['id', 'user', 'created_at', 's3_audio_metadata_url', 's3_audio_file_url']
         
     def validate(self, data):
         if not data.get('content') and not data.get('content_file'):

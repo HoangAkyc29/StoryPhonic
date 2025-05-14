@@ -2,6 +2,7 @@ import threading
 import time
 import requests
 from audiobook.models.novel import Novel
+from audiobook.services.audio_service import upload_audio_to_s3
 
 def check_narrative_annotation_status(input_id: str, novel: Novel) -> bool:
     """Check status of narrative annotation task"""
@@ -96,7 +97,7 @@ def process_narrative_annotation(novel: Novel, file_path: str) -> bool:
             }
         )
         if response.status_code != 200:
-            novel.status = "error"
+            novel.status = "error_1"  # Error at step 1
             novel.save()
             return False
 
@@ -104,9 +105,9 @@ def process_narrative_annotation(novel: Novel, file_path: str) -> bool:
         while not check_narrative_annotation_status(str(novel.id), novel):
             time.sleep(60)  # Check every minute
 
-        return novel.status != "error"
+        return novel.status != "error_1"
     except Exception as e:
-        novel.status = "error"
+        novel.status = "error_1"  # Error at step 1
         novel.save()
         return False
 
@@ -121,7 +122,7 @@ def process_tts(novel: Novel) -> bool:
             }
         )
         if response.status_code != 200:
-            novel.status = "error"
+            novel.status = "error_2"  # Error at step 2
             novel.save()
             return False
 
@@ -129,9 +130,9 @@ def process_tts(novel: Novel) -> bool:
         while not check_tts_status(str(novel.id), novel):
             time.sleep(60)  # Check every minute
 
-        return novel.status != "error"
+        return novel.status != "error_2"
     except Exception as e:
-        novel.status = "error"
+        novel.status = "error_2"  # Error at step 2
         novel.save()
         return False
 
@@ -146,7 +147,7 @@ def process_voice_conversion(novel: Novel) -> bool:
             }
         )
         if response.status_code != 200:
-            novel.status = "error"
+            novel.status = "error_3"  # Error at step 3
             novel.save()
             return False
 
@@ -154,9 +155,9 @@ def process_voice_conversion(novel: Novel) -> bool:
         while not check_voice_conversion_status(str(novel.id), novel):
             time.sleep(60)  # Check every minute
 
-        return novel.status != "error"
+        return novel.status != "error_3"
     except Exception as e:
-        novel.status = "error"
+        novel.status = "error_3"  # Error at step 3
         novel.save()
         return False
 
@@ -171,7 +172,7 @@ def process_merge_audio(novel: Novel) -> bool:
             }
         )
         if response.status_code != 200:
-            novel.status = "error"
+            novel.status = "error_4"  # Error at step 4
             novel.save()
             return False
 
@@ -179,9 +180,9 @@ def process_merge_audio(novel: Novel) -> bool:
         while not check_merge_audio_status(str(novel.id), novel):
             time.sleep(60)  # Check every minute
 
-        return novel.status != "error"
+        return novel.status != "error_4"
     except Exception as e:
-        novel.status = "error"
+        novel.status = "error_4"  # Error at step 4
         novel.save()
         return False
 
@@ -204,10 +205,36 @@ def thread_create_audiobook(novel: Novel, file_path: str = None):
         if not process_merge_audio(novel):
             return
 
+        # Step 5: Upload to S3
+        try:
+            uploaded_files = upload_audio_to_s3(str(novel.id))
+            
+            # Find metadata and audio file URLs
+            metadata_url = None
+            audio_url = None
+            
+            for filename, url in uploaded_files.items():
+                if filename.endswith('.json'):
+                    metadata_url = url
+                elif filename.endswith('.wav'):
+                    audio_url = url
+                if metadata_url and audio_url:
+                    break
+            
+            # Update novel with URLs
+            novel.s3_audio_metadata_url = metadata_url
+            novel.s3_audio_file_url = audio_url
+            novel.save()
+            
+        except Exception as e:
+            novel.status = "error_5"  # Error at step 5
+            novel.save()
+            return
+
         # If all steps completed successfully
         novel.status = "completed"
         novel.save()
 
     except Exception as e:
-        novel.status = "error"
+        novel.status = "error_unknown"  # Unknown error
         novel.save() 
