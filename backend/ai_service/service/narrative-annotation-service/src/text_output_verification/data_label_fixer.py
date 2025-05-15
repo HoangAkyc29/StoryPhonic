@@ -31,14 +31,13 @@ def process_texts(text_x, text_y, model):
     A = []
     B = []
     for char_name, char_data in characters_x.items():
-        last_appearance = char_data["last_appearance_index"]
+        last_appearance = int(char_data["last_appearance_index"])
         if chunk_index - 3 <= last_appearance <= chunk_index + 3:
             A.append(char_name)
             B.append(char_name)  # Add the main name
             for alias in char_data["aliases"]:
                 if alias not in B: # Prevent duplicate
                   B.append(alias)
-
 
     # 3. Create array C from Text_Y
     C = []

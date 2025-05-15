@@ -17,11 +17,11 @@ def check_narrative_annotation_status(input_id: str, novel: Novel) -> bool:
                 return False
             else:
                 # Update novel status to error
-                novel.status = "error"
+                novel.status = "error_1"
                 novel.save()
                 return True
     except Exception as e:
-        novel.status = "error"
+        novel.status = "error_1"
         novel.save()
         return True
     return False
@@ -37,11 +37,11 @@ def check_tts_status(folder_name: str, novel: Novel) -> bool:
             elif data["status"] in ["pending", "running"]:
                 return False
             else:
-                novel.status = "error"
+                novel.status = "error_2"
                 novel.save()
                 return True
     except Exception as e:
-        novel.status = "error"
+        novel.status = "error_2"
         novel.save()
         return True
     return False
@@ -57,11 +57,11 @@ def check_voice_conversion_status(constant_id: str, novel: Novel) -> bool:
             elif data["status"] in ["pending", "running"]:
                 return False
             else:
-                novel.status = "error"
+                novel.status = "error_3"
                 novel.save()
                 return True
     except Exception as e:
-        novel.status = "error"
+        novel.status = "error_3"
         novel.save()
         return True
     return False
@@ -77,11 +77,11 @@ def check_merge_audio_status(constant_id: str, novel: Novel) -> bool:
             elif data["status"] in ["pending", "running"]:
                 return False
             else:
-                novel.status = "error"
+                novel.status = "error_4"
                 novel.save()
                 return True
     except Exception as e:
-        novel.status = "error"
+        novel.status = "error_4"
         novel.save()
         return True
     return False

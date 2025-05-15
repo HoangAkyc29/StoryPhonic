@@ -70,3 +70,14 @@ Traceback (most recent call last):
   File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\generate_label_data.py", line 382, in generate_label_data_main
     break_outer, last_memory_file_dir = process_files_in_folder(input_files_paths, output_dir, memory_dir, gemini_key, input_id)
 TypeError: cannot unpack non-iterable NoneType object
+2025-05-15 01:34:31,272 - generate_label_data_task - ERROR - TaskID: e1155769-44a7-4124-b5fd-955414960b1a - InputID: 88eb50a6-29d7-4593-bee2-935b9fa23f92 - Message: Error in generate_label_data_main: '<=' not supported between instances of 'int' and 'str'
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\app.py", line 89, in run_label_data_task
+    result_dirs = generate_label_data_main(
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\generate_label_data.py", line 397, in generate_label_data_main
+    process_all_label_text_files(sentence_transformer_model, output_dir, memory_dir) # bước chuẩn hoá output tên nhân vật
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\text_output_verification\data_label_fixer.py", line 156, in process_all_label_text_files
+    output_content = process_texts(memory_content, output_content, model)
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\text_output_verification\data_label_fixer.py", line 35, in process_texts
+    if chunk_index - 3 <= last_appearance <= chunk_index + 3:
+TypeError: '<=' not supported between instances of 'int' and 'str'
