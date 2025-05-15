@@ -1,17 +1,8 @@
 import { ref } from 'vue'
-
-interface Story {
-  id: number
-  title: string
-  content: string
-  level: number
-  points: number
-  created_at: string
-  updated_at: string
-}
+import type { Novel } from '~/types/novel'
 
 export const useStories = () => {
-  const stories = ref<Story[]>([])
+  const stories = ref<Novel[]>([])
   const loading = ref(false)
   const error = ref<string | null>(null)
 
@@ -22,7 +13,7 @@ export const useStories = () => {
       const token = localStorage.getItem('token')
       if (!token) throw new Error('Not authenticated')
 
-      const response = await fetch('/api/stories/', {
+      const response = await fetch('http://localhost:8000/api/audiobook/novels/', {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -43,14 +34,14 @@ export const useStories = () => {
     }
   }
 
-  const fetchStoryById = async (id: number) => {
+  const fetchStoryById = async (id: string) => {
     loading.value = true
     error.value = null
     try {
       const token = localStorage.getItem('token')
       if (!token) throw new Error('Not authenticated')
 
-      const response = await fetch(`/api/stories/${id}/`, {
+      const response = await fetch(`http://localhost:8000/api/audiobook/novels/${id}/`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },

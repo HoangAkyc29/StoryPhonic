@@ -6,6 +6,7 @@ export const useAuth = () => {
   const profile = ref<Profile | null>(null)
   const loading = ref(false)
   const error = ref<string | null>(null)
+  const isAuthenticated = ref(false)
 
   const login = async (credentials: LoginCredentials) => {
     loading.value = true
@@ -28,11 +29,9 @@ export const useAuth = () => {
       }
 
       const data = await response.json()
-      // Store token in localStorage
       localStorage.setItem('token', data.access)
       localStorage.setItem('refresh_token', data.refresh)
       
-      // Get user info
       await checkAuth()
       return user.value
     } catch (e) {
@@ -78,27 +77,29 @@ export const useAuth = () => {
   }
 
   const checkAuth = async () => {
-    if (typeof window === 'undefined') return false // Không kiểm tra ở SSR
     const token = localStorage.getItem('token')
-    if (!token) return false
+    if (token) {
+      try {
+        const response = await fetch('http://localhost:8000/api/oauth/me/', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        })
+        
+        if (!response.ok) {
+          throw new Error('Auth check failed')
+        }
 
-    try {
-      const response = await fetch('http://localhost:8000/api/oauth/me/', {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      })
-
-      if (!response.ok) {
-        throw new Error('Authentication failed')
+        const data = await response.json()
+        user.value = data
+        isAuthenticated.value = true
+      } catch (error) {
+        console.error('Auth check failed:', error)
+        logout()
       }
-
-      const data = await response.json()
-      user.value = data
-      return true
-    } catch {
-      logout()
-      return false
+    } else {
+      isAuthenticated.value = false
+      user.value = null
     }
   }
 
@@ -232,6 +233,7 @@ export const useAuth = () => {
     profile,
     loading,
     error,
+    isAuthenticated,
     login,
     register,
     logout,

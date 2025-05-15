@@ -25,7 +25,7 @@ export const useProfile = () => {
       const token = localStorage.getItem('token')
       if (!token) throw new Error('Not authenticated')
 
-      const response = await fetch('/api/oauth/profile/', {
+      const response = await fetch('http://localhost:8000/api/oauth/profile/', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ export const useProfile = () => {
       const token = localStorage.getItem('token')
       if (!token) throw new Error('Not authenticated')
 
-      const response = await fetch('/api/oauth/change-password/', {
+      const response = await fetch('http://localhost:8000/api/oauth/change-password/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -97,7 +97,7 @@ export const useProfile = () => {
       const formData = new FormData()
       formData.append('avatar', file)
 
-      const response = await fetch('/api/oauth/avatar/', {
+      const response = await fetch('http://localhost:8000/api/oauth/avatar/', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

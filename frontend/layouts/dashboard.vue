@@ -10,9 +10,9 @@
     />
     <div class="dashboard-body">
       <DashboardSidebar
-        :projects="projects"
-        :selectedProjectId="selectedProjectId"
-        @selectProject="selectProject"
+        :novels="novels"
+        :selectedNovelId="selectedNovelId"
+        @selectNovel="selectNovel"
         @newProject="createNewProject"
         @delete="openDeleteModal"
       />
@@ -29,29 +29,38 @@ import AppHeader from '~/components/AppHeader.vue'
 import AppFooter from '~/components/AppFooter.vue'
 import DashboardSidebar from '~/components/DashboardSidebar.vue'
 import ProjectModal from '~/components/ProjectModal.vue'
-import { useDashboardProjects } from '~/composables/useDashboardProjects'
-import { ref } from 'vue'
+import { useNovels } from '~/composables/useNovels'
+import { ref, onMounted } from 'vue'
 
-const { projects, selectedProjectId, selectProject, createNewProject } = useDashboardProjects()
-
+const { novels, fetchNovels, loading } = useNovels()
+const selectedNovelId = ref<string>('')
 const showDeleteModal = ref(false)
-const deleteProjectId = ref('')
 const deleteProjectName = ref('')
 
-function openDeleteModal(project: { id: string, name: string }) {
-  deleteProjectId.value = project.id
-  deleteProjectName.value = project.name
+onMounted(async () => {
+  try {
+    await fetchNovels()
+    selectedNovelId.value = 'new'
+  } catch (error) {
+    console.error('Failed to fetch novels:', error)
+  }
+})
+
+function selectNovel(id: string) {
+  selectedNovelId.value = id
+}
+
+function createNewProject() {
+  // TODO: Implement new project creation
+}
+
+function openDeleteModal(novel: { id: string, name: string }) {
+  deleteProjectName.value = novel.name
   showDeleteModal.value = true
 }
+
 function handleDeleteConfirm() {
-  const idx = projects.value.findIndex(p => p.id === deleteProjectId.value)
-  if (idx !== -1) {
-    projects.value.splice(idx, 1)
-    // If deleted project is selected, select 'new'
-    if (selectedProjectId.value === deleteProjectId.value) {
-      createNewProject()
-    }
-  }
+  // TODO: Implement delete confirmation
   showDeleteModal.value = false
 }
 </script>

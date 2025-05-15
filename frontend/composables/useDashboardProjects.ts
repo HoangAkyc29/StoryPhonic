@@ -1,46 +1,45 @@
 import { ref } from 'vue'
+import { useNovels } from './useNovels'
+import type { Novel } from '~/types/novel'
 
 export interface Project {
   id: string
   name: string
-  progress: number
-  lastEdit: string
   status: string
-  currentStep: number
 }
 
-const projects = ref<Project[]>([
-  {
-    id: '1',
-    name: 'The Little Prince',
-    progress: 80,
-    lastEdit: '2 ngày trước',
-    status: 'processing',
-    currentStep: 4
-  },
-  {
-    id: '2',
-    name: 'Alice in Wonderland',
-    progress: 100,
-    lastEdit: '7 ngày trước',
-    status: 'done',
-    currentStep: 8
-  }
-])
-
+const projects = ref<Project[]>([])
 const selectedProjectId = ref<string>('new')
 
 export function useDashboardProjects() {
+  const { novels, fetchNovels } = useNovels()
+
+  const loadProjects = async () => {
+    try {
+      await fetchNovels()
+      projects.value = novels.value.map(novel => ({
+        id: novel.id,
+        name: novel.name,
+        status: novel.status
+      }))
+    } catch (error) {
+      console.error('Failed to load projects:', error)
+    }
+  }
+
   function selectProject(id: string) {
     selectedProjectId.value = id
   }
+
   function createNewProject() {
     selectedProjectId.value = 'new'
   }
+
   return {
     projects,
     selectedProjectId,
     selectProject,
-    createNewProject
+    createNewProject,
+    loadProjects
   }
 } 

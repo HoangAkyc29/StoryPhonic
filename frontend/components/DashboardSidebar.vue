@@ -10,40 +10,54 @@
         New Project
       </button>
     </div>
-    <div class="project-list">
+    <div class="sidebar-project-list">
       <div
-        v-for="project in projects"
-        :key="project.id"
-        :class="['project-item-glass', { selected: project.id === selectedProjectId }]"
-        @click="$emit('selectProject', project.id)"
+        v-for="novel in novels"
+        :key="novel.id"
+        :class="['sidebar-project-item', { selected: novel.id === selectedNovelId }]"
+        @click="$emit('selectNovel', novel.id)"
       >
         <div class="project-title-row">
-          <span class="project-title">{{ project.name }}</span>
-          <span class="project-progress">{{ project.progress }}%</span>
-          <button class="delete-btn-glass" title="Delete project" @click.stop="$emit('delete', project)">
+          <span class="project-title" :title="novel.name">{{ novel.name }}</span>
+          <span class="project-status-badge" :class="statusClass(novel.status)">
+            {{ statusText(novel.status) }}
+          </span>
+          <button class="delete-btn-glass" title="Delete project" @click.stop="$emit('delete', novel)">
             <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M7.5 8.75V14.25M10 8.75V14.25M12.5 8.75V14.25M3.75 5.75H16.25M5.833 5.75L6.25 15.25C6.25 15.6642 6.58579 16 7 16H13C13.4142 16 13.75 15.6642 13.75 15.25L14.167 5.75M8.75 5.75V4.75C8.75 4.33579 9.08579 4 9.5 4H10.5C10.9142 4 11.25 4.33579 11.25 4.75V5.75" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
         </div>
-        <div class="progress-bar-glass">
-          <div class="progress-glass" :style="{ width: project.progress + '%' }"></div>
+        <div class="project-meta">
+          Created: {{ formatDate(novel.created_at) }}
         </div>
-        <div class="project-meta">Last edit: {{ project.lastEdit }}</div>
       </div>
     </div>
   </aside>
 </template>
 
 <script setup lang="ts">
-interface Project {
-  id: string;
-  name: string;
-  progress: number;
-  lastEdit: string;
-  status: string;
-  currentStep: number;
+import type { Novel } from '~/types/novel'
+
+defineProps<{ novels: Novel[]; selectedNovelId: string }>()
+defineEmits(['selectNovel', 'newProject', 'delete'])
+
+function statusText(status: string) {
+  if (status === 'pending') return 'Pending'
+  if (status === 'processing') return 'Processing'
+  if (status === 'done') return 'Completed'
+  if (status === 'error') return 'Error'
+  return status
 }
-defineProps<{ projects: Project[]; selectedProjectId: string }>()
-defineEmits(['selectProject', 'newProject', 'delete'])
+function statusClass(status: string) {
+  if (status === 'pending') return 'badge-pending'
+  if (status === 'processing') return 'badge-processing'
+  if (status === 'done') return 'badge-done'
+  if (status === 'error') return 'badge-error'
+  return ''
+}
+function formatDate(dateStr: string) {
+  const date = new Date(dateStr)
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+}
 </script>
 
 <style scoped>
@@ -94,37 +108,28 @@ defineEmits(['selectProject', 'newProject', 'delete'])
   color: #0ea5e9;
   box-shadow: 0 4px 24px rgba(14,165,233,0.18);
 }
-.project-list {
-  flex: 1;
-  overflow-y: auto;
-  margin-top: 0.5rem;
-  padding-right: 0.2rem;
-}
-.project-item-glass {
-  background: #fff;
-  border-radius: 1.1rem;
-  padding: 1.1rem 1.1rem 0.9rem 1rem;
-  margin-bottom: 1.1rem;
-  cursor: pointer;
-  transition: box-shadow 0.18s, border 0.18s, background 0.18s, transform 0.18s;
-  border: 2px solid transparent;
-  box-shadow: 0 2px 12px rgba(14,165,233,0.06);
-  color: #222;
-  position: relative;
+.sidebar-project-list {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
 }
-.project-item-glass.selected {
+.sidebar-project-item {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1.1rem 1.1rem 0.9rem 1rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: box-shadow 0.18s, border 0.18s, background 0.18s;
+  box-shadow: 0 2px 12px rgba(14,165,233,0.06);
+}
+.sidebar-project-item.selected {
   border: 2px solid #0ea5e9;
-  box-shadow: 0 6px 24px rgba(14,165,233,0.13);
   background: #e0f7fa;
-  transform: scale(1.03);
 }
-.project-item-glass:hover {
+.sidebar-project-item:hover {
   box-shadow: 0 8px 32px rgba(14,165,233,0.18);
   border: 2px solid #38bdf8;
   background: #f0faff;
-  transform: scale(1.025);
 }
 .project-title-row {
   display: flex;
@@ -138,25 +143,34 @@ defineEmits(['selectProject', 'newProject', 'delete'])
   font-size: 1.08rem;
   color: #222;
   letter-spacing: 0.2px;
-}
-.project-progress {
-  font-size: 0.97rem;
-  color: #0ea5e9;
-  font-weight: 500;
-}
-.progress-bar-glass {
-  width: 100%;
-  height: 7px;
-  background: #e0e7ef;
-  border-radius: 4px;
+  max-width: 140px;
   overflow: hidden;
-  margin-bottom: 0.3rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-.progress-glass {
-  height: 100%;
-  background: linear-gradient(90deg, #0ea5e9 60%, #38bdf8 100%);
-  border-radius: 4px;
-  transition: width 0.3s;
+.project-status-badge {
+  font-size: 0.97rem;
+  font-weight: 500;
+  padding: 0.1rem 0.7rem;
+  border-radius: 999px;
+  margin-left: 0.3rem;
+  text-transform: none;
+}
+.badge-pending {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+.badge-processing {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+.badge-done {
+  background: #d1fae5;
+  color: #059669;
+}
+.badge-error {
+  background: #fee2e2;
+  color: #ef4444;
 }
 .project-meta {
   font-size: 0.87rem;
@@ -177,14 +191,13 @@ defineEmits(['selectProject', 'newProject', 'delete'])
   margin-left: 0.2rem;
   outline: none;
 }
-.project-item-glass:hover .delete-btn-glass {
+.sidebar-project-item:hover .delete-btn-glass {
   opacity: 1;
 }
 .delete-btn-glass:hover {
   color: #ef4444;
   background: #e0e7ef;
 }
-/* Custom scrollbar */
 .project-list::-webkit-scrollbar {
   width: 7px;
 }

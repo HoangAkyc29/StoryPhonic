@@ -1,6 +1,10 @@
 import { ref } from 'vue'
 import type { Novel, CreateNovelData } from '~/types/novel'
 
+function getToken() {
+  return typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+}
+
 export const useNovels = () => {
   const novels = ref<Novel[]>([])
   const currentNovel = ref<Novel | null>(null)
@@ -11,10 +15,10 @@ export const useNovels = () => {
     loading.value = true
     error.value = null
     try {
-      const token = localStorage.getItem('token')
+      const token = getToken()
       if (!token) throw new Error('Not authenticated')
 
-      const response = await fetch('http://localhost:8000/api/novels/', {
+      const response = await fetch('http://localhost:8000/api/audiobook/novels/', {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -40,10 +44,10 @@ export const useNovels = () => {
     loading.value = true
     error.value = null
     try {
-      const token = localStorage.getItem('token')
+      const token = getToken()
       if (!token) throw new Error('Not authenticated')
 
-      const response = await fetch(`http://localhost:8000/api/novels/${id}/`, {
+      const response = await fetch(`http://localhost:8000/api/audiobook/novels/${id}/`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -69,7 +73,7 @@ export const useNovels = () => {
     loading.value = true
     error.value = null
     try {
-      const token = localStorage.getItem('token')
+      const token = getToken()
       if (!token) throw new Error('Not authenticated')
 
       const formData = new FormData()
@@ -81,7 +85,7 @@ export const useNovels = () => {
         formData.append('content_file', data.content_file)
       }
 
-      const response = await fetch('http://localhost:8000/api/novels/', {
+      const response = await fetch('http://localhost:8000/api/audiobook/novels/', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -109,10 +113,10 @@ export const useNovels = () => {
     loading.value = true
     error.value = null
     try {
-      const token = localStorage.getItem('token')
+      const token = getToken()
       if (!token) throw new Error('Not authenticated')
 
-      const response = await fetch(`http://localhost:8000/api/novels/${id}/create_audiobook/`, {
+      const response = await fetch(`http://localhost:8000/api/audiobook/novels/${id}/create_audiobook/`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -138,10 +142,10 @@ export const useNovels = () => {
     loading.value = true
     error.value = null
     try {
-      const token = localStorage.getItem('token')
+      const token = getToken()
       if (!token) throw new Error('Not authenticated')
 
-      const response = await fetch(`http://localhost:8000/api/novels/${id}/`, {
+      const response = await fetch(`http://localhost:8000/api/audiobook/novels/${id}/`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,
