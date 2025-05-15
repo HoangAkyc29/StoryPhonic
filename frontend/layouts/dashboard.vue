@@ -30,9 +30,9 @@ import AppFooter from '~/components/AppFooter.vue'
 import DashboardSidebar from '~/components/DashboardSidebar.vue'
 import ProjectModal from '~/components/ProjectModal.vue'
 import { useNovels } from '~/composables/useNovels'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, provide } from 'vue'
 
-const { novels, fetchNovels, loading } = useNovels()
+const { novels, fetchNovels } = useNovels()
 const selectedNovelId = ref<string>('')
 const showDeleteModal = ref(false)
 const deleteProjectName = ref('')
@@ -51,6 +51,7 @@ function selectNovel(id: string) {
 }
 
 function createNewProject() {
+  selectedNovelId.value = 'new'
   // TODO: Implement new project creation
 }
 
@@ -63,6 +64,10 @@ function handleDeleteConfirm() {
   // TODO: Implement delete confirmation
   showDeleteModal.value = false
 }
+
+provide('novels', novels)
+provide('selectedNovelId', selectedNovelId)
+provide('selectNovel', selectNovel)
 </script>
 
 <style scoped>

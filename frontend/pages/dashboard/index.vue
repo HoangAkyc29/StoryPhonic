@@ -6,7 +6,7 @@
       @confirm="handleNameConfirm"
       @cancel="showNameModal = false"
     />
-    <template v-if="selectedProjectId === 'new'">
+    <template v-if="selectedNovelId === 'new'">
       <div class="workspace-intro">
         <h2>Welcome to Story Phonic!</h2>
         <p>Start your new audiobook project by entering your story text or uploading a document file (docx, txt, pdf).</p>
@@ -31,9 +31,9 @@
     </template>
     <template v-else>
       <div class="workspace-pipeline">
-        <PipelineSteps :currentStep="currentProject?.currentStep || 1" :status="currentProject?.status || ''" />
+        <PipelineSteps :currentStep="currentProject?.currentStep || 1" :status="currentProject?.status || ''" :novel="currentProject" />
       </div>
-      <div v-if="currentProject?.status === 'done'" class="workspace-audio">
+      <div v-if="currentProject?.status === 'completed' || currentProject?.status === 'done'" class="workspace-audio">
         <h3>Listen & Fine-tune Your Audiobook</h3>
         <div class="audio-player-demo">
           <span>Audio player & tuning UI coming soon...</span>
@@ -44,14 +44,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, inject } from 'vue'
 import PipelineSteps from '~/components/PipelineSteps.vue'
 import ProjectModal from '~/components/ProjectModal.vue'
-import { useDashboardProjects } from '~/composables/useDashboardProjects'
 
-const { projects, selectedProjectId, selectProject } = useDashboardProjects()
-const currentProject = computed(() => projects.value.find(p => p.id === selectedProjectId.value))
-
+const novels = inject('novels', ref([])) // Giá trị mặc định là mảng rỗng
+const selectedNovelId = inject('selectedNovelId', ref(''))
+const selectNovel = inject('selectNovel', () => {})
+const currentProject = computed(() => {
+  if (!novels?.value || !selectedNovelId?.value) return null
+  return novels.value.find(p => p.id === selectedNovelId.value) || null
+})
 const showNameModal = ref(false)
 const newProjectText = ref('')
 const uploadedFile = ref<File|null>(null)
@@ -86,7 +89,7 @@ function handleNameConfirm(name: string) {
   }
   // Add new project to list and select it
   const id = Date.now().toString()
-  projects.value.unshift({
+  novels.value.unshift({
     id,
     name,
     progress: 0,
@@ -94,7 +97,7 @@ function handleNameConfirm(name: string) {
     status: 'processing',
     currentStep: 1
   })
-  selectProject(id)
+  selectNovel(id)
   showNameModal.value = false
   newProjectText.value = ''
   uploadedFile.value = null

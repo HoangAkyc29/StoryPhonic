@@ -1,87 +1,113 @@
 <template>
-  <div class="pipeline-steps">
-    <div v-for="(step, idx) in steps" :key="idx" class="step-row">
-      <div :class="['step-circle', { active: idx+1 === currentStep, done: idx+1 < currentStep }]">
-        <span v-if="idx+1 < currentStep">✔</span>
-        <span v-else>{{ idx+1 }}</span>
+  <div class="novel-status-display">
+    <!-- Processing/Pending State -->
+    <div v-if="status === 'pending' || status === 'processing'">
+      <div class="status-icon-container">
+        <div class="spinner"></div>
       </div>
-      <div class="step-info">
-        <div :class="['step-title', { active: idx+1 === currentStep }]">{{ step }}</div>
-        <div v-if="idx+1 === currentStep" class="step-status">Current step: {{ status }}</div>
-      </div>
+      <h2>{{ novel?.name }}</h2>
+      <p>Created: {{ novel?.created_at ? new Date(novel.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : '' }}</p>
+      <p class="status-message processing-message">Your audiobook is being processed. Please wait...</p>
     </div>
+
+    <!-- Completed State -->
+    <div v-else-if="status === 'completed'">
+      <div class="status-icon-container">
+        <div class="completion-icon">✔</div>
+      </div>
+      <h2>{{ novel?.name }}</h2>
+      <p>Created: {{ novel?.created_at ? new Date(novel.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : '' }}</p>
+      <p class="status-message completion-message">Your audiobook is ready!</p>
+    </div>
+
+    <!-- Optional: Default state for other statuses (e.g., error) -->
+    <!-- <div v-else>
+         <p>Status: {{ status }}</p>
+         <p>An unexpected status occurred.</p>
+    </div> -->
   </div>
 </template>
 
 <script setup lang="ts">
-defineProps<{ currentStep: number, status: string }>()
-const steps = [
-  'Document Chunking',
-  'Context Memory Management',
-  'Annotation Generation',
-  'Character Trait Assessment',
-  'Voice Assignment',
-  'Text To Speech',
-  'Audio Post-processing',
-  'Output Audio'
-]
+// Remove currentStep prop and steps array as they are no longer displayed
+defineProps<{ status: string, novel?: any }>()
+// const steps = [...] // Removed
 </script>
 
 <style scoped>
-.pipeline-steps {
+/* Main container styling - shared */
+.novel-status-display {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  padding: 1.5rem 0;
-  max-width: 400px;
-  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  min-height: 350px;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 2rem;
+  margin-top: 2rem;
+  text-align: center; /* Center text content */
 }
-.step-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 1.2rem;
+
+/* Container for the icon/spinner */
+.status-icon-container {
+  margin-bottom: 1.5rem;
 }
-.step-circle {
-  width: 32px;
-  height: 32px;
+
+/* Spinner styles (for pending/processing) */
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #e0e7ef;
+  border-top: 5px solid #0ea5e9;
   border-radius: 50%;
-  background: #e0e7ef;
-  color: #0ea5e9;
+  animation: spin 1s linear infinite;
+  margin: 0 auto; /* Center the spinner */
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Completion icon styles (for completed) */
+.completion-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #10b981; /* A nice success green */
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 2rem; /* Make the tick mark prominent */
   font-weight: 700;
+  line-height: 1; /* Adjust line height for vertical centering */
+  margin: 0 auto; /* Center the icon */
+}
+
+/* Shared message styling */
+.status-message {
   font-size: 1.1rem;
-  border: 2px solid #e0e7ef;
-  transition: background 0.2s, border 0.2s;
+  margin: 1rem 0 0 0; /* Adjust margin */
 }
-.step-circle.active {
-  background: #0ea5e9;
-  color: #fff;
-  border: 2px solid #0ea5e9;
+
+/* Specific message colors */
+.processing-message {
+  color: #0ea5e9; /* Blue */
 }
-.step-circle.done {
-  background: #38bdf8;
-  color: #fff;
-  border: 2px solid #38bdf8;
+
+.completion-message {
+  color: #10b981; /* Green */
 }
-.step-info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.step-title {
-  font-size: 1.08rem;
-  font-weight: 600;
-  color: #222;
-}
-.step-title.active {
-  color: #0ea5e9;
-}
-.step-status {
-  font-size: 0.95rem;
-  color: #0ea5e9;
-  margin-top: 0.2rem;
-}
-</style> 
+
+/* --- Removed Styles --- */
+/* Removed styles for:
+  .pipeline-steps
+  .step-row
+  .step-circle
+  .step-info
+  .step-title
+  .step-status
+*/
+</style>
