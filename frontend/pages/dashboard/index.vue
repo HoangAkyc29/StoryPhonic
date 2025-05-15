@@ -64,7 +64,7 @@ const canStart = computed(() => {
 function handleFileUpload(e: Event) {
   const file = (e.target as HTMLInputElement).files?.[0]
   if (!file) return
-  const allowed = ['application/pdf', 'text/plain', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
+  // const allowed = ['application/pdf', 'text/plain', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
   const ext = file.name.split('.').pop()?.toLowerCase()
   if (!['pdf','txt','docx'].includes(ext || '')) {
     fileError.value = 'Only .docx, .txt, or .pdf files are allowed.'
@@ -111,6 +111,7 @@ definePageMeta({
   max-width: 900px;
   margin: 0 auto;
   padding: 2rem 0;
+  /* background: transparent; */
 }
 .workspace-intro {
   text-align: center;

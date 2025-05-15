@@ -1,31 +1,9 @@
 import { ref } from 'vue'
-
-interface User {
-  id: number
-  username: string
-  email: string
-  first_name: string
-  last_name: string
-  avatar?: string
-  roles: string[]
-}
-
-interface LoginCredentials {
-  email: string
-  password: string
-}
-
-interface RegisterData {
-  username: string
-  email: string
-  password: string
-  confirmPassword: string
-  first_name?: string
-  last_name?: string
-}
+import type { User, Profile, LoginCredentials, RegisterData, ChangePasswordData } from '~/types/auth'
 
 export const useAuth = () => {
   const user = ref<User | null>(null)
+  const profile = ref<Profile | null>(null)
   const loading = ref(false)
   const error = ref<string | null>(null)
 
@@ -39,9 +17,8 @@ export const useAuth = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          username: credentials.email,
+          email: credentials.email,
           password: credentials.password,
-          email: credentials.email
         }),
       })
 
@@ -57,6 +34,7 @@ export const useAuth = () => {
       
       // Get user info
       await checkAuth()
+      return user.value
     } catch (e) {
       error.value = e instanceof Error ? e.message : 'An error occurred'
       throw e
@@ -69,19 +47,12 @@ export const useAuth = () => {
     loading.value = true
     error.value = null
     try {
-      const response = await fetch('/api/oauth/register/', {
+      const response = await fetch('http://localhost:8000/api/oauth/register/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          username: data.username,
-          email: data.email,
-          password: data.password,
-          password2: data.confirmPassword,
-          first_name: data.first_name,
-          last_name: data.last_name
-        }),
+        body: JSON.stringify(data),
       })
 
       if (!response.ok) {
@@ -90,9 +61,7 @@ export const useAuth = () => {
       }
 
       const responseData = await response.json()
-      user.value = responseData.user
-      // Store token in localStorage
-      localStorage.setItem('token', responseData.token)
+      user.value = responseData
     } catch (e) {
       error.value = e instanceof Error ? e.message : 'An error occurred'
       throw e
@@ -103,16 +72,18 @@ export const useAuth = () => {
 
   const logout = () => {
     user.value = null
+    profile.value = null
     localStorage.removeItem('token')
     localStorage.removeItem('refresh_token')
   }
 
   const checkAuth = async () => {
+    if (typeof window === 'undefined') return false // Không kiểm tra ở SSR
     const token = localStorage.getItem('token')
     if (!token) return false
 
     try {
-      const response = await fetch('/api/oauth/me/', {
+      const response = await fetch('http://localhost:8000/api/oauth/me/', {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -125,19 +96,151 @@ export const useAuth = () => {
       const data = await response.json()
       user.value = data
       return true
-    } catch (e) {
+    } catch {
       logout()
       return false
     }
   }
 
+  const fetchProfile = async () => {
+    loading.value = true
+    error.value = null
+    try {
+      const token = localStorage.getItem('token')
+      if (!token) throw new Error('Not authenticated')
+
+      const response = await fetch('http://localhost:8000/api/oauth/profile/', {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch profile')
+      }
+
+      const data = await response.json()
+      profile.value = data
+      return data
+    } catch (e) {
+      error.value = e instanceof Error ? e.message : 'An error occurred'
+      throw e
+    } finally {
+      loading.value = false
+    }
+  }
+
+  const updateProfile = async (data: Partial<Profile>) => {
+    loading.value = true
+    error.value = null
+    try {
+      const token = localStorage.getItem('token')
+      if (!token) throw new Error('Not authenticated')
+
+      const response = await fetch('http://localhost:8000/api/oauth/profile/', {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to update profile')
+      }
+
+      const responseData = await response.json()
+      profile.value = responseData
+      return responseData
+    } catch (e) {
+      error.value = e instanceof Error ? e.message : 'An error occurred'
+      throw e
+    } finally {
+      loading.value = false
+    }
+  }
+
+  const changePassword = async (data: ChangePasswordData) => {
+    loading.value = true
+    error.value = null
+    try {
+      const token = localStorage.getItem('token')
+      if (!token) throw new Error('Not authenticated')
+
+      const response = await fetch('http://localhost:8000/api/oauth/change-password/', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.error || 'Failed to change password')
+      }
+
+      return true
+    } catch (e) {
+      error.value = e instanceof Error ? e.message : 'An error occurred'
+      throw e
+    } finally {
+      loading.value = false
+    }
+  }
+
+  const updateAvatar = async (file: File) => {
+    loading.value = true
+    error.value = null
+    try {
+      const token = localStorage.getItem('token')
+      if (!token) throw new Error('Not authenticated')
+
+      const formData = new FormData()
+      formData.append('avatar', file)
+
+      const response = await fetch('http://localhost:8000/api/oauth/avatar/', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+        body: formData,
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.error || 'Failed to update avatar')
+      }
+
+      const data = await response.json()
+      if (profile.value) {
+        profile.value.avatar = data.avatar
+      }
+      return data
+    } catch (e) {
+      error.value = e instanceof Error ? e.message : 'An error occurred'
+      throw e
+    } finally {
+      loading.value = false
+    }
+  }
+
   return {
     user,
+    profile,
     loading,
     error,
     login,
     register,
     logout,
     checkAuth,
+    fetchProfile,
+    updateProfile,
+    changePassword,
+    updateAvatar,
   }
-} 
+}
+
+export const auth = useAuth() 

@@ -78,6 +78,7 @@ const continueStory = (storyId: number) => {
 <style scoped>
 .stories-page {
   padding: 1rem;
+  /* background: transparent; */
 }
 
 .page-title {

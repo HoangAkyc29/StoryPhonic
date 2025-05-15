@@ -1,15 +1,19 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useAuth } from '~/composables/useAuth'
+import { auth } from '~/composables/useAuth'
+import { useRouter } from 'vue-router'
 
 const email = ref('')
 const password = ref('')
-const { login, error, loading } = useAuth()
+const { login, error, loading } = auth
+const router = useRouter()
 
 const handleLogin = async () => {
   try {
-    await login({ email: email.value, password: password.value })
-    window.location.href = '/dashboard'
+    const loggedInUser = await login({ email: email.value, password: password.value })
+    if (loggedInUser) {
+      router.push('/dashboard')
+    }
   } catch (e) {
     // Có thể hiển thị error ở đây
     console.error(e)

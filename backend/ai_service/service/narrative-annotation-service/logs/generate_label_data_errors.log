@@ -81,3 +81,14 @@ Traceback (most recent call last):
   File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\text_output_verification\data_label_fixer.py", line 35, in process_texts
     if chunk_index - 3 <= last_appearance <= chunk_index + 3:
 TypeError: '<=' not supported between instances of 'int' and 'str'
+2025-05-15 10:56:15,346 - generate_label_data_task - ERROR - TaskID: 196b1b41-64e3-4ebd-914d-b7d4de15c85c - InputID: 7dc1c157-3364-47a9-b42c-e29d25240efd - Message: Error in generate_label_data_main: '<=' not supported between instances of 'int' and 'str'
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\app.py", line 89, in run_label_data_task
+    result_dirs = generate_label_data_main(
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\generate_label_data.py", line 397, in generate_label_data_main
+    process_all_label_text_files(sentence_transformer_model, output_dir, memory_dir) # bước chuẩn hoá output tên nhân vật
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\text_output_verification\data_label_fixer.py", line 156, in process_all_label_text_files
+    output_content = process_texts(last_memory_content, output_content, model)
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\text_output_verification\data_label_fixer.py", line 35, in process_texts
+    if chunk_index - 3 <= last_appearance <= chunk_index + 3:
+TypeError: '<=' not supported between instances of 'int' and 'str'

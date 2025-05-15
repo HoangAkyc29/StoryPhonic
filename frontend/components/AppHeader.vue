@@ -10,14 +10,14 @@
       <ul class="menu">
         <li><NuxtLink to="#features" :aria-current="$route.hash === '#features' ? 'page' : null">Features</NuxtLink></li>
         <li><NuxtLink to="/pricing" :aria-current="$route.path === '/pricing' ? 'page' : null">Pricing</NuxtLink></li>
-        <li v-if="isLoggedIn"><NuxtLink to="/dashboard" :aria-current="$route.path.startsWith('/dashboard') && $route.path === '/dashboard' ? 'page' : null">My Projects</NuxtLink></li>
-        <li v-if="isLoggedIn"><NuxtLink to="/statistics" :aria-current="$route.path === '/statistics' ? 'page' : null">Statistics</NuxtLink></li>
+        <li v-if="user"><NuxtLink to="/dashboard" :aria-current="$route.path.startsWith('/dashboard') && $route.path === '/dashboard' ? 'page' : null">My Projects</NuxtLink></li>
+        <li v-if="user"><NuxtLink to="/statistics" :aria-current="$route.path === '/statistics' ? 'page' : null">Statistics</NuxtLink></li>
       </ul>
       <div class="auth">
-        <button v-if="isLoggedIn" class="logout-btn" @click="logout">Log out</button>
-        <NuxtLink v-if="!isLoggedIn" to="/login" class="login">Login</NuxtLink>
-        <NuxtLink v-if="!isLoggedIn" to="/signup" class="signup">Sign up</NuxtLink>
-        <NuxtLink v-if="isLoggedIn" to="/profile" class="profile-btn">
+        <button v-if="user" class="logout-btn" @click="handleLogout">Log out</button>
+        <NuxtLink v-if="!user" to="/login" class="login">Login</NuxtLink>
+        <NuxtLink v-if="!user" to="/signup" class="signup">Sign up</NuxtLink>
+        <NuxtLink v-if="user" to="/profile" class="profile-btn">
           <Icon name="heroicons:user-circle" size="28" />
         </NuxtLink>
       </div>
@@ -26,11 +26,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-const isLoggedIn = ref(true) // Mock: set to true to show Statistics button
-function logout() {
-  // TODO: Add real logout logic
-  isLoggedIn.value = false
+import { auth } from '~/composables/useAuth'
+import { useRouter } from 'vue-router'
+
+const { user, logout } = auth
+const router = useRouter()
+
+const handleLogout = () => {
+  logout()
+  router.push('/login')
 }
 </script>
 

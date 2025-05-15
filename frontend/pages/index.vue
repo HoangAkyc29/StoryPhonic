@@ -8,7 +8,7 @@
       </div>
       <h2 class="slogan">Turn your book into a multicast AI audiobook in minutes</h2>
       <p class="desc">Create professional audiobooks with multiple natural AI voices. Fast, easy, and ready to share.</p>
-      <NuxtLink to="/signup" class="cta-btn">Start for free</NuxtLink>
+      <button class="cta-btn" @click="handleStart">Start for free</button>
     </header>
 
     <!-- Features Section -->
@@ -105,6 +105,19 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
+import { auth } from '~/composables/useAuth'
+
+const { user } = auth
+const router = useRouter()
+
+const handleStart = () => {
+  if (user.value) {
+    router.push('/dashboard')
+  } else {
+    router.push('/signup')
+  }
+}
 
 const demoText = `If you do anything to her I'll curse you and all of your off- spring, you know?`
 const demoAudio = '/sample-audio.wav' // Placeholder, replace with real audio

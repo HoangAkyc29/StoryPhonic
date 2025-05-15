@@ -47,12 +47,12 @@ You are an expert novel text analyzer with skills in textual segmentation, compr
     {
     "updated_characters": {
         "character name or identifier": {
-        "aliases": ["alias_1", "alias_2"],
-        "gender": "Specify the character's gender as 'Male' or 'Female'. If the gender cannot be inferred from the available information, write 'Unknown'.",
+        "aliases": ["alias_1", "alias_2"] (Type: list of strings),
+        "gender": "Specify the character's gender as 'Male' or 'Female'. If the gender cannot be inferred from the available information, write 'Unknown'." (Type: string),
         "approximate_age_range": "Guess the character's age range using a numerical range (e.g., 20-30, 45-50). Provide the narrowest possible range based on available information, described appearance and relationships (e.g., friends are usually similar in age, bosses tend to be older than employees, parents are typically 20+ years older than their children, a young man/woman is typically 20-30, a retired general is likely 55+ years old, etc.).",
-        "first_appearance_index": "Index of the chunk where the character first appeared. Once recorded, this value remains unchanged.",
-        "last_appearance_index": "Index of the chunk where the character last appeared.",
-        "number_of_appearances": "Total number of times the character has appeared.",
+        "first_appearance_index": "Index of the chunk where the character first appeared. Once recorded, this value remains unchanged." (Type: integer),
+        "last_appearance_index": "Index of the chunk where the character last appeared." (Type: integer),
+        "number_of_appearances": "Total number of times the character has appeared." (Type: integer),
         "brief_description": "A short, stable and cumulative description summarizing the character’s key traits, overall personality, identity, social standing, and role.",
         "relations": {
             "character_B": "relation_type",

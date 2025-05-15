@@ -38,7 +38,7 @@ const showDeleteModal = ref(false)
 const deleteProjectId = ref('')
 const deleteProjectName = ref('')
 
-function openDeleteModal(project) {
+function openDeleteModal(project: { id: string, name: string }) {
   deleteProjectId.value = project.id
   deleteProjectName.value = project.name
   showDeleteModal.value = true
