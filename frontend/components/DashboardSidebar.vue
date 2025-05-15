@@ -1,5 +1,8 @@
 <template>
-  <aside class="sidebar-glass">
+  <aside
+    class="sidebar-glass"
+    :style="{ width: sidebarWidth + 'px' }"
+  >
     <div class="sidebar-header">
       <span class="sidebar-title">
         <svg width="28" height="28" viewBox="0 0 32 32" fill="none" style="vertical-align:middle;margin-right:0.5rem;"><circle cx="16" cy="16" r="16" fill="#0ea5e9"/><text x="50%" y="55%" text-anchor="middle" fill="#fff" font-size="18" font-family="Inter, Arial, sans-serif" dy=".3em">D</text></svg>
@@ -31,27 +34,67 @@
         </div>
       </div>
     </div>
+    <div class="sidebar-drag-handle" @mousedown="startDrag" @touchstart="startDrag"></div>
   </aside>
 </template>
 
 <script setup lang="ts">
+import { ref, onBeforeUnmount } from 'vue'
 import type { Novel } from '~/types/novel'
 
 defineProps<{ novels: Novel[]; selectedNovelId: string }>()
 defineEmits(['selectNovel', 'newProject', 'delete'])
 
+const MIN_WIDTH = 220
+const MAX_WIDTH = 420
+const DEFAULT_WIDTH = 270
+const sidebarWidth = ref(DEFAULT_WIDTH)
+let startX = 0
+let startWidth = 0
+let dragging = false
+
+function startDrag(e: MouseEvent | TouchEvent) {
+  dragging = true
+  startX = 'touches' in e ? e.touches[0].clientX : e.clientX
+  startWidth = sidebarWidth.value
+  document.body.style.userSelect = 'none'
+  window.addEventListener('mousemove', onDrag)
+  window.addEventListener('mouseup', stopDrag)
+  window.addEventListener('touchmove', onDrag)
+  window.addEventListener('touchend', stopDrag)
+}
+function onDrag(e: MouseEvent | TouchEvent) {
+  if (!dragging) return
+  const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX
+  let newWidth = startWidth + (clientX - startX)
+  if (newWidth < MIN_WIDTH) newWidth = MIN_WIDTH
+  if (newWidth > MAX_WIDTH) newWidth = MAX_WIDTH
+  sidebarWidth.value = newWidth
+}
+function stopDrag() {
+  dragging = false
+  document.body.style.userSelect = ''
+  window.removeEventListener('mousemove', onDrag)
+  window.removeEventListener('mouseup', stopDrag)
+  window.removeEventListener('touchmove', onDrag)
+  window.removeEventListener('touchend', stopDrag)
+}
+onBeforeUnmount(() => {
+  stopDrag()
+})
+
 function statusText(status: string) {
+  if (status.toLowerCase().includes('error')) return 'Error';
   if (status === 'pending') return 'Pending'
   if (status === 'processing') return 'Processing'
   if (status === 'done') return 'Completed'
-  if (status === 'error') return 'Error'
   return status
 }
 function statusClass(status: string) {
+  if (status.toLowerCase().includes('error')) return 'badge-error'
   if (status === 'pending') return 'badge-pending'
   if (status === 'processing') return 'badge-processing'
   if (status === 'done') return 'badge-done'
-  if (status === 'error') return 'badge-error'
   return ''
 }
 function formatDate(dateStr: string) {
@@ -62,7 +105,6 @@ function formatDate(dateStr: string) {
 
 <style scoped>
 .sidebar-glass {
-  width: 270px;
   background: rgba(255,255,255,0.55);
   backdrop-filter: blur(16px);
   border-right: 1.5px solid #e0e7ef;
@@ -73,6 +115,23 @@ function formatDate(dateStr: string) {
   min-height: 100vh;
   font-family: 'Inter', Arial, sans-serif;
   box-sizing: border-box;
+  position: relative;
+  transition: width 0.18s cubic-bezier(.4,2,.6,1);
+}
+.sidebar-drag-handle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 7px;
+  height: 100%;
+  cursor: col-resize;
+  z-index: 10;
+  background: linear-gradient(to right, rgba(14,165,233,0.07) 0%, rgba(14,165,233,0.13) 100%);
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.sidebar-drag-handle:hover {
+  background: linear-gradient(to right, #bae6fd 0%, #7dd3fc 100%);
 }
 .sidebar-header {
   display: flex;
@@ -112,6 +171,18 @@ function formatDate(dateStr: string) {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  max-height: calc(100vh - 160px);
+  overflow-y: auto;
+}
+.sidebar-project-list::-webkit-scrollbar {
+  width: 7px;
+}
+.sidebar-project-list::-webkit-scrollbar-thumb {
+  background: #e0e7ef;
+  border-radius: 6px;
+}
+.sidebar-project-list::-webkit-scrollbar-track {
+  background: transparent;
 }
 .sidebar-project-item {
   background: #fff;
@@ -143,10 +214,21 @@ function formatDate(dateStr: string) {
   font-size: 1.08rem;
   color: #222;
   letter-spacing: 0.2px;
-  max-width: 140px;
+  max-width: calc(100% - 110px);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  transition: max-width 0.18s;
+}
+.sidebar-glass[style*="width: 350px"],
+.sidebar-glass[style*="width: 360px"],
+.sidebar-glass[style*="width: 370px"],
+.sidebar-glass[style*="width: 380px"],
+.sidebar-glass[style*="width: 390px"],
+.sidebar-glass[style*="width: 400px"],
+.sidebar-glass[style*="width: 410px"],
+.sidebar-glass[style*="width: 420px"] .project-title {
+  max-width: 100%;
 }
 .project-status-badge {
   font-size: 0.97rem;
@@ -197,15 +279,5 @@ function formatDate(dateStr: string) {
 .delete-btn-glass:hover {
   color: #ef4444;
   background: #e0e7ef;
-}
-.project-list::-webkit-scrollbar {
-  width: 7px;
-}
-.project-list::-webkit-scrollbar-thumb {
-  background: #e0e7ef;
-  border-radius: 6px;
-}
-.project-list::-webkit-scrollbar-track {
-  background: transparent;
 }
 </style> 
