@@ -332,7 +332,7 @@ def generate_label_data_main(input_data, input_id, output_dir = r"D:\FINAL_CODE\
     print("Bắt đầu!")
 
     gemini_keys_from_env = load_gemini_keys()
-    gemini_key = gemini_keys_from_env[1]
+    gemini_key = gemini_keys_from_env[2]
     gemini_key_len = len(gemini_keys_from_env)
     break_outer = True
     retry_counter = 0

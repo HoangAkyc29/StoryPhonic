@@ -11,12 +11,14 @@ def check_narrative_annotation_status(input_id: str, novel: Novel) -> bool:
         response = requests.get(f"http://localhost:5000/input-status/{input_id}")
         if response.status_code == 200:
             data = response.json()
-            if data["status"] == "completed":
+            if data["status"] == "completed" or data["status"] == "available":
+                print(f"Hoàn thành: {data["status"]}") 
                 return True
             elif data["status"] in ["pending", "running"]:
                 return False
             else:
                 # Update novel status to error
+                print(data["status"])
                 novel.status = "error_1"
                 novel.save()
                 return True
@@ -32,7 +34,7 @@ def check_tts_status(folder_name: str, novel: Novel) -> bool:
         response = requests.get(f"http://localhost:5001/folder-status/{folder_name}")
         if response.status_code == 200:
             data = response.json()
-            if data["status"] == "completed":
+            if data["status"] == "completed" or data["status"] == "available":
                 return True
             elif data["status"] in ["pending", "running"]:
                 return False
@@ -52,7 +54,7 @@ def check_voice_conversion_status(constant_id: str, novel: Novel) -> bool:
         response = requests.get(f"http://localhost:5002/constant-status/{constant_id}")
         if response.status_code == 200:
             data = response.json()
-            if data["status"] == "completed":
+            if data["status"] == "completed" or data["status"] == "available":
                 return True
             elif data["status"] in ["pending", "running"]:
                 return False
@@ -72,7 +74,7 @@ def check_merge_audio_status(constant_id: str, novel: Novel) -> bool:
         response = requests.get(f"http://localhost:5002/merge-audio-status/{constant_id}")
         if response.status_code == 200:
             data = response.json()
-            if data["status"] == "completed":
+            if data["status"] == "completed" or data["status"] == "available":
                 return True
             elif data["status"] in ["pending", "running"]:
                 return False
@@ -108,6 +110,7 @@ def process_narrative_annotation(novel: Novel, file_path: str) -> bool:
 
         return novel.status != "error_1"
     except Exception as e:
+        print(e)
         novel.status = "error_1"  # Error at step 1
         novel.save()
         return False
