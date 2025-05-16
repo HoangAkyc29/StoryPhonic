@@ -3,7 +3,7 @@ import os
 # current_dir = os.path.dirname(os.path.abspath(__file__))
 # sys.path.insert(0, current_dir)
 
-from .model_loader import llama_8B_finetune_model_loader, sentence_transformer_model_loader
+from .model_loader import sentence_transformer_model_loader # llama_8B_finetune_model_loader, 
 import random
 from collections import defaultdict
 import threading
@@ -47,21 +47,21 @@ alpaca_prompt = """Below is an instruction that describes a task, paired with an
 ### Response:
 {}"""
 
-llama_8B_model, llama_8B_tokenizer = llama_8B_finetune_model_loader()
+# llama_8B_model, llama_8B_tokenizer = llama_8B_finetune_model_loader()
 sentence_transformer_model = sentence_transformer_model_loader()
-EOS_TOKEN = llama_8B_tokenizer.eos_token # Must add EOS_TOKEN
-text_streamer = TextStreamer(llama_8B_tokenizer)
+# EOS_TOKEN = llama_8B_tokenizer.eos_token # Must add EOS_TOKEN
+# text_streamer = TextStreamer(llama_8B_tokenizer)
 
-def formatting_prompts_func(examples):
-    instructions = examples["instruction"]
-    inputs       = examples["input"]
-    outputs      = examples["output"]
-    texts = []
-    for instruction, input, output in zip(instructions, inputs, outputs):
-        # Must add EOS_TOKEN, otherwise your generation will go on forever!
-        text = alpaca_prompt.format(instruction, input, output) + EOS_TOKEN
-        texts.append(text)
-    return { "text" : texts, }
+# def formatting_prompts_func(examples):
+#     instructions = examples["instruction"]
+#     inputs       = examples["input"]
+#     outputs      = examples["output"]
+#     texts = []
+#     for instruction, input, output in zip(instructions, inputs, outputs):
+#         # Must add EOS_TOKEN, otherwise your generation will go on forever!
+#         text = alpaca_prompt.format(instruction, input, output) + EOS_TOKEN
+#         texts.append(text)
+#     return { "text" : texts, }
 
 def generate_answer_with_llama_finetune(
     model,

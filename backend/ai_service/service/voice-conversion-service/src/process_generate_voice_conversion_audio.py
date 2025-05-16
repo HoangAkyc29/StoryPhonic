@@ -71,7 +71,7 @@ def find_audio_mapping(audio_dir3: str, json_dir: str, audio_dir1: str, narrator
         # Trích xuất va_string_name từ tên file
         # Giả sử định dạng là ..._{va_string_name}.wav
         base_name = os.path.splitext(audio3_file)[0]
-        va_string = base_name.split('_')[-1]  # Lấy phần cuối sau dấu _
+        va_string = base_name.split('_voice-actor_')[1].split('_char-name_')[0]  # Lấy phần cuối sau dấu _
         if (normalize_string(va_string) == "narrator" or normalize_string(va_string) == "none") and narrator_gender == 0:
             va_string = "Jing Yuan"
         elif (normalize_string(va_string) == "narrator" or normalize_string(va_string) == "none") and narrator_gender == 1:
@@ -147,6 +147,9 @@ def generate_end_output_audio(audio_dir3 = r"D:\FINAL_CODE\backend\ai_service\da
     "config_path": config_path,
     "fp16": True
     }
+
+    print(mapping_data)
+    print(output_dir)
 
     current_dir = os.path.dirname(os.path.abspath(__file__))
 
