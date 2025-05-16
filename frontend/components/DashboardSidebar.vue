@@ -15,7 +15,7 @@
     </div>
     <div class="sidebar-project-list">
       <div
-        v-for="novel in novels"
+        v-for="novel in filteredNovels"
         :key="novel.id"
         :class="['sidebar-project-item', { selected: novel.id === selectedNovelId }]"
         @click="$emit('selectNovel', novel.id)"
@@ -39,11 +39,25 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onBeforeUnmount } from 'vue'
+import { ref, onBeforeUnmount, computed } from 'vue'
 import type { Novel } from '~/types/novel'
 
-defineProps<{ novels: Novel[]; selectedNovelId: string }>()
+const props = defineProps<{ novels: Novel[]; selectedNovelId: string }>()
 defineEmits(['selectNovel', 'newProject', 'delete'])
+
+// Computed property to filter novels
+const filteredNovels = computed(() => {
+  // Ensure props.novels is an array before filtering
+  if (!Array.isArray(props.novels)) {
+    return [];
+  }
+  // Filter out novels where status (lowercase) includes 'error'
+  return props.novels.filter(novel => {
+    // Use optional chaining (?.) and provide a default empty string
+    // to safely call toLowerCase and includes even if status is null/undefined
+    return !novel.status?.toLowerCase().includes('error');
+  });
+});
 
 const MIN_WIDTH = 220
 const MAX_WIDTH = 420
