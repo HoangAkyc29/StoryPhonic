@@ -138,6 +138,11 @@ def create_character_analysis_prompts(grand_input_text, output_dir, unique_chara
             # 1. Character Information from Context Memory
             character_info = None
             normalized_char_name = normalize_string(char_name)
+            
+            if not context_memory.get("characters") and context_memory.get("updated_characters"):
+                # Nếu cả hai điều kiện trên đúng, thực hiện gán
+                context_memory["characters"] = context_memory["updated_characters"]
+
             for character, details in context_memory['characters'].items():
                 normalized_character = normalize_string(character)
                 if normalized_char_name == normalized_character or \

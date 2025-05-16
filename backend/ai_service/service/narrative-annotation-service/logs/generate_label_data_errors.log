@@ -92,3 +92,30 @@ Traceback (most recent call last):
   File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\text_output_verification\data_label_fixer.py", line 35, in process_texts
     if chunk_index - 3 <= last_appearance <= chunk_index + 3:
 TypeError: '<=' not supported between instances of 'int' and 'str'
+2025-05-16 12:49:15,485 - generate_label_data_task - ERROR - TaskID: d2e1e2c7-1d8f-4813-b1a1-f503e7de2951 - InputID: 8ad454fd-9c1f-496b-9d7f-195f33aa948b - Message: Error in generate_label_data_main: 'characters'
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\app.py", line 89, in run_label_data_task
+    result_dirs = generate_label_data_main(
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\generate_label_data.py", line 413, in generate_label_data_main
+    character_names_in_last_context_memory_list = extract_character_names(find_largest_suffix_file(memory_dir))
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\other_service\service.py", line 491, in extract_character_names
+    for character, details in data["characters"].items():
+KeyError: 'characters'
+2025-05-16 12:55:30,104 - generate_label_data_task - ERROR - TaskID: 475524ba-fa35-4b50-9800-0b563f90771f - InputID: 767c371b-7611-4efe-9d8c-a7ef0728c9e3 - Message: Error in generate_label_data_main: 'characters'
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\app.py", line 89, in run_label_data_task
+    result_dirs = generate_label_data_main(
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\generate_label_data.py", line 413, in generate_label_data_main
+    character_names_in_last_context_memory_list = extract_character_names(find_largest_suffix_file(memory_dir))
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\other_service\service.py", line 491, in extract_character_names
+    except json.JSONDecodeError:
+KeyError: 'characters'
+2025-05-16 13:11:17,731 - generate_label_data_task - ERROR - TaskID: edfc0b91-489b-49be-b372-cf80a4d97a04 - InputID: 99a990ec-319e-41cd-bd51-a6187950a402 - Message: Error in generate_label_data_main: 'characters'
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\app.py", line 89, in run_label_data_task
+    result_dirs = generate_label_data_main(
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\generate_label_data.py", line 421, in generate_label_data_main
+    character_prompts_answer, un_finished_flag = create_character_analysis_prompts(grand_text_input,output_dir,unique_characters_dict,last_memory_file_dir,len(input_files_paths),character_personality_output_dir,gemini_key) #sinh bộ nhân cách và các thông tin khác của nhân vật từ dict trên tại character_personality_output_dir
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\extract_character_personality\extract_character_personality.py", line 141, in create_character_analysis_prompts
+    for character, details in context_memory['characters'].items():
+KeyError: 'characters'

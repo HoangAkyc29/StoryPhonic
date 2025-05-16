@@ -15,3 +15,75 @@ Traceback (most recent call last):
   File "D:\python310\lib\concurrent\futures\thread.py", line 163, in submit
     raise RuntimeError('cannot schedule new futures after '
 RuntimeError: cannot schedule new futures after interpreter shutdown
+2025-05-16 13:39:31,992 - tts_task - ERROR - TaskID: 372ae0c2-0326-4f84-842a-e61725e5e66d - Folder: ca74b063-0604-44a3-8666-62916477c0e9 - Message: Error in TTS task: local variable 'torch' referenced before assignment
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\app.py", line 94, in run_tts_task
+    output_dir = generate_all_TTS_with_emotion(
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\process_generate_emotion_audio.py", line 135, in generate_all_TTS_with_emotion
+    multi_input_multi_ref_run_inference(ref_data,text_data,output_dir,last_folder_name)
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\F5-TTS\src\f5_tts\infer\infer_cli.py", line 793, in multi_input_multi_ref_run_inference
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+UnboundLocalError: local variable 'torch' referenced before assignment
+2025-05-16 13:41:52,363 - tts_task - ERROR - TaskID: 7bc0b4a9-2985-4c22-a8b5-2e59a6cdf32b - Folder: ca74b063-0604-44a3-8666-62916477c0e9 - Message: Error in TTS task: local variable 'torch' referenced before assignment
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\app.py", line 94, in run_tts_task
+    output_dir = generate_all_TTS_with_emotion(
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\process_generate_emotion_audio.py", line 135, in generate_all_TTS_with_emotion
+    multi_input_multi_ref_run_inference(ref_data,text_data,output_dir,last_folder_name)
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\F5-TTS\src\f5_tts\infer\infer_cli.py", line 793, in multi_input_multi_ref_run_inference
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+UnboundLocalError: local variable 'torch' referenced before assignment
+2025-05-16 13:42:38,096 - tts_task - ERROR - TaskID: c799a22f-3643-4920-ab8d-aa5000d7c5ff - Folder: ca74b063-0604-44a3-8666-62916477c0e9 - Message: Error in TTS task: local variable 'torch' referenced before assignment
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\app.py", line 94, in run_tts_task
+    output_dir = generate_all_TTS_with_emotion(
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\process_generate_emotion_audio.py", line 135, in generate_all_TTS_with_emotion
+    multi_input_multi_ref_run_inference(ref_data,text_data,output_dir,last_folder_name)
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\F5-TTS\src\f5_tts\infer\infer_cli.py", line 794, in multi_input_multi_ref_run_inference
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+UnboundLocalError: local variable 'torch' referenced before assignment
+2025-05-16 13:49:24,223 - tts_task - ERROR - TaskID: 3305f9ea-dc6c-4597-af42-3354f9ee6e31 - Folder: ca74b063-0604-44a3-8666-62916477c0e9 - Message: Error in TTS task: local variable 'torch' referenced before assignment
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\app.py", line 94, in run_tts_task
+    output_dir = generate_all_TTS_with_emotion(
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\process_generate_emotion_audio.py", line 135, in generate_all_TTS_with_emotion
+    multi_input_multi_ref_run_inference(ref_data,text_data,output_dir,last_folder_name)
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\F5-TTS\src\f5_tts\infer\infer_cli.py", line 794, in multi_input_multi_ref_run_inference
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+UnboundLocalError: local variable 'torch' referenced before assignment
+2025-05-16 14:06:59,103 - tts_task - ERROR - TaskID: 9e2e3e8b-d009-41d0-9164-7f6aa162eaa6 - Folder: ca74b063-0604-44a3-8666-62916477c0e9 - Message: Error in TTS task: local variable 'torch' referenced before assignment
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\app.py", line 94, in run_tts_task
+    output_dir = generate_all_TTS_with_emotion(
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\process_generate_emotion_audio.py", line 135, in generate_all_TTS_with_emotion
+    multi_input_multi_ref_run_inference(ref_data,text_data,output_dir,last_folder_name)
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\F5-TTS\src\f5_tts\infer\infer_cli.py", line 794, in multi_input_multi_ref_run_inference
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+UnboundLocalError: local variable 'torch' referenced before assignment
+2025-05-16 14:14:24,857 - tts_task - ERROR - TaskID: 6d87ca14-55e2-4351-95a4-848ba3d6fe08 - Folder: ca74b063-0604-44a3-8666-62916477c0e9 - Message: Error in TTS task: 'identity'
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\app.py", line 94, in run_tts_task
+    output_dir = generate_all_TTS_with_emotion(
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\process_generate_emotion_audio.py", line 137, in generate_all_TTS_with_emotion
+    multi_input_multi_ref_run_inference(ref_data,text_data,output_dir,last_folder_name)
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\F5-TTS\src\f5_tts\infer\infer_cli.py", line 871, in multi_input_multi_ref_run_inference
+    character_true_identity = sentence_data['identity']
+KeyError: 'identity'
+2025-05-16 14:18:14,203 - tts_task - ERROR - TaskID: 8f2e7924-6bf4-4b22-ad9b-dfe9889101a2 - Folder: ca74b063-0604-44a3-8666-62916477c0e9 - Message: Error in TTS task: 'identity'
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\app.py", line 94, in run_tts_task
+    output_dir = generate_all_TTS_with_emotion(
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\process_generate_emotion_audio.py", line 137, in generate_all_TTS_with_emotion
+    multi_input_multi_ref_run_inference(ref_data,text_data,output_dir,last_folder_name)
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\F5-TTS\src\f5_tts\infer\infer_cli.py", line 871, in multi_input_multi_ref_run_inference
+    character_true_identity = sentence_data['identity']
+KeyError: 'identity'
+2025-05-16 14:21:41,142 - tts_task - ERROR - TaskID: 881c2717-777e-4377-8d37-49085518cf0c - Folder: ca74b063-0604-44a3-8666-62916477c0e9 - Message: Error in TTS task: 'identity'
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\app.py", line 94, in run_tts_task
+    output_dir = generate_all_TTS_with_emotion(
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\process_generate_emotion_audio.py", line 137, in generate_all_TTS_with_emotion
+    multi_input_multi_ref_run_inference(ref_data,text_data,output_dir,last_folder_name)
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\F5-TTS\src\f5_tts\infer\infer_cli.py", line 872, in multi_input_multi_ref_run_inference
+    character_true_identity = sentence_data['identity']
+KeyError: 'identity'

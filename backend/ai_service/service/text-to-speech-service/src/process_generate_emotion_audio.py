@@ -84,7 +84,9 @@ def load_text_data_from_json_dir(json_dir: str) -> List[List[Dict[str, str]]]:
                             'sentence': sentence.get('sentence', ''),
                             'emotion': sentence.get('emotion', 'neutral'),
                             'voice_actor': sentence.get('voice_actor', 'default'),
-                            'gender': str(sentence.get('gender', 'female')).lower()
+                            'gender': str(sentence.get('gender', 'female')).lower(),
+                            'character': str(sentence.get('character', 'Narrator')),
+                            'identity': str(sentence.get('identity', 'Narrator'))
                         }
                         processed_item.append(processed_sentence)
                     
@@ -96,7 +98,7 @@ def load_text_data_from_json_dir(json_dir: str) -> List[List[Dict[str, str]]]:
     
     return text_data
 
-def generate_all_TTS_with_emotion(narrative_annotation_dir = r"D:\FINAL_CODE\backend\ai_service\data\context_data\character_label_data\constant_id_4",
+def generate_all_TTS_with_emotion(narrative_annotation_dir = r"D:\FINAL_CODE\backend\ai_service\data\context_data\character_label_data\ca74b063-0604-44a3-8666-62916477c0e9",
                                   emotion_audio_dir = r"D:\FINAL_CODE\backend\ai_service\data\voice_data\reference_voice_data\emotion_voices",
                                   transcript_emotion_dir = r"D:\FINAL_CODE\backend\ai_service\data\voice_data\reference_voice_data\emotion_voices_transcript",
                                   output_dir = r"D:\FINAL_CODE\backend\ai_service\data\voice_data\temporary_output_voice_data\text_to_speech"):
@@ -106,10 +108,17 @@ def generate_all_TTS_with_emotion(narrative_annotation_dir = r"D:\FINAL_CODE\bac
     output_dir = os.path.abspath(output_dir)
     last_folder_name = os.path.basename(narrative_annotation_dir)
 
+
     output_dir = os.path.join(output_dir, last_folder_name)
 
     ref_data = create_ref_data(emotion_audio_dir,transcript_emotion_dir)
     text_data = load_text_data_from_json_dir(narrative_annotation_dir)
+    
+    # print(ref_data)
+    # print(narrative_annotation_dir)
+    # print(emotion_audio_dir)
+    # print(transcript_emotion_dir)
+    # print(output_dir)
 
     current_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -126,6 +135,8 @@ def generate_all_TTS_with_emotion(narrative_annotation_dir = r"D:\FINAL_CODE\bac
     from f5_tts import multi_input_multi_ref_run_inference
 
     multi_input_multi_ref_run_inference(ref_data,text_data,output_dir,last_folder_name)
+
+    print("Finished generate emotion audio")
     
     return output_dir
 

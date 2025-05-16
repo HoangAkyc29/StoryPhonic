@@ -480,6 +480,11 @@ def extract_character_names(json_file_path):
         with open(json_file_path, 'r', encoding='utf-8') as f:
             text = f.read()
             data = clean_json(text)
+
+            if not data.get("characters") and data.get("updated_characters"):
+                # Nếu cả hai điều kiện trên đúng, thực hiện gán
+                data["characters"] = data["updated_characters"]
+                
     except FileNotFoundError:
         print(f"Error: File not found at {json_file_path}")
         return []

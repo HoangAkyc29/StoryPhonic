@@ -790,6 +790,16 @@ def multi_input_multi_ref_run_inference(
     save_chunk = save_chunk or config.get("save_chunk", False)
     remove_silence = remove_silence or config.get("remove_silence", False)
 
+    # print("Hello")
+    # import torch
+    # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    # print(f"[DEBUG] Using device: {device}")
+    # print("CUDA available:", torch.cuda.is_available())
+    # print("CUDA version:", torch.version.cuda)
+    # print("Torch version:", torch.__version__)
+    # print("GPU count:", torch.cuda.device_count())
+    # print("GPU name:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "None")
+
     # --- Load Model and Vocoder (only if not already loaded) ---
     if _loaded_model is None:
         if model == "F5-TTS":
@@ -809,8 +819,10 @@ def multi_input_multi_ref_run_inference(
                 ckpt_file = str(cached_path(f"hf://SWivid/E2-TTS/E2TTS_Base/model_1200000.safetensors"))
 
         print(f"Loading {model} model...")
+
         _loaded_model = load_model(model_cls, model_cfg, ckpt_file, mel_spec_type=vocoder_name, vocab_file=vocab_file)
 
+        print("Finished Loading model F5-TTS")
     if _loaded_vocoder is None:
         if vocoder_name == "vocos":
             vocoder_local_path = "../checkpoints/vocos-mel-24khz"
@@ -850,6 +862,7 @@ def multi_input_multi_ref_run_inference(
         }
 
     # --- Now process each text item ---
+    print("Process all text item...")
     for x, item in enumerate(text_data):
         for y, sentence_data in enumerate(item):
             gen_text = sentence_data['sentence']
@@ -858,6 +871,9 @@ def multi_input_multi_ref_run_inference(
             character_in_story = sentence_data['character']
             character_true_identity = sentence_data['identity']
             gender = sentence_data['gender'].lower()
+
+            print(f"Process item {gen_text}")
+
             if not gender:
                 gender = "male"
             if gender == "None":
@@ -877,6 +893,7 @@ def multi_input_multi_ref_run_inference(
             # Updated output filename format with x and y indices
             output_file = f"chunk_{x}_{y}_voice-actor_{choosen_voice_actor}_char-name_{character_in_story}_true-identity_{character_true_identity}.wav"
             wave_path = os.path.join(ref_output_dir, output_file)
+            print(f"Saving audio to {wave_path}")
 
             generated_audio_segments = []
             chunks = re.split(r"(?=\[\w+\])", gen_text)  # Voice tag splitting
