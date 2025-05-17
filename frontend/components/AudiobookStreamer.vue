@@ -14,16 +14,21 @@
       Your browser does not support the audio element.
     </audio>
     <div v-else class="audio-missing">No audio file available.</div>
-    <div class="meta-info">
-      <p><strong>Metadata:</strong> <span v-if="metadata">Loaded</span><span v-else>Loading...</span></p>
-      <p><strong>Chunk annotations:</strong> <span v-if="chunkAnnotations.length">Loaded ({{ chunkAnnotations.length }})</span><span v-else>Loading...</span></p>
+
+    <!-- Sentence display -->
+    <div v-if="currentSentenceObj" class="sentence-highlight-box">
+      <span class="sentence-highlight">
+        <span class="read-part">{{ highlightedSentence.read }}</span><span class="unread-part">{{ highlightedSentence.unread }}</span>
+      </span>
     </div>
     <div v-if="currentMeta" class="current-meta-box">
-      <h4>Current Metadata</h4>
+      <h4>Metadata Information</h4>
       <p><b>Character:</b> {{ currentMeta.character_name }}</p>
       <p><b>Voice Actor:</b> {{ currentMeta.voice_actor }}</p>
       <p><b>True Identity:</b> {{ currentMeta.true_identity }}</p>
       <p><b>Time Start:</b> {{ currentMeta.time_start }}</p>
+      <p><b>Time End:</b> {{ currentMeta.time_end }}</p>
+      <p v-if="currentSentenceObj"><b>Emotion:</b> {{ displayEmotion }}</p>
     </div>
   </div>
 </template>
@@ -41,6 +46,17 @@ interface MetadataItem {
   time_end: number;
 }
 
+interface SentenceObj {
+  sentence: string;
+  type: string;
+  character: string;
+  emotion: string;
+  index: number;
+  identity: string;
+  voice_actor: string;
+  gender?: string;
+}
+
 interface ChunkAnnotation {
   id: string;
   novel: string;
@@ -51,6 +67,7 @@ interface ChunkAnnotation {
   created_at: string;
   updated_at: string;
   is_deleted: boolean;
+  parsed_clean?: SentenceObj[];
 }
 
 interface Novel {
@@ -77,6 +94,40 @@ const currentMeta = computed(() => {
     .sort((a, b) => b.time_start - a.time_start)[0] || null
 })
 
+const currentSentenceObj = computed(() => {
+  if (!currentMeta.value) return null
+  const { index_x, index_y } = currentMeta.value
+  const chunk = chunkAnnotations.value.find(c => c.index === index_x)
+  if (!chunk || !chunk.parsed_clean) return null
+  return chunk.parsed_clean.find((item: SentenceObj) => item.index === index_y) || null
+})
+
+const sentenceProgress = computed(() => {
+  if (!currentMeta.value || !audioRef.value) return 0
+  const { time_start, time_end } = currentMeta.value
+  const duration = time_end - time_start
+  if (duration <= 0) return 1
+  const progress = (currentTime.value - time_start) / duration
+  return Math.max(0, Math.min(1, progress))
+})
+
+const highlightedSentence = computed(() => {
+  if (!currentSentenceObj.value) return { read: '', unread: '' }
+  const sentence = currentSentenceObj.value.sentence || ''
+  const len = sentence.length
+  const numRead = Math.round(len * sentenceProgress.value)
+  return {
+    read: sentence.slice(0, numRead),
+    unread: sentence.slice(numRead)
+  }
+})
+
+const displayEmotion = computed(() => {
+  if (!currentMeta.value || !currentSentenceObj.value) return ''
+  if (currentMeta.value.voice_actor === 'Narrator') return 'neutral'
+  return currentSentenceObj.value.emotion
+})
+
 function formatDate(dateStr: string) {
   if (!dateStr) return ''
   return new Date(dateStr).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
@@ -96,6 +147,15 @@ async function fetchChunkAnnotations(novelId: string) {
     })
     if (!res.ok) throw new Error('Failed to fetch chunk annotations')
     const data = await res.json()
+    // Parse clean_text cho từng annotation
+    data.forEach((item: ChunkAnnotation) => {
+      try {
+        item.parsed_clean = JSON.parse(item.clean_text)
+      } catch (e) {
+        console.error('Failed to parse clean_text', e)
+        item.parsed_clean = []
+      }
+    })
     chunkAnnotations.value = data
     console.log('Chunk annotations:', data)
   } catch (e) {
@@ -159,5 +219,31 @@ watch(() => props.novel, (n, o) => {
 .current-meta-box h4 {
   margin-bottom: 0.7rem;
   color: #0ea5e9;
+}
+.sentence-highlight-box {
+  margin: 2.2rem 0 1.2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.sentence-highlight {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-align: justify;
+  line-height: 1.4;
+  min-height: 2.5rem;
+  display: inline-block;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.read-part {
+  color: #0ea5e9;
+  transition: color 0.2s;
+}
+.unread-part {
+  color: #b6c2d1;
+  transition: color 0.2s;
 }
 </style> 
