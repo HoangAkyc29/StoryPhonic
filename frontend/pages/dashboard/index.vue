@@ -33,12 +33,7 @@
       <div class="workspace-pipeline">
         <PipelineSteps :currentStep="currentProject?.currentStep || 1" :status="currentProject?.status || ''" :novel="currentProject" />
       </div>
-      <div v-if="currentProject?.status === 'completed' || currentProject?.status === 'done'" class="workspace-audio">
-        <h3>Listen & Fine-tune Your Audiobook</h3>
-        <div class="audio-player-demo">
-          <span>Audio player & tuning UI coming soon...</span>
-        </div>
-      </div>
+      <AudiobookStreamer v-if="currentProject?.status === 'completed' || currentProject?.status === 'done'" :novel="currentProject" />
     </template>
   </div>
 </template>
@@ -47,6 +42,7 @@
 import { ref, computed, inject } from 'vue'
 import PipelineSteps from '~/components/PipelineSteps.vue'
 import ProjectModal from '~/components/ProjectModal.vue'
+import AudiobookStreamer from '~/components/AudiobookStreamer.vue'
 
 const novels = inject('novels', ref([])) // Giá trị mặc định là mảng rỗng
 const selectedNovelId = inject('selectedNovelId', ref(''))
