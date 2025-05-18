@@ -22,13 +22,18 @@
       </span>
     </div>
     <div v-if="currentMeta" class="current-meta-box">
-      <h4>Metadata Information</h4>
-      <p><b>Character:</b> {{ currentMeta.character_name }}</p>
-      <p><b>Voice Actor:</b> {{ currentMeta.voice_actor }}</p>
-      <p><b>True Identity:</b> {{ currentMeta.true_identity }}</p>
-      <p><b>Time Start:</b> {{ currentMeta.time_start }}</p>
-      <p><b>Time End:</b> {{ currentMeta.time_end }}</p>
-      <p v-if="currentSentenceObj"><b>Emotion:</b> {{ displayEmotion }}</p>
+      <h4>
+        <span class="meta-icon">ℹ️</span>
+        Metadata Information
+      </h4>
+      <ul class="meta-list">
+        <li><span class="meta-icon">👤</span> <b>Character:</b> {{ currentMeta.character_name }}</li>
+        <li><span class="meta-icon">🎤</span> <b>Voice Actor:</b> {{ currentMeta.voice_actor }}</li>
+        <li><span class="meta-icon">🕵️‍♂️</span> <b>True Identity:</b> {{ currentMeta.true_identity }}</li>
+        <li><span class="meta-icon">⏱️</span> <b>Time Start:</b> {{ currentMeta.time_start }}</li>
+        <li><span class="meta-icon">⏱️</span> <b>Time End:</b> {{ currentMeta.time_end }}</li>
+        <li v-if="currentSentenceObj"><span class="meta-icon">😊</span> <b>Emotion:</b> {{ displayEmotion }}</li>
+      </ul>
     </div>
   </div>
 </template>
@@ -187,38 +192,27 @@ watch(() => props.novel, (n, o) => {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
 .audiobook-streamer {
-  background: #fff;
-  border-radius: 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-  padding: 2rem;
+  font-family: 'Inter', Arial, sans-serif;
+  background: #f8fafc;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  padding: 2.5rem 2rem 2rem 2rem;
   margin-top: 2rem;
   text-align: center;
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
+  transition: box-shadow 0.2s;
+}
+.audiobook-streamer:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.13);
 }
 .audio-missing {
   color: #ef4444;
   margin: 1.5rem 0;
-}
-.meta-info {
-  margin-top: 1.5rem;
-  color: #888;
-  font-size: 1.05rem;
-}
-.current-meta-box {
-  margin-top: 2rem;
-  background: #f0f9ff;
-  border-radius: 0.7rem;
-  padding: 1.2rem 1.5rem;
-  display: inline-block;
-  text-align: left;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-}
-.current-meta-box h4 {
-  margin-bottom: 0.7rem;
-  color: #0ea5e9;
 }
 .sentence-highlight-box {
   margin: 2.2rem 0 1.2rem 0;
@@ -245,5 +239,45 @@ watch(() => props.novel, (n, o) => {
 .unread-part {
   color: #b6c2d1;
   transition: color 0.2s;
+}
+.current-meta-box {
+  margin-top: 2rem;
+  background: #e0f2fe;
+  border-radius: 1rem;
+  padding: 1.5rem 2rem;
+  display: inline-block;
+  text-align: left;
+  box-shadow: 0 2px 8px rgba(14,165,233,0.08);
+  min-width: 270px;
+  animation: fadeIn 0.7s;
+}
+.current-meta-box h4 {
+  margin-bottom: 1.1rem;
+  color: #0ea5e9;
+  font-weight: 700;
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+}
+.meta-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.meta-list li {
+  margin-bottom: 0.5rem;
+  font-size: 1.08rem;
+  color: #334155;
+  display: flex;
+  align-items: center;
+}
+.meta-icon {
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px);}
+  to { opacity: 1; transform: translateY(0);}
 }
 </style> 
