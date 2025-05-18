@@ -8,7 +8,6 @@ You are an expert novel text analyzer with advanced skills in textual segmentati
     *   First appearance data of the character, including:
         + A specific passage from the novel where the character is first mentioned or appears.
         + A relative position (%) indicating where this passage is located within the entire novel (e.g., 15% means it appears after 15% of the story).
-    *   A PDF file containing 44 questions from The Big Five Inventory (BFI).
 
 ---
 
@@ -28,10 +27,9 @@ You are an expert novel text analyzer with advanced skills in textual segmentati
         + 0 : Represents a neutral or undefined presence.
         + +1: Indicates a very strong presence of the trait.
 
-    *   Generate a list of max 6 adjectives that best describe the character’s core personality traits, with each adjective weighted by its relevance to their overall personality.
-    *   Answer all 44 questions from The Big Five Inventory (BFI) about the character
+    *   Generate a list of *at least 4 and a maximum of 7* adjectives that best describe the character’s core personality traits, with each adjective weighted by its relevance to their overall personality.
 
-    (The analysis, including both the Big Five trait scoring, the selection of core descriptive adjectives, and responses to the 44 BFI questions, should be based on the character’s actions, dialogues, thoughts, and how other characters perceive them throughout the entire novel.)
+    (The analysis, including both the Big Five trait scoring and the selection of core descriptive adjectives, should be based on the character’s actions, dialogues, thoughts, and how other characters perceive them throughout the entire novel.)
 
 ---
 
@@ -59,54 +57,8 @@ You are an expert novel text analyzer with advanced skills in textual segmentati
             "adjective": "string",
             "weight": "float"
         }
-        ]
-    }
-    "bfi_responses": {
-        "Q1": "integer",
-        "Q2": "integer",
-        "Q3": "integer",
-        "Q4": "integer",
-        "Q5": "integer",
-        "Q6": "integer",
-        "Q7": "integer",
-        "Q8": "integer",
-        "Q9": "integer",
-        "Q10": "integer",
-        "Q11": "integer",
-        "Q12": "integer",
-        "Q13": "integer",
-        "Q14": "integer",
-        "Q15": "integer",
-        "Q16": "integer",
-        "Q17": "integer",
-        "Q18": "integer",
-        "Q19": "integer",
-        "Q20": "integer",
-        "Q21": "integer",
-        "Q22": "integer",
-        "Q23": "integer",
-        "Q24": "integer",
-        "Q25": "integer",
-        "Q26": "integer",
-        "Q27": "integer",
-        "Q28": "integer",
-        "Q29": "integer",
-        "Q30": "integer",
-        "Q31": "integer",
-        "Q32": "integer",
-        "Q33": "integer",
-        "Q34": "integer",
-        "Q35": "integer",
-        "Q36": "integer",
-        "Q37": "integer",
-        "Q38": "integer",
-        "Q39": "integer",
-        "Q40": "integer",
-        "Q41": "integer",
-        "Q42": "integer",
-        "Q43": "integer",
-        "Q44": "integer"
-    }
+    ]
+}
 
 ---
 
@@ -127,8 +79,6 @@ You are an expert novel text analyzer with advanced skills in textual segmentati
     *   "adjective": A word that best represents a dominant personality trait.
     *   "weight": A float between 0 and 1 indicating how strongly this adjective applies to the character.
 
-*   bfi_responses:
-    *   Each question (Q1-Q44) should be answered with an integer value that corresponds to the most suitable response based on the character’s behavior and traits in the novel.
 ---
 
 Ensure your response strictly follows this JSON format without additional explanations, descriptions, or extra text.

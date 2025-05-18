@@ -119,3 +119,20 @@ Traceback (most recent call last):
   File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\extract_character_personality\extract_character_personality.py", line 141, in create_character_analysis_prompts
     for character, details in context_memory['characters'].items():
 KeyError: 'characters'
+2025-05-18 18:16:14,999 - generate_label_data_task - ERROR - TaskID: 34b8904e-b180-4817-a6b5-7d89fcd16842 - InputID: 9634b5a4-299c-4d16-9d26-7b6613ef8b58 - Message: Error in generate_label_data_main: Weights sum to zero, can't be normalized
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\app.py", line 89, in run_label_data_task
+    result_dirs = generate_label_data_main(
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\generate_label_data.py", line 438, in generate_label_data_main
+    personality_mapper_main(validate_identity_character_personality_output_dir,voice_personality_dir,voice_personality_by_lore_dir, sentence_transformer_model,character_voice_mapper_dir) #tạo ra bộ điểm tương đồng giữa nhân vật trong story và các voice actor (top 10) (output nằm trong personality_mapper_data)
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\character_voice_mapper.py", line 249, in personality_mapper_main
+    return find_n_most_similar_in_group_b(characters_a,characters_b,sentence_transformer_model,output_path,age_weight,OCEAN_weight,trait_weight,n)
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\character_voice_mapper.py", line 112, in find_n_most_similar_in_group_b
+    similarity = calculate_similarity(
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\character_voice_mapper.py", line 60, in calculate_similarity
+    traits1 = get_character_embedding(char1_data, model)
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\character_voice_mapper.py", line 27, in get_character_embedding
+    weighted_embedding = np.average(trait_embeddings, axis=0, weights=trait_weights)
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\venv\lib\site-packages\numpy\lib\_function_base_impl.py", line 565, in average
+    raise ZeroDivisionError(
+ZeroDivisionError: Weights sum to zero, can't be normalized
