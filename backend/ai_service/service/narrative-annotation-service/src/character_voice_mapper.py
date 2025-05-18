@@ -10,23 +10,62 @@ from .model_loader import sentence_transformer_model_loader
 
 sentence_transformer_model = sentence_transformer_model_loader()
 
+DEFAULT_CROWD_CHARACTER = {
+    "traits": {
+        "Compliant": 0.6,
+        "Average": 0.7,
+        "Agreeable": 0.5,
+        "Passive": 0.4
+    }
+}
+
 def get_character_embedding(character_data: dict, model) -> np.ndarray:
     """
-    Calculates trait embedding.
+    Calculates trait embedding.  Uses default traits for crowd characters
+    if data is missing or invalid, or if any weight is invalid.
     """
     trait_embeddings = []
     trait_weights = []
+    use_default = False
+
+    if not character_data["traits"]:
+        use_default = True
+    else:
+        for trait, weight in character_data["traits"].items():
+            try:
+                weight = float(weight)
+                if weight < 0:
+                    use_default = True  # Use default if any weight is negative
+                    break
+            except:
+                use_default = True  # Use default if any weight is invalid
+                break
+        if use_default:
+            print("Warning: Invalid weight found. Using default crowd character traits.")
+
+
+    if use_default:
+        character_data = DEFAULT_CROWD_CHARACTER
+
 
     for trait, weight in character_data["traits"].items():
-        embedding = model.encode(trait, convert_to_tensor=False)
-        trait_embeddings.append(embedding)
-        trait_weights.append(weight)
+        try:
+            weight = float(weight)
+            if weight < 0:
+                continue # Skip negative weights (shouldn't happen now, but just in case)
+            embedding = model.encode(trait, convert_to_tensor=False)
+            trait_embeddings.append(embedding)
+            trait_weights.append(weight)
+        except:
+            continue # Skip invalid traits/weights
 
     trait_embeddings = np.array(trait_embeddings)
-    trait_weights = np.array(trait_weights)
-    weighted_embedding = np.average(trait_embeddings, axis=0, weights=trait_weights)
+    trait_weights = np.array(trait_weights, dtype=float)
 
-    return weighted_embedding
+    if trait_weights.sum() == 0:
+        return np.zeros(model.encode("").shape) # Return zero vector if no valid weights
+
+    return np.average(trait_embeddings, axis=0, weights=trait_weights)
 
 def calculate_similarity(char1_data, char2_data, model, age_weight = 0.4, OCEAN_weight = 0.3, trait_weight = 0.3):
     """
