@@ -13,7 +13,13 @@
       </div>
       <div class="workspace-box">
         <div class="input-options">
-          <textarea v-model="newProjectText" class="story-input" :disabled="!!uploadedFile" :class="{ disabled: !!uploadedFile }" placeholder="Type or paste your story here..."></textarea>
+          <textarea 
+            v-model="newProjectText" 
+            class="story-input" 
+            :disabled="!!uploadedFile" 
+            :class="{ disabled: !!uploadedFile }" 
+            placeholder="Type or paste your story here..."
+          ></textarea>
           <div class="divider">or</div>
           <label v-if="!uploadedFile" class="file-upload">
             <input type="file" accept=".docx,.txt,.pdf" style="display:none" @change="handleFileUpload" />
@@ -40,38 +46,45 @@
 
 <script setup lang="ts">
 import { ref, computed, inject } from 'vue'
-import PipelineSteps from '~/components/PipelineSteps.vue'
+import { useNovels } from '~/composables/useNovels'
+import type { Novel } from '~/types/novel'
 import ProjectModal from '~/components/ProjectModal.vue'
+import PipelineSteps from '~/components/PipelineSteps.vue'
 import AudiobookStreamer from '~/components/AudiobookStreamer.vue'
 
-const novels = inject('novels', ref([])) // Giá trị mặc định là mảng rỗng
+const { createNovel } = useNovels()
+const novels = inject('novels', ref<Novel[]>([]))
 const selectedNovelId = inject('selectedNovelId', ref(''))
 const selectNovel = inject('selectNovel', () => {})
 const currentProject = computed(() => {
   if (!novels?.value || !selectedNovelId?.value) return null
   return novels.value.find(p => p.id === selectedNovelId.value) || null
 })
+
 const showNameModal = ref(false)
 const newProjectText = ref('')
 const uploadedFile = ref<File|null>(null)
 const fileError = ref('')
 
 const canStart = computed(() => {
-  return !!newProjectText.value.trim() || !!uploadedFile.value
+  return (!!newProjectText.value.trim() && !uploadedFile.value) || (!!uploadedFile.value && !newProjectText.value.trim())
 })
 
 function handleFileUpload(e: Event) {
   const file = (e.target as HTMLInputElement).files?.[0]
   if (!file) return
-  // const allowed = ['application/pdf', 'text/plain', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
+  
   const ext = file.name.split('.').pop()?.toLowerCase()
   if (!['pdf','txt','docx'].includes(ext || '')) {
     fileError.value = 'Only .docx, .txt, or .pdf files are allowed.'
     return
   }
+  
   fileError.value = ''
   uploadedFile.value = file
+  newProjectText.value = '' // Clear text when file is uploaded
 }
+
 function removeFile() {
   uploadedFile.value = null
 }
@@ -83,23 +96,25 @@ function handleNameConfirm(name: string) {
     alert('Project name can only contain letters, numbers, spaces, dash (-), and underscore (_).')
     return
   }
-  // Add new project to list and select it
-  const id = Date.now().toString()
-  novels.value.unshift({
-    id,
+
+  const novelData = {
     name,
-    progress: 0,
-    lastEdit: 'just now',
-    status: 'processing',
-    currentStep: 1
-  })
-  selectNovel(id)
-  showNameModal.value = false
-  newProjectText.value = ''
-  uploadedFile.value = null
+    ...(uploadedFile.value ? { content_file: uploadedFile.value } : { content: newProjectText.value.trim() })
+  }
+
+  createNovel(novelData)
+    .then(_responseData => {
+      showNameModal.value = false
+      newProjectText.value = ''
+      uploadedFile.value = null
+      // Handle successful creation - you might want to redirect or update UI
+    })
+    .catch(error => {
+      alert('Failed to create project: ' + error.message)
+    })
 }
 
-// Thêm layout dashboard cho Nuxt 3
+// Add dashboard layout for Nuxt 3
 definePageMeta({
   layout: 'dashboard'
 })

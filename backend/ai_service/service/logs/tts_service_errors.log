@@ -87,3 +87,21 @@ Traceback (most recent call last):
   File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\F5-TTS\src\f5_tts\infer\infer_cli.py", line 872, in multi_input_multi_ref_run_inference
     character_true_identity = sentence_data['identity']
 KeyError: 'identity'
+2025-05-18 19:24:41,027 - tts_task - ERROR - TaskID: 4d4bc726-3658-4716-a913-32b1435adb9e - Folder: 9634b5a4-299c-4d16-9d26-7b6613ef8b58 - Message: Error in TTS task: 'mild-trust_none'
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\app.py", line 94, in run_tts_task
+    output_dir = generate_all_TTS_with_emotion(
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\process_generate_emotion_audio.py", line 137, in generate_all_TTS_with_emotion
+    multi_input_multi_ref_run_inference(ref_data,text_data,output_dir,last_folder_name)
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\F5-TTS\src\f5_tts\infer\infer_cli.py", line 908, in multi_input_multi_ref_run_inference
+    if voice not in voices[choosen_ref]:
+KeyError: 'mild-trust_none'
+2025-05-19 02:51:30,872 - tts_task - ERROR - TaskID: ab3c81bb-522c-4573-b0b9-a0ca60e1c7c1 - Folder: f1c7dd5a-61a2-4440-8720-0ca007be5b55 - Message: Error in TTS task: [Errno 2] No such file or directory: 'D:\\FINAL_CODE\\backend\\ai_service\\data\\voice_data\\temporary_output_voice_data\\text_to_speech\\f1c7dd5a-61a2-4440-8720-0ca007be5b55\\chunk_118_8_voice-actor_default_char-name_N/A_true-identity_Narrator.wav'
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\app.py", line 94, in run_tts_task
+    output_dir = generate_all_TTS_with_emotion(
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\process_generate_emotion_audio.py", line 137, in generate_all_TTS_with_emotion
+    multi_input_multi_ref_run_inference(ref_data,text_data,output_dir,last_folder_name)
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\F5-TTS\src\f5_tts\infer\infer_cli.py", line 937, in multi_input_multi_ref_run_inference
+    with open(wave_path, "wb") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\FINAL_CODE\\backend\\ai_service\\data\\voice_data\\temporary_output_voice_data\\text_to_speech\\f1c7dd5a-61a2-4440-8720-0ca007be5b55\\chunk_118_8_voice-actor_default_char-name_N/A_true-identity_Narrator.wav'
