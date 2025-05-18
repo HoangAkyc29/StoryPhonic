@@ -283,7 +283,7 @@ def personality_mapper_main(character_personality_output_dir = r"D:\FINAL_CODE\b
                             voice_personality_by_lore_dir = r"D:\FINAL_CODE\backend\modules\task_3\reference_voice_data\character_personality_mapping_by_lore",
                             model = sentence_transformer_model,
                             output_path = r"D:\FINAL_CODE\backend\modules\task_1\temporary_context_data\personality_mapper_data\constant_id_2.json",
-                            age_weight = 0.4, OCEAN_weight = 0.3, trait_weight = 0.3, n=10):
+                            age_weight = 0.4, OCEAN_weight = 0.3, trait_weight = 0.3, n=20):
     characters_a, characters_b = create_fit_format_input_data(character_personality_output_dir, voice_personality_dir, voice_personality_by_lore_dir)
     return find_n_most_similar_in_group_b(characters_a,characters_b,sentence_transformer_model,output_path,age_weight,OCEAN_weight,trait_weight,n)
 
