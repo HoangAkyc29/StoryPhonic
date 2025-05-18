@@ -136,3 +136,14 @@ Traceback (most recent call last):
   File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\venv\lib\site-packages\numpy\lib\_function_base_impl.py", line 565, in average
     raise ZeroDivisionError(
 ZeroDivisionError: Weights sum to zero, can't be normalized
+2025-05-19 00:53:45,508 - generate_label_data_task - ERROR - TaskID: 458ebf54-9082-4ea8-b6fb-78626d5152a2 - InputID: f1c7dd5a-61a2-4440-8720-0ca007be5b55 - Message: Error in generate_label_data_main: 'bfi_responses'
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\app.py", line 89, in run_label_data_task
+    result_dirs = generate_label_data_main(
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\generate_label_data.py", line 428, in generate_label_data_main
+    process_json_files_merging_same_character(character_personality_output_dir,validate_identity_character_personality_output_dir,sentence_transformer_model,0.85) #ghép các cặp nhân vật nhận diện là các cá thể khác nhau nhưng thực ra lại là cùng 1 nhân vật
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\validate_character_identity.py", line 207, in process_json_files_merging_same_character
+    merged_data = merge_group_files(group, json_files)
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\validate_character_identity.py", line 114, in merge_group_files
+    bfi = data['bfi_responses']
+KeyError: 'bfi_responses'
