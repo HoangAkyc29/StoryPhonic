@@ -107,7 +107,7 @@ function handleNameConfirm(name: string) {
       showNameModal.value = false
       newProjectText.value = ''
       uploadedFile.value = null
-      // Handle successful creation - you might want to redirect or update UI
+      window.location.reload() // Reload page to update sidebar
     })
     .catch(error => {
       alert('Failed to create project: ' + error.message)
