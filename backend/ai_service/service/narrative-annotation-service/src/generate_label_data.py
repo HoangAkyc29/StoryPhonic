@@ -34,6 +34,7 @@ from .character_voice_mapper import add_voice_actors, personality_mapper_main, c
 
 context_memory_instruction = get_context_memory_prompt()
 dialogue_analyzer_instruction = get_dialogue_analyzer_prompt()
+sentence_transformer_model = sentence_transformer_model_loader()
 
 
 alpaca_prompt = """Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.

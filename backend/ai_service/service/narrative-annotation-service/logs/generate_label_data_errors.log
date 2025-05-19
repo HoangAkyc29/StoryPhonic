@@ -147,3 +147,9 @@ Traceback (most recent call last):
   File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\validate_character_identity.py", line 114, in merge_group_files
     bfi = data['bfi_responses']
 KeyError: 'bfi_responses'
+2025-05-19 12:35:57,157 - generate_label_data_task - ERROR - TaskID: e845e038-0b7f-4aae-9dda-73ca122cc916 - InputID: constant_id_22 - Message: Error in generate_label_data_main: name 'sentence_transformer_model' is not defined
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\app.py", line 89, in run_label_data_task
+    result_dirs = generate_label_data_main(
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\generate_label_data.py", line 396, in generate_label_data_main
+NameError: name 'sentence_transformer_model' is not defined. Did you mean: 'sentence_transformer_model_loader'?
