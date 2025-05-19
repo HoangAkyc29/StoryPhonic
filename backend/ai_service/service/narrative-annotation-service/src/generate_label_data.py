@@ -21,7 +21,7 @@ from unsloth import FastLanguageModel
 
 import google.generativeai as genai
 
-model_name = "gemini-2.0-flash" #"gemini-2.5-flash-preview-04-17"
+model_name = "gemini-2.5-flash-preview-04-17" # "gemini-2.0-flash" #"gemini-2.5-flash-preview-04-17"
 
 from .other_service import read_file_content, update_first_context_summary, get_adjacent_text_chunks, merge_context_memory, delete_small_files, is_small_file, clean_json, extract_json_response, load_gemini_keys, merge_sentences, convert_txt_directory_to_json, extract_character_names, find_largest_suffix_file
 from .character_info_summarization import answer_update_context_memory_with_gemini, get_context_memory_input_query, get_context_memory_prompt
@@ -337,7 +337,7 @@ def generate_label_data_main(input_data, input_id, output_dir = r"D:\FINAL_CODE\
     print("Bắt đầu!")
 
     gemini_keys_from_env = load_gemini_keys()
-    gemini_key = gemini_keys_from_env[1]
+    gemini_key = gemini_keys_from_env[2]
     gemini_key_len = len(gemini_keys_from_env)
     break_outer = True
     retry_counter = 0

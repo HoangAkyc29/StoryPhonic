@@ -1987,3 +1987,525 @@ Well, I know my defenses will increase with my magical capacity, but have you se
 
 Error when answering with key AIzaSyClDHxly4yiOo7GXfDb1GqFpYRmGSzU9vE using gemini: Timeout of 600.0s exceeded, last exception: 503 failed to connect to all addresses; last error: UNKNOWN: ipv4:142.250.76.234:443: tcp handshaker shutdown.
 --------------------
+
+--------------------
+PREVIOUS CONTEXT MEMORY: 
+        {
+    "chunk_index": 61,
+    "recent_summaries": [
+        "Harry and the pale boy at Madam Malkin's continue their conversation, where the boy expresses prejudiced views against those from Muggle families. Harry reveals his parents are dead and that they were a witch and wizard. Hagrid buys Harry an ice cream, and Harry tells Hagrid about the boy's prejudice and asks about Quidditch.",
+        "Harry enters Madam Malkin's Robes for All Occasions and is fitted for his Hogwarts robes alongside a boy with a pale, pointed face. The boy boasts about his family's history in Slytherin and expresses disdain for Hufflepuff. He also discusses Quidditch and his desire to smuggle a broom into Hogwarts. Harry reveals that Hagrid, whom the boy dismisses as a servant, works at Hogwarts.",
+        "Hagrid and Harry retrieve money from Harry's vault. Then, they visit vault 713, where Hagrid retrieves a mysterious package for Dumbledore. Hagrid then suggests Harry get his uniform at Madam Malkin's while he gets a drink at the Leaky Cauldron.",
+        "Hagrid reveals the entrance to Diagon Alley by tapping a specific spot on a brick wall in the Leaky Cauldron's courtyard. They enter Diagon Alley, and Harry is overwhelmed by the sights and sounds of the wizarding shopping street, including various shops selling cauldrons, potion ingredients, broomsticks, and owls. They head towards Gringotts.",
+        "Inside Gringotts, Harry and Hagrid encounter more goblins and are led to Harry's vault to retrieve money for school supplies. Hagrid also has a mission from Dumbledore regarding vault 713, but keeps the details a secret from Harry. They are warned about the consequences of greed and theft within Gringotts."
+    ],
+    "characters": {
+        "Harry Potter": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "10-11",
+            "first_appearance_index": 4,
+            "last_appearance_index": 61,
+            "number_of_appearances": 47,
+            "brief_description": "The orphaned son of Lily and James Potter, now around ten years old. He lives in Dudley's second bedroom, having moved from the cupboard under the stairs. He is small and skinny for his age due to his living conditions. He wears Dudley's old clothes and round glasses held together with tape. He has a lightning-shaped scar on his forehead and bright green eyes. Strange things tend to happen around him, which he cannot explain. He can seemingly communicate with snakes and is punished for the boa constrictor's escape from the zoo. He is an outcast at school dueley's influence. He anticipates attending Stonewall High, where he won't be with Dudley. He is surprised and excited to receive his first letter, but Uncle Vernon prevents him from reading it. He grabs Uncle Vernon around the neck to try and get his letter. He plans to intercept the postman to get his letters but is thwarted by Uncle Vernon. He attempts to catch the letters pouring out of the fireplace. He is aware that someone knows he has moved out of his cupboard and that he hasn't received his first letter. He is taken away by the Dursleys to escape the letters. He is taken to a shack on a rock in the sea by the Dursleys, where he anticipates his eleventh birthday and wonders if they will remember it. He hears knocking on the door as his birthday arrives. Hagrid arrives and confirms his resemblance to his parents. He receives a birthday cake from Hagrid and is too overwhelmed to thank him properly. He is unaware of his parents' fame and is shocked to learn that he should know about Hogwarts. He is told he is a wizard and receives his acceptance letter to Hogwarts. He learns that he is a wizard and that his parents did not die in a car crash. He learns about Voldemort and his parents' defiance. He learns that Voldemort killed his parents and tried to kill him, but failed, leaving him with a scar. He learns that Voldemort disappeared the same night he tried to kill him. He doubts that he is a wizard, but recalls odd things happening when he was upset or angry, such as escaping Dudley's gang, regrowing his hair, and setting a boa constrictor on Dudley. He is going to Hogwarts. He sleeps under Hagrid's coat. He wakes up in the hut and is happy to see the sunlight and the owl. He realizes he has no money to buy his school supplies. He learns that his parents left him money in Gringotts, the wizarding bank. He learns that Gringotts is located hundreds of miles under London. He learns that there is a Ministry of Magic that keeps magic a secret from Muggles. He is going to London to buy his school supplies. He is taken to the Leaky Cauldron by Hagrid, and is surprised when everyone recognizes him and welcomes him back. He is greeted as a celebrity at the Leaky Cauldron and meets Professor Quirrell. He is amazed by Diagon Alley. He is about to withdraw money from his vault. He is surprised to see his vault filled with gold coins, silver, and bronze Knuts. He now has a bag full of money, more than he or even Dudley has ever had. He is getting fitted for his Hogwarts robes at Madam Malkin's and meets another boy who is also starting at Hogwarts. He is upset by the pale boy's prejudice and asks Hagrid about Quidditch.",
+            "relations": {
+                "Lily Potter": "mother",
+                "James Potter": "father",
+                "Dudley": "punch-bag"
+            }
+        },
+        "Hagrid": {
+            "aliases": [
+                "Rubeus Hagrid"
+            ],
+            "gender": "Male",
+            "approximate_age_range": "40-60",
+            "first_appearance_index": 11,
+            "last_appearance_index": 61,
+            "number_of_appearances": 26,
+            "brief_description": "A giant of a man, almost twice as tall as a normal man and five times as wide, with long tangles of bushy black hair and beard hiding most of his face. He has hands the size of dustbin lids and feet in leather boots like baby dolphins. He is trusted by Dumbledore and is tasked with bringing Harry to the Dursleys. He is emotional about leaving Harry. He knocks down the door of the shack on the rock. He wishes Harry a happy birthday and confirms his resemblance to his parents. He disarms Uncle Vernon by bending his rifle into a knot. He gives Harry a squashed birthday cake, conjures a fire in the fireplace, cooks sausages, and offers them to Harry. He drinks from a bottle of amber liquid. He is the Keeper of Keys and Grounds at Hogwarts. He is shocked that Harry knows nothing about Hogwarts or his parents' fame. He is enraged that the Dursleys never told Harry about the letter Dumbledore left for him. He reveals to Harry that he is a wizard and gives him his acceptance letter to Hogwarts. He sends a message via owl to Dumbledore. He defines 'Muggle' and is outraged that Harry doesn't know the truth about his parents' death. He explains Voldemort's rise to power and the dangers of that time. He explains that Voldemort killed Harry's parents and tried to kill him, but failed. He explains that Voldemort disappeared the same night he tried to kill Harry. He threatens Uncle Vernon with his umbrella when he insults Harry's parents. He reminds Harry of the odd things that have happened when he was scared or angry to prove he is a wizard. He insists that Harry will attend Hogwarts, leading to a confrontation with Uncle Vernon. He asserts that Harry's name has been down for Hogwarts since birth and that he will be under Dumbledore's tutelage. He turns Dudley into a pig, but fails. He was expelled from Hogwarts in his third year and his wand was snapped in half, but Dumbledore let him stay on as gamekeeper. He is not supposed to do magic. He is asleep on the collapsed sofa. He tells Harry to pay the owl for delivering the newspaper and to use Knuts. He is pulling on his huge boots. He reassures Harry that his parents left him money. He explains that they will be visiting Gringotts, the wizarding bank run by goblins. He also needs to visit Gringotts for Dumbledore. He uses magic to speed up the boat journey back to the mainland, but asks Harry not to mention it. He reads the Daily Prophet. He explains the role of the Ministry of Magic and its Minister, Cornelius Fudge. He expresses his desire to own a dragon. He knits what looks like a canary-yellow circus tent. He is unfamiliar with Muggle transportation. He takes Harry to the Leaky Cauldron. He introduces Harry to Professor Quirrell and explains that he is usually nervous. He reveals the entrance to Diagon Alley by tapping a specific spot on a brick wall in the Leaky Cauldron's courtyard. He is taking Harry to Gringotts to get money from his vault and to complete a task for Dumbledore. He struggles to fit in the cart in Gringotts and looks green and sick during the ride. He explains the wizarding currency to Harry. He retrieves a mysterious package from vault 713 for Dumbledore. He hates the Gringotts carts and wants a pick-me-up at the Leaky Cauldron. He waits for Harry outside Madam Malkin's, pointing at two ice-creams to indicate he can't come in. He buys Harry chocolate and raspberry ice-cream with chopped nuts. He comforts Harry after the pale boy's prejudice and explains Quidditch.",
+            "relations": {
+                "Albus Dumbledore": "trusted by",
+                "Sirius Black": "borrowed motorbike from",
+                "Harry Potter": "knows since he was a baby"
+            }
+        },
+        "Pale boy at Madam Malkin's": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "10-12",
+            "first_appearance_index": 60,
+            "last_appearance_index": 61,
+            "number_of_appearances": 2,
+            "brief_description": "A boy with a pale, pointed face who is being fitted for Hogwarts robes at Madam Malkin's. He boasts about his family's history in Slytherin and expresses disdain for Hufflepuff. He is eager to play Quidditch and intends to smuggle a broom into Hogwarts. He considers Hagrid to be a servant. He expresses prejudiced views against those from Muggle families.",
+            "relations": {}
+        },
+        "Lily Potter": {
+            "aliases": [],
+            "gender": "Female",
+            "approximate_age_range": "30-40",
+            "first_appearance_index": 1,
+            "last_appearance_index": 61,
+            "number_of_appearances": 8,
+            "brief_description": "Mrs. Dursley's sister, with whom the Dursleys have a strained relationship and wish to avoid. She has a son, Harry. She is reported to have died in Godric's Hollow. Harry has no memory of her. She attended Hogwarts and married James Potter. She was Head Girl at Hogwarts and defied Voldemort. She was killed by Voldemort. She was a witch from a Muggle family.",
+            "relations": {
+                "Mrs. Dursley": "sister",
+                "James Potter": "wife",
+                "Harry Potter": "mother"
+            }
+        },
+        "Griphook": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 56,
+            "last_appearance_index": 59,
+            "number_of_appearances": 4,
+            "brief_description": "A goblin at Gringotts who is tasked with taking Harry and Hagrid down to their vaults. He is stern and emphasizes the dangers of attempting to rob Gringotts.",
+            "relations": {}
+        },
+        "Madam Malkin": {
+            "aliases": [],
+            "gender": "Female",
+            "approximate_age_range": "30-50",
+            "first_appearance_index": 60,
+            "last_appearance_index": 60,
+            "number_of_appearances": 1,
+            "brief_description": "A squat, smiling witch dressed all in mauve who owns Madam Malkin's Robes for All Occasions.",
+            "relations": {}
+        },
+        "Goblin": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 55,
+            "last_appearance_index": 56,
+            "number_of_appearances": 2,
+            "brief_description": "A goblin standing beside the burnished bronze doors of Gringotts, wearing a uniform of scarlet and gold. He is about a head shorter than Harry.",
+            "relations": {}
+        },
+        "Professor Quirrell": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "25-40",
+            "first_appearance_index": 53,
+            "last_appearance_index": 53,
+            "number_of_appearances": 1,
+            "brief_description": "A nervous teacher at Hogwarts who stammers and is scared of his own subject, Defence Against the Dark Arts. He is said to have met vampires in the Black Forest and had a bad experience with a hag. He is buying a new book on vampires.",
+            "relations": {
+                "Harry Potter": "student"
+            }
+        },
+        "Doris Crockford": {
+            "aliases": [],
+            "gender": "Female",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 53,
+            "last_appearance_index": 53,
+            "number_of_appearances": 1,
+            "brief_description": "A woman at the Leaky Cauldron who is excited to meet Harry Potter and shakes his hand repeatedly.",
+            "relations": {}
+        },
+        "Dedalus Diggle": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 8,
+            "last_appearance_index": 53,
+            "number_of_appearances": 2,
+            "brief_description": "A wizard who is believed to have caused shooting stars in Kent and is considered to lack common sense. He is excited to meet Harry Potter and bows to him.",
+            "relations": {}
+        },
+        "Tom": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "50-70",
+            "first_appearance_index": 51,
+            "last_appearance_index": 51,
+            "number_of_appearances": 1,
+            "brief_description": "The bald, gummy walnut-like barman at the Leaky Cauldron. He is friendly with Hagrid and welcomes Harry Potter back with enthusiasm.",
+            "relations": {}
+        },
+        "Cornelius Fudge": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "50-60",
+            "first_appearance_index": 48,
+            "last_appearance_index": 48,
+            "number_of_appearances": 1,
+            "brief_description": "The Minister of Magic, who took the job because Dumbledore wouldn't leave Hogwarts. He is considered a bungler by Hagrid and constantly seeks Dumbledore's advice.",
+            "relations": {
+                "Albus Dumbledore": "seeks advice from"
+            }
+        },
+        "Ministry of Magic": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 48,
+            "last_appearance_index": 48,
+            "number_of_appearances": 1,
+            "brief_description": "The governing body of the wizarding world, responsible for keeping magic a secret from Muggles.",
+            "relations": {}
+        },
+        "Dudley": {
+            "aliases": [
+                "Duddy",
+                "Dinky Duddydums",
+                "Ickle Dudleykins"
+            ],
+            "gender": "Male",
+            "approximate_age_range": "10-11",
+            "first_appearance_index": 1,
+            "last_appearance_index": 46,
+            "number_of_appearances": 27,
+            "brief_description": "The spoiled and overweight son of Mr. and Mrs. Dursley. He is now around ten years old, very fat, and hates exercise unless it involves punching someone, often targeting Harry. He is indulged by his parents and receives numerous birthday presents. He resembles his father, with a large, pink face, not much neck, small, watery blue eyes and thick, blond hair. He is greedy and prone to tantrums when he feels he is not getting enough. He pretends to cry to get his way. He throws a tantrum when his knickerbocker glory isn't big enough. He wants to see the big, poisonous snakes at the zoo and whines at his father to make the snake move. He exaggerates the snake's aggression after its escape. He breaks his new cine-camera, crashes his remote-control airplane, and knocks down Mrs. Figg on his racing bike. He is the leader of his gang and enjoys Harry-hunting. He is attending Smeltings and wears a maroon tailcoat, orange knickerbockers, and a flat straw hat called a boater. He carries his Smeltings stick everywhere. He is curious about Harry's letter and tries to read it. He throws a tantrum when Harry is moved into his second bedroom. He is sent to get the mail by Uncle Vernon, and finds another letter for Harry. He gets hit by the Smeltings stick during a fight over the letter. He is amazed that someone wants to talk to Harry so badly. He is taken away by the Dursleys to escape the letters. He is hit around the head by his father for trying to pack his television, video and computer in his sports bag. He is taken to a shack on a rock in the sea by the Dursleys, and complains that he cannot watch 'The Great Humberto' on television. He is given a bed on the moth-eaten sofa in the shack. He is woken up by the knocking on the door of the shack and asks where the cannon is. He hides behind his mother, terrified. He fidgets when Hagrid is cooking sausages. He is given a pig's tail by Hagrid.",
+            "relations": {
+                "Mr. Dursley": "father",
+                "Mrs. Dursley": "mother",
+                "Harry Potter": "punch-bag",
+                "Piers Polkiss": "best friend"
+            }
+        },
+        "Goblins": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 47,
+            "last_appearance_index": 47,
+            "number_of_appearances": 1,
+            "brief_description": "The beings that run Gringotts, the wizarding bank. Hagrid warns Harry never to mess with them.",
+            "relations": {}
+        },
+        "Owl": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 46,
+            "last_appearance_index": 46,
+            "number_of_appearances": 1,
+            "brief_description": "An owl that delivers a newspaper to Harry in the hut. It demands payment in Knuts for its services.",
+            "relations": {}
+        },
+        "Mr. Dursley": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "50-60",
+            "first_appearance_index": 1,
+            "last_appearance_index": 44,
+            "number_of_appearances": 36,
+            "brief_description": "The director of Grunnings, a drill-making firm. He is a big, beefy man who considers himself perfectly normal and dislikes anything strange or mysterious. He is married to Mrs. Dursley and is the father of Dudley. He was increasingly worried about the connection between the Potters and the strange events occurring and hopes to avoid any involvement with them. He indulges Dudley's desires and admires his son's greed. He tells Harry to comb his hair and warns him against any 'funny business'. He enjoys complaining about various things, including Harry and motorbikes. He taps on the glass at the zoo to try and make the snake move. He is furious about the snake incident and punishes Harry. He is proud of Dudley in his Smeltings uniform. He is alarmed and terrified by Harry's letter and prevents him from reading it. He burns Harry's letter and moves him to Dudley's second bedroom. He wrestles Dudley to get the new letter addressed to Harry. He sleeps in front of the door to prevent Harry from getting the mail and nails up the letter-box. He tears the letters into pieces and nails up the letterbox. He hums 'Tiptoe Through the Tulips' and boards up the doors. He makes furious telephone calls to the post office and the dairy. He seizes Harry and throws him into the hall. He decides to leave. He drives aimlessly, ending up in various locations, trying to shake off the letters. He hits Dudley round the head for trying to pack his television, video and computer in his sports bag. He drives his family to a shack on a rock in the sea to escape the letters. He is in a good mood, thinking no one can reach them to deliver post. He brings a rifle with him to the shack. He is disarmed by Hagrid, who bends the rifle into a knot. He tells Dudley not to touch anything Hagrid gives him. He whispers 'Mimblewimble' when Hagrid is angry. He forbids Hagrid from telling Harry anything. He is ashen-faced and angry, and tries to stop Harry from going with Hagrid. He dismisses Hagrid's story as rubbish. He expresses his belief that Harry is strange and that his parents were weirdos who deserved their fate. He is silenced by Hagrid's threat. He insists that Harry will attend Stonewall High and not Hogwarts, leading to a confrontation with Hagrid. He is terrified of Hagrid.",
+            "relations": {
+                "Mrs. Dursley": "wife",
+                "Dudley": "father"
+            }
+        },
+        "Voldemort": {
+            "aliases": [
+                "You-Know-Who"
+            ],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 8,
+            "last_appearance_index": 42,
+            "number_of_appearances": 6,
+            "brief_description": "A powerful, dark wizard whose name people fear to speak. He seems to have disappeared after attempting to kill Harry Potter, and his power somehow broke. Dumbledore is unafraid to say his name. He sought followers and terrorized the wizarding world. Dumbledore was the only one he feared. He killed Lily and James Potter and tried to kill Harry. He disappeared the same night he tried to kill Harry, and most believe he lost his powers due to Harry's survival.",
+            "relations": {}
+        },
+        "James Potter": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "30-40",
+            "first_appearance_index": 9,
+            "last_appearance_index": 41,
+            "number_of_appearances": 4,
+            "brief_description": "Lily Potter's husband, who is reported to have died in Godric's Hollow. Harry has no memory of him. He was Head Boy at Hogwarts and defied Voldemort. He was killed by Voldemort.",
+            "relations": {
+                "Lily Potter": "wife",
+                "Harry Potter": "father"
+            }
+        },
+        "McKinnons": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 41,
+            "last_appearance_index": 41,
+            "number_of_appearances": 1,
+            "brief_description": "A family of witches and wizards killed by Voldemort.",
+            "relations": {}
+        },
+        "Bones": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 41,
+            "last_appearance_index": 41,
+            "number_of_appearances": 1,
+            "brief_description": "A family of witches and wizards killed by Voldemort.",
+            "relations": {}
+        },
+        "Prewetts": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 41,
+            "last_appearance_index": 41,
+            "number_of_appearances": 1,
+            "brief_description": "A family of witches and wizards killed by Voldemort.",
+            "relations": {}
+        },
+        "Mrs. Dursley": {
+            "aliases": [],
+            "gender": "Female",
+            "approximate_age_range": "45-55",
+            "first_appearance_index": 1,
+            "last_appearance_index": 40,
+            "number_of_appearances": 29,
+            "brief_description": "Thin and blonde woman with a long neck, who enjoys gossiping and spying on the neighbors. She is proud and considers herself perfectly normal, disliking anything strange or mysterious. She is married to Mr. Dursley and is the mother of Dudley. She has a strained relationship with her sister, Lily Potter, and expresses disdain for her and her son, Harry. She dotes on Dudley and is quick to indulge his whims. She is angered by Mrs. Figg's inability to babysit Harry. She gets Uncle Vernon a brandy after he punishes Harry. She takes Dudley to London to buy his Smeltings uniform and cries at how grown-up he looks. She is dyeing Dudley's old clothes grey for Harry's new school uniform. She is shocked and frightened by Harry's letter. She shreds the letters in her food mixer. She is taken away by the Dursleys to escape the letters. She is taken to a shack on a rock in the sea by the Dursleys. She makes up a bed for Dudley on the moth-eaten sofa. She crouches behind Uncle Vernon, terrified. She gives a gasp of horror when Hagrid reveals Harry is a wizard. She reveals her jealousy of Lily's magical abilities and confirms that Harry's parents did not die in a car crash.",
+            "relations": {
+                "Mr. Dursley": "wife",
+                "Dudley": "mother",
+                "Lily Potter": "sister"
+            }
+        },
+        "Albus Dumbledore": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "100+",
+            "first_appearance_index": 7,
+            "last_appearance_index": 37,
+            "number_of_appearances": 7,
+            "brief_description": "A tall, thin, and very old man with long silver hair and beard, wearing long robes, a purple cloak, and high-heeled, buckled boots. He has light, bright, and sparkling blue eyes behind half-moon spectacles and a long, crooked nose. He arrives on Privet Drive late at night, extinguishes the street lamps using a device called a Put-Outer, offers Professor McGonagall a sherbet lemon, and insists on calling Voldemort by his name. He plans to leave Harry with the Dursleys, believing it is the best place for him to grow up away from fame, and delivers him to their doorstep with a letter. He restores the street lights using a Put-Outer and leaves Harry on the Dursleys' doorstep.",
+            "relations": {
+                "Professor McGonagall": "colleague",
+                "Hagrid": "trusts with his life"
+            }
+        },
+        "Minerva McGonagall": {
+            "aliases": [],
+            "gender": "Female",
+            "approximate_age_range": "50-60",
+            "first_appearance_index": 38,
+            "last_appearance_index": 38,
+            "number_of_appearances": 1,
+            "brief_description": "The Deputy Headmistress at Hogwarts School of Witchcraft and Wizardry, who informs Harry Potter of his acceptance to Hogwarts via letter.",
+            "relations": {
+                "Albus Dumbledore": "Headmaster"
+            }
+        },
+        "Toothless old man": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "60-80",
+            "first_appearance_index": 33,
+            "last_appearance_index": 33,
+            "number_of_appearances": 1,
+            "brief_description": "A toothless old man who agrees to lend his boat to the Dursleys to reach a shack on a rock in the sea. He has a wicked grin.",
+            "relations": {}
+        },
+        "Milkman": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "20-40",
+            "first_appearance_index": 30,
+            "last_appearance_index": 30,
+            "number_of_appearances": 1,
+            "brief_description": "Delivers milk to the Dursleys. He is very confused when he hands Aunt Petunia two dozen eggs, each containing a letter for Harry.",
+            "relations": {}
+        },
+        "Marge": {
+            "aliases": [],
+            "gender": "Female",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 16,
+            "last_appearance_index": 26,
+            "number_of_appearances": 3,
+            "brief_description": "Someone Uncle Vernon suggests calling after Mrs. Figg breaks her leg. She is currently on holiday on the Isle of Wight and has fallen ill after eating a funny whelk.",
+            "relations": {}
+        },
+        "Mrs. Figg": {
+            "aliases": [],
+            "gender": "Female",
+            "approximate_age_range": "60-70",
+            "first_appearance_index": 16,
+            "last_appearance_index": 24,
+            "number_of_appearances": 3,
+            "brief_description": "An old lady who lives two streets away from the Dursleys and usually babysits Harry on Dudley's birthday. Her house smells of cabbage, and she makes Harry look at photographs of her cats. She is knocked down by Dudley on his racing bike and breaks her leg tripping over one of her cats. She is less fond of her cats after the accident and lets Harry watch television and eat old chocolate cake.",
+            "relations": {}
+        },
+        "Piers Polkiss": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "9-11",
+            "first_appearance_index": 17,
+            "last_appearance_index": 24,
+            "number_of_appearances": 6,
+            "brief_description": "Dudley's scrawny best friend with a face like a rat. He typically holds people's arms while Dudley hits them. He wants to see the big, poisonous snakes at the zoo. He exaggerates the snake's aggression after its escape and tells on Harry for talking to the snake. He is part of Dudley's gang and is attending Smeltings with Dudley.",
+            "relations": {
+                "Dudley": "best friend"
+            }
+        },
+        "Dennis": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "9-11",
+            "first_appearance_index": 24,
+            "last_appearance_index": 24,
+            "number_of_appearances": 1,
+            "brief_description": "A member of Dudley's gang, who are all big and stupid.",
+            "relations": {
+                "Dudley": "gang member"
+            }
+        },
+        "Malcolm": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "9-11",
+            "first_appearance_index": 24,
+            "last_appearance_index": 24,
+            "number_of_appearances": 1,
+            "brief_description": "A member of Dudley's gang, who are all big and stupid.",
+            "relations": {
+                "Dudley": "gang member"
+            }
+        },
+        "Gordon": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "9-11",
+            "first_appearance_index": 24,
+            "last_appearance_index": 24,
+            "number_of_appearances": 1,
+            "brief_description": "A member of Dudley's gang, who are all big and stupid.",
+            "relations": {
+                "Dudley": "gang member"
+            }
+        },
+        "Boa Constrictor": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 20,
+            "last_appearance_index": 22,
+            "number_of_appearances": 2,
+            "brief_description": "A large snake from Brazil, currently residing at the zoo. It is initially asleep but communicates with Harry, expressing its boredom and longing for Brazil. It escapes after the glass of its enclosure vanishes, seemingly thanking Harry.",
+            "relations": {}
+        },
+        "Reptile house keeper": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 22,
+            "last_appearance_index": 22,
+            "number_of_appearances": 1,
+            "brief_description": "The keeper of the reptile house, who is in shock after the glass of the boa constrictor's tank vanishes.",
+            "relations": {}
+        },
+        "Zoo director": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 22,
+            "last_appearance_index": 22,
+            "number_of_appearances": 1,
+            "brief_description": "The director of the zoo, who apologizes to Aunt Petunia after the snake incident.",
+            "relations": {}
+        },
+        "Professor McGonagall": {
+            "aliases": [
+                "Tabby cat"
+            ],
+            "gender": "Female",
+            "approximate_age_range": "50-60",
+            "first_appearance_index": 6,
+            "last_appearance_index": 13,
+            "number_of_appearances": 8,
+            "brief_description": "A stern-looking woman with black hair drawn into a tight bun, wearing square glasses and an emerald cloak. She can transform into a tabby cat with similar markings around its eyes. She is critical of the wizarding community's carelessness and concerned about the Muggles noticing unusual events. She is initially hesitant to say Voldemort's name but eventually does so. She objects to Dumbledore's plan to leave Harry with the Dursleys but acknowledges he is right. She witnesses Harry being left on the Dursleys' doorstep.",
+            "relations": {
+                "Albus Dumbledore": "colleague"
+            }
+        },
+        "Tabby cat": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 6,
+            "last_appearance_index": 13,
+            "number_of_appearances": 3,
+            "brief_description": "A tabby cat with distinctive markings around its eyes, first seen by Mr. Dursley reading a map and later sitting on the garden wall of number four, Privet Drive. It is observant and seems to be waiting for something.",
+            "relations": {}
+        },
+        "Sirius Black": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "20-30",
+            "first_appearance_index": 11,
+            "last_appearance_index": 11,
+            "number_of_appearances": 1,
+            "brief_description": "A young man who lent his motorbike to Hagrid.",
+            "relations": {
+                "Hagrid": "lender of motorbike"
+            }
+        },
+        "Mrs. Potter": {
+            "aliases": [],
+            "gender": "Female",
+            "approximate_age_range": "30-40",
+            "first_appearance_index": 1,
+            "last_appearance_index": 2,
+            "number_of_appearances": 2,
+            "brief_description": "Mrs. Dursley's sister, with whom the Dursleys have a strained relationship and wish to avoid. She has a son.",
+            "relations": {
+                "Mrs. Dursley": "sister"
+            }
+        },
+        "Old man in violet cloak": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "60-70",
+            "first_appearance_index": 4,
+            "last_appearance_index": 4,
+            "number_of_appearances": 1,
+            "brief_description": "A small, old man wearing a violet cloak. He is overjoyed by the departure of \"You-Know-Who\" and openly celebrates, even hugging a stranger.",
+            "relations": {}
+        },
+        "Yvonne": {
+            "aliases": [],
+            "gender": "Female",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 17,
+            "last_appearance_index": 17,
+            "number_of_appearances": 1,
+            "brief_description": "A friend of Aunt Petunia who is on holiday in Majorca.",
+            "relations": {}
+        },
+        "Hotel Landlady": {
+            "aliases": [],
+            "gender": "Female",
+            "approximate_age_range": "30-50",
+            "first_appearance_index": 31,
+            "last_appearance_index": 31,
+            "number_of_appearances": 1,
+            "brief_description": "The owner of the Railview Hotel in Cokeworth. She presents a large number of letters addressed to Harry Potter.",
+            "relations": {}
+        }
+    }
+}
+
+        PRECEDING TEXT CHUNK:
+        Right, that should be enough fer a couple o’ terms, we’ll keep the rest safe for yeh.’ He turned to Griphook. ‘Vault seven hundred and thirteen now, please, and can we go more slowly?’ ‘One speed only,’ said Griphook. They were going even deeper now and gathering speed. The air became colder and colder as they hurtled round tight corners. DIAGON ALLEY 59 They went rattling over an underground ravine and Harry leant over the side to try and see what was down at the dark bottom but Hagrid groaned and pulled him back by the scruff of his neck. Vault seven hundred and thirteen had no keyhole. ‘Stand back,’ said Griphook importantly. He stroked the door gently with one of his long fingers and it simply melted away. ‘If anyone but a Gringotts goblin tried that, they’d be sucked through the door and trapped in there,’ said Griphook. ‘How often do you check to see if anyone’s inside?’ Harry asked. ‘About once every ten years,’ said Griphook, with a rather nasty grin. Something really extraordinary had to be inside this top- security vault, Harry was sure, and he leant forward eagerly, expecting to see fabulous jewels at the very least – but at first he thought it was empty. Then he noticed a grubby little package wrapped up in brown paper lying on the floor. Hagrid picked it up and tucked it deep inside his coat. Harry longed to know what it was, but knew better than to ask. ‘Come on, back in this infernal cart, and don’t talk to me on the way back, it’s best if I keep me mouth shut,’ said Hagrid. * One wild cart-ride later they stood blinking in the sunlight out- side Gringotts. Harry didn’t know where to run first now that he had a bag full of money. He didn’t have to know how many Galleons there were to a pound to know that he was holding more money than he’d had in his whole life – more money than even Dudley had ever had. ‘Might as well get yer uniform,’ said Hagrid, nodding towards Madam Malkin’s Robes for All Occasions. ‘Listen, Harry would yeh mind if I slipped off fer a pick-me-up in the Leaky Cauldron? I hate them Gringotts carts.’ He did still look a bit sick, so Harry entered Madam Malkin’s shop alone, feeling nervous.
+Madam Malkin was a squat, smiling witch dressed all in mauve. ‘Hogwarts, dear?’ she said, when Harry started to speak. ‘Got the lot here – another young man being fitted up just now, in fact.’ In the back of the shop, a boy with a pale, pointed face was standing on a footstool while a second witch pinned up his long black robes. Madam Malkin stood Harry on a stool next to him, slipped a long robe over his head and began to pin it to the right length. 60 HARRY POTTER ‘Hullo,’ said the boy, ‘Hogwarts too?’ ‘Yes,’ said Harry. ‘My father’s next door buying my books and mother’s up the street looking at wands,’ said the boy. He had a bored, drawling voice. ‘Then I’m going to drag them off to look at racing brooms. I don’t see why first-years can’t have their own. I think I’ll bully father into getting me one and I’ll smuggle it in somehow.’ Harry was strongly reminded of Dudley. ‘Have you got your own broom?’ the boy went on. ‘No,’ said Harry. ‘Play Quidditch at all?’ ‘No,’ Harry said again, wondering what on earth Quidditch could be. ‘I do – Father says it’s a crime if I’m not picked to play for my house, and I must say, I agree. Know what house you’ll be in yet?’ ‘No,’ said Harry, feeling more stupid by the minute. ‘Well, no one really knows until they get there, do they, but I know I’ll be in Slytherin, all our family have been – imagine being in Hufflepuff, I think I’d leave, wouldn’t you?’ ‘Mmm,’ said Harry, wishing he could say something a bit more interesting. ‘I say, look at that man!’ said the boy suddenly, nodding towards the front window. Hagrid was standing there, grinning at Harry and pointing at two large ice-creams to show he couldn’t come in. ‘That’s Hagrid,’ said Harry, pleased to know something the boy didn’t. ‘He works at Hogwarts.’ ‘Oh,’ said the boy, ‘I’ve heard of him. He’s a sort of servant, isn’t he?’ ‘He’s the gamekeeper,’ said Harry. He was liking the boy less and less every second. ‘Yes, exactly.
+I heard he’s a sort of savage – lives in a hut in the school grounds and every now and then he gets drunk, tries to do magic and ends up setting fire to his bed.’ ‘I think he’s brilliant,’ said Harry coldly. ‘Do you?’ said the boy, with a slight sneer. ‘Why is he with you? Where are your parents?’ ‘They’re dead,’ said Harry shortly. He didn’t feel much like going into the matter with this boy. ‘Oh, sorry,’ said the other, not sounding sorry at all. ‘But they DIAGON ALLEY 61 were our kind, weren’t they?’ ‘They were a witch and wizard, if that’s what you mean.’ ‘I really don’t think they should let the other sort in, do you? They’re just not the same, they’ve never been brought up to know our ways. Some of them have never even heard of Hogwarts until they get the letter, imagine. I think they should keep it in the old wizarding families. What’s your surname, anyway?’ But before Harry could answer, Madam Malkin said, ‘That’s you done, my dear,’ and Harry, not sorry for an excuse to stop talking to the boy, hopped down from the footstool. ‘Well, I’ll see you at Hogwarts, I suppose,’ said the drawling boy. Harry was rather quiet as he ate the ice-cream Hagrid had bought him (chocolate and raspberry with chopped nuts). ‘What’s up?’ said Hagrid. ‘Nothing,’ Harry lied. They stopped to buy parchment and quills. Harry cheered up a bit when he found a bottle of ink that changed colour as you wrote. When they had left the shop, he said, ‘Hagrid, what’s Quidditch?’ ‘Blimey, Harry, I keep forgettin’ how little yeh know – not knowin’ about Quidditch!’ ‘Don’t make me feel worse,’ said Harry. He told Hagrid about the pale boy in Madam Malkin’s. ‘– and he said people from Muggle families shouldn’t even be allowed in –’ ‘Yer not from a Muggle family. If he’d known who yeh were – he’s grown up knowin’ yer name if his parents are wizardin’ folk – you saw ’em in the Leaky Cauldron. Anyway, what does he know about it, some o’ the best I ever saw were the only ones with magic in ’em in a long line o’ Muggles – look at yer mum! Look what she had fer a sister!’ ‘So what is Quidditch?’ ‘It’s our sport. Wizard sport.
+
+        FOLLOWING TEXT CHUNK:
+        Outside the apothecary’s, Hagrid checked Harry’s list again. ‘Just yer wand left – oh yeah, an’ I still haven’t got yeh a birth- day present.’ Harry felt himself go red. ‘You don’t have to –’ ‘I know I don’t have to. Tell yeh what, I’ll get yer animal. Not a toad, toads went outta fashion years ago, yeh’d be laughed at – an’ I don’ like cats, they make me sneeze. I’ll get yer an owl. All the kids want owls, they’re dead useful, carry yer post an’ everythin’.’ DIAGON ALLEY 63 Twenty minutes later, they left Eeylops Owl Emporium, which had been dark and full of rustling and flickering, jewel-bright eyes. Harry now carried a large cage which held a beautiful snowy owl, fast asleep with her head under her wing. He couldn’t stop stammering his thanks, sounding just like Professor Quirrell. ‘Don’ mention it,’ said Hagrid gruffly. ‘Don’ expect you’ve had a lotta presents from them Dursleys. Just Ollivanders left now – only place fer wands, Ollivanders, and yeh gotta have the best wand.’ A magic wand ... this was what Harry had been really looking forward to. The last shop was narrow and shabby. Peeling gold letters over the door read Ollivanders: Makers of Fine Wands since 382 BC. A single wand lay on a faded purple cushion in the dusty window. A tinkling bell rang somewhere in the depths of the shop as they stepped inside. It was a tiny place, empty except for a single spindly chair which Hagrid sat on to wait. Harry felt strangely as though he had entered a very strict library; he swallowed a lot of new questions which had just occurred to him and looked instead at the thousands of narrow boxes piled neatly right up to the ceiling. For some reason, the back of his neck prickled. The very dust and silence in here seemed to tingle with some secret magic. ‘Good afternoon,’ said a soft voice. Harry jumped. Hagrid must have jumped, too, because there was a loud crunching noise and he got quickly off the spindly chair. An old man was standing before them, his wide, pale eyes shining like moons through the gloom of the shop. ‘Hello,’ said Harry awkwardly. ‘Ah yes,’ said the man. ‘Yes, yes. I thought I’d be seeing you soon. Harry Potter.’ It wasn’t a question. ‘You have your mother’s eyes.
+It seems only yesterday she was in here herself, buying her first wand. Ten and a quarter inches long, swishy, made of willow. Nice wand for charm work.’ Mr Ollivander moved closer to Harry. Harry wished he would blink. Those silvery eyes were a bit creepy. ‘Your father, on the other hand, favoured a mahogany wand. Eleven inches. Pliable. A little more power and excellent for trans- figuration. Well, I say your father favoured it – it’s really the wand that chooses the wizard, of course.’ Mr Ollivander had come so close that he and Harry were 64 HARRY POTTER almost nose to nose. Harry could see himself reflected in those misty eyes. ‘And that’s where ...’ Mr Ollivander touched the lightning scar on Harry’s forehead with a long, white finger. ‘I’m sorry to say I sold the wand that did it,’ he said softly. ‘Thirteen and a half inches. Yew. Powerful wand, very powerful, and in the wrong hands ... Well, if I’d known what that wand was going out into the world to do ...’ He shook his head and then, to Harry’s relief, spotted Hagrid. ‘Rubeus! Rubeus Hagrid! How nice to see you again ... Oak, sixteen inches, rather bendy, wasn’t it?’ ‘It was, sir, yes,’ said Hagrid. ‘Good wand, that one. But I suppose they snapped it in half when you got expelled?’ said Mr Ollivander, suddenly stern. ‘Er – yes, they did, yes,’ said Hagrid, shuffling his feet. ‘I’ve still got the pieces, though,’ he added brightly. ‘But you don’t use them?’ said Mr Ollivander sharply. ‘Oh, no, sir,’ said Hagrid quickly. Harry noticed he gripped his pink umbrella very tightly as he spoke. ‘Hmmm,’ said Mr Ollivander, giving Hagrid a piercing look. ‘Well, now – Mr Potter. Let me see.’ He pulled a long tape measure with silver markings out of his pocket. ‘Which is your wand arm?’ ‘Er – well, I’m right-handed,’ said Harry. ‘Hold out your arm. That’s it.’ He measured Harry from shoul- der to finger, then wrist to elbow, shoulder to floor, knee to armpit and round his head. As he measured, he said, ‘Every Ollivander wand has a core of a powerful magical substance, Mr Potter. We use unicorn hairs, phoenix tail feathers and the heartstrings of dragons. No two Ollivander wands are the same, just as no two unicorns, dragons or phoenixes are quite the same.
+And of course, you will never get such good results with another wizard’s wand.’ Harry suddenly realised that the tape measure, which was meas- uring between his nostrils, was doing this on its own. Mr Ollivander was flitting around the shelves, taking down boxes. ‘That will do,’ he said, and the tape measure crumpled into a heap on the floor. ‘Right then, Mr Potter. Try this one. Beechwood and dragon heartstring. Nine inches. Nice and flexible. Just take it and give it a wave.’ Harry took the wand and (feeling foolish) waved it around a DIAGON ALLEY 65 bit, but Mr Ollivander snatched it out of his hand almost at once. ‘Maple and phoenix feather. Seven inches. Quite whippy. Try –’ Harry tried – but he had hardly raised the wand when it, too, was snatched back by Mr Ollivander. ‘No, no – here, ebony and unicorn hair, eight and a half inches, springy. Go on, go on, try it out.’ Harry tried. And tried. He had no idea what Mr Ollivander was waiting for. The pile of tried wands was mounting higher and higher on the spindly chair, but the more wands Mr Ollivander pulled from the shelves, the happier he seemed to become. ‘Tricky customer, eh? Not to worry, we’ll find the perfect match here somewhere – I wonder, now – yes, why not – unusual combi- nation – holly and phoenix feather, eleven inches, nice and supple.’ Harry took the wand. He felt a sudden warmth in his fingers. He raised the wand above his head, brought it swishing down through the dusty air and a stream of red and gold sparks shot from the end like a firework, throwing dancing spots of light on to the walls. Hagrid whooped and clapped and Mr Ollivander cried, ‘Oh, bravo! Yes, indeed, oh, very good. Well, well, well ... how curious ... how very curious ...’ He put Harry’s wand back into its box and wrapped it in brown paper, still muttering, ‘Curious ... curious ...’ ‘Sorry,’ said Harry, ‘but what’s curious?’ Mr Ollivander fixed Harry with his pale stare. ‘I remember every wand I’ve ever sold, Mr Potter. Every single wand. It so happens that the phoenix whose tail feather is in your wand, gave another feather – just one other.
+
+        MAIN TEXT CHUNK:
+        It’s like – like football in the Muggle world – everyone follows Quidditch – played up in the air on broomsticks and there’s four balls – sorta hard ter explain the rules.’ ‘And what are Slytherin and Hufflepuff?’ ‘School houses. There’s four. Everyone says Hufflepuff are a lot o’ duffers, but –’ ‘I bet I’m in Hufflepuff,’ said Harry gloomily. ‘Better Hufflepuff than Slytherin,’ said Hagrid darkly. ‘There’s 62 HARRY POTTER not a single witch or wizard who went bad who wasn’t in Slytherin. You-Know-Who was one.’ ‘Vol– sorry – You-Know-Who was at Hogwarts?’ ‘Years an’ years ago,’ said Hagrid. They bought Harry’s school books in a shop called Flourish and Blotts where the shelves were stacked to the ceiling with books as large as paving stones bound in leather; books the size of postage stamps in covers of silk; books full of peculiar symbols and a few books with nothing in them at all. Even Dudley, who never read anything, would have been wild to get his hands on some of these. Hagrid almost had to drag Harry away from Curses and Counter-Curses (Bewitch your Friends and Befuddle your Enemies with the Latest Revenges: Hair Loss, Jelly-Legs, Tongue-Tying and much, much more) by Professor Vindictus Viridian. ‘I was trying to find out how to curse Dudley.’ ‘I’m not sayin’ that’s not a good idea, but yer not ter use magic in the Muggle world except in very special circumstances,’ said Hagrid. ‘An’ anyway, yeh couldn’ work any of them curses yet, yeh’ll need a lot more study before yeh get ter that level.’ Hagrid wouldn’t let Harry buy a solid gold cauldron, either (‘It says pewter on yer list’), but they got a nice set of scales for weighing potion ingredients and a collapsible brass telescope. Then they visited the apothecary’s, which was fascinating enough to make up for its horrible smell, a mixture of bad eggs and rotted cabbages. Barrels of slimy stuff stood on the floor, jars of herbs, dried roots and bright powders lined the walls, bundles of feath- ers, strings of fangs and snarled claws hung from the ceiling. While Hagrid asked the man behind the counter for a supply of some basic potion ingredients for Harry, Harry himself examined silver unicorn horns at twenty-one Galleons each and minuscule, glittery black beetle eyes (five Knuts a scoop).
+        
+
+Error when answering with key AIzaSyD52k13uO-5kmLAryCZGKPjzdrtk7fm--0 using gemini: Timeout of 600.0s exceeded, last exception: 503 failed to connect to all addresses; last error: UNKNOWN: ipv4:142.250.198.234:443: tcp handshaker shutdown.
+--------------------
