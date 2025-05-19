@@ -397,12 +397,8 @@ def add_voice_actors(narrative_path, voice_mapping_path):
             normalized_name = normalize_string(character_name)
             
             # Tìm voice actor tương ứng
-            for map_char, map_actor in normalized_mapping.items():
-                if map_char in normalized_name or normalized_name in map_char:
-                    record["voice_actor"] = voice_mapping.get(map_char, map_actor)
-                    break
-            else:  # Không tìm thấy mapping
-                record["voice_actor"] = "None"
+            original_key = normalized_mapping.get(normalized_name)
+            record["voice_actor"] = voice_mapping.get(original_key, "None")
         
         # Lưu lại file đã cập nhật
         with open(filepath, 'w', encoding='utf-8') as f:
