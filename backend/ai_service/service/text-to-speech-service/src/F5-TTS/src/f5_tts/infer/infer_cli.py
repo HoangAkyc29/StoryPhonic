@@ -876,7 +876,7 @@ def multi_input_multi_ref_run_inference(
 
             if not gender:
                 gender = "male"
-            if gender == "None":
+            if gender.lower() == "none":
                 gender = "male"
             if not choosen_voice_actor or choosen_voice_actor == "Narrator":
                 choosen_ref = "mild-trust"

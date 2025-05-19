@@ -105,3 +105,21 @@ Traceback (most recent call last):
   File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\F5-TTS\src\f5_tts\infer\infer_cli.py", line 937, in multi_input_multi_ref_run_inference
     with open(wave_path, "wb") as f:
 FileNotFoundError: [Errno 2] No such file or directory: 'D:\\FINAL_CODE\\backend\\ai_service\\data\\voice_data\\temporary_output_voice_data\\text_to_speech\\f1c7dd5a-61a2-4440-8720-0ca007be5b55\\chunk_118_8_voice-actor_default_char-name_N/A_true-identity_Narrator.wav'
+2025-05-20 00:30:29,655 - tts_task - ERROR - TaskID: 663671d7-8c42-4d34-996d-5e60b36d976e - Folder: 001e8627-c6eb-4851-b9db-a0267944bc66 - Message: Error in TTS task: 'mild-trust_none'
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\app.py", line 94, in run_tts_task
+    output_dir = generate_all_TTS_with_emotion(
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\process_generate_emotion_audio.py", line 137, in generate_all_TTS_with_emotion
+    multi_input_multi_ref_run_inference(ref_data,text_data,output_dir,last_folder_name)
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\F5-TTS\src\f5_tts\infer\infer_cli.py", line 908, in multi_input_multi_ref_run_inference
+    if voice not in voices[choosen_ref]:
+KeyError: 'mild-trust_none'
+2025-05-20 02:45:59,402 - tts_task - ERROR - TaskID: 07e6cfe1-7a64-4a9e-b9dc-32a15e7ce2e7 - Folder: 56cd2708-06cd-4663-b93a-43d0dddc338f - Message: Error in TTS task: 'mild-trust_none'
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\app.py", line 94, in run_tts_task
+    output_dir = generate_all_TTS_with_emotion(
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\process_generate_emotion_audio.py", line 137, in generate_all_TTS_with_emotion
+    multi_input_multi_ref_run_inference(ref_data,text_data,output_dir,last_folder_name)
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\F5-TTS\src\f5_tts\infer\infer_cli.py", line 908, in multi_input_multi_ref_run_inference
+    if voice not in voices[choosen_ref]:
+KeyError: 'mild-trust_none'
