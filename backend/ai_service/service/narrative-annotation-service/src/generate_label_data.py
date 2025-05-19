@@ -13,7 +13,7 @@ import random
 import threading
 import multiprocessing
 import threading
-
+import time
 import torch
 # torch.cuda.empty_cache()
 from transformers import AutoTokenizer, TextStreamer
@@ -34,8 +34,6 @@ from .character_voice_mapper import add_voice_actors, personality_mapper_main, c
 
 context_memory_instruction = get_context_memory_prompt()
 dialogue_analyzer_instruction = get_dialogue_analyzer_prompt()
-sentence_transformer_model = sentence_transformer_model_loader()
-
 
 alpaca_prompt = """Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.
 
@@ -210,6 +208,8 @@ def process_files_in_folder(files_path, output_dir = "", memory_dir = "", key = 
             retry_counter = 0  # Initialize retry_counter *inside* the outer loop, for each file
 
             while retry_counter <= 4:  # Use a while loop for retries
+                start_time = time.time()  # Thời điểm bắt đầu
+
                 if input_id and get_cancel_flag(input_id):  # Check cancel flag in retry loop
                     print(f"Task cancelled by user for input_id: {input_id}")
                     return None
@@ -303,6 +303,10 @@ def process_files_in_folder(files_path, output_dir = "", memory_dir = "", key = 
                     print(f"Successfully create label for {file_name}")
                     retry_counter = 0  # Reset retry_counter on success
                     break_outer = False
+
+                    end_time = time.time()    # Thời điểm kết thúc
+                    execution_time = end_time - start_time
+                    print(f"Thời gian thực thi cho chunk {b}: {execution_time} giây")
                     break  # Exit the while loop on success
 
                 except Exception as e:
