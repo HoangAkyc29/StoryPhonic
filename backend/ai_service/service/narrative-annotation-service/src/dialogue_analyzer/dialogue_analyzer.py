@@ -48,7 +48,7 @@ def answer_dialogue_analyzer_with_gemini(user_query, current_key = None, choosen
     # Đọc nội dung từ file
     # Đọc nội dung file
         
-    print(user_query)
+    # print(user_query)
     if not user_query:
         return {"message": "Không có nội dung để xử lý."}
     
@@ -78,7 +78,7 @@ def answer_dialogue_analyzer_with_gemini(user_query, current_key = None, choosen
             history=[])
 
             response = chat_session.send_message(user_query)
-            time.sleep(30)
+            time.sleep(15)
             return response.text
     
 
@@ -90,7 +90,7 @@ def answer_dialogue_analyzer_with_gemini(user_query, current_key = None, choosen
                 file.write('\n\n')
                 file.write(f"Error when answering with key {current_key} using gemini: {e}.")
                 file.write('\n--------------------\n')
-            time.sleep(30)
+            time.sleep(15)
             return f"Max rate limit for this token or Other errors. Error : {e}"
 
 

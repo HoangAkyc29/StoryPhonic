@@ -9,7 +9,7 @@ SentenceTransformer_MODEL_DIR = os.path.join(os.path.dirname(__file__), "ai_mode
 SentenceTransformer_MODEL_NAME = "all-MiniLM-L6-v2"
 
 Llama8BFinetune_MODEL_DIR = os.path.join(os.path.dirname(__file__), "ai_models", "llama_8B_finetune")
-Llama8BFinetune_MODEL_NAME = "Cykka/auto_detect_dialogue_character_llama_8B" # Sửa lại cho đúng tên model gốc
+Llama8BFinetune_MODEL_NAME = "Cykka/auto_detect_dialogue_character_Mixtral-8x7B-Instruct-v0.1-bnb-4bit" # Sửa lại cho đúng tên model gốc
 LOCAL_LLAMA_MODEL_DIR = os.path.join(Llama8BFinetune_MODEL_DIR, "local_llama_model")  # Thư mục con để lưu bản sao cục bộ
 
 _sentence_transformer_model = None
