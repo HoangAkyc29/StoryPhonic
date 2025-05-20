@@ -17,7 +17,7 @@ import time
 import torch
 # torch.cuda.empty_cache()
 from transformers import AutoTokenizer, TextStreamer
-from unsloth import FastLanguageModel
+# from unsloth import FastLanguageModel
 
 import google.generativeai as genai
 

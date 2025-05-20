@@ -1,4 +1,4 @@
-from unsloth import FastLanguageModel
+# from unsloth import FastLanguageModel
 from sentence_transformers import SentenceTransformer
 import os
 import torch
@@ -27,20 +27,20 @@ def sentence_transformer_model_loader():
 _llama_model = None  # Biến private để lưu trữ model
 _llama_tokenizer = None # Biến private để lưu trữ tokenizer
 
-def llama_8B_finetune_model_loader():
-    """
-    Loads the Llama 8B fine-tuned model, downloading it locally if necessary.
-    Uses Unsloth's FastLanguageModel.
-    """
-    global _llama_model, _llama_tokenizer
-    if _llama_model is None or _llama_tokenizer is None:
-        _llama_model, _llama_tokenizer = FastLanguageModel.from_pretrained(
-        model_name = "unsloth/Meta-Llama-3.1-8B-Instruct-bnb-4bit", # Llama8BFinetune_MODEL_NAME
-        max_seq_length = 32000,
-        device_map="auto"
-    # token = "hf_...", # use one if using gated models like meta-llama/Llama-2-7b-hf
-        )
-    return _llama_model, _llama_tokenizer
+# def llama_8B_finetune_model_loader():
+#     """
+#     Loads the Llama 8B fine-tuned model, downloading it locally if necessary.
+#     Uses Unsloth's FastLanguageModel.
+#     """
+#     global _llama_model, _llama_tokenizer
+#     if _llama_model is None or _llama_tokenizer is None:
+#         _llama_model, _llama_tokenizer = FastLanguageModel.from_pretrained(
+#         model_name = "unsloth/Meta-Llama-3.1-8B-Instruct-bnb-4bit", # Llama8BFinetune_MODEL_NAME
+#         max_seq_length = 32000,
+#         device_map="auto"
+#     # token = "hf_...", # use one if using gated models like meta-llama/Llama-2-7b-hf
+#         )
+#     return _llama_model, _llama_tokenizer
 
 # llama_8B_finetune_model_loader()
 
