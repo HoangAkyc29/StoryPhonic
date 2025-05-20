@@ -3,7 +3,7 @@ import os
 # current_dir = os.path.dirname(os.path.abspath(__file__))
 # sys.path.insert(0, current_dir)
 
-from .model_loader import sentence_transformer_model_loader # llama_8B_finetune_model_loader, 
+from .model_loader import sentence_transformer_model_loader #,llama_8B_finetune_model_loader
 import random
 from collections import defaultdict
 import threading
