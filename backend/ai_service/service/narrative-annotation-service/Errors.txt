@@ -2509,3 +2509,1099 @@ And of course, you will never get such good results with another wizard’s wand
 
 Error when answering with key AIzaSyD52k13uO-5kmLAryCZGKPjzdrtk7fm--0 using gemini: Timeout of 600.0s exceeded, last exception: 503 failed to connect to all addresses; last error: UNKNOWN: ipv4:142.250.198.234:443: tcp handshaker shutdown.
 --------------------
+
+--------------------
+PREVIOUS CONTEXT MEMORY: 
+      {
+    "chunk_index": 158,
+    "recent_summaries": [
+        "The text provides information about the author, Rifujin na Magonote, and promotes the Seven Seas newsletter and website for light novel enthusiasts.",
+        "Bigott survives the battle, becoming a general and a legendary hero. He starts wearing a necklace with a beastfolk woman's profile and painting his sword red as a good luck charm, leading to the creation of the Forest Goddess Laine, a distorted version of Ghislaine. Bigott doesn't know what happened to Ghislaine after the battle or if she reunited with Eris.",
+        "Ghislaine kills the Dikuto king, leading to a three-way battle between the Dikuto Kingdom, Broze Empire, and Markien Mercenary Country. Bigott and Ghislaine fight together, with the Broze Empire mistaking them for allies until Markien attacks.",
+        "Ghislaine states her intention to cut down anyone who gets in her way as she searches for Rudeus and Eris, who may have been transported elsewhere. Bigott offers to travel with her, and they attack the Dikuto Kingdom from behind. The Dikuto king, assuming a sneak attack from the Broze Emperor, orders an assault on the Broze Empire.",
+        "Ghislaine asks Bigott if he has seen a red-haired girl around twelve years old or a ten-year-old magician boy. Bigott informs her that they are in Markien Mercenary Country, located in the Conflict Zone. Ghislaine explains that she was transported from the Fittoa Region in Asura Kingdom and needs to head south. Bigott warns her about an enemy camp in that direction."
+    ],
+    "characters": {
+        "Bigott Mercenal": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 144,
+            "last_appearance_index": 157,
+            "number_of_appearances": 12,
+            "brief_description": "The Captain of the third unit of Markien’s Mercenary Company, known for being daring and resolute. He was put in charge of a dangerous operation to pass through the Ejin Forest and launch a sneak attack. He is an Advanced-tier Sword God Style swordsman. He embraces his duty to protect Markien, seeing himself as a knight of the country. He encounters a group of Broze Empire soldiers and initiates an attack, disguised as Broze soldiers. He is outmatched by the Emperor's bodyguards and is about to surrender when a giant lizard attacks. He witnesses Ghislaine's arrival and recognizes her as the Sword King. He respectfully identifies her. He informs Ghislaine that they are in Markien Mercenary Country and warns her about an enemy camp to the south. He offers to travel with Ghislaine and attacks the Dikuto Kingdom from behind. He informs Ghislaine that they are in Markien Mercenary Country and warns her about an enemy camp to the south. He fights alongside Ghislaine and is considered reliable. He survives the battle, becoming a Great General of the Markien Mercenary Country. He wears a necklace with a beastfolk woman's profile and paints his sword red, leading to the creation of the Forest Goddess Laine.",
+            "relations": {
+                "Ghislaine": "acquaintance"
+            }
+        },
+        "Ghislaine": {
+            "aliases": [],
+            "gender": "Female",
+            "approximate_age_range": "20-30",
+            "first_appearance_index": 2,
+            "last_appearance_index": 157,
+            "number_of_appearances": 62,
+            "brief_description": "A tall and muscular swordswoman with animal-like ears and a tail, and dark brown skin. Known as a Sword King, she is highly skilled in the Sword God Style. She accompanies Rudeus and is his sword instructor and travel companion. She swiftly kills the two kidnappers. She was an adventurer in the past and shares her experiences to motivate Eris to learn. She describes her old adventuring party and their roles. She explains the difference between warriors, swordsmen, and knights. She uses the Sword of Light technique. She is able to influence Eris to attend all her lessons. Rudeus seeks her help to convince Eris of the importance of learning division. She recounts a story of surviving in a labyrinth by eating demon feces, which impresses Eris and motivates her to learn division. She provides explicit instructions and advice to Rudeus and Eris during sword practice. She is a good teacher, pointing out faults in explicit detail and giving advice. She identifies Paul as an 'instinctive type' of teacher. She believes that diligent work and talent are important for success, and that mastering the essentials is key to reaching an advanced skill level. She was once an instinctive type but became King-tier by using her head and thinking logically. She attends a staff meeting with Rudeus and Edna. She insists on accompanying Rudeus and Eris to Roa as Eris's bodyguard. She is protective of Eris. She is reliable and has good hearing. She doesn't understand the usefulness of knowing the prices of things. She identifies the floating castle as the Armored Dragon King Perugius's fortress. She attempts to explain Perugius's identity to Rudeus. She has difficulty learning magic and can only perform fire spells. She is standing guard at Eris's birthday party and has drool dripping off her chin. Rudeus sends food to her. She is invited to Rudeus's room after the party. She drinks wine with Rudeus and Eris, ignoring the legal drinking age. She kneels and respectfully accepts a wand from Rudeus, following Sword God Style tradition. She gives Eris a talisman ring passed down in her clan that protects the bearer from being attacked by bad wolves at night. She almost tells a story about Paul. She assists Rudeus in learning the Beast God tongue. She is considered the fourth strongest person in the Sword God Style. She respects Rudeus and sees him as a capable individual. She is impressed by Rudeus's ability to fight and teach. She is learning basic fire and water magic from Rudeus and is now learning to cast spells without chanting. She acknowledges Rudeus's teaching style is similar to her sword master's, which focuses on logical foundations. She believes Rudeus inherited his refusal to quit from his father, Paul. She eventually wants to teach Rudeus a technique to defeat Paul, but Rudeus has no talent for the Sword God Style. She initially underestimated Rudeus, but has come to respect his abilities as a tutor and fighter. She was saved from starvation by Sauros and Eris after being defrauded. She respects Rudeus for his teaching abilities. She believes Paul was good for something because Rudeus gained the ability to move strategically in a swordfight as a result of fighting him. She thinks it is pathetic that Roxy ran from her problems, but is also thankful that she was taught magic by her by proxy. She initially thought Rudeus was a gentleman, but now believes he will become a womanizer. She is ignorant in the affairs of love. She reflects on Eris's growth and attributes it to her desire to impress Rudeus. She had a troublesome childhood herself. She is starting to understand the usefulness of knowing the prices of things. She is helping Eris train in swordplay and believes she could reach Saint-tier. She plans to introduce Eris and Rudeus to her master if Eris continues to improve. She is involved in planning a surprise party for Rudeus's tenth birthday. She is unusually nervous and attempts to keep Rudeus in his room by asking him to demonstrate Saint-tier magic. She is oddly excited about Rudeus's Saint-tier magic. She allows Rudeus to touch her muscular behind to examine the base of her tail. She expresses her desire for a figure that captures her current physique. She claps for Rudeus at his surprise birthday party. She carries Eris to her room after she falls asleep. She is deeply interested in Rudeus's magic. She advises against returning to the city due to the mana concentration. She defends Rudeus from a mysterious attacker, using the Longsword of Light technique. She clashes blades with Arumanfi, revealing his name and allegiance to Perugius. She convinces Arumanfi that they are not responsible for the phenomenon by swearing on her master and household and showing him her sword, Hiramune-Flat Core. She is swallowed by the light as the Fittoa Region vanishes. Her name is listed in the missing persons column. She reappears in the Ejin Forest after being transported by the mana calamity. She is looking for Eris and Rudeus. She enters a berserk state, losing her reason and attacking indiscriminately. She asks Bigott if he has seen Eris or Rudeus. She learns that she is in Markien Mercenary Country and needs to head south to return to Asura. She intends to cut down anyone who gets in her way as she searches for Rudeus and Eris. She kills the Dikuto king. She slices off the head of the Emperor of Broze.",
+            "relations": {
+                "Rudeus Greyrat": "travel companion, teacher",
+                "Paul Greyrat": "former party member",
+                "Eris": "mentor",
+                "Sauros Boreas Greyrat": "rescuer",
+                "Roxy": "teacher by proxy",
+                "Zenith": "former party member",
+                "Sword Master (Ghislaine)": "student",
+                "Bigott Mercenal": "acquaintance"
+            }
+        },
+        "Forest Goddess Laine": {
+            "aliases": [],
+            "gender": "Female",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 144,
+            "last_appearance_index": 157,
+            "number_of_appearances": 3,
+            "brief_description": "The goddess of the Markien mercenaries, believed to be the Goddess of Salvation who appeared a hundred years ago to save the Markien Mercenary Country. She is uniquely worshipped only in the Markien Mercenary Country. She is believed to appear out of nowhere and save the mercenaries when they are on the verge of death. She is a distorted version of Ghislaine, created after Bigott attributed his survival to a 'goddess' who helped him.",
+            "relations": {}
+        },
+        "Emperor of Broze": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 157,
+            "last_appearance_index": 157,
+            "number_of_appearances": 1,
+            "brief_description": "The Emperor of the Broze Empire, with a black beard. He is killed by Ghislaine.",
+            "relations": {}
+        },
+        "Dikuto King": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 155,
+            "last_appearance_index": 156,
+            "number_of_appearances": 2,
+            "brief_description": "The king of the Dikuto Kingdom. He is a coward and sets up camp with his back to the forest to avoid a surprise attack from the Broze Empire. He believes the Broze Emperor has launched a sneak attack and orders an assault on the Broze Empire. He is killed by Ghislaine.",
+            "relations": {}
+        },
+        "Klein Dinoltas": {
+            "aliases": [
+                "Water Saint Klein"
+            ],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 151,
+            "last_appearance_index": 152,
+            "number_of_appearances": 2,
+            "brief_description": "The captain of the Broze Emperor's Guard and a Water Saint. He is leading the bodyguards in the Ejin Forest when they encounter Bigott's unit. He is killed by Ghislaine.",
+            "relations": {}
+        },
+        "Karentosaurus": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 150,
+            "last_appearance_index": 150,
+            "number_of_appearances": 1,
+            "brief_description": "An A-class beast with a giant, lizard-like body over five meters in length, rumored to rule the Ejin Forest. It may be responsible for critically injuring a Red Leaf Tiger. It is killed by Ghislaine.",
+            "relations": {}
+        },
+        "Broze Empire Commander": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 150,
+            "last_appearance_index": 150,
+            "number_of_appearances": 1,
+            "brief_description": "The commander of a ten-man unit of Broze Empire soldiers encountered by Bigott Mercenal's unit in the Ejin Forest. He demands the unit identify itself and labels them as deserters.",
+            "relations": {}
+        },
+        "King Markien": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 144,
+            "last_appearance_index": 149,
+            "number_of_appearances": 4,
+            "brief_description": "The founder of the Markien Mercenary Country. He decided to use the Ejin Forest for a surprise attack. He is trying to capitalize on the fraught nature of the relationship between the Dikuto Kingdom and the Broze Empire.",
+            "relations": {}
+        },
+        "Twin Gods Migus and Gumis": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 61,
+            "last_appearance_index": 149,
+            "number_of_appearances": 2,
+            "brief_description": "Twin Emperors who formed a party with the Dragon God Urupen, Perugius, and the North God Kalman. Bigott Mercenal sees a similarity between himself and the legendary heroes of 400 years ago who died in battle against Laplace.",
+            "relations": {}
+        },
+        "Markien Mercenary": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 144,
+            "last_appearance_index": 145,
+            "number_of_appearances": 2,
+            "brief_description": "A mercenary from the Markien Mercenary Country, bragging about a scar from the defense of Rudomin. He prays to the Forest Goddess Laine and drinks alcohol after battle.",
+            "relations": {}
+        },
+        "Markien Mercenary 2": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 144,
+            "last_appearance_index": 145,
+            "number_of_appearances": 2,
+            "brief_description": "A mercenary from the Markien Mercenary Country, stationed at Arus Fort's eastern gate during a battle. He prays to the Forest Goddess Laine and drinks alcohol after battle.",
+            "relations": {}
+        },
+        "Roxy": {
+            "aliases": [
+                "Roxy Migurdia"
+            ],
+            "gender": "Female",
+            "approximate_age_range": "20-30",
+            "first_appearance_index": 1,
+            "last_appearance_index": 144,
+            "number_of_appearances": 16,
+            "brief_description": "Rudeus's former teacher. She sends a letter to Rudeus congratulating him on his new job as a tutor and acknowledging his request to learn the Demon God tongue. She is currently the home tutor for the king’s son. She wrote a textbook on the Demon God tongue for Rudeus, including translations, pronunciation guides, and descriptions of demon races with personal commentary. Ghislaine thinks it is pathetic that she ran from her problems. She observes strange colors in the sky resembling uncontrolled summoning magic and wonders if Rudeus is involved. She is sexually harassed by Prince Pax Shirone and defends herself with magic. She has shortened her incantations over the past five years. Prince Pax Shirone attempts to blackmail her by threatening Rudeus, whom he believes is her lover, but she calls his bluff. She knows Prince Pax Shirone lacks the power to harm Rudeus, who is under the protection of the Boreas family. She decides to quit her position as Prince Pax Shirone's tutor and leaves the Shirone Kingdom to investigate the strange phenomenon in the western sky, though she secretly wants to see Rudeus. The king rebukes Prince Pax Shirone for failing to convince her to stay. She is a Water King-tier magician. Six months after the Fittoa Region vanishes, she arrives to find only grass-covered plains. She learns that the Fittoa Region was enveloped by a large-scale mana calamity and teleported randomly to locations all over the world. She finds Rudeus's name in the missing persons column. She is devastated by the destruction and clings to the hope that Rudeus survived. She visits a refugee camp and witnesses the grief and despair of the refugees. She begins her hunt for information about what happened. She examines a bulletin board filled with requests for information on the missing and deceased and resolves to help with the search. She decides to help search for Rudeus and his family. She is indebted to the Greyrat family. She plans to search for Rudeus in either the Begaritt Continent or the Demon Continent, starting from the Dragon King’s eastern port.",
+            "relations": {
+                "Rudeus Greyrat": "former teacher",
+                "Pax Shirone": "former student"
+            }
+        },
+        "Rudeus Greyrat": {
+            "aliases": [
+                "Lord Rudeus"
+            ],
+            "gender": "Male",
+            "approximate_age_range": "10",
+            "first_appearance_index": 1,
+            "last_appearance_index": 142,
+            "number_of_appearances": 124,
+            "brief_description": "A ten-year-old boy named Rudeus Greyrat, reincarnated from a 34-year-old unemployed virgin. He is working hard to live a proper life, studying magic and swordplay. He is currently in the City of Roa to work for the Young Mistress, and is revealed to be related to the Boreas Greyrat family. He is resourceful, using knowledge from his previous life to solve problems. He is currently Eris's tutor and is teaching her a variety of subjects. He is seeking a grimoire in the library and reflects on the history of magic textbooks. He organizes a staff meeting to discuss Eris's lesson schedule and proposes giving Eris a day off to reduce her stress. He assures Edna that her salary will remain the same despite the adjustment to the lesson schedule. He arranges monthly meetings with Edna and Ghislaine to address any issues regarding Eris's lessons. He plans to visit Roa on his first day off, but Eris and Ghislaine insist on accompanying him due to safety concerns. He reminds Ghislaine that Eris should only call for help within earshot. He compliments Eris's new outfit. He visits the mercantile district of Roa and takes notes on the prices of second-hand wares. He explains to Eris how to calculate profit from reselling. He explains the concept of reselling to the shop owner, who is not pleased. He emphasizes the importance of knowing prices. He is punched by Eris when she laughs at him. He visits a deserted bookstore in the outer part of Roa and takes notes on book titles and prices, recalling that Zenith gave him a similar book on his fifth birthday. He explains to Eris that he earns two silver pieces a month. He explains to Eris the concept of earning money before spending it. He notes down the name of a book he wants to buy. He sees a floating castle in the sky. He learns about Perugius from Eris and Ghislaine and researches him in a book, discovering his connection to the Dragon God Urupen and his role in the battle against Laplace. He learns about Perugius's twelve familiars and his role in sealing away the Demon God Laplace, leading to the start of the Armored Dragon Era. He reflects on Perugius's current status and expresses interest in visiting Chaos Breaker. He is pressured by Eris to take her out again. He acknowledges his lack of talent in swordplay. He observes that Eris and Ghislaine have hit an impasse in their magic lessons. He is unable to help them overcome their difficulties in casting different schools of magic. He decides to continue with basic magic lessons, hoping they will eventually be able to cast without chanting. He observes the bustle in the manor as Eris's tenth birthday approaches. He has free time due to Eris's etiquette lessons. He is attending Eris's birthday party as a house guest. He wants to explore the manor and find someone to help with the preparations. He considers the possibility of cake being served at the birthday party and heads towards the kitchen, hoping to find food samples. He witnesses Eris fleeing from Edna. He agrees to persuade Eris to return to her dance lessons to prevent her from shaming herself at her birthday party. He finds Eris behind the stables and attempts to persuade her to return to her dance lessons. He is kicked off the haystack by Eris. He tries to persuade Eris to give dance practice another chance, emphasizing the feeling of accomplishment from succeeding at something difficult. He accompanies Eris back to her dance lessons. He begins to learn to dance himself and quickly masters some beginner steps. He observes Eris's dancing struggles and attributes them to Edna's ineffective teaching methods and Eris's own fast, sharp movements. He instructs Eris to close her eyes and swing her body to her own rhythm. He uses a method similar to sword training to help Eris dance, clapping his hands in a rhythm for her to match as if dodging attacks. He explains to Edna and Eris that he used a similar approach to teaching Eris to dance as he does with arithmetic and swordplay. He discusses the origins of sword dancing with Edna, suggesting it may come from a desert country or even the Demon Continent. He hunkers down in a corner and observes from there during Eris's birthday party. He dances with Eris at her birthday party, adding feints into their routine. He is complimented by Edna on his performance. He sends food to Ghislaine. He dances with several girls at Eris's party. He learns that Sauros revealed his Greyrat lineage, leading nobles to send their daughters and granddaughters to dance with him. He is advised by Philip to engage with the women freely but is warned against emulating Paul's promiscuity. He dances with Eris to an unfamiliar song, incorporating swordplay-like movements. He is lifted onto Sauros's shoulders after the dance. He invites Ghislaine and Eris to his room after the party. He offers Eris and Ghislaine wine, ignoring the legal drinking age. He gives Eris and Ghislaine wands as birthday gifts. He tries to lighten the mood by presenting the Sylphie figurine to Eris. He stops Ghislaine from telling a story about Paul. He finds Eris sleeping next to him and decides not to disturb her. He explores the manor's tower and finds Sauros with a cat-eared maid. He is invited on a long ride by Sauros. He studies a book about the world's history and learns about the Ancient Age of the Gods and the Dragon God who destroyed the barriers between the worlds. He continues studying world history, learning about the Chaotic Period after the destruction of the barriers between worlds, the development of martial arts and magic, and the First and Second Great Human-Demon Wars. He learns about the Second Great Human-Demon War, the hero Aldebaran splitting the continent, and the subsequent isolation of demons on the Demon Continent. He learns about how the seven heroes convinced the beastfolk to join their side, leading to the sealing of Laplace and the destruction of his companions. He reflects on the significance of the number seven and the classification of various races. He learns about the various languages spoken in the world, named after the gods of the different races, except for the Human tongue. He also notes the regional dialects of the Human tongue and their associated stereotypes. He earns extra money through various side activities. He studies and learns the Beast God tongue with Ghislaine's help and attempts to learn the Demon God tongue. He receives a package from Roxy containing a letter and a thick, untitled book made of animal hide. He reflects on Ghislaine's high ranking in the Sword God Style and the fact that the Roxy figurine he made has found its way to its subject. He is determined to master the textbook on the Demon God tongue that Roxy wrote for him. He surprises Ghislaine with his actions and skills, proving to be more dependable than she initially thought. He patiently teaches Ghislaine arithmetic and magic, adapting his explanations to help her understand. He learns the Beast God tongue and expresses interest in cute girls with cat ears. He is studying the Demon God tongue. Ghislaine suspects he will become a womanizer like his father. He is more mature than Eris in reading, writing, arithmetic, magic, social skills, and conversational prowess. He has dedicated the last two years to language studies and has learned the Beast God, Demon God, and Fighting God tongues. He can speak four languages. He is approaching the Intermediate tier in swordplay. He is improving his magic by making figurines. He is looking forward to learning at the Magic University. He overhears Eris planning a surprise party for him. He is being hidden from the public eye due to his father's past and the paranoia of those in power. He reflects on the customs of nobility and anticipates Eris's disappointment if he doesn't react enthusiastically to her surprise party. He practices making fake tears with water magic. He is aware of Ghislaine's nervousness and desire to keep him in his room. He teases Ghislaine by suggesting they go demonstrate Saint-tier magic and presents her with a work-in-progress figurine of herself. He examines Ghislaine's muscular behind to get a better understanding of the base of her tail. He attends his surprise birthday party and acts surprised and grateful, even shedding fake tears to show his appreciation. His overly enthusiastic acting causes Eris, Philip, and Sauros to overreact. He embraces Eris and whispers words of gratitude in her ear. He guesses that his father is the surprise, but he is incorrect. He is embraced by Hilda. He is told he is part of the Greyrat family and is encouraged to marry Eris. He is presented with an expensive staff by Eris. He examines the staff, noting the affinity between wood and magic types, and the importance of the crystal's size, transparency, and color for amplifying magic. He is given the staff Aqua Heartia as a gift from Eris and the Greyrat family. He listens to Philip explain the Boreas family's tradition of taking sons to the imperial capital. He is told by Philip that Hilda hated him because her sons were taken away while Rudeus was allowed to stay. Philip expresses hope in Rudeus's abilities and suggests he could help overthrow James. He learns that Paul cried to Philip because he was going to get married but didn’t have the money to afford a place and needed a stable job. He is tempted by Eris's offer to do 'just a little' and decides to accept it, sitting next to her on the bed. He kisses Eris on the cheek, touches her breasts, and reaches for her thigh, misinterpreting her consent. He is slapped and kicked by Eris. He reflects on his actions, realizing he misread the situation and acted impulsively, driven by lust. He recognizes the potential consequences of his actions and fears becoming entangled in the Boreas family's power struggles. He decides to leave the Boreas household and die on the roadside. He apologizes to Eris for his actions. He is forgiven by Eris, who sets a five-year waiting period. He vows to be a gentleman until then, but accidentally 'releases the A button' the next morning. He asks the maid to keep quiet about his 'accident'. Roxy wonders if he is involved in the strange magical phenomenon she is observing. He is under the protection of the Boreas family. He prepares to demonstrate Saint-tier water magic to Ghislaine and Eris but is interrupted by the strange phenomenon in the sky. He tests his new staff, Aqua Heartia, and discovers it amplifies his magic significantly, especially water magic. He is attacked by a mysterious man wearing a yellow mask and is defended by Ghislaine. He recognizes Arumanfi as one of Perugius's twelve familiars and warns Ghislaine about his ability to move at the speed of light. He retreats with Eris to a safe distance. He is thought to be the cause of the strange phenomenon in the sky by Arumanfi. He attempts to speak with Arumanfi when a beam of light from the sky engulfs the Fittoa Region. He shields Eris as the region vanishes. Roxy hopes that he used his quick wits to survive. His name is listed in the missing persons column. He is adaptable and resourceful.",
+            "relations": {
+                "Sylphie": "childhood friend",
+                "Ghislaine": "travel companion, teacher",
+                "Sauros Boreas Greyrat": "great nephew",
+                "Paul Greyrat": "son",
+                "Philip Boreas Greyrat": "cousin",
+                "Eris": "student, loved",
+                "Roxy": "former teacher",
+                "Edna": "colleague",
+                "Zenith": "mother",
+                "Lilia Greyrat": "stepmother",
+                "Aisha Greyrat": "sibling"
+            }
+        },
+        "Paul Greyrat": {
+            "aliases": [
+                "Paul Notos Greyrat"
+            ],
+            "gender": "Male",
+            "approximate_age_range": "20-30",
+            "first_appearance_index": 4,
+            "last_appearance_index": 143,
+            "number_of_appearances": 10,
+            "brief_description": "Rudeus's father, who detests formality and left his father's house. He is popular with women and has many mistresses. He has prepared a job and accommodations for Rudeus. He is considered more normal than the rest of the Greyrat family. He was a swordsman and adventurer in the past and was in a party with Ghislaine. He married Zenith and moved to the countryside. He was a secondary tank and DPS in the party. He is considered an 'instinctive type' of teacher. Ghislaine believes he was good for something because Rudeus gained the ability to move strategically in a swordfight as a result of fighting him. He was disowned by the Notos household. He could not attend Rudeus's party because monsters have become more active in the forest. He cried to Philip because he was going to get married but didn’t have the money to afford a place and needed a stable job. He is alive and searching for his missing family, including Rudeus, Zenith, Lilia, and Aisha. He is currently headed to the Millis Continent, Zenith's birthplace. He is asking for help from his former adventuring party, the Fang of the Black Wolf, and is willing to do anything to find his family. He is considered reliable in crisis situations.",
+            "relations": {
+                "Rudeus Greyrat": "son",
+                "Sauros Boreas Greyrat": "nephew",
+                "Philip Boreas Greyrat": "cousin",
+                "Ghislaine": "former party member",
+                "Zenith": "spouse",
+                "Lilia Greyrat": "spouse",
+                "Norn Greyrat": "daughter"
+            }
+        },
+        "Zenith": {
+            "aliases": [],
+            "gender": "Female",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 39,
+            "last_appearance_index": 142,
+            "number_of_appearances": 5,
+            "brief_description": "A priest and former party member of Paul and Ghislaine. She married Paul and moved to the countryside. She was the healer in the party. She gave Rudeus a Plant Dictionary on his fifth birthday. She could not attend Rudeus's party because the two young ones suddenly fell ill with a fever. Her name is listed in the missing persons column.",
+            "relations": {
+                "Paul Greyrat": "spouse",
+                "Rudeus Greyrat": "son",
+                "Lilia Greyrat": "co-wife"
+            }
+        },
+        "Lilia Greyrat": {
+            "aliases": [],
+            "gender": "Female",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 141,
+            "last_appearance_index": 142,
+            "number_of_appearances": 2,
+            "brief_description": "One of Paul's wives. Her name is listed in the missing persons column.",
+            "relations": {
+                "Paul Greyrat": "spouse",
+                "Zenith": "co-wife"
+            }
+        },
+        "Aisha Greyrat": {
+            "aliases": [],
+            "gender": "Female",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 141,
+            "last_appearance_index": 142,
+            "number_of_appearances": 2,
+            "brief_description": "A member of the Greyrat family. Her name is listed in the missing persons column.",
+            "relations": {
+                "Paul Greyrat": "father"
+            }
+        },
+        "Norn Greyrat": {
+            "aliases": [],
+            "gender": "Female",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 142,
+            "last_appearance_index": 142,
+            "number_of_appearances": 1,
+            "brief_description": "A member of the Greyrat family who is safe in Paul's custody.",
+            "relations": {
+                "Paul Greyrat": "father"
+            }
+        },
+        "Eris": {
+            "aliases": [
+                "Young Mistress"
+            ],
+            "gender": "Female",
+            "approximate_age_range": "10-15",
+            "first_appearance_index": 7,
+            "last_appearance_index": 138,
+            "number_of_appearances": 93,
+            "brief_description": "Philip Boreas Greyrat's daughter and Rudeus's student. She is arrogant, fierce, proud, has a fiery temper, is physically violent, prone to vengeful behavior, and does not listen to others. She is skilled at rendering her opponents powerless. She is currently being tutored by Rudeus in a variety of subjects. She is motivated to improve and aims to be as good as Ghislaine and Rudeus. She is becoming violent again due to the lack of breaks in her schedule. She is irritable during arithmetic lessons. She is being taught to perform mental arithmetic by Rudeus. She insists on accompanying Rudeus to Roa, believing she can escape kidnapping on her own. She is curious about Rudeus's plans for his day off. She wears a new outfit and punches Rudeus when he compliments her. She struggles with calculating profit during reselling but eventually grasps the concept, albeit with errors. She doesn't understand the usefulness of knowing the prices of things. She laughs at Rudeus when Rudeus suggests that knowing prices is useless. She offers to buy Rudeus a book but is reminded that she has no money. She is lectured by Rudeus on the importance of earning money before spending it. She briefly understands the lecture and shows a rare look of utter defeat. She proudly explains Perugius's history as one of the three legendary heroes who defeated the Demon God Laplace. She demands to be taken out again, displaying a mix of emotions. She is becoming more perceptive of Rudeus's teaching methods. She is adept at reading and writing, but struggles with arithmetic. She has mastered most basic magic spells except earth. She has reached Intermediate-tier in Sword God Style and is approaching her tenth birthday, which is being celebrated with a large party. She is taking special etiquette lessons to avoid shaming herself at her birthday party. She is currently fleeing from Edna because she struggles with dancing lessons. She is at risk of shaming herself at her birthday party. She is lying on a pile of hay behind the stables. She kicks Rudeus off the haystack and rests her heel on his head. She expresses her dislike for dancing and declares that she won't dance at her birthday either. She is eventually motivated to return to her dance lessons and asks Rudeus to accompany her. She sulks when Edna compliments Rudeus. Her personality and movements are well suited to the Sword God Style, but they are a drawback when it comes to dancing. Her steps are too fast and too sharp. Her rhythm and instinctively dislikes being interrupted. She is doubtful when Rudeus asks her to close her eyes and swing her body to her own rhythm. She is able to dance to the rhythm when Rudeus claps his hands to mimic dodging attacks. She nods and remains silent with her eyes wide open when Rudeus explains that he used a similar approach to teaching her to dance as he does with arithmetic and swordplay. She proudly praises Rudeus. She is dolled up and seated like a princess at her birthday party. She turns into a robot that parrots the words, \"Please tell my father,\" whenever anything is brought up. She dances with Rudeus at her birthday party and steps on his foot a few times. She approaches Rudeus for a dance, wearing a blue dress. She is wearing an up-do with a floral ornament and looks lovely. She seems excited and is the star of her birthday party. She dances with Rudeus to an unfamiliar song, incorporating swordplay-like movements. She is laughing like a girl her age should. She is excited and nervous during her party. She drinks wine with Rudeus and Ghislaine, ignoring the legal drinking age. She prefers Rudeus's miniature replicas to the wand he gives her. She is happy to receive a talisman ring from Ghislaine. She sleeps next to Rudeus, hugging the wand and wearing the talisman ring. She is better behaved after her tenth birthday, takes her lessons seriously, and punches Rudeus less frequently. She is the imagined version of the Great Emperor of the Demon World, Kishirika, in Rudeus's mind. She helped save Ghislaine from starvation. She is developing feelings for Rudeus. She has grown a lot in the past two years and has stopped yelling and sullying her clothes. She wants to look good in front of Rudeus. She stayed the night in Rudeus's room. She is devoting herself to sword practice, possibly feeling pressure from Rudeus's maturity and skills. She asks Ghislaine to accompany her in sword practice. She is improving her writing skills and is able to imitate ladylike manners. She is now at Advanced-tier in swordplay. She is planning a surprise party for Rudeus's tenth birthday. She went to her grandfather for the first time in a long while to request a secret party for Rudeus. She wears a bright red dress and has a large bouquet of flowers in her arms at Rudeus's surprise birthday party. She is gobsmacked by Rudeus's acting. She presents Rudeus with an expensive staff as a gift and looks to her father for backup. She reveals that Paul and Zenith couldn't come to the party. She is surprised when her mother suggests that Rudeus marry her. She is told to refine herself as a lady. She asks Alphonse to explain the staff's origins to Rudeus. She presents Rudeus with the Aqua Heartia staff. She becomes exhausted and falls asleep, and Ghislaine carries her to her room. She is wearing a red negligee and claims she came to sleep with Rudeus because he might be lonely. She offers Rudeus to do 'just a little'. She allows Rudeus to kiss her cheek and touch her breasts, but shoves him away and slaps him when he reaches for her thigh. She attacks Rudeus after he misinterprets her offer, leaving the door open as she storms out. She peeks in on Rudeus and forgives him, but sets a five-year waiting period for anything more. She is sometimes violent, sometimes meek, depending on the situation. She listens properly. She is almost perfect in reading and writing. She is capable of doing division. She can't do any spells without chanting them, and Intermediate-tier spells are also a challenge. She is studying difficult imperial court etiquette. She loves Rudeus. She was an uncontainable wild animal three years ago, but has recently become more refined. She is nervous and excited when Rudeus prepares to demonstrate his magic. She notices the mana in the sky. She retreats with Rudeus to a safe distance. She freezes in confusion as a beam of light engulfs the Fittoa Region. Rudeus wraps his body around her to shield her as the region vanishes. Her name is listed in the missing persons column.",
+            "relations": {
+                "Philip Boreas Greyrat": "father",
+                "Edna": "tutor",
+                "Ghislaine": "sword trainer, rescuer",
+                "Rudeus Greyrat": "student, loved",
+                "Sauros Boreas Greyrat": "grandfather, rescuer",
+                "Hilda": "mother"
+            }
+        },
+        "Man (Refugee Camp)": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 140,
+            "last_appearance_index": 140,
+            "number_of_appearances": 1,
+            "brief_description": "A man at the refugee camp who lost his house and family and is wailing over their deaths.",
+            "relations": {}
+        },
+        "Priest (Refugee Camp)": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 140,
+            "last_appearance_index": 140,
+            "number_of_appearances": 1,
+            "brief_description": "A priest at the refugee camp who throws down the symbol of the Millis religious organization and renounces his faith, cursing the gods.",
+            "relations": {}
+        },
+        "Merchant (Refugee Camp)": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 140,
+            "last_appearance_index": 140,
+            "number_of_appearances": 1,
+            "brief_description": "A merchant at the refugee camp who tries to slit his throat but is stopped by others. He has lost something more important than his own life.",
+            "relations": {}
+        },
+        "Coach Driver (Roxy)": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 139,
+            "last_appearance_index": 139,
+            "number_of_appearances": 1,
+            "brief_description": "The driver of the coach Roxy took to the Fittoa Region. He suggests she visit the refugee camp.",
+            "relations": {}
+        },
+        "Arumanfi": {
+            "aliases": [
+                "Arumanfi the Bright"
+            ],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 131,
+            "last_appearance_index": 138,
+            "number_of_appearances": 5,
+            "brief_description": "A man swathed in white and wearing a yellow mask who is one of Perugius's retainers and one of his twelve familiars. He is ordered by Perugius to search for and kill anyone suspicious involved with the strange mana pooling. He attacks Rudeus and can move at the speed of light. He is convinced by Ghislaine's oath and sword that they are not responsible for the phenomenon and departs. He disappears in a burst of gold light when the Fittoa Region is swallowed by a beam of light.",
+            "relations": {
+                "Armored Dragon King Perugius": "master"
+            }
+        },
+        "Sword God Gall Falion": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 131,
+            "last_appearance_index": 132,
+            "number_of_appearances": 2,
+            "brief_description": "The Sword God, who believes fame has no place in swordplay and that strength is the only thing that matters. He thinks anyone can obtain money and political power, but strength allows you to have things your way and stay alive. He encourages his pupils to embrace their greed to become stronger. Ghislaine swears on his name.",
+            "relations": {}
+        },
+        "Kishirika Kishirisu": {
+            "aliases": [
+                "Great Emperor of the Demon World",
+                "Demon Emperor of Demon Eyes",
+                "Kishirika"
+            ],
+            "gender": "Female",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 82,
+            "last_appearance_index": 133,
+            "number_of_appearances": 5,
+            "brief_description": "The Great Emperor of the Demon World who was defeated by the hero Arus. She is likely a woman. She is immortal and revives hundreds of years after dying. She possesses more than ten demon eyes. She laments her loneliness and lack of attention after reviving and is frustrated that she cannot see the source of the magical disturbance in the sky.",
+            "relations": {}
+        },
+        "Sword Emperor (Pupil 1)": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 131,
+            "last_appearance_index": 131,
+            "number_of_appearances": 1,
+            "brief_description": "One of the Sword God Gall Falion's pupils who has earned the title of Sword Emperor. He attacks the Sword God while he is distracted.",
+            "relations": {
+                "Sword God Gall Falion": "teacher"
+            }
+        },
+        "Sword Emperor (Pupil 2)": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 131,
+            "last_appearance_index": 131,
+            "number_of_appearances": 1,
+            "brief_description": "One of the Sword God Gall Falion's pupils who has earned the title of Sword Emperor. He attacks the Sword God while he is distracted.",
+            "relations": {
+                "Sword God Gall Falion": "teacher"
+            }
+        },
+        "Armored Dragon King Perugius": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 60,
+            "last_appearance_index": 131,
+            "number_of_appearances": 4,
+            "brief_description": "One of the three legendary heroes who defeated the Demon God Laplace. He commands twelve men and possesses a floating fortress called Chaos Breaker. He is connected to the Dragon God Urupen and is known as one of the five dragon commanders of the Dragon God. He sealed away the Demon God Laplace and ushered in the Armored Dragon Era. He is monitoring the surface from Chaos Breaker, waiting for Laplace to revive. He suspects the Great Emperor of the Demon World is trying to unseal Laplace and orders Arumanfi to kill anyone suspicious.",
+            "relations": {}
+        },
+        "Laplace": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 81,
+            "last_appearance_index": 131,
+            "number_of_appearances": 4,
+            "brief_description": "A Demon God who rallied the demons, conquered the Demon Continent, and launched a brutal military campaign against the Central Continent. He won over the seafolk and beastfolk to his cause and invaded the Central Continent from the south and north. He is treated like an idol on the Demon Continent. He was eventually sealed away by seven heroes. Perugius is waiting for him to revive so he can deal him a finishing blow.",
+            "relations": {}
+        },
+        "Great Emperor of the Demon World": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 131,
+            "last_appearance_index": 131,
+            "number_of_appearances": 1,
+            "brief_description": "The ruler of the Demon World. Perugius suspects they are trying to unseal Laplace.",
+            "relations": {}
+        },
+        "Dragon God Orsted": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 130,
+            "last_appearance_index": 130,
+            "number_of_appearances": 1,
+            "brief_description": "A powerful being known as the Dragon God, who exists outside the rules of the world. He is rumored to be the strongest in the world. He is investigating the mana pooling in the western sky. He slays a red wyrm with a single attack.",
+            "relations": {}
+        },
+        "Red Wyrm": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 130,
+            "last_appearance_index": 130,
+            "number_of_appearances": 1,
+            "brief_description": "A dreadfully strong and intelligent creature residing on the Central Continent. They are aware of the Dragon God's power and avoid him. One young wyrm that didn’t understand its place in the world descended upon Orsted and was instantly killed.",
+            "relations": {}
+        },
+        "Pax Shirone": {
+            "aliases": [
+                "Prince (Shirone)",
+                "Shirone Kingdom’s seventh prince"
+            ],
+            "gender": "Male",
+            "approximate_age_range": "15",
+            "first_appearance_index": 124,
+            "last_appearance_index": 129,
+            "number_of_appearances": 6,
+            "brief_description": "The seventh prince of the Shirone Kingdom, who has just turned fifteen. He has a bad attitude and has developed an interest in sex, making sexual advances toward Roxy. He has put his hands on multiple maids and is troubling the king. He threatens Roxy's 'lover', believing he can have him executed. He is sexually harassing Roxy and is burned by her fire magic. He attempts to blackmail Roxy by threatening Rudeus, whom he believes is her lover. He is ignorant of the power of the Boreas family and the elite noble families in Asura Kingdom. He is shocked to learn that Roxy is quitting her position as his tutor. He insists that Roxy should be apprehended and brought before him to answer for the violence she committed against him. He is rebuked and severely punished for being unable to convince Roxy to stay.",
+            "relations": {
+                "Roxy": "former tutor"
+            }
+        },
+        "Maid (Laundry)": {
+            "aliases": [],
+            "gender": "Female",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 124,
+            "last_appearance_index": 124,
+            "number_of_appearances": 1,
+            "brief_description": "A maid who collects laundry and is asked by Rudeus to keep quiet about his 'accident'. She giggles with mirth.",
+            "relations": {}
+        },
+        "Philip Boreas Greyrat": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "20-30",
+            "first_appearance_index": 6,
+            "last_appearance_index": 117,
+            "number_of_appearances": 23,
+            "brief_description": "The Young Master of the Boreas Greyrat family and Paul's cousin. He is thin with sleek brown hair. He is concerned about his daughter's education. He is also the town's mayor. He prioritizes the Greyrat family's image and political standing. He is married to Hilda. He encourages Rudeus to peruse the library. He teaches Eris history in his free time. He told Eris that Rudeus likes books. He directs a butler to retrieve a book for Rudeus. He requested that Eris act like a ten-year-old child without causing any shame to herself at her birthday party. He and his wife deftly handle the poorer and lesser nobles that swarm around the family at Eris's birthday party. He explains that Sauros revealed Rudeus's Greyrat lineage. He advises Rudeus to engage with the women freely but warns him against emulating Paul's promiscuity. He attempts to restrain Sauros from starting a war against the Notos family. He escorts Hilda away from the scene with glacial composure. He watches over the party with a smile. He reveals to Rudeus that Eris has older and younger brothers who were taken by his elder brother as adopted sons according to the Boreas family tradition. He lost the battle to become the head of the family to James, and still hopes to overthrow him. He recognizes Rudeus's acting and abilities. He admits he hired Ghislaine to teach Eris swordplay because he thought she was hopeless as a noble. He offers Rudeus the opportunity to marry Eris and help him seize control of the Boreas family. He claims he has no responsibility for Eris and would prefer to hand her over to Rudeus.",
+            "relations": {
+                "Sauros Boreas Greyrat": "father",
+                "Rudeus Greyrat": "cousin",
+                "Eris": "daughter",
+                "Hilda": "spouse",
+                "James": "sibling"
+            }
+        },
+        "Hilda": {
+            "aliases": [],
+            "gender": "Female",
+            "approximate_age_range": "20-30",
+            "first_appearance_index": 47,
+            "last_appearance_index": 114,
+            "number_of_appearances": 6,
+            "brief_description": "Philip's wife and Eris's mother, with deep crimson hair and an ample bosom. She ignores Rudeus's greeting. She embraces Rudeus and tells him he is part of the family. She suggests that Rudeus marry Eris. She has a wild presence like Sauros. She pours alcohol for Sauros. She gives Rudeus a final kiss goodnight before retiring to her quarters. She hated Rudeus because her sons were taken from her, while Rudeus was allowed to stay. She may have roused Eris, forced her to change, and sent her to sleep with Rudeus.",
+            "relations": {
+                "Philip Boreas Greyrat": "spouse",
+                "Eris": "daughter"
+            }
+        },
+        "James": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "30-40",
+            "first_appearance_index": 114,
+            "last_appearance_index": 114,
+            "number_of_appearances": 1,
+            "brief_description": "Philip's elder brother and the current head of the Boreas Greyrat family. He is six years older than Philip, widely known throughout the capital, and had served as a minister’s aide. He has connections, money, and political power. He claimed Philip's sons as adopted sons.",
+            "relations": {
+                "Philip Boreas Greyrat": "sibling",
+                "Gordon": "rival"
+            }
+        },
+        "Gordon": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "20-30",
+            "first_appearance_index": 114,
+            "last_appearance_index": 114,
+            "number_of_appearances": 1,
+            "brief_description": "One of Philip's rivals in the battle to become the head of the Boreas family. He married into the Euros branch of the Greyrat family after being manipulated by James.",
+            "relations": {
+                "James": "rival"
+            }
+        },
+        "Euros Greyrat family": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 114,
+            "last_appearance_index": 114,
+            "number_of_appearances": 1,
+            "brief_description": "A branch of the Greyrat family that Gordon married into. They have a different tradition than the Boreas family.",
+            "relations": {}
+        },
+        "Sauros Boreas Greyrat": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "50-60",
+            "first_appearance_index": 4,
+            "last_appearance_index": 113,
+            "number_of_appearances": 15,
+            "brief_description": "The liege lord of the Fittoa Region, with dark brown hair speckled with white. He is Paul Greyrat's uncle and Rudeus's great uncle. He is initially displeased with Rudeus's lack of manners, seeing Rudeus as similar to Paul, but ultimately permits Rudeus to stay. He seems to require a forceful personality to rule as a liege lord. He is very protective of his granddaughter and is prone to violence. He is quick to anger and physically assaults his son for not thanking Rudeus for saving Eris. He values family and is prone to loud outbursts and is prone to spoiling Eris. He is selfish and doesn't like to close doors. He has a fondness for beastfolk. His booming voice and irrationally one-sided way of talking deters poorer and lesser nobles at Eris's birthday party. He boastfully reveals Rudeus's Greyrat lineage, leading to Rudeus becoming popular at the party. He lifts Rudeus and Eris onto his shoulders and runs around the courtyard laughing. He is found with a cat-eared maid in a small room at the top of the manor's tower. He prays to a gem in the sky. He invites Rudeus on a long ride. He saved Ghislaine from starvation after she was defrauded. He threatens war against the Notos family to install Rudeus as the head of the family. He becomes sullen when Philip intervenes to prevent him from giving Rudeus alcohol. He gets utterly smashed and retires to his room, laughing merrily.",
+            "relations": {
+                "Rudeus Greyrat": "great nephew",
+                "Paul Greyrat": "nephew",
+                "Philip Boreas Greyrat": "son",
+                "Eris": "granddaughter",
+                "Ghislaine": "rescuer"
+            }
+        },
+        "Alphonse": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 33,
+            "last_appearance_index": 111,
+            "number_of_appearances": 4,
+            "brief_description": "A butler in the liege lord's manor who closes the door after Sauros and Philip's discussion. Eris calls out to him. He produces a staff from behind a sculpture. He explains the staff's origins and craftsmanship to Rudeus.",
+            "relations": {}
+        },
+        "Chein Procyon": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 111,
+            "last_appearance_index": 111,
+            "number_of_appearances": 1,
+            "brief_description": "The greatest staff craftsman, the Rod Director in the Asuran Royal Palace’s Mage Guild.",
+            "relations": {}
+        },
+        "Fighting God": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 99,
+            "last_appearance_index": 99,
+            "number_of_appearances": 1,
+            "brief_description": "The Fighting God tongue is similar to the Human tongue in grammar, expressions, and vocabulary.",
+            "relations": {}
+        },
+        "Thief (Ghislaine's Party)": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 40,
+            "last_appearance_index": 98,
+            "number_of_appearances": 2,
+            "brief_description": "A member of Ghislaine, Paul, and Zenith's adventuring party who filled the role of thief. They were skilled at gambling but also swiped money from the party. They were knowledgeable about the market value of consumables but once bought healing remedies in bulk that were of inferior quality.",
+            "relations": {
+                "Ghislaine": "party member",
+                "Paul Greyrat": "party member",
+                "Zenith": "party member"
+            }
+        },
+        "Sword Master (Ghislaine)": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 92,
+            "last_appearance_index": 92,
+            "number_of_appearances": 1,
+            "brief_description": "Ghislaine's sword master, who was a Divine-tier swordsman and emphasized the importance of logic and foundations in swordplay.",
+            "relations": {
+                "Ghislaine": "student"
+            }
+        },
+        "Prince (Shirone)": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 89,
+            "last_appearance_index": 89,
+            "number_of_appearances": 1,
+            "brief_description": "The son of the king of Shirone, who is being tutored by Roxy. He bought a small statuette that looks just like Roxy.",
+            "relations": {}
+        },
+        "Dragon King Urupen": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 61,
+            "last_appearance_index": 84,
+            "number_of_appearances": 2,
+            "brief_description": "A Dragon God who dragged Perugius along to the Adventurer’s Guild and formed a party with him, the North God Kalman, and the Twin Emperors Migus and Gumis. He is known for his brotherly bond with Perugius. He is one of the three heroes who survived the battle against Laplace.",
+            "relations": {}
+        },
+        "North God Kalman": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 61,
+            "last_appearance_index": 84,
+            "number_of_appearances": 2,
+            "brief_description": "One of the members of the party formed by the Dragon God Urupen, along with Perugius and the Twin Emperors Migus and Gumis. He is one of the three heroes who survived the battle against Laplace.",
+            "relations": {}
+        },
+        "Kishirika": {
+            "aliases": [],
+            "gender": "Female",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 82,
+            "last_appearance_index": 83,
+            "number_of_appearances": 2,
+            "brief_description": "The Great Emperor of the Demon World who was defeated by the hero Arus. She is likely a woman. She is immortal and revives hundreds of years after dying.",
+            "relations": {}
+        },
+        "Aldebaran": {
+            "aliases": [
+                "Golden Knight Aldebaran"
+            ],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 83,
+            "last_appearance_index": 83,
+            "number_of_appearances": 1,
+            "brief_description": "A legendary hero known as the Golden Knight who ended the Second Great Human-Demon War by defeating the Great Demon Emperor and splitting the Great Continent into the Central and Demon Continents.",
+            "relations": {}
+        },
+        "Arus": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 82,
+            "last_appearance_index": 82,
+            "number_of_appearances": 1,
+            "brief_description": "A hero who led six comrades into battle and defeated the Five Great Demon Kings and the Great Emperor of the Demon World, Kishirika.",
+            "relations": {}
+        },
+        "Human God": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 81,
+            "last_appearance_index": 81,
+            "number_of_appearances": 1,
+            "brief_description": "The god of the world of humans.",
+            "relations": {}
+        },
+        "Demon God": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 81,
+            "last_appearance_index": 81,
+            "number_of_appearances": 1,
+            "brief_description": "The god of the world of demons.",
+            "relations": {}
+        },
+        "Dragon God": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 81,
+            "last_appearance_index": 81,
+            "number_of_appearances": 1,
+            "brief_description": "The god of the world of dragons.",
+            "relations": {}
+        },
+        "Beast God": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 81,
+            "last_appearance_index": 81,
+            "number_of_appearances": 1,
+            "brief_description": "The god of the world of beasts.",
+            "relations": {}
+        },
+        "Sea God": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 81,
+            "last_appearance_index": 81,
+            "number_of_appearances": 1,
+            "brief_description": "The god of the ocean world.",
+            "relations": {}
+        },
+        "Sky God": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 81,
+            "last_appearance_index": 81,
+            "number_of_appearances": 1,
+            "brief_description": "The god of the sky world.",
+            "relations": {}
+        },
+        "Barren God": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 81,
+            "last_appearance_index": 81,
+            "number_of_appearances": 1,
+            "brief_description": "The god of the barren world.",
+            "relations": {}
+        },
+        "Evil Dragon God": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 81,
+            "last_appearance_index": 81,
+            "number_of_appearances": 1,
+            "brief_description": "An incorrigibly evil Dragon God born in the dragon world who destroyed the barriers separating the worlds and began destroying the other worlds.",
+            "relations": {}
+        },
+        "Dragon Emperor": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 81,
+            "last_appearance_index": 81,
+            "number_of_appearances": 1,
+            "brief_description": "The head of the Five Dragon Commanders who fought the Evil Dragon God.",
+            "relations": {}
+        },
+        "Dragon Kings": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 81,
+            "last_appearance_index": 81,
+            "number_of_appearances": 1,
+            "brief_description": "The four Dragon Kings who fought the Evil Dragon God along with the Dragon Emperor.",
+            "relations": {}
+        },
+        "Cat-Eared Maid": {
+            "aliases": [],
+            "gender": "Female",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 47,
+            "last_appearance_index": 79,
+            "number_of_appearances": 3,
+            "brief_description": "A maid with dog ears who guides Rudeus to the library. She is found with Sauros in a small room at the top of the manor's tower.",
+            "relations": {}
+        },
+        "Edna": {
+            "aliases": [],
+            "gender": "Female",
+            "approximate_age_range": "40-50",
+            "first_appearance_index": 7,
+            "last_appearance_index": 73,
+            "number_of_appearances": 12,
+            "brief_description": "The Young Mistress's etiquette tutor, and one of the few people the Young Mistress likes. She has the face of a middle-aged woman whose wrinkles are just beginning to show. Her features are soft, and she has a kind smile that emanates warmth. She attends a staff meeting with Rudeus and Ghislaine. She is concerned that her salary will be reduced if her lessons are reduced, but Rudeus assures her that it will not be. She agrees to monthly meetings with Rudeus to address any issues regarding Eris's lessons. She looks exhausted and has requested a drastic increase in the number of etiquette lessons with Eris. She is chasing after Eris. She is troubled that Eris keeps running away from her dance lessons. She asks Rudeus to persuade Eris to return to her dance lessons to prevent her from shaming herself at her birthday party. Her teaching methods are ineffective. Her method of teaching is to say, \"Do it this way,\" \"Do it that way,\" and \"Just memorize what I’m telling you.\" She never touches on why those things are necessary. Her gentle smile wavers when Rudeus asks Eris to close her eyes and swing her body to her own rhythm. She is amazed that Eris is able to dance to the rhythm and yells, \"You did it! You did it, Young Mistress!\". She seems thoroughly impressed with Rudeus's teaching abilities and attributes it to his vast knowledge. She discusses the origins of sword dancing with Rudeus. She calls out, \"You did well, Lord Rudeus,\" after Rudeus and Eris finish their dance. She is amazed that Rudeus calmed Eris's nerves.",
+            "relations": {
+                "Eris": "student",
+                "Rudeus Greyrat": "colleague"
+            }
+        },
+        "Maids with dog ears": {
+            "aliases": [],
+            "gender": "Female",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 64,
+            "last_appearance_index": 64,
+            "number_of_appearances": 1,
+            "brief_description": "Maids with dog ears who are rushing to-and-fro in the hallways in preparation for Eris's tenth birthday party. They are sprinting fast enough to send a transfer student rocketing to the moon.",
+            "relations": {}
+        },
+        "Void": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 62,
+            "last_appearance_index": 62,
+            "number_of_appearances": 1,
+            "brief_description": "One of the twelve familiars summoned by Perugius.",
+            "relations": {
+                "Armored Dragon King Perugius": "master"
+            }
+        },
+        "Dark": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 62,
+            "last_appearance_index": 62,
+            "number_of_appearances": 1,
+            "brief_description": "One of the twelve familiars summoned by Perugius.",
+            "relations": {
+                "Armored Dragon King Perugius": "master"
+            }
+        },
+        "Bright": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 62,
+            "last_appearance_index": 62,
+            "number_of_appearances": 1,
+            "brief_description": "One of the twelve familiars summoned by Perugius.",
+            "relations": {
+                "Armored Dragon King Perugius": "master"
+            }
+        },
+        "Surge": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 62,
+            "last_appearance_index": 62,
+            "number_of_appearances": 1,
+            "brief_description": "One of the twelve familiars summoned by Perugius.",
+            "relations": {
+                "Armored Dragon King Perugius": "master"
+            }
+        },
+        "Life": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 62,
+            "last_appearance_index": 62,
+            "number_of_appearances": 1,
+            "brief_description": "One of the twelve familiars summoned by Perugius.",
+            "relations": {
+                "Armored Dragon King Perugius": "master"
+            }
+        },
+        "Violent Earthquake": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 62,
+            "last_appearance_index": 62,
+            "number_of_appearances": 1,
+            "brief_description": "One of the twelve familiars summoned by Perugius.",
+            "relations": {
+                "Armored Dragon King Perugius": "master"
+            }
+        },
+        "Time": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 62,
+            "last_appearance_index": 62,
+            "number_of_appearances": 1,
+            "brief_description": "One of the twelve familiars summoned by Perugius.",
+            "relations": {
+                "Armored Dragon King Perugius": "master"
+            }
+        },
+        "Roaring Thunder": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 62,
+            "last_appearance_index": 62,
+            "number_of_appearances": 1,
+            "brief_description": "One of the twelve familiars summoned by Perugius.",
+            "relations": {
+                "Armored Dragon King Perugius": "master"
+            }
+        },
+        "Destruction": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 62,
+            "last_appearance_index": 62,
+            "number_of_appearances": 1,
+            "brief_description": "One of the twelve familiars summoned by Perugius.",
+            "relations": {
+                "Armored Dragon King Perugius": "master"
+            }
+        },
+        "Insight": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 62,
+            "last_appearance_index": 62,
+            "number_of_appearances": 1,
+            "brief_description": "One of the twelve familiars summoned by Perugius.",
+            "relations": {
+                "Armored Dragon King Perugius": "master"
+            }
+        },
+        "Insanity": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 62,
+            "last_appearance_index": 62,
+            "number_of_appearances": 1,
+            "brief_description": "One of the twelve familiars summoned by Perugius.",
+            "relations": {
+                "Armored Dragon King Perugius": "master"
+            }
+        },
+        "Atonement": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 62,
+            "last_appearance_index": 62,
+            "number_of_appearances": 1,
+            "brief_description": "One of the twelve familiars summoned by Perugius.",
+            "relations": {
+                "Armored Dragon King Perugius": "master"
+            }
+        },
+        "Dragon God Urupen": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 61,
+            "last_appearance_index": 61,
+            "number_of_appearances": 1,
+            "brief_description": "A Dragon God who dragged Perugius along to the Adventurer’s Guild and formed a party with him, the North God Kalman, and the Twin Emperors Migus and Gumis. He is known for his brotherly bond with Perugius.",
+            "relations": {}
+        },
+        "Twin Emperors Migus and Gumis": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 61,
+            "last_appearance_index": 61,
+            "number_of_appearances": 1,
+            "brief_description": "Twin Emperors who formed a party with the Dragon God Urupen, Perugius, and the North God Kalman.",
+            "relations": {}
+        },
+        "Bookstore Owner (Roa)": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 58,
+            "last_appearance_index": 58,
+            "number_of_appearances": 1,
+            "brief_description": "The owner of a deserted bookstore in the outer part of Roa. They yawn and dismiss Rudeus as a potential customer but become suspicious when he starts noting down book titles.",
+            "relations": {}
+        },
+        "Second-hand Wares Shop Owner": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 54,
+            "last_appearance_index": 57,
+            "number_of_appearances": 2,
+            "brief_description": "An old man running a shop selling second-hand wares in Roa. He uses lines lifted straight out of an RPG. He calls out to the Young Master and Miss to look around. He is not pleased when Rudeus explains the concept of reselling.",
+            "relations": {}
+        },
+        "Dog-Eared Maid": {
+            "aliases": [],
+            "gender": "Female",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 47,
+            "last_appearance_index": 48,
+            "number_of_appearances": 2,
+            "brief_description": "A maid with dog ears who guides Rudeus to the library.",
+            "relations": {}
+        },
+        "Magician (Ghislaine's Party)": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 40,
+            "last_appearance_index": 40,
+            "number_of_appearances": 1,
+            "brief_description": "A member of Ghislaine, Paul, and Zenith's adventuring party who filled the role of magician and DPS.",
+            "relations": {
+                "Ghislaine": "party member",
+                "Paul Greyrat": "party member",
+                "Zenith": "party member"
+            }
+        },
+        "Warrior (Ghislaine's Party)": {
+            "aliases": [],
+            "gender": "Unknown",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 40,
+            "last_appearance_index": 40,
+            "number_of_appearances": 1,
+            "brief_description": "A member of Ghislaine, Paul, and Zenith's adventuring party who filled the role of warrior and tank.",
+            "relations": {
+                "Ghislaine": "party member",
+                "Paul Greyrat": "party member",
+                "Zenith": "party member"
+            }
+        },
+        "Thomas": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 31,
+            "last_appearance_index": 31,
+            "number_of_appearances": 1,
+            "brief_description": "The butler who orchestrated the kidnapping of Eris. He has connections to a perverted noble who wanted to break Eris's spirit. He was seduced by money and added two men to Rudeus's plan.",
+            "relations": {}
+        },
+        "Perverted Noble": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 31,
+            "last_appearance_index": 31,
+            "number_of_appearances": 1,
+            "brief_description": "A noble who wanted to break Eris's fierce spirit. He was connected to Thomas, the butler, who orchestrated the kidnapping. He escaped punishment due to lack of evidence and possible political machinations.",
+            "relations": {}
+        },
+        "Kidnapper": {
+            "aliases": [
+                "Violent Kidnapper"
+            ],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 16,
+            "last_appearance_index": 29,
+            "number_of_appearances": 8,
+            "brief_description": "A ragged, foul-smelling, bald, and unshaven man who attacks the Young Mistress. He is one of the kidnappers and is aware of her status as the liege lord's granddaughter. He is violent and unhinged. He kicks the Young Mistress repeatedly, causing her to vomit blood, and also kicks Rudeus. He is skilled in combat. He offers Rudeus a share of the profits if he joins them. His arm is cut off by Rudeus and he is killed by Ghislaine.",
+            "relations": {}
+        },
+        "Kidnapper 2": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 25,
+            "last_appearance_index": 29,
+            "number_of_appearances": 3,
+            "brief_description": "One of the kidnappers, who was heard talking outside the storehouse. He is skilled in combat. He cuts Rudeus's Stone Cannon in two. He launches his sword at Rudeus and the Young Mistress. He is killed by Ghislaine.",
+            "relations": {}
+        },
+        "Town Guard": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unknown",
+            "first_appearance_index": 21,
+            "last_appearance_index": 21,
+            "number_of_appearances": 1,
+            "brief_description": "A sleepy town guard who accepts a bribe from Rudeus to lie about seeing him and the Young Mistress.",
+            "relations": {}
+        },
+        "Sylphie": {
+            "aliases": [],
+            "gender": "Female",
+            "approximate_age_range": "5-10",
+            "first_appearance_index": 2,
+            "last_appearance_index": 2,
+            "number_of_appearances": 1,
+            "brief_description": "A cute, childhood friend of Rudeus. He promised to earn tuition money so they could attend the same school. She is part elf.",
+            "relations": {
+                "Rudeus Greyrat": "childhood friend"
+            }
+        },
+        "Butler": {
+            "aliases": [],
+            "gender": "Male",
+            "approximate_age_range": "Unkown",
+            "first_appearance_index": 4,
+            "last_appearance_index": 5,
+            "number_of_appearances": 2,
+            "brief_description": "A butler at the liege lord's manor who leads Rudeus to the reception room and serves him tea. He clarifies Sauros's relationship to Rudeus. He is silenced by Sauros when he tries to defend Rudeus.",
+            "relations": {}
+        }
+    }
+}
+
+      PRECEDING TEXT CHUNK:
+      I mean, what are you planning to do?” “Anyone who gets in my way gets cut down. That’s all.” There was a ferocity in her eyes that made him doubt if she was still in possession of reason. Bigott had no words. Just what had her so stirred up? “Hopefully Rudeus is with Lady Eris, but there’s a chance they were both transported somewhere else just like I was. I have to hurry.” After hearing that, he understood. We’re not that different, he thought. Those two children, particularly the red-haired girl, were 234 | P a g e more important than anything to the Sword King. She was desperate to protect that which was precious to her. “In that case, why don’t we travel part of the way together? We also have something to take care of in that direction.” “Very well.” For some reason Bigott felt particularly proud. Although their objectives differed, he felt like he was standing side-by-side with this Sword King, fighting for something he wanted to protect. Bigott, his men, and Ghislaine slipped out from the forest and attacked the Dikuto Kingdom from behind. Their luck was good. As soon as the battle with Markien began, all the troops were focused on what was in front of them. The Broze Emperor found it suspicious that his bodyguards had failed to return. He suspected the Dikuto Kingdom was planning an ambush for his troops, and that his bodyguards had been killed after discovering their plot. After all, the Dikuto king’s main army was close to the forest. It seemed likely they had troops hiding further within. In truth, the Dikuto king was a coward and had camped with his back to the forest so he wouldn’t be caught in a surprise attack by the Broze Empire. The combination of these factors would later lead to Bigott’s success. Ghislaine howled and Bigott let out a fierce cry as he led his men into battle. They charged right into the enemy camp where the Dikuto king’s tent was set up. The king was startled by their surprise attack. Seeing their armor, he immediately thought the Broze Emperor had launched a sneak attack from the forest. He hailed a nearby attendant and commanded an assault on the Broze Empire. Then he tried to take shelter from the chaos.
+235 | P a g e It was only ten seconds later when Ghislaine tore the Dikuto king asunder with her blade, killing him. If he had lived, he might have realized Bigott and his men were not of the Broze Empire and retracted his orders, but an imperial edict had absolute power. The Dikuto Kingdom surged into battle against the Broze Empire. The Broze Empire had predicted such an attack would come, so while they were caught off guard by its timing, they were able to put up a fight. That was when the Markien Mercenary Country took up arms. It was a three-pronged free-for-all. Bigott found himself surrounded by enemies, but he was still alive. It was his mission to die deceiving the Dikuto Kingdom into thinking his attack was the work of the Broze Empire, yet still he clung to life. He and his men had already been separated, and the only ally close to him was a single fighter. There, right in front of him. He followed in the shadow of her tanned back as the light of her sword flashed, cutting through the enemy. He had never seen such a reliable figure before. He felt so proud to be protecting her flank. At last they could no longer see the armor of the Dikuto Kingdom around them. Instead, they were surrounded by soldiers of the Broze Empire. While the Empire was surprised by the intrusion of a woman with a blood-red blade, they had watched her cut down the Dikuto Kingdom’s men and noticed Bigott protecting her flank in his Broze armor. They mistook Bigott and Ghislaine for allies. That was when Markien surged in. The two allied countries were shaken as the battle started up behind them. Not only had their bond alliance broken, but their formations as well. Markien, which should have been at a disadvantage, broke through their front lines. A chaotic battle ensued. Amidst the violent fighting, Bigott became separated from Ghislaine, but managed to rejoin his comrades. Shouts of joy rang out from the Markien mercenaries as 236 | P a g e they recognized Bigott and took up a firm position around him. Instead of falling back, Bigott remained on the front lines and kept fighting. The battle raged on, the soldiers covered in mud and blood, not fully aware of what was happening around them.
+Bigott took an arrow in his left eye. Anguished, he searched for the bowman responsible. That was when he saw it. He watched as it happened. Below an eye-catching banner, dressed in luxurious Broze armor, was a man with a black beard. Bigott saw the flash of red as that man, the Emperor of Broze, had his head sliced off by a brown-skinned woman. “Ha, hah, hahaha!” He laughed, and as he laughed, the battle wore on. And he lived. The final battle ended in victory for the Markien Mercenary Country. *** Thanks to his achievements, Bigott Mercenal earned the position of general. He was celebrated as a legendary hero for having succeeded in a suicide mission and for executing Dikuto’s king. After that, Bigott Mercenal continued to do spectacular work that resulted in him being known as one of the most outstanding Great Generals of the Markien Mercenary Country. That, however, is a story for another time. Once that decisive battle was over, the Great General Bigott started doing something strange. He started wearing a necklace that had the profile of a female beastfolk chiseled into it, and began painting the blade of his sword red. “It’s a good luck charm.” 237 | P a g e His men began to imitate him, and those who heard their tales followed suit. These customs continued spreading until they took their modern-day shape. When asked what kind of good luck charm it was, Bigott responded thus: “I was helped by a goddess during that battle. I’m following her example.” It was from his words that the Forest Goddess Laine was created. The name Ghislaine was difficult for those in the southern part of the Central Continent to pronounce, and so her name, altered by their accents, became Laine. She appeared from the forest, rescuing the life of the great general, becoming the Goddess of Salvation. Forest Goddess Laine. For the next hundred years she was worshipped as Markien’s Goddess of Protection, providing support to the hearts of many soldiers. Of course, the real Ghislaine had no knowledge of this designation. Where did Ghislaine go after that? Was she still alive? Did she survive that battle and go on home to Asura Kingdom? Was she able to meet that precious Young Mistress of hers again? Bigott Mercenal had no way of knowing.
+
+      FOLLOWING TEXT CHUNK:
+      None
+
+      MAIN TEXT EXCERPT:
+      238 | P a g e 239 | P a g e 240 | P a g e About theAuthor:Rifujin na Magonote Resides in Gifu Prefecture. Loves fighting games and cream puffs. Inspired by other published works on the website Let’s Become Novelists, they created the web novel Mushoku Tensei. They instantly gained readers’ support, and within one year of publishing on the website, achieved rank 1 on the site’s combined popularity rankings. “Mixed among the things in our lives that we discard, thinking them unnecessary, may be that which is truly precious to us,” the author said. 241 | P a g e Thank you for reading! Get the latest news about your favorite Seven Seas books and brand- new licenses delivered to your inbox every week: Sign up for our newsletter! Or visit us online: gomanga.com/newsletter 242 | P a g e Download all your fav Light Novels at Just Light Novels
+      
+
+Error when answering with key AIzaSyCRfyYBBT1s7W5NMSsCn9gXLuIw-PB6hic using gemini: Timeout of 600.0s exceeded, last exception: 503 failed to connect to all addresses; last error: UNKNOWN: ipv4:142.250.198.138:443: tcp handshaker shutdown.
+--------------------
