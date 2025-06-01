@@ -1,7 +1,7 @@
 import os
 from django.core.management.base import BaseCommand
 from django.conf import settings
-from novel.models import Novel
+from audiobook.models import Novel
 import shutil
 from dotenv import load_dotenv
 
@@ -34,8 +34,8 @@ class Command(BaseCommand):
             os.path.join(data_dir, 'context_data', 'input_data_directory'),
             os.path.join(data_dir, 'context_data', 'personality_mapper_data'),
             os.path.join(data_dir, 'context_data', 'personality_mapper_data', 'mapped_character-VA'),
-            os.path.join(data_dir, 'voice_data', 'temporary_output_voice_data', 'text_to_speech'),
-            os.path.join(data_dir, 'voice_data', 'temporary_output_voice_data', 'voice_conversion'),
+            # os.path.join(data_dir, 'voice_data', 'temporary_output_voice_data', 'text_to_speech'),
+            # os.path.join(data_dir, 'voice_data', 'temporary_output_voice_data', 'voice_conversion'),
             os.path.join(data_dir, 'voice_data', 'temporary_output_voice_data', 'final_audio_output')
         ]
 
