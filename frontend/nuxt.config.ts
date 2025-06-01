@@ -13,11 +13,18 @@ export default defineNuxtConfig({
     '@nuxt/test-utils'
   ],
 
+  // Add runtime configuration
+  runtimeConfig: {
+    public: {
+      apiBaseUrl: process.env.API_BASE_URL || 'http://127.0.0.1:8000'
+    }
+  },
+
   // Add proxy configuration
   nitro: {
     devProxy: {
       '/api': {
-        target: 'http://localhost:8000'
+        target: process.env.API_BASE_URL || 'http://127.0.0.1:8000'
       }
     }
   }

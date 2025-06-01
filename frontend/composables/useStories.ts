@@ -13,7 +13,7 @@ export const useStories = () => {
       const token = localStorage.getItem('token')
       if (!token) throw new Error('Not authenticated')
 
-      const response = await fetch('http://localhost:8000/api/audiobook/novels/', {
+      const response = await fetch(`${useRuntimeConfig().public.apiBaseUrl}/api/audiobook/novels/`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -41,7 +41,7 @@ export const useStories = () => {
       const token = localStorage.getItem('token')
       if (!token) throw new Error('Not authenticated')
 
-      const response = await fetch(`http://localhost:8000/api/audiobook/novels/${id}/`, {
+      const response = await fetch(`${useRuntimeConfig().public.apiBaseUrl}/api/audiobook/novels/${id}/`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },

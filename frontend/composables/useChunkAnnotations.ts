@@ -13,7 +13,7 @@ export const useChunkAnnotations = () => {
       const token = localStorage.getItem('token')
       if (!token) throw new Error('Not authenticated')
 
-      const response = await fetch(`http://localhost:8000/api/chunk-annotations/?novel=${novelId}`, {
+      const response = await fetch(`${useRuntimeConfig().public.apiBaseUrl}/api/chunk-annotations/?novel=${novelId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },

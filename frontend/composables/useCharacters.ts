@@ -13,7 +13,7 @@ export const useCharacters = () => {
       const token = localStorage.getItem('token')
       if (!token) throw new Error('Not authenticated')
 
-      const response = await fetch(`http://localhost:8000/api/characters/?novel=${novelId}`, {
+      const response = await fetch(`${useRuntimeConfig().public.apiBaseUrl}/api/characters/?novel=${novelId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -42,7 +42,7 @@ export const useCharacters = () => {
       const token = localStorage.getItem('token')
       if (!token) throw new Error('Not authenticated')
 
-      const response = await fetch('http://localhost:8000/api/characters/', {
+      const response = await fetch(`${useRuntimeConfig().public.apiBaseUrl}/api/characters/`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -77,7 +77,7 @@ export const useCharacters = () => {
       const token = localStorage.getItem('token')
       if (!token) throw new Error('Not authenticated')
 
-      const response = await fetch(`http://localhost:8000/api/characters/${characterId}/`, {
+      const response = await fetch(`${useRuntimeConfig().public.apiBaseUrl}/api/characters/${characterId}/`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -112,7 +112,7 @@ export const useCharacters = () => {
       const token = localStorage.getItem('token')
       if (!token) throw new Error('Not authenticated')
 
-      const response = await fetch(`http://localhost:8000/api/characters/${characterId}/`, {
+      const response = await fetch(`${useRuntimeConfig().public.apiBaseUrl}/api/characters/${characterId}/`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,

@@ -147,7 +147,7 @@ function onTimeUpdate() {
 async function fetchChunkAnnotations(novelId: string) {
   try {
     const token = localStorage.getItem('token')
-    const res = await fetch(`http://localhost:8000/api/audiobook/chunk-annotations/?novel=${novelId}`, {
+    const res = await fetch(`${useRuntimeConfig().public.apiBaseUrl}/api/audiobook/chunk-annotations/?novel=${novelId}`, {
       headers: { 'Authorization': `Bearer ${token}` }
     })
     if (!res.ok) throw new Error('Failed to fetch chunk annotations')

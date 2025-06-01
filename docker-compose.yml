@@ -1,0 +1,146 @@
+version: '3.8'
+
+services:
+  # Django Backend
+  story_phonic:
+    build:
+      context: ./backend/story_phonic
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./backend/story_phonic/.env
+    environment:
+      - NARRATIVE_SERVICE_URL=http://narrative-annotation:8001
+      - TTS_SERVICE_URL=http://text-to-speech:8002
+      - VC_SERVICE_URL=http://voice-conversion:8003
+      - FRONTEND_URL=http://frontend:3000
+    volumes:
+      - story_phonic_media:/app/media
+      - story_phonic_static:/app/static
+      - ./backend/ai_service/data:/app/data
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Database
+  db:
+    image: mysql:8.0.36
+    env_file:
+      - ./backend/story_phonic/.env
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # AI Services
+  narrative-annotation:
+    build:
+      context: ./backend/ai_service/service/narrative-annotation-service
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    env_file:
+      - ./backend/ai_service/service/narrative-annotation-service/.env
+    environment:
+      - DATA_DIR_ABSOLUTE=/app/data
+    volumes:
+      - ./backend/ai_service/service/narrative-annotation-service:/app
+      - narrative_annotation_logs:/app/logs
+      - ./backend/ai_service/data:/app/data
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/health/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  text-to-speech:
+    build:
+      context: ./backend/ai_service/service/text-to-speech-service
+      dockerfile: Dockerfile
+    ports:
+      - "8002:8002"
+    env_file:
+      - ./backend/ai_service/service/text-to-speech-service/.env
+    environment:
+      - DATA_DIR_ABSOLUTE=/app/data
+    volumes:
+      - ./backend/ai_service/service/text-to-speech-service:/app
+      - tts_logs:/app/logs
+      - ./backend/ai_service/data:/app/data
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8002/health/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  voice-conversion:
+    build:
+      context: ./backend/ai_service/service/voice-conversion-service
+      dockerfile: Dockerfile
+    ports:
+      - "8003:8003"
+    env_file:
+      - ./backend/ai_service/service/voice-conversion-service/.env
+    environment:
+      - DATA_DIR_ABSOLUTE=/app/data
+    volumes:
+      - ./backend/ai_service/service/voice-conversion-service:/app
+      - vc_logs:/app/logs
+      - ./backend/ai_service/data:/app/data
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8003/health/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+  story_phonic_media:
+  story_phonic_static:
+  narrative_annotation_logs:
+  tts_logs:
+  vc_logs: 

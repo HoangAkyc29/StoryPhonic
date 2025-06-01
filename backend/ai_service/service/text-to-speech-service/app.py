@@ -10,8 +10,8 @@ from datetime import datetime
 import threading
 from dotenv import load_dotenv
 
-# Load biến môi trường từ file .env ngoài cùng project
-load_dotenv(dotenv_path=Path(__file__).resolve().parents[4] / '.env.root')
+# Load biến môi trường từ file .env trong thư mục hiện tại
+load_dotenv(dotenv_path=Path(__file__).resolve().parent / '.env')
 
 # Lấy đường dẫn tuyệt đối từ biến môi trường
 data_dir_absolute = os.getenv('DATA_DIR_ABSOLUTE')

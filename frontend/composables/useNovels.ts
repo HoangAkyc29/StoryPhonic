@@ -18,7 +18,7 @@ export const useNovels = () => {
       const token = getToken()
       if (!token) throw new Error('Not authenticated')
 
-      const response = await fetch('http://localhost:8000/api/audiobook/novels/', {
+      const response = await fetch(`${useRuntimeConfig().public.apiBaseUrl}/api/audiobook/novels/`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -47,7 +47,7 @@ export const useNovels = () => {
       const token = getToken()
       if (!token) throw new Error('Not authenticated')
 
-      const response = await fetch(`http://localhost:8000/api/audiobook/novels/${id}/`, {
+      const response = await fetch(`${useRuntimeConfig().public.apiBaseUrl}/api/audiobook/novels/${id}/`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -85,7 +85,7 @@ export const useNovels = () => {
         formData.append('content_file', data.content_file)
       }
 
-      const response = await fetch('http://localhost:8000/api/audiobook/novels/', {
+      const response = await fetch(`${useRuntimeConfig().public.apiBaseUrl}/api/audiobook/novels/`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -116,7 +116,7 @@ export const useNovels = () => {
       const token = getToken()
       if (!token) throw new Error('Not authenticated')
 
-      const response = await fetch(`http://localhost:8000/api/audiobook/novels/${id}/create_audiobook/`, {
+      const response = await fetch(`${useRuntimeConfig().public.apiBaseUrl}/api/audiobook/novels/${id}/create_audiobook/`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -145,7 +145,7 @@ export const useNovels = () => {
       const token = getToken()
       if (!token) throw new Error('Not authenticated')
 
-      const response = await fetch(`http://localhost:8000/api/audiobook/novels/${id}/`, {
+      const response = await fetch(`${useRuntimeConfig().public.apiBaseUrl}/api/audiobook/novels/${id}/`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,

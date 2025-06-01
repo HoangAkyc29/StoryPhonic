@@ -12,7 +12,7 @@ export const useAuth = () => {
     loading.value = true
     error.value = null
     try {
-      const response = await fetch('http://localhost:8000/api/oauth/token/', {
+      const response = await fetch(`${useRuntimeConfig().public.apiBaseUrl}/api/oauth/token/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ export const useAuth = () => {
     loading.value = true
     error.value = null
     try {
-      const response = await fetch('http://localhost:8000/api/oauth/register/', {
+      const response = await fetch(`${useRuntimeConfig().public.apiBaseUrl}/api/oauth/register/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -80,7 +80,7 @@ export const useAuth = () => {
     const token = localStorage.getItem('token')
     if (token) {
       try {
-        const response = await fetch('http://localhost:8000/api/oauth/me/', {
+        const response = await fetch(`${useRuntimeConfig().public.apiBaseUrl}/api/oauth/me/`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -110,7 +110,7 @@ export const useAuth = () => {
       const token = localStorage.getItem('token')
       if (!token) throw new Error('Not authenticated')
 
-      const response = await fetch('http://localhost:8000/api/oauth/profile/', {
+      const response = await fetch(`${useRuntimeConfig().public.apiBaseUrl}/api/oauth/profile/`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -138,7 +138,7 @@ export const useAuth = () => {
       const token = localStorage.getItem('token')
       if (!token) throw new Error('Not authenticated')
 
-      const response = await fetch('http://localhost:8000/api/oauth/profile/', {
+      const response = await fetch(`${useRuntimeConfig().public.apiBaseUrl}/api/oauth/profile/`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -169,7 +169,7 @@ export const useAuth = () => {
       const token = localStorage.getItem('token')
       if (!token) throw new Error('Not authenticated')
 
-      const response = await fetch('http://localhost:8000/api/oauth/change-password/', {
+      const response = await fetch(`${useRuntimeConfig().public.apiBaseUrl}/api/oauth/change-password/`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -202,7 +202,7 @@ export const useAuth = () => {
       const formData = new FormData()
       formData.append('avatar', file)
 
-      const response = await fetch('http://localhost:8000/api/oauth/avatar/', {
+      const response = await fetch(`${useRuntimeConfig().public.apiBaseUrl}/api/oauth/avatar/`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

@@ -5,26 +5,24 @@ import shutil
 from dotenv import load_dotenv
 
 def get_data_dir():
-    """Get the absolute path to the data directory from .env.root"""
-    # Get current file's directory (audiobook)
+    """Get the absolute path to the data directory from environment variable or .env file"""
+    # First try to get from environment variable (Docker)
+    data_dir = os.getenv('DATA_DIR_ABSOLUTE')
+    if data_dir:
+        return data_dir
+    
+    # If not found in environment, try to get from .env file (local development)
     current_dir = Path(__file__).parent
+    story_phonic_dir = current_dir.parent.parent
+    env_path = story_phonic_dir / '.env'
     
-    # Search for .env.root by traversing up parent directories
-    while current_dir != current_dir.parent:  # Stop at root directory
-        env_path = current_dir / '.env.root'
-        if env_path.exists():
-            # Load environment variables from .env.root
-            load_dotenv(env_path)
-            data_dir = os.getenv('DATA_DIR_ABSOLUTE')
-            
-            if not data_dir:
-                raise ValueError("DATA_DIR_ABSOLUTE not found in .env.root")
-            
+    if env_path.exists():
+        load_dotenv(env_path)
+        data_dir = os.getenv('DATA_DIR_ABSOLUTE')
+        if data_dir:
             return data_dir
-            
-        current_dir = current_dir.parent
     
-    raise FileNotFoundError(".env.root file not found in any parent directory")
+    raise ValueError("DATA_DIR_ABSOLUTE not found in environment variables or .env file")
 
 def save_novel_file(novel_id, file):
     """Save uploaded file to the novel's directory"""

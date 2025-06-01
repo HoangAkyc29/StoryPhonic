@@ -4,11 +4,21 @@ import requests
 from audiobook.models.novel import Novel
 from audiobook.services.audio_service import upload_audio_to_s3
 from audiobook.services.context_data_service import process_context_data
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
+# Get service URLs from environment variables
+NARRATIVE_SERVICE_URL = os.getenv('NARRATIVE_SERVICE_URL', 'http://narrative-annotation:8001')
+TTS_SERVICE_URL = os.getenv('TTS_SERVICE_URL', 'http://text-to-speech:8002')
+VC_SERVICE_URL = os.getenv('VC_SERVICE_URL', 'http://voice-conversion:8003')
 
 def check_narrative_annotation_status(input_id: str, novel: Novel) -> bool:
     """Check status of narrative annotation task"""
     try:
-        response = requests.get(f"http://localhost:5000/input-status/{input_id}")
+        response = requests.get(f"{NARRATIVE_SERVICE_URL}/input-status/{input_id}")
         if response.status_code == 200:
             data = response.json()
             if data["status"] == "completed" or data["status"] == "available":
@@ -31,7 +41,7 @@ def check_narrative_annotation_status(input_id: str, novel: Novel) -> bool:
 def check_tts_status(folder_name: str, novel: Novel) -> bool:
     """Check status of TTS task"""
     try:
-        response = requests.get(f"http://localhost:5001/folder-status/{folder_name}")
+        response = requests.get(f"{TTS_SERVICE_URL}/folder-status/{folder_name}")
         if response.status_code == 200:
             data = response.json()
             if data["status"] == "completed" or data["status"] == "available":
@@ -51,7 +61,7 @@ def check_tts_status(folder_name: str, novel: Novel) -> bool:
 def check_voice_conversion_status(constant_id: str, novel: Novel) -> bool:
     """Check status of voice conversion task"""
     try:
-        response = requests.get(f"http://localhost:5002/constant-status/{constant_id}")
+        response = requests.get(f"{VC_SERVICE_URL}/constant-status/{constant_id}")
         if response.status_code == 200:
             data = response.json()
             if data["status"] == "completed" or data["status"] == "available":
@@ -71,7 +81,7 @@ def check_voice_conversion_status(constant_id: str, novel: Novel) -> bool:
 def check_merge_audio_status(constant_id: str, novel: Novel) -> bool:
     """Check status of merge audio task"""
     try:
-        response = requests.get(f"http://localhost:5002/merge-audio-status/{constant_id}")
+        response = requests.get(f"{VC_SERVICE_URL}/merge-audio-status/{constant_id}")
         if response.status_code == 200:
             data = response.json()
             if data["status"] == "completed" or data["status"] == "available":
@@ -93,7 +103,7 @@ def process_narrative_annotation(novel: Novel, file_path: str) -> bool:
     try:
         # Call narrative annotation service
         response = requests.post(
-            "http://localhost:5000/generate-label-data",
+            f"{NARRATIVE_SERVICE_URL}/generate-label-data",
             json={
                 "input_id": str(novel.id),
                 "input_data": file_path
@@ -120,7 +130,7 @@ def process_tts(novel: Novel) -> bool:
     try:
         # Call TTS service
         response = requests.post(
-            "http://localhost:5001/generate-emotion-audio",
+            f"{TTS_SERVICE_URL}/generate-emotion-audio",
             json={
                 "annotation_id": str(novel.id)
             }
@@ -145,7 +155,7 @@ def process_voice_conversion(novel: Novel) -> bool:
     try:
         # Call voice conversion service
         response = requests.post(
-            "http://localhost:5002/generate-voice-conversion",
+            f"{VC_SERVICE_URL}/generate-voice-conversion",
             json={
                 "constant_id": str(novel.id)
             }
@@ -170,7 +180,7 @@ def process_merge_audio(novel: Novel) -> bool:
     try:
         # Call merge audio service
         response = requests.post(
-            "http://localhost:5002/merge-audio",
+            f"{VC_SERVICE_URL}/merge-audio",
             json={
                 "constant_id": str(novel.id)
             }
@@ -242,4 +252,4 @@ def thread_create_audiobook(novel: Novel, file_path: str = None):
 
     except Exception as e:
         novel.status = "error_unknown"  # Unknown error
-        novel.save() 
+        novel.save()
