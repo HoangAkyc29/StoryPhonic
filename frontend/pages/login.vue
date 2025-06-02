@@ -1,14 +1,18 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { auth } from '~/composables/useAuth'
+import { useAuth } from '~/composables/useAuth'
 import { useRouter } from 'vue-router'
 
+const { login, loginWithGoogle, loading, error } = useAuth()
 const email = ref('')
 const password = ref('')
-const { login, error, loading } = auth
 const router = useRouter()
 
 const handleLogin = async () => {
+  if (!email.value || !password.value) {
+    error.value = 'Please fill in all fields'
+    return
+  }
   try {
     const loggedInUser = await login({ email: email.value, password: password.value })
     if (loggedInUser) {
@@ -31,6 +35,15 @@ const handleLogin = async () => {
         <button type="submit" :disabled="loading">Login</button>
         <div v-if="error" style="color:red">{{ error }}</div>
       </form>
+
+      <div class="divider">
+        <span>or</span>
+      </div>
+      <button @click="loginWithGoogle" :disabled="loading" class="google-btn">
+        <img src="/g_logo.png" alt="Google Logo" class="google-icon" />
+        Sign in with Google
+      </button>
+
       <p class="switch">Don't have an account? <NuxtLink to="/signup">Sign up</NuxtLink></p>
     </div>
   </div>
@@ -89,5 +102,45 @@ button:hover {
 }
 .switch a:hover {
   text-decoration: underline;
+}
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 1rem 0;
+}
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #e0f2fe;
+}
+.divider span {
+  padding: 0 1rem;
+  color: #555;
+  font-size: 0.9rem;
+}
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  color: #555;
+  border: 1px solid #dadce0;
+  margin-top: 1rem;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.google-btn:hover {
+  background: #f8f9fa;
+}
+.google-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
 }
 </style> 

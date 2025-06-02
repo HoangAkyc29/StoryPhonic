@@ -1,7 +1,27 @@
 import { ref } from 'vue'
 import type { User, Profile, LoginCredentials, RegisterData, ChangePasswordData } from '~/types/auth'
+import { useRouter } from 'vue-router'
+
+declare global {
+  interface Window {
+    google: {
+      accounts: {
+        oauth2: {
+          initTokenClient: (config: {
+            client_id: string;
+            scope: string;
+            callback: (response: { access_token: string; error?: string }) => void;
+          }) => {
+            requestAccessToken: () => void;
+          };
+        };
+      };
+    };
+  }
+}
 
 export const useAuth = () => {
+  const router = useRouter()
   const user = ref<User | null>(null)
   const profile = ref<Profile | null>(null)
   const loading = ref(false)
@@ -74,6 +94,10 @@ export const useAuth = () => {
     profile.value = null
     localStorage.removeItem('token')
     localStorage.removeItem('refresh_token')
+    isAuthenticated.value = false
+
+    // Always redirect to homepage after logout using navigateTo
+    return navigateTo('/')
   }
 
   const checkAuth = async () => {
@@ -228,6 +252,66 @@ export const useAuth = () => {
     }
   }
 
+  const loginWithGoogle = async () => {
+    try {
+      loading.value = true
+      error.value = null
+
+      // Load Google API
+      await new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = 'https://accounts.google.com/gsi/client'
+        script.onload = resolve
+        script.onerror = reject
+        document.head.appendChild(script)
+      })
+
+      // Initialize Google Sign-In
+      const client = window.google.accounts.oauth2.initTokenClient({
+        client_id: useRuntimeConfig().public.googleClientId as string,
+        scope: 'email profile',
+        callback: async (response) => {
+          if (response.error) {
+            error.value = response.error
+            return
+          }
+
+          try {
+            // Get user info from Google
+            const userInfo = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
+              headers: { Authorization: `Bearer ${response.access_token}` }
+            }).then(res => res.json())
+
+            // Send to backend
+            const result = await fetch('http://localhost:8000/api/oauth/google/callback/', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ user_info: userInfo }),
+            }).then(res => res.json())
+
+            if (result.tokens) {
+              // Store tokens
+              localStorage.setItem('token', result.tokens.access)
+              localStorage.setItem('refresh_token', result.tokens.refresh)
+              user.value = result.user
+              router.push('/dashboard')
+            }
+          } catch (e) {
+            error.value = e instanceof Error ? e.message : 'An error occurred'
+          }
+        },
+      })
+
+      client.requestAccessToken()
+    } catch (e) {
+      error.value = e instanceof Error ? e.message : 'An error occurred'
+    } finally {
+      loading.value = false
+    }
+  }
+
   return {
     user,
     profile,
@@ -242,6 +326,7 @@ export const useAuth = () => {
     updateProfile,
     changePassword,
     updateAvatar,
+    loginWithGoogle,
   }
 }
 

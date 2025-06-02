@@ -10,6 +10,7 @@ from .views import (
     ChangePasswordView,
     UpdateAvatarView
 )
+from .views.google_auth import GoogleLoginView, GoogleCallbackView
 
 router = DefaultRouter()
 router.register(r'admin/users', AdminUserViewSet, basename='admin-user')
@@ -22,5 +23,7 @@ urlpatterns = [
     path('token/', LoginView.as_view(), name='token_obtain_pair'),
     path('change-password/', ChangePasswordView.as_view(), name='change-password'),
     path('avatar/', UpdateAvatarView.as_view(), name='avatar'),
+    path('google/login/', GoogleLoginView.as_view(), name='google_login'),
+    path('google/callback/', GoogleCallbackView.as_view(), name='google_callback'),
     path('', include(router.urls)),
 ] 
