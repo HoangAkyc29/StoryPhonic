@@ -13,7 +13,6 @@ export default defineNuxtConfig({
     '@nuxt/test-utils'
   ],
 
-  // Add runtime configuration
   runtimeConfig: {
     public: {
       apiBaseUrl: process.env.API_BASE_URL || 'http://127.0.0.1:8000',
@@ -21,9 +20,7 @@ export default defineNuxtConfig({
     }
   },
 
-  // Single nitro configuration
   nitro: {
-    // Proxy configuration for development
     devProxy: {
       ...(process.env.NODE_ENV === 'development' && {
         '/api': {
@@ -31,7 +28,6 @@ export default defineNuxtConfig({
         }
       })
     },
-    // Optimize for Vercel
     preset: 'vercel'
   }
 })
