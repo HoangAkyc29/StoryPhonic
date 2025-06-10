@@ -283,7 +283,7 @@ export const useAuth = () => {
             }).then(res => res.json())
 
             // Send to backend
-            const result = await fetch('http://localhost:8000/api/oauth/google/callback/', {
+            const result = await fetch(`${useRuntimeConfig().public.apiBaseUrl}/api/oauth/google/callback/`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
