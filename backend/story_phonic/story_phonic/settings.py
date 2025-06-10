@@ -165,15 +165,28 @@ REST_FRAMEWORK = {
 AUTH_USER_MODEL = 'oauth.User'
 
 # Add CORS settings
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # Nuxt default port
-    "http://127.0.0.1:3000",
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",  # Nuxt default port
+#     "http://127.0.0.1:3000",
+#     "https://mantis-cool-unduly.ngrok-free.app",
+#     "http://mantis-cool-unduly.ngrok-free.app",
+#     "https://4kzqojam45r6.share.zrok.io"
+# ]
 
 # Allow all origins in development
 CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_HEADERS = (
+    "accept",
+    "authorization",
+    "content-type",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+    "ngrok-skip-browser-warning" 
+)
 
 # Add JWT settings
 from datetime import timedelta

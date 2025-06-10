@@ -16,6 +16,7 @@ export const useCharacters = () => {
       const response = await fetch(`${useRuntimeConfig().public.apiBaseUrl}/api/characters/?novel=${novelId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
+          'ngrok-skip-browser-warning': 'true'
         },
       })
 

@@ -16,6 +16,7 @@ export const useStories = () => {
       const response = await fetch(`${useRuntimeConfig().public.apiBaseUrl}/api/audiobook/novels/`, {
         headers: {
           'Authorization': `Bearer ${token}`,
+          'ngrok-skip-browser-warning': 'true'
         },
       })
 
@@ -44,6 +45,7 @@ export const useStories = () => {
       const response = await fetch(`${useRuntimeConfig().public.apiBaseUrl}/api/audiobook/novels/${id}/`, {
         headers: {
           'Authorization': `Bearer ${token}`,
+          'ngrok-skip-browser-warning': 'true'
         },
       })
 

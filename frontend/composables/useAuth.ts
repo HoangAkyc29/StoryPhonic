@@ -106,7 +106,8 @@ export const useAuth = () => {
       try {
         const response = await fetch(`${useRuntimeConfig().public.apiBaseUrl}/api/oauth/me/`, {
           headers: {
-            'Authorization': `Bearer ${token}`
+            'Authorization': `Bearer ${token}`,
+            'ngrok-skip-browser-warning': 'true'
           }
         })
         
@@ -137,6 +138,7 @@ export const useAuth = () => {
       const response = await fetch(`${useRuntimeConfig().public.apiBaseUrl}/api/oauth/profile/`, {
         headers: {
           'Authorization': `Bearer ${token}`,
+          'ngrok-skip-browser-warning': 'true'
         },
       })
 
@@ -167,6 +169,7 @@ export const useAuth = () => {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
+          'ngrok-skip-browser-warning': 'true'
         },
         body: JSON.stringify(data),
       })

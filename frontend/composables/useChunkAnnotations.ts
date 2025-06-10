@@ -16,6 +16,7 @@ export const useChunkAnnotations = () => {
       const response = await fetch(`${useRuntimeConfig().public.apiBaseUrl}/api/chunk-annotations/?novel=${novelId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
+          'ngrok-skip-browser-warning': 'true'
         },
       })
 
