@@ -430,7 +430,7 @@ def generate_label_data_main(input_data, input_id, output_dir = r"D:\FINAL_CODE\
             print(f"Task cancelled by user for input_id: {input_id}")
             return None
         
-        updated_file_count = update_aliases_from_filenames(character_personality_output_dir,sentence_transformer_model,0.8)
+        updated_file_count = update_aliases_from_filenames(character_personality_output_dir,sentence_transformer_model,0.85)
         if get_cancel_flag(input_id):
             print(f"Task cancelled by user for input_id: {input_id}")
             return None
