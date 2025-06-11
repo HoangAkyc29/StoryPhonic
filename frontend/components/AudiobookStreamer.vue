@@ -148,7 +148,10 @@ async function fetchChunkAnnotations(novelId: string) {
   try {
     const token = localStorage.getItem('token')
     const res = await fetch(`${useRuntimeConfig().public.apiBaseUrl}/api/audiobook/chunk-annotations/?novel=${novelId}`, {
-      headers: { 'Authorization': `Bearer ${token}` }
+      headers: { 
+        'Authorization': `Bearer ${token}`,
+        'ngrok-skip-browser-warning': 'true'
+      }
     })
     if (!res.ok) throw new Error('Failed to fetch chunk annotations')
     const data = await res.json()
@@ -170,7 +173,11 @@ async function fetchChunkAnnotations(novelId: string) {
 
 async function fetchMetadata(url: string) {
   try {
-    const res = await fetch(url)
+    const res = await fetch(url, {
+      headers: {
+        'ngrok-skip-browser-warning': 'true'
+      }
+    })
     if (!res.ok) throw new Error('Failed to fetch metadata')
     const data = await res.json()
     metadata.value = data
