@@ -254,7 +254,7 @@ def process_narrative_data(narrative_path, validated_path, unique_characters_dic
         if filename.endswith('.json'):
             with open(os.path.join(validated_path, filename), 'r', encoding='utf-8') as f:
                 data = json.load(f)
-                names = [normalize_string(name) for name in data['character_identity']['name']]
+                names = [ns for ns in (normalize_string(s) for s in ([data['character_identity']['name']] + [data['character_identity']['confirmed_identity']] + data['character_identity']['aliases'])) if ns]
                 gender = data['character_identity']['gender']
                 validated_characters[filename[:-5]] = names  # Remove .json extension
                 characters_gender[filename[:-5]] = gender    # Remove .json extension

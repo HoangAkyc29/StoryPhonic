@@ -77,7 +77,7 @@ def answer_update_context_memory_with_gemini(user_query, current_key = None, cho
             history=[])
 
             response = chat_session.send_message(user_query)
-            time.sleep(15)
+            time.sleep(8)
             return response.text
     
     except Exception as e:
@@ -88,7 +88,7 @@ def answer_update_context_memory_with_gemini(user_query, current_key = None, cho
                 file.write('\n\n')
                 file.write(f"Error when answering with key {current_key} using gemini: {e}.")
                 file.write('\n--------------------\n')
-            time.sleep(15)
+            time.sleep(8)
 
             return f"Max rate limit for this token or Other errors. Error : {e}"
 
