@@ -175,7 +175,6 @@ async function fetchMetadata(url: string) {
   try {
     const res = await fetch(url, {
       headers: {
-        'ngrok-skip-browser-warning': 'true'
       }
     })
     if (!res.ok) throw new Error('Failed to fetch metadata')
