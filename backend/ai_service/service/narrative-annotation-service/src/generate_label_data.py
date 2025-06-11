@@ -29,7 +29,7 @@ from .dialogue_analyzer import answer_dialogue_analyzer_with_gemini, get_dialogu
 from .data_loader_and_text_chunking import save_text_chunk
 from .text_output_verification import process_texts, get_unique_characters, process_all_label_text_files, process_directory_fixing_emotion
 from .extract_character_personality import create_character_analysis_prompts
-from .validate_character_identity import process_json_files_merging_same_character, process_narrative_data
+from .validate_character_identity import process_json_files_merging_same_character, process_narrative_data, update_aliases_from_filenames
 from .character_voice_mapper import add_voice_actors, personality_mapper_main, create_unique_mapping
 
 context_memory_instruction = get_context_memory_prompt()
@@ -429,7 +429,12 @@ def generate_label_data_main(input_data, input_id, output_dir = r"D:\FINAL_CODE\
         if get_cancel_flag(input_id):
             print(f"Task cancelled by user for input_id: {input_id}")
             return None
-            
+        
+        updated_file_count = update_aliases_from_filenames(character_personality_output_dir,sentence_transformer_model,0.8)
+        if get_cancel_flag(input_id):
+            print(f"Task cancelled by user for input_id: {input_id}")
+            return None
+          
         process_json_files_merging_same_character(character_personality_output_dir,validate_identity_character_personality_output_dir,sentence_transformer_model,0.85) #ghép các cặp nhân vật nhận diện là các cá thể khác nhau nhưng thực ra lại là cùng 1 nhân vật
         if get_cancel_flag(input_id):
             print(f"Task cancelled by user for input_id: {input_id}")

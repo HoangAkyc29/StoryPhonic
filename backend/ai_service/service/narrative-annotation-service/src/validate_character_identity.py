@@ -318,7 +318,96 @@ def process_narrative_data(narrative_path, validated_path, unique_characters_dic
         # Save the modified data back to file
         with open(filepath, 'w', encoding='utf-8') as f:
             json.dump(narrative_data, f, ensure_ascii=False, indent=4)
+
+
+def update_aliases_from_filenames(directory_path, model, similarity_threshold: float = 0.8):
+    if not os.path.isdir(directory_path):
+        return 0
+
+    updated_file_count = 0
+
+    for item_name in os.listdir(directory_path):
+        if not item_name.lower().endswith(".json"):
+            continue
+
+        file_path = os.path.join(directory_path, item_name)
+        filename_key = os.path.splitext(item_name)[0]
+
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+        except (json.JSONDecodeError, IOError):
+            continue
+
+        char_identity = data.get("character_identity")
+        if not isinstance(char_identity, dict):
+            continue
+
+        name = char_identity.get("name", "")
+        confirmed_id = char_identity.get("confirmed_identity", "")
+        aliases = char_identity.get("aliases", [])
+
+        if not isinstance(aliases, list):
+            aliases = []
+            char_identity["aliases"] = aliases
+
+        identity_strings = [s for s in [name, confirmed_id] + aliases if isinstance(s, str) and s]
+
+        if not identity_strings:
+            continue
+
+        match_found_for_file = False
+        # Encode filename_key một lần. Kết quả sẽ là 1D tensor/array.
+        # Sử dụng convert_to_tensor=True hoặc convert_to_numpy=True tùy thuộc vào
+        # bạn muốn làm việc với PyTorch tensors hay NumPy arrays sau đó.
+        # util.cos_sim hoạt động với cả hai.
+        filename_key_embedding = None # Lazy encode
+
+        for id_string in identity_strings:
+            is_match = False
             
+            if filename_key.lower() in id_string.lower(): # Substring check
+                is_match = True
+            else: # Cosine similarity check
+                try:
+                    if filename_key_embedding is None:
+                        # model.encode() với một chuỗi đơn trả về 1D tensor/array
+                        filename_key_embedding = model.encode(filename_key, convert_to_tensor=True) 
+                    
+                    id_string_embedding = model.encode(id_string, convert_to_tensor=True)
+                    
+                    # util.cos_sim có thể xử lý trực tiếp hai tensor/array 1D.
+                    # Kết quả là một tensor/array 2D [[score]].
+                    cosine_scores_tensor = util.cos_sim(filename_key_embedding, id_string_embedding)
+                    
+                    # Lấy giá trị float từ tensor/array
+                    # Nếu convert_to_tensor=True -> PyTorch tensor
+                    similarity_score = cosine_scores_tensor[0][0].item() 
+                    # Nếu bạn dùng convert_to_numpy=True:
+                    # similarity_score = cosine_scores_tensor[0,0]
+
+                    if similarity_score >= similarity_threshold:
+                        is_match = True
+                except Exception: 
+                    pass 
+
+            if is_match:
+                if filename_key not in char_identity["aliases"]:
+                    char_identity["aliases"].append(filename_key)
+                    try:
+                        with open(file_path, 'w', encoding='utf-8') as f:
+                            json.dump(data, f, indent=4, ensure_ascii=False)
+                        updated_file_count += 1
+                    except IOError:
+                        pass
+                match_found_for_file = True
+                break 
+
+        if match_found_for_file:
+            continue 
+    
+    return updated_file_count
+
 # input_directory = r".\task_1\temporary_context_data\character_personality_data\constant_id_3"  # Replace with your input directory
 # output_directory = r".\task_1\temporary_context_data\validated_character_personality_data\constant_id_3" # Replace with your output directory
 # os.makedirs(output_directory, exist_ok=True)
