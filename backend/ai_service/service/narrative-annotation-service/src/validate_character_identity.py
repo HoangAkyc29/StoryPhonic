@@ -90,6 +90,7 @@ def merge_group_files(group_indices, json_files):
             'name': [],
             'confirmed_identity': [],
             'aliases': [],
+            'raw_name': [],
             'gender': None,
             'approximate_age': [],
             'confidence_score': []
@@ -117,6 +118,7 @@ def merge_group_files(group_indices, json_files):
         merged['character_identity']['name'].append(ci.get('name', ''))
         merged['character_identity']['confirmed_identity'].append(ci['confirmed_identity'])
         merged['character_identity']['aliases'].extend(ci.get('aliases', []))
+        merged['character_identity']['raw_name'].append(ci.get('raw_name', ''))
         
         # Handle gender (take first non-None)
         if merged['character_identity']['gender'] is None and 'gender' in ci:
@@ -156,6 +158,9 @@ def merge_group_files(group_indices, json_files):
             merged['character_identity']['confidence_score'] = float(np.mean(merged['character_identity']['confidence_score']))
         else:
             merged['character_identity'].pop('confidence_score')
+    
+    # Filter out empty strings from raw_name list
+    merged['character_identity']['raw_name'] = [name for name in merged['character_identity']['raw_name'] if name]
     
     # Personality traits
     for trait in list(merged['personality_traits'].keys()):
@@ -254,7 +259,19 @@ def process_narrative_data(narrative_path, validated_path, unique_characters_dic
         if filename.endswith('.json'):
             with open(os.path.join(validated_path, filename), 'r', encoding='utf-8') as f:
                 data = json.load(f)
-                names = [ns for ns in (normalize_string(s) for s in ([data['character_identity']['name']] + [data['character_identity']['confirmed_identity']] + data['character_identity']['aliases'])) if ns]
+
+                _json_identity = data.get('character_identity', {})
+                _name = _json_identity.get('name') or ''
+                _confirmed = _json_identity.get('confirmed_identity') or ''
+                _aliases = _json_identity.get('aliases') or []
+                _raw_names = _json_identity.get('raw_name') or []
+
+                # Đảm bảo tất cả là list
+                _all_names = [_name, _confirmed] + _aliases + _raw_names
+
+                # Chuẩn hóa và lọc giá trị không rỗng
+                names = [ns for ns in (normalize_string(s) for s in _all_names) if ns]
+
                 gender = data['character_identity']['gender']
                 validated_characters[filename[:-5]] = names  # Remove .json extension
                 characters_gender[filename[:-5]] = gender    # Remove .json extension
@@ -324,7 +341,7 @@ def update_aliases_from_filenames(directory_path, model, similarity_threshold: f
     if not os.path.isdir(directory_path):
         return 0
 
-    updated_file_count = 0
+    # updated_file_count = 0
 
     for item_name in os.listdir(directory_path):
         if not item_name.lower().endswith(".json"):
@@ -342,71 +359,78 @@ def update_aliases_from_filenames(directory_path, model, similarity_threshold: f
         char_identity = data.get("character_identity")
         if not isinstance(char_identity, dict):
             continue
+        
+        # Add or replace 'raw_name' with filename_key
+        char_identity["raw_name"] = filename_key
+        with open(file_path, 'w', encoding='utf-8') as f:
+            json.dump(data, f, indent=4, ensure_ascii=False)
 
-        name = char_identity.get("name", "")
-        confirmed_id = char_identity.get("confirmed_identity", "")
-        aliases = char_identity.get("aliases", [])
+        return 0
 
-        if not isinstance(aliases, list):
-            aliases = []
-            char_identity["aliases"] = aliases
+        # name = char_identity.get("name", "")
+        # confirmed_id = char_identity.get("confirmed_identity", "")
+        # aliases = char_identity.get("aliases", [])
 
-        identity_strings = [s for s in [name, confirmed_id] + aliases if isinstance(s, str) and s]
+        # if not isinstance(aliases, list):
+        #     aliases = []
+        #     char_identity["aliases"] = aliases
 
-        if not identity_strings:
-            continue
+        # identity_strings = [s for s in [name, confirmed_id] + aliases if isinstance(s, str) and s]
 
-        match_found_for_file = False
+        # if not identity_strings:
+        #     continue
+
+        # match_found_for_file = False
         # Encode filename_key một lần. Kết quả sẽ là 1D tensor/array.
         # Sử dụng convert_to_tensor=True hoặc convert_to_numpy=True tùy thuộc vào
         # bạn muốn làm việc với PyTorch tensors hay NumPy arrays sau đó.
         # util.cos_sim hoạt động với cả hai.
-        filename_key_embedding = None # Lazy encode
+        # filename_key_embedding = None # Lazy encode
 
-        for id_string in identity_strings:
-            is_match = False
+        # for id_string in identity_strings:
+        #     is_match = False
             
-            if filename_key.lower() in id_string.lower(): # Substring check
-                is_match = True
-            else: # Cosine similarity check
-                try:
-                    if filename_key_embedding is None:
-                        # model.encode() với một chuỗi đơn trả về 1D tensor/array
-                        filename_key_embedding = model.encode(filename_key, convert_to_tensor=True) 
+        #     if filename_key.lower() in id_string.lower(): # Substring check
+        #         is_match = True
+        #     else: # Cosine similarity check
+        #         try:
+        #             if filename_key_embedding is None:
+        #                 # model.encode() với một chuỗi đơn trả về 1D tensor/array
+        #                 filename_key_embedding = model.encode(filename_key, convert_to_tensor=True) 
                     
-                    id_string_embedding = model.encode(id_string, convert_to_tensor=True)
+        #             id_string_embedding = model.encode(id_string, convert_to_tensor=True)
                     
-                    # util.cos_sim có thể xử lý trực tiếp hai tensor/array 1D.
-                    # Kết quả là một tensor/array 2D [[score]].
-                    cosine_scores_tensor = util.cos_sim(filename_key_embedding, id_string_embedding)
+        #             # util.cos_sim có thể xử lý trực tiếp hai tensor/array 1D.
+        #             # Kết quả là một tensor/array 2D [[score]].
+        #             cosine_scores_tensor = util.cos_sim(filename_key_embedding, id_string_embedding)
                     
-                    # Lấy giá trị float từ tensor/array
-                    # Nếu convert_to_tensor=True -> PyTorch tensor
-                    similarity_score = cosine_scores_tensor[0][0].item() 
-                    # Nếu bạn dùng convert_to_numpy=True:
-                    # similarity_score = cosine_scores_tensor[0,0]
+        #             # Lấy giá trị float từ tensor/array
+        #             # Nếu convert_to_tensor=True -> PyTorch tensor
+        #             similarity_score = cosine_scores_tensor[0][0].item() 
+        #             # Nếu bạn dùng convert_to_numpy=True:
+        #             # similarity_score = cosine_scores_tensor[0,0]
 
-                    if similarity_score >= similarity_threshold:
-                        is_match = True
-                except Exception: 
-                    pass 
+        #             if similarity_score >= similarity_threshold:
+        #                 is_match = True
+        #         except Exception: 
+        #             pass 
 
-            if is_match:
-                if filename_key not in char_identity["aliases"]:
-                    char_identity["aliases"].append(filename_key)
-                    try:
-                        with open(file_path, 'w', encoding='utf-8') as f:
-                            json.dump(data, f, indent=4, ensure_ascii=False)
-                        updated_file_count += 1
-                    except IOError:
-                        pass
-                match_found_for_file = True
-                break 
+        #     if is_match:
+        #         if filename_key not in char_identity["aliases"]:
+        #             char_identity["aliases"].append(filename_key)
+        #             try:
+        #                 with open(file_path, 'w', encoding='utf-8') as f:
+        #                     json.dump(data, f, indent=4, ensure_ascii=False)
+        #                 updated_file_count += 1
+        #             except IOError:
+        #                 pass
+        #         match_found_for_file = True
+        #         break 
 
-        if match_found_for_file:
-            continue 
+        # if match_found_for_file:
+        #     continue 
     
-    return updated_file_count
+    # return updated_file_count
 
 # input_directory = r".\task_1\temporary_context_data\character_personality_data\constant_id_3"  # Replace with your input directory
 # output_directory = r".\task_1\temporary_context_data\validated_character_personality_data\constant_id_3" # Replace with your output directory
