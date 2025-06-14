@@ -123,3 +123,35 @@ Traceback (most recent call last):
   File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\F5-TTS\src\f5_tts\infer\infer_cli.py", line 908, in multi_input_multi_ref_run_inference
     if voice not in voices[choosen_ref]:
 KeyError: 'mild-trust_none'
+2025-06-14 13:52:12,578 - tts_task - ERROR - TaskID: 3fe5fc43-ab24-4487-8079-bea44de0ac4d - Folder: 62d2a073-5783-4775-bb1a-1cf81af856ef - Message: Error in TTS task: cannot schedule new futures after interpreter shutdown
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\app.py", line 94, in run_tts_task
+    output_dir = generate_all_TTS_with_emotion(
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\process_generate_emotion_audio.py", line 137, in generate_all_TTS_with_emotion
+    multi_input_multi_ref_run_inference(ref_data,text_data,output_dir,last_folder_name)
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\F5-TTS\src\f5_tts\infer\infer_cli.py", line 917, in multi_input_multi_ref_run_inference
+    audio_segment, final_sample_rate, _ = infer_process(
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\F5-TTS\src\f5_tts\infer\utils_infer.py", line 393, in infer_process
+    return next(
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\F5-TTS\src\f5_tts\infer\utils_infer.py", line 508, in infer_batch_process
+    futures = [executor.submit(process_batch, gen_text) for gen_text in gen_text_batches]
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\F5-TTS\src\f5_tts\infer\utils_infer.py", line 508, in <listcomp>
+    futures = [executor.submit(process_batch, gen_text) for gen_text in gen_text_batches]
+  File "D:\python310\lib\concurrent\futures\thread.py", line 163, in submit
+    raise RuntimeError('cannot schedule new futures after '
+RuntimeError: cannot schedule new futures after interpreter shutdown
+2025-06-14 15:27:08,846 - tts_task - ERROR - TaskID: 2c48a9b2-2c81-4c18-a97a-ee519e155a37 - Folder: dc6eef43-3b17-494c-94c9-b06f358d9203 - Message: Error in TTS task: The paging file is too small for this operation to complete. (os error 1455)
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\app.py", line 94, in run_tts_task
+    output_dir = generate_all_TTS_with_emotion(
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\process_generate_emotion_audio.py", line 137, in generate_all_TTS_with_emotion
+    multi_input_multi_ref_run_inference(ref_data,text_data,output_dir,last_folder_name)
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\F5-TTS\src\f5_tts\infer\infer_cli.py", line 823, in multi_input_multi_ref_run_inference
+    _loaded_model = load_model(model_cls, model_cfg, ckpt_file, mel_spec_type=vocoder_name, vocab_file=vocab_file)
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\F5-TTS\src\f5_tts\infer\utils_infer.py", line 268, in load_model
+    model = load_checkpoint(model, ckpt_path, device, dtype=dtype, use_ema=use_ema)
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\src\F5-TTS\src\f5_tts\infer\utils_infer.py", line 199, in load_checkpoint
+    checkpoint = load_file(ckpt_path, device=device)
+  File "D:\FINAL_CODE\backend\ai_service\service\text-to-speech-service\venv\lib\site-packages\safetensors\torch.py", line 313, in load_file
+    with safe_open(filename, framework="pt", device=device) as f:
+OSError: The paging file is too small for this operation to complete. (os error 1455)

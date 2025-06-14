@@ -153,3 +153,42 @@ Traceback (most recent call last):
     result_dirs = generate_label_data_main(
   File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\generate_label_data.py", line 396, in generate_label_data_main
 NameError: name 'sentence_transformer_model' is not defined. Did you mean: 'sentence_transformer_model_loader'?
+2025-06-14 17:48:59,833 - generate_label_data_task - ERROR - TaskID: d2023069-6b74-4685-a0bb-fd39562eee10 - InputID: 123be5cf-e988-4729-b686-d84385e115bd - Message: Error in generate_label_data_main: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\app.py", line 89, in run_label_data_task
+    result_dirs = generate_label_data_main(
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\generate_label_data.py", line 426, in generate_label_data_main
+    character_prompts_answer, un_finished_flag = create_character_analysis_prompts(grand_text_input,output_dir,unique_characters_dict,last_memory_file_dir,len(input_files_paths),character_personality_output_dir,gemini_key) #sinh bộ nhân cách và các thông tin khác của nhân vật từ dict trên tại character_personality_output_dir
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\extract_character_personality\extract_character_personality.py", line 124, in create_character_analysis_prompts
+    files = [upload_to_gemini(bfi_pdf_path)]
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\extract_character_personality\extract_character_personality.py", line 31, in upload_to_gemini
+    file = genai.upload_file(path, mime_type=mime_type)
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\venv\lib\site-packages\google\generativeai\files.py", line 85, in upload_file
+    response = client.create_file(
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\venv\lib\site-packages\google\generativeai\client.py", line 103, in create_file
+    self._setup_discovery_api(metadata)
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\venv\lib\site-packages\google\generativeai\client.py", line 84, in _setup_discovery_api
+    response, content = request.execute()
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\venv\lib\site-packages\googleapiclient\_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\venv\lib\site-packages\googleapiclient\http.py", line 923, in execute
+    resp, content = _retry_request(
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\venv\lib\site-packages\googleapiclient\http.py", line 222, in _retry_request
+    raise exception
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\venv\lib\site-packages\googleapiclient\http.py", line 191, in _retry_request
+    resp, content = http.request(uri, method, *args, **kwargs)
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\venv\lib\site-packages\httplib2\__init__.py", line 1724, in request
+    (response, content) = self._request(
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\venv\lib\site-packages\httplib2\__init__.py", line 1444, in _request
+    (response, content) = self._conn_request(conn, request_uri, method, body, headers)
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\venv\lib\site-packages\httplib2\__init__.py", line 1366, in _conn_request
+    conn.connect()
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\venv\lib\site-packages\httplib2\__init__.py", line 1158, in connect
+    self.sock = self._context.wrap_socket(sock, server_hostname=self.host)
+  File "D:\python310\lib\ssl.py", line 512, in wrap_socket
+    return self.sslsocket_class._create(
+  File "D:\python310\lib\ssl.py", line 1070, in _create
+    self.do_handshake()
+  File "D:\python310\lib\ssl.py", line 1341, in do_handshake
+    self._sslobj.do_handshake()
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond

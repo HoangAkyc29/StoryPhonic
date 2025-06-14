@@ -337,7 +337,7 @@ def generate_label_data_main(input_data, input_id, output_dir = r"D:\FINAL_CODE\
     print("Bắt đầu!")
 
     gemini_keys_from_env = load_gemini_keys()
-    gemini_key = gemini_keys_from_env[1]
+    gemini_key = gemini_keys_from_env[0]
     gemini_key_len = len(gemini_keys_from_env)
     break_outer = True
     retry_counter = 0
@@ -391,7 +391,7 @@ def generate_label_data_main(input_data, input_id, output_dir = r"D:\FINAL_CODE\
     print("Bắt đầu xử lý tác vụ phân tích nhãn sinh ra")
 
     if retry_counter < 4:
-        gemini_index = 1
+        gemini_index = 0
         un_finished_flag = True
         while gemini_index < gemini_key_len and un_finished_flag == True:
             if get_cancel_flag(input_id):

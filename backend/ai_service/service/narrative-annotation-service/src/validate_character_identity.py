@@ -233,17 +233,17 @@ def normalize_string(s):
     if not isinstance(s, str):
         return ""
     
-    # Chuyển về dạng NFKD để tách dấu và ký tự
-    s = unicodedata.normalize('NFKD', s)
-    
     # Loại bỏ dấu và chuyển về ASCII
     s = s.encode('ascii', 'ignore').decode('ascii')
     
     # Loại bỏ tất cả ký tự đặc biệt, chỉ giữ chữ cái, số và khoảng trắng
-    s = re.sub(r'[^\w\s]', '', s)
+    s = re.sub(r'[^a-zA-Z0-9\s]', '', s)
     
     # Thay nhiều khoảng trắng thành 1 khoảng trắng
-    s = re.sub(r'\s+', ' ', s)
+    s = re.sub(r'\s+', '', s)
+
+    # Chuyển về dạng NFKD để tách dấu và ký tự
+    s = unicodedata.normalize('NFKD', s)
     
     # Loại bỏ khoảng trắng đầu/cuối và chuyển về lowercase
     return s.strip().lower()
@@ -261,16 +261,28 @@ def process_narrative_data(narrative_path, validated_path, unique_characters_dic
                 data = json.load(f)
 
                 _json_identity = data.get('character_identity', {})
-                _name = _json_identity.get('name') or ''
-                _confirmed = _json_identity.get('confirmed_identity') or ''
-                _aliases = _json_identity.get('aliases') or []
-                _raw_names = _json_identity.get('raw_name') or []
 
-                # Đảm bảo tất cả là list
-                _all_names = [_name, _confirmed] + _aliases + _raw_names
+                # Trực tiếp lấy list, default về list rỗng nếu key không có hoặc giá trị là None
+                _names_list = _json_identity.get('name') or []
+                _confirmed_list = _json_identity.get('confirmed_identity') or []
+                _aliases_list = _json_identity.get('aliases') or [] # Giữ nguyên vì đã đúng
+                _raw_names_list = _json_identity.get('raw_name') or [] # Giữ nguyên vì đã đúng
 
-                # Chuẩn hóa và lọc giá trị không rỗng
+                # Kiểm tra để đảm bảo chúng thực sự là list (phòng trường hợp JSON có thể không nhất quán)
+                # Mặc dù với `or []`, chúng sẽ luôn là list nếu giá trị gốc là None hoặc falsy.
+                # Bước này là để cẩn thận hơn nếu giá trị gốc là thứ gì đó khác list nhưng truthy.
+                if not isinstance(_names_list, list): _names_list = []
+                if not isinstance(_confirmed_list, list): _confirmed_list = []
+                if not isinstance(_aliases_list, list): _aliases_list = []
+                if not isinstance(_raw_names_list, list): _raw_names_list = []
+
+
+                # Gộp tất cả các list lại
+                _all_names = _names_list + _confirmed_list + _aliases_list + _raw_names_list
+
+                # Chuẩn hóa và lọc giá trị không rỗng (phần này vẫn giữ nguyên và sẽ hoạt động đúng)
                 names = [ns for ns in (normalize_string(s) for s in _all_names) if ns]
+                # print(names)
 
                 gender = data['character_identity']['gender']
                 validated_characters[filename[:-5]] = names  # Remove .json extension
@@ -315,6 +327,7 @@ def process_narrative_data(narrative_path, validated_path, unique_characters_dic
                         break
             
             # Now look for matching identity in validated characters
+            # print(processing_name)
             record_identity = None
             record_gender = None
             for identity, names in validated_characters.items():
@@ -365,7 +378,7 @@ def update_aliases_from_filenames(directory_path, model, similarity_threshold: f
         with open(file_path, 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=4, ensure_ascii=False)
 
-        return 0
+    return 0
 
         # name = char_identity.get("name", "")
         # confirmed_id = char_identity.get("confirmed_identity", "")
