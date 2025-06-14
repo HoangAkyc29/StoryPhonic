@@ -62,11 +62,11 @@ def merge_audio_and_generate_metadata(input_dir: str, output_dir: str) -> Tuple[
         # Insert silence between clips
         if va_name == prev_va_name:
             final_audio += AudioSegment.silent(duration=300)  # 0.3s
-            current_time_ms += 300
+            current_time_ms += 150
         else:
             if prev_va_name is not None:
                 final_audio += AudioSegment.silent(duration=700)  # 0.7s
-                current_time_ms += 700
+                current_time_ms += 400
 
         prev_va_name = va_name
 
