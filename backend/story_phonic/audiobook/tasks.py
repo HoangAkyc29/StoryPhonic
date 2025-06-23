@@ -116,7 +116,7 @@ def process_narrative_annotation(novel: Novel, file_path: str) -> bool:
 
         # Wait for completion
         while not check_narrative_annotation_status(str(novel.id), novel):
-            time.sleep(60)  # Check every minute
+            time.sleep(30)  # Check every minute
 
         return novel.status != "error_1"
     except Exception as e:
@@ -142,7 +142,7 @@ def process_tts(novel: Novel) -> bool:
 
         # Wait for completion
         while not check_tts_status(str(novel.id), novel):
-            time.sleep(60)  # Check every minute
+            time.sleep(30)  # Check every minute
 
         return novel.status != "error_2"
     except Exception as e:
@@ -167,7 +167,7 @@ def process_voice_conversion(novel: Novel) -> bool:
 
         # Wait for completion
         while not check_voice_conversion_status(str(novel.id), novel):
-            time.sleep(60)  # Check every minute
+            time.sleep(30)  # Check every minute
 
         return novel.status != "error_3"
     except Exception as e:
@@ -192,7 +192,7 @@ def process_merge_audio(novel: Novel) -> bool:
 
         # Wait for completion
         while not check_merge_audio_status(str(novel.id), novel):
-            time.sleep(60)  # Check every minute
+            time.sleep(30)  # Check every minute
 
         return novel.status != "error_4"
     except Exception as e:
