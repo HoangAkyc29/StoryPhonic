@@ -71,7 +71,8 @@ You are an expert novel text analyzer with skills in textual segmentation, compr
     *   Update `last_appearance_index`.
     *   If character age is known, update it only with clear evidence of a significant timeskip or an incorrect estimate. If unknown, provide the best possible guess.
     *   Rewrite brief_description to thoughtfully combine previously recorded information with newly provided details. Ensure the updated information remains coherent and concise. The brief_description should not be overly influenced by new details and should only highlight aspects that are broadly representative of the character.
-    *   Rewrite relations and other fields to thoughtfully combine new details, while critically evaluating existing information in light of new narrative developments. Prioritize demonstrably accurate information from the current Main Text Chunk and Adjacent Texts if it contradicts previous records. Update relations to reflect current dynamics, dissolving or modifying unsupported relationships.
+    *   Rewrite all relations, aliases and other fields to thoughtfully combine new details, while critically evaluating existing information in light of new narrative developments. Prioritize demonstrably accurate information from the current Main Text Chunk and Adjacent Texts if it contradicts previous records. Update relations to reflect current dynamics, dissolving or modifying unsupported relationships.
+*   **Instead of returning all characters introduced so far, only include the new and updated ones (the updated ones should contain the full information of that character, carried over from previous context memory and merged with any new details) in the "updated_characters".
 
 ---
 
@@ -96,4 +97,4 @@ You are an expert novel text analyzer with skills in textual segmentation, compr
 
 # **Important Notes:**
 *   Use `Adjacent Texts` to gain a better understanding of the context of the `Main Text Chunk`.
-*   You do not need to return a list of all characters introduced so far. If this is the first context memory, return "characters" instead of "updated_characters". Otherwise, only provide the "updated_characters" list.
+*   Return only a valid JSON object following the given schema. No extra text or explanation. All keys must use double quotes, and the structure must be parsable.

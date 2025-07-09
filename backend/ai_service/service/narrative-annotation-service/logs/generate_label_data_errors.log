@@ -192,3 +192,21 @@ Traceback (most recent call last):
   File "D:\python310\lib\ssl.py", line 1341, in do_handshake
     self._sslobj.do_handshake()
 TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+2025-07-08 01:37:56,278 - generate_label_data_task - ERROR - TaskID: d41b02dd-913a-463d-85c5-face2a109943 - InputID: e7cafc1a-0ca6-4ffa-8672-e2e4b4c4dddc - Message: Error in generate_label_data_main: list index out of range
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\app.py", line 89, in run_label_data_task
+    result_dirs = generate_label_data_main(
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\generate_label_data.py", line 383, in generate_label_data_main
+    gemini_key = gemini_keys_from_env[retry_counter]
+IndexError: list index out of range
+2025-07-09 08:00:19,777 - generate_label_data_task - ERROR - TaskID: 31366a76-1f04-4b9a-a9ae-757b12d3e1f0 - InputID: 8e89bc29-e5a0-42f7-9257-70e5fdb0903c - Message: Error in generate_label_data_main: 'aliases'
+Traceback (most recent call last):
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\app.py", line 89, in run_label_data_task
+    result_dirs = generate_label_data_main(
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\generate_label_data.py", line 403, in generate_label_data_main
+    process_all_label_text_files(sentence_transformer_model, output_dir, memory_dir) # bước chuẩn hoá output tên nhân vật
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\text_output_verification\data_label_fixer.py", line 156, in process_all_label_text_files
+    output_content = process_texts(last_memory_content, output_content, model)
+  File "D:\FINAL_CODE\backend\ai_service\service\narrative-annotation-service\src\text_output_verification\data_label_fixer.py", line 38, in process_texts
+    for alias in char_data["aliases"]:
+KeyError: 'aliases'

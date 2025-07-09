@@ -207,7 +207,7 @@ def process_files_in_folder(files_path, output_dir = "", memory_dir = "", key = 
 
             retry_counter = 0  # Initialize retry_counter *inside* the outer loop, for each file
 
-            while retry_counter <= 4:  # Use a while loop for retries
+            while retry_counter <= 5:  # Use a while loop for retries
                 start_time = time.time()  # Thời điểm bắt đầu
 
                 if input_id and get_cancel_flag(input_id):  # Check cancel flag in retry loop
@@ -313,7 +313,7 @@ def process_files_in_folder(files_path, output_dir = "", memory_dir = "", key = 
                     print(f"Error : {e}")
                     retry_counter += 1
 
-            if retry_counter >= 5:
+            if retry_counter >= 6:
                 break_outer = True
                 break
     
@@ -379,7 +379,8 @@ def generate_label_data_main(input_data, input_id, output_dir = r"D:\FINAL_CODE\
 
     print("Bắt đầu xử lý các chunk")
 
-    while break_outer == True and retry_counter < 3:
+    while break_outer == True and retry_counter < 4:
+        gemini_key = gemini_keys_from_env[retry_counter]
         if get_cancel_flag(input_id):
             print(f"Task cancelled by user for input_id: {input_id}")
             return None
@@ -390,8 +391,8 @@ def generate_label_data_main(input_data, input_id, output_dir = r"D:\FINAL_CODE\
 
     print("Bắt đầu xử lý tác vụ phân tích nhãn sinh ra")
 
-    if retry_counter < 4:
-        gemini_index = 0
+    if retry_counter < 5:
+        gemini_index = retry_counter
         un_finished_flag = True
         while gemini_index < gemini_key_len and un_finished_flag == True:
             if get_cancel_flag(input_id):
