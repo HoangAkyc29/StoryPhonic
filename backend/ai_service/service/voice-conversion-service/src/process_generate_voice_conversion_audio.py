@@ -108,15 +108,22 @@ def find_audio_mapping(audio_dir3: str, json_dir: str, audio_dir1: str, narrator
             mapping[audio3_path] = None
     
     return mapping
-
-def generate_end_output_audio(audio_dir3 = r"D:\FINAL_CODE\backend\ai_service\data\voice_data\temporary_output_voice_data\text_to_speech", 
-                              json_dir = r"D:\FINAL_CODE\backend\ai_service\data\voice_data\reference_voice_data\character_personality_mapping_by_lore", 
-                              audio_dir1 = r"D:\FINAL_CODE\backend\ai_service\data\voice_data\reference_voice_data\character_voices",
-                              output_dir = r"D:\FINAL_CODE\backend\ai_service\data\voice_data\temporary_output_voice_data\voice_conversion",
+# def generate_end_output_audio(audio_dir3 = r"D:\FINAL_CODE\backend\ai_service\data\voice_data\temporary_output_voice_data\text_to_speech", 
+#                               json_dir = r"D:\FINAL_CODE\backend\ai_service\data\voice_data\reference_voice_data\character_personality_mapping_by_lore", 
+#                               audio_dir1 = r"D:\FINAL_CODE\backend\ai_service\data\voice_data\reference_voice_data\character_voices",
+#                               output_dir = r"D:\FINAL_CODE\backend\ai_service\data\voice_data\temporary_output_voice_data\voice_conversion",
+#                               config_path = r".\seed-vc\configs\presets\config_dit_mel_seed_uvit_whisper_base_f0_44k.yml",
+#                               checkpoint_path = r".\ai_model\DiT_seed_v2_uvit_whisper_base_f0_44k_bigvgan_pruned_ft_ema.pth",
+#                               narrator_gender = 0, #0 là mặc định male, 1 là female
+#                               constant_id = "constant_id_4"):
+def generate_end_output_audio(audio_dir3, 
+                              json_dir, 
+                              audio_dir1,
+                              output_dir,
                               config_path = r".\seed-vc\configs\presets\config_dit_mel_seed_uvit_whisper_base_f0_44k.yml",
                               checkpoint_path = r".\ai_model\DiT_seed_v2_uvit_whisper_base_f0_44k_bigvgan_pruned_ft_ema.pth",
                               narrator_gender = 0, #0 là mặc định male, 1 là female
-                              constant_id = "constant_id_4"):
+                              constant_id = ""):
     # Args:
     #     audio_dir3: Đường dẫn thư mục chứa các file audio .wav (có va_string_name trong tên)
     #     json_dir: Đường dẫn thư mục chứa các file json annotation

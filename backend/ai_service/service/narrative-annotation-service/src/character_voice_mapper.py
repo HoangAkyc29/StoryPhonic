@@ -278,19 +278,19 @@ def create_fit_format_input_data(
 
     return characters_a, characters_b
 
-def personality_mapper_main(character_personality_output_dir = r"D:\FINAL_CODE\backend\modules\task_1\temporary_context_data\character_personality_data\constant_id_2",
-                            voice_personality_dir = r"D:\FINAL_CODE\backend\modules\task_3\reference_voice_data\character_personality_mapping",
-                            voice_personality_by_lore_dir = r"D:\FINAL_CODE\backend\modules\task_3\reference_voice_data\character_personality_mapping_by_lore",
+def personality_mapper_main(character_personality_output_dir,
+                            voice_personality_dir,
+                            voice_personality_by_lore_dir,
                             model = sentence_transformer_model,
-                            output_path = r"D:\FINAL_CODE\backend\modules\task_1\temporary_context_data\personality_mapper_data\constant_id_2.json",
+                            output_path = "",
                             age_weight = 0.4, OCEAN_weight = 0.3, trait_weight = 0.3, n=20):
     characters_a, characters_b = create_fit_format_input_data(character_personality_output_dir, voice_personality_dir, voice_personality_by_lore_dir)
     return find_n_most_similar_in_group_b(characters_a,characters_b,sentence_transformer_model,output_path,age_weight,OCEAN_weight,trait_weight,n)
 
 # personality_mapper_main()
 
-def create_unique_mapping(input_json_path = r"D:\FINAL_CODE\backend\modules\task_1\temporary_context_data\personality_mapper_data\constant_id_2.json", 
-                          output_json_path = r"D:\FINAL_CODE\backend\modules\task_1\temporary_context_data\personality_mapper_data\mapped_character-VA\constant_id_2.json"):
+def create_unique_mapping(input_json_path, 
+                          output_json_path):
     # Đọc dữ liệu từ file JSON
     with open(input_json_path, 'r', encoding='utf-8') as f:
         data = json.load(f)

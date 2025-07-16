@@ -97,11 +97,14 @@ def load_text_data_from_json_dir(json_dir: str) -> List[List[Dict[str, str]]]:
             continue
     
     return text_data
-
-def generate_all_TTS_with_emotion(narrative_annotation_dir = r"D:\FINAL_CODE\backend\ai_service\data\context_data\character_label_data\ca74b063-0604-44a3-8666-62916477c0e9",
-                                  emotion_audio_dir = r"D:\FINAL_CODE\backend\ai_service\data\voice_data\reference_voice_data\emotion_voices",
-                                  transcript_emotion_dir = r"D:\FINAL_CODE\backend\ai_service\data\voice_data\reference_voice_data\emotion_voices_transcript",
-                                  output_dir = r"D:\FINAL_CODE\backend\ai_service\data\voice_data\temporary_output_voice_data\text_to_speech"):
+# def generate_all_TTS_with_emotion(narrative_annotation_dir = r"D:\FINAL_CODE\backend\ai_service\data\context_data\character_label_data\ca74b063-0604-44a3-8666-62916477c0e9",
+#                                   emotion_audio_dir = r"D:\FINAL_CODE\backend\ai_service\data\voice_data\reference_voice_data\emotion_voices",
+#                                   transcript_emotion_dir = r"D:\FINAL_CODE\backend\ai_service\data\voice_data\reference_voice_data\emotion_voices_transcript",
+#                                   output_dir = r"D:\FINAL_CODE\backend\ai_service\data\voice_data\temporary_output_voice_data\text_to_speech"):
+def generate_all_TTS_with_emotion(narrative_annotation_dir,
+                                  emotion_audio_dir ,
+                                  transcript_emotion_dir,
+                                  output_dir):
     
     emotion_audio_dir = os.path.abspath(emotion_audio_dir)
     transcript_emotion_dir = os.path.abspath(transcript_emotion_dir)
