@@ -31,7 +31,7 @@ from .text_output_verification import process_texts, get_unique_characters, proc
 from .extract_character_personality import create_character_analysis_prompts
 from .validate_character_identity import process_json_files_merging_same_character, process_narrative_data, update_aliases_from_filenames
 from .character_voice_mapper import add_voice_actors, personality_mapper_main, create_unique_mapping
-from .model_loader import llama_8B_finetune_model_loader
+
 context_memory_instruction = get_context_memory_prompt()
 dialogue_analyzer_instruction = get_dialogue_analyzer_prompt()
 
@@ -46,21 +46,21 @@ alpaca_prompt = """Below is an instruction that describes a task, paired with an
 ### Response:
 {}"""
 
-llama_8B_model, llama_8B_tokenizer = llama_8B_finetune_model_loader()
+# llama_8B_model, llama_8B_tokenizer = llama_8B_finetune_model_loader()
 sentence_transformer_model = sentence_transformer_model_loader()
-EOS_TOKEN = llama_8B_tokenizer.eos_token # Must add EOS_TOKEN
-text_streamer = TextStreamer(llama_8B_tokenizer)
+# EOS_TOKEN = llama_8B_tokenizer.eos_token # Must add EOS_TOKEN
+# text_streamer = TextStreamer(llama_8B_tokenizer)
 
-def formatting_prompts_func(examples):
-    instructions = examples["instruction"]
-    inputs       = examples["input"]
-    outputs      = examples["output"]
-    texts = []
-    for instruction, input, output in zip(instructions, inputs, outputs):
-        # Must add EOS_TOKEN, otherwise your generation will go on forever!
-        text = alpaca_prompt.format(instruction, input, output) + EOS_TOKEN
-        texts.append(text)
-    return { "text" : texts, }
+# def formatting_prompts_func(examples):
+#     instructions = examples["instruction"]
+#     inputs       = examples["input"]
+#     outputs      = examples["output"]
+#     texts = []
+#     for instruction, input, output in zip(instructions, inputs, outputs):
+#         # Must add EOS_TOKEN, otherwise your generation will go on forever!
+#         text = alpaca_prompt.format(instruction, input, output) + EOS_TOKEN
+#         texts.append(text)
+#     return { "text" : texts, }
 
 def generate_answer_with_llama_finetune(
     model,
@@ -241,15 +241,14 @@ def process_files_in_folder(files_path, output_dir = "", memory_dir = "", key = 
                                 break  # Keep the break here, it's for a specific condition
 
                     input_query_update_context_memory = get_context_memory_input_query(file_path, CONTEXT_MEMORY)
-                    if retry_counter <= 2:
-                        response_2 = extract_json_response(generate_answer(input_query_update_context_memory, llama_8B_model,llama_8B_tokenizer, temperature=0.4))
-                    else:
-                        response_2 = generate_answer(input_query_update_context_memory, temperature=0.4, gemini_key=key)
+                    # response_2 = answer_update_context_memory_with_gemini(file_path, choosen_model, key)
+                    # if retry_counter <= 2:
+                    #     response_2 = generate_answer(input_query_update_context_memory,llama_8B_model,llama_8B_tokenizer)
+                    # else:
 
                     # response_2 = extract_json_response(generate_answer(input_query_update_context_memory, llama_8B_model,llama_8B_tokenizer, temperature=0.4))
                     # print(response_2)
-
-                    # response_2 = generate_answer(input_query_update_context_memory, temperature=0.4, gemini_key=key)
+                    response_2 = generate_answer(input_query_update_context_memory, temperature=0.4, gemini_key=key)
 
                     response_temp = clean_json(response_2)
 
@@ -277,15 +276,14 @@ def process_files_in_folder(files_path, output_dir = "", memory_dir = "", key = 
                     print(f"Start prompting with task 1...")
 
                     input_query_dialogue_analyzer = get_dialogue_analyzer_input_query(file_path, CONTEXT_MEMORY)
-                    if retry_counter <= 2:
-                        response_1 = generate_answer(input_query_dialogue_analyzer,llama_8B_model,llama_8B_tokenizer, task_code="dialogue analyzer")
-                        response_1 = extract_json_response(response_1)
-                    else:
-                        response_1 = generate_answer(input_query_dialogue_analyzer, gemini_key=key, task_code="dialogue analyzer")
+                    # if retry_counter <= 2:
+                    #     response_1 = generate_answer(input_query_dialogue_analyzer,llama_8B_model,llama_8B_tokenizer, task_code="dialogue analyzer")
+                    #     response_1 = extract_json_response(response_1)
+                    # else:
 
                     # response_1 = extract_json_response(generate_answer(input_query_dialogue_analyzer, llama_8B_model,llama_8B_tokenizer, task_code="dialogue analyzer"))
                     # print(response_1)
-                    # response_1 = generate_answer(input_query_dialogue_analyzer, gemini_key=key, task_code="dialogue analyzer")
+                    response_1 = generate_answer(input_query_dialogue_analyzer, gemini_key=key, task_code="dialogue analyzer")
                     
                     response_temp = clean_json(response_1)
 
@@ -321,15 +319,15 @@ def process_files_in_folder(files_path, output_dir = "", memory_dir = "", key = 
     
     return break_outer, last_memory_file_dir
 
-def generate_label_data_main(input_data, input_id, output_dir, 
-                             memory_dir,
-                             text_input_data_dir,
-                             character_personality_output_dir, 
-                             validate_identity_character_personality_output_dir,
-                             final_identity_character_dir,
-                             voice_personality_dir,
-                             voice_personality_by_lore_dir,
-                             character_voice_mapper_dir):
+def generate_label_data_main(input_data, input_id, output_dir = r"D:\FINAL_CODE\backend\ai_service\data\context_data\character_label_data", 
+                             memory_dir = r"D:\FINAL_CODE\backend\ai_service\data\context_data\context_memory_data",
+                             text_input_data_dir = r"D:\FINAL_CODE\backend\ai_service\data\context_data\text_input_data",
+                             character_personality_output_dir = r"D:\FINAL_CODE\backend\ai_service\data\context_data\character_personality_data", 
+                             validate_identity_character_personality_output_dir = r"D:\FINAL_CODE\backend\ai_service\data\context_data\validated_character_personality_data",
+                             final_identity_character_dir = r"D:\FINAL_CODE\backend\ai_service\data\context_data\personality_mapper_data\mapped_character-VA",
+                             voice_personality_dir = r"D:\FINAL_CODE\backend\ai_service\data\voice_data\reference_voice_data\character_personality_mapping",
+                             voice_personality_by_lore_dir = r"D:\FINAL_CODE\backend\ai_service\data\voice_data\reference_voice_data\character_personality_mapping_by_lore",
+                             character_voice_mapper_dir = r"D:\FINAL_CODE\backend\ai_service\data\context_data\personality_mapper_data"):
     """Main function to generate label data with cancel support"""
     
     if get_cancel_flag(input_id):  # Check cancel flag at start
